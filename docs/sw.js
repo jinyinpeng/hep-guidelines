@@ -1,0 +1,127 @@
+/* eslint-env serviceworker */
+/**
+ * 离线优先的 Service Worker
+ * 策略：
+ *  - 导航请求：网络优先，失败回退缓存的 index.html（保证离线可打开应用）
+ *  - 静态资源：缓存优先，首次成功后写入缓存（保证第二次及离线访问瞬时可用）
+ *  - 支持主线程把首屏已加载的资源列表推送进来做「预热缓存」
+ */
+const VERSION = 'v1'
+const CACHE = `hep-guidelines-${VERSION}`
+const APP_SHELL = ['./', './index.html', './manifest.json', './icon.svg', './icon-maskable.svg']
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    (async () => {
+      const cache = await caches.open(CACHE)
+      await Promise.all(
+        APP_SHELL.map(async (url) => {
+          try {
+            await cache.add(new Request(url, { cache: 'reload' }))
+          } catch (e) {
+            /* 单个资源失败不影响整体安装 */
+          }
+        }),
+      )
+      await self.skipWaiting()
+    })(),
+  )
+})
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    (async () => {
+      const keys = await caches.keys()
+      await Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k)))
+      if (self.registration.navigationPreload) {
+        try {
+          await self.registration.navigationPreload.disable()
+        } catch (e) {}
+      }
+      await self.clients.claim()
+    })(),
+  )
+})
+
+self.addEventListener('message', (event) => {
+  const data = event.data
+  if (!data) return
+
+  if (data.type === 'SKIP_WAITING') {
+    self.skipWaiting()
+    return
+  }
+
+  if (data.type === 'CACHE_URLS' && Array.isArray(data.urls)) {
+    event.waitUntil(
+      (async () => {
+        const cache = await caches.open(CACHE)
+        await Promise.all(
+          data.urls.map(async (url) => {
+            try {
+              const req = new Request(url, { cache: 'reload' })
+              const hit = await cache.match(req)
+              if (hit) return
+              const res = await fetch(req)
+              if (res && res.ok) await cache.put(req, res.clone())
+            } catch (e) {}
+          }),
+        )
+        const clients = await self.clients.matchAll()
+        clients.forEach((c) => c.postMessage({ type: 'PRECACHE_DONE' }))
+      })(),
+    )
+  }
+})
+
+self.addEventListener('fetch', (event) => {
+  const req = event.request
+  if (req.method !== 'GET') return
+
+  const url = new URL(req.url)
+  if (url.origin !== self.location.origin) return
+  if (url.pathname.endsWith('/sw.js')) return
+
+  // 页面导航
+  if (req.mode === 'navigate') {
+    event.respondWith(
+      (async () => {
+        try {
+          const fresh = await fetch(req)
+          const cache = await caches.open(CACHE)
+          cache.put('./index.html', fresh.clone())
+          return fresh
+        } catch (e) {
+          const cache = await caches.open(CACHE)
+          return (
+            (await cache.match('./index.html')) ||
+            (await cache.match('./')) ||
+            new Response('<h1>离线中</h1>', {
+              status: 200,
+              headers: { 'Content-Type': 'text/html; charset=utf-8' },
+            })
+          )
+        }
+      })(),
+    )
+    return
+  }
+
+  // 其余同源资源
+  event.respondWith(
+    (async () => {
+      const cache = await caches.open(CACHE)
+      const cached = await cache.match(req)
+      if (cached) return cached
+      try {
+        const fresh = await fetch(req)
+        if (fresh && fresh.ok && fresh.type === 'basic') {
+          cache.put(req, fresh.clone())
+        }
+        return fresh
+      } catch (e) {
+        return new Response('', { status: 504, statusText: 'Offline' })
+      }
+    })(),
+  )
+})

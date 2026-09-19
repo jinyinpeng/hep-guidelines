@@ -1,0 +1,40 @@
+{
+  "name": "肝病指南要点库 · 国内外指南共识速查",
+  "short_name": "肝病指南",
+  "description": "收录肝病科国内外最新指南与共识的核心要点，支持全文检索、要点标记与收藏，安装后可完全离线使用。",
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "id": "hep-guidelines",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "portrait",
+  "background_color": "#f4f7f8",
+  "theme_color": "#0f766e",
+  "categories": ["medical", "health", "reference", "education"],
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "搜索指南",
+      "url": "./#/"
+    },
+    {
+      "name": "我的收藏",
+      "url": "./#/favorites"
+    }
+  ]
+}
