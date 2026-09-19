@@ -1,23 +1,27 @@
-name: Deploy to GitHub Pages
+name: Build docs
 
-# 推送 main 分支时自动构建并发布到 GitHub Pages
-# configure-pages 的 enablement: true 会在首次运行时自动开启 Pages，无需手动到 Settings 里配置
+# 推送 main 时自动构建，并把产物同步到 docs/ 目录
+# GitHub Pages 只需一次性设为「Deploy from a branch: main / docs」，之后每次推送都会自动更新
+#
+# 说明：这里刻意不使用 actions/deploy-pages。
+# 因为用 Actions 默认 token 无法通过 API「创建」Pages 站点（会 403），
+# 而「构建产物提交到 docs/」的方式不依赖任何 Pages API 权限，更稳。
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: build-docs
+  cancel-in-progress: true
 
 jobs:
   build:
+    # 跳过机器人自己产生的提交，避免无限循环
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -34,23 +38,21 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      - name: Sync dist to docs
+        run: |
+          rm -rf docs
+          mkdir -p docs
+          cp -r dist/. docs/
+          ls -a docs
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A docs
+          if git diff --staged --quiet; then
+            echo "docs/ 无变化，跳过提交"
+          else
+            git commit -m "chore: rebuild docs [skip ci]"
+            git push
+          fi
