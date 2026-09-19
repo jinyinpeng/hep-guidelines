@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react'
-import { DISEASE_MAP } from '../data'
+import { DEPT_MAP } from '../data'
 import type { Guideline } from '../data/types'
 import { href } from '../lib/router'
 import { useStore } from '../lib/store'
@@ -7,7 +7,7 @@ import { useStore } from '../lib/store'
 export default function GuidelineCard({ g }: { g: Guideline }) {
   const { favorites } = useStore()
   const fav = favorites.has(g.id)
-  const disease = DISEASE_MAP[g.disease]
+  const dept = DEPT_MAP[g.dept]
 
   return (
     <a
@@ -51,7 +51,7 @@ export default function GuidelineCard({ g }: { g: Guideline }) {
       <p className="mt-2 line-clamp-2 text-[13.5px] leading-relaxed text-ink-2">{g.summary}</p>
 
       <div className="mt-3 flex flex-wrap items-center gap-1.5">
-        <span className="round-chip bg-surface-3 text-ink-2">{disease?.short}</span>
+        <span className="round-chip bg-surface-3 text-ink-2">{dept?.short}</span>
         {g.tags.slice(0, 3).map((t) => (
           <span key={t} className="round-chip bg-surface-2 text-ink-3">
             {t}

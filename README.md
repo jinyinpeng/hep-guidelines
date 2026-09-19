@@ -1,12 +1,13 @@
-# 肝病指南要点库
+# 临床指南要点库
 
-手机端优先、**完全离线可用**的肝病科指南共识速查前端。收录国内与国际肝病领域最新指南/共识的核心要点，支持全文检索、要点标记与收藏。
+手机端优先、**完全离线可用**的临床指南共识速查前端。覆盖 **30 个临床科室**，收录国内外最新指南/共识的核心要点，支持全文检索、要点标记与收藏。
 
 ## 特性
 
+- **全科室覆盖**：内科系、外科系、妇产与儿科、急危重症与麻醉、专科（眼科/耳鼻喉/口腔/康复/疼痛）五大分组，共 30 个科室。
 - **离线可用**：Service Worker 预缓存应用外壳与全部静态资源，首次访问后断网/飞行模式仍可正常查阅与检索；可「添加到主屏幕」当 App 使用。
-- **移动端优先**：单列卡片式布局、底部标签导航、安全区适配、48px 级触控区域、跟随系统的明暗主题。
-- **全文检索**：轻量自研检索，覆盖标题、机构、标签与全部要点正文，支持空格分隔的多关键词组合（如「乙肝 停药」「腹水 白蛋白」）。
+- **移动端优先**：单列卡片式布局、底部标签导航、安全区适配、跟随系统的明暗主题。
+- **全文检索**：轻量自研检索，覆盖科室名、标题、机构、标签与全部要点正文，支持空格分隔的多关键词（如「卒中 溶栓」「脓毒症 液体复苏」）。
 - **要点标记**：指南可收藏，单条要点可标记为重点，收藏与标记仅存于本机 `localStorage`，不上传任何数据。
 - **零服务端**：纯静态产物，可直接部署到任意静态托管。
 
@@ -23,7 +24,7 @@ npm run build    # 类型检查 + 生产构建，输出 dist/
 npm run preview  # 预览生产构建 http://localhost:4173
 ```
 
-> Service Worker 仅在**生产构建**中注册，因此验证离线能力请使用 `npm run build` 后 `npm run preview`，用手机或浏览器访问局域网地址，加载一次后断开网络测试。
+> Service Worker 仅在**生产构建**中注册，因此验证离线能力请使用 `npm run build` 后 `npm run preview`，加载一次后断开网络测试。
 > 首次加载后应用会把已加载的资源列表推送给 Service Worker 做预热缓存，因此**一次访问即可离线**。
 
 ## 目录结构
@@ -36,71 +37,54 @@ public/
   .nojekyll              关闭 GitHub Pages 的 Jekyll 处理
 src/
   data/
-    types.ts             数据模型
-    diseases.ts          10 个病种领域
-    cn.ts                国内指南 / 共识
-    intl.ts              国际指南 / 共识
+    types.ts             数据模型（含 DeptId 科室枚举）
+    departments.ts       30 个临床科室定义与分组
+    diseases.ts          肝病科内部亚病种分组
+    hepatology-cn.ts     肝病科 · 国内指南
+    hepatology-intl.ts   肝病科 · 国际指南
+    internal-1.ts        内科系（一）：心血管 / 呼吸 / 消化
+    internal-2.ts        内科系（二）：肾脏 / 血液 / 内分泌 / 风湿免疫
+    internal-3.ts        内科系（三）：神经 / 感染 / 肿瘤 / 老年 / 精神 / 皮肤
+    surgery.ts           外科系：普外 / 骨科 / 神外 / 泌尿 / 胸外 / 血管外科
+    womenchild-critical.ts  妇产科 / 儿科 / 急诊 / 重症 / 麻醉
+    specialty.ts         眼科 / 耳鼻咽喉科 / 口腔科 / 康复医学科 / 疼痛科
     index.ts             汇总、统计与全文检索
   components/            TopBar / TabBar / 指南卡片 / 搜索框 / 免责声明
-  pages/                 首页 / 指南库 / 详情 / 收藏 / 说明
+  pages/                 首页 / 科室页 / 全部指南 / 详情 / 收藏 / 说明
   lib/                   路由、本地存储、PWA 能力
 ```
 
-## 如何更新指南内容
+## 如何新增指南
 
-只改 `src/data/cn.ts` 与 `src/data/intl.ts` 即可，一条条目的结构如下：
+在对应科室的数据文件里追加条目即可，结构如下：
 
 ```ts
 {
-  id: 'cn-hbv-2025',            // 唯一 id，改动会丢失该条的收藏/标记
-  title: '慢性乙型肝炎防治指南（2025年版）',
-  short: '慢性乙型肝炎防治指南',   // 卡片标题
-  org: '中华医学会肝病学分会、中华医学会感染病学分会',
-  region: 'cn',                 // 'cn' | 'intl'
+  id: 'cn-xxx-2025',           // 全局唯一，改动会丢失该条的收藏/标记
+  title: '完整指南名称（2025年版）',
+  short: '卡片短标题',
+  org: '发布机构',
+  region: 'cn',                // 'cn' 国内 | 'intl' 国际
+  dept: 'cardio',              // 科室 id，见 departments.ts
   year: 2025,
-  disease: 'hbv',               // 见 diseases.ts
-  latest: true,                 // 是否为该领域当前最新版本
-  tags: ['抗病毒适应证', '一线药物'],
+  latest: true,                // 是否为该领域当前最新版本
+  tags: ['标签1', '标签2'],
   summary: '一句话定位',
-  ref: '出处说明',
-  url: 'https://…',             // 可选，原文链接
+  ref: '出处说明',              // 可选
+  url: 'https://…',            // 可选，原文链接
   sections: [
-    { title: '治疗目标', points: [{ t: '要点正文', tag: '目标', key: true }] },
+    { title: '分组标题', points: [{ t: '要点正文', tag: '小标签', key: true }] },
   ],
 }
 ```
 
+新增科室时，先在 `src/data/departments.ts` 里加一条 `Department`，并在 `src/data/types.ts` 的 `DeptId` 联合类型中补上对应 id。
+
 新增或修改数据后重新 `npm run build` 即可，无需改动其他代码。
 
-## 部署到 GitHub Pages（手机上直接打开）
+## 部署到 GitHub Pages
 
-构建产物是纯静态文件，且 `vite.config.ts` 已设置 `base: './'`（相对路径），因此可以直接放在仓库根目录或子目录下运行。
-
-### 方式一：网页上传（无需安装 git）
-
-1. 在 GitHub 新建仓库，例如 `hep-guidelines`，设为 **Public**。
-2. 本地执行 `npm run build`，打开生成的 `dist/` 文件夹。
-3. 进入新仓库页面，点 **Add file → Upload files**，把 `dist/` **里面的所有内容**（不要整个 dist 文件夹本身）拖进上传区：`index.html`、`sw.js`、`manifest.json`、`icon.svg`、`icon-maskable.svg`、`.nojekyll` 以及 `assets/` 文件夹。
-4. 提交（Commit changes）。
-5. 仓库 **Settings → Pages**，Source 选 **Deploy from a branch**，Branch 选 **main** + **/(root)**，保存。
-6. 等 1–2 分钟，访问 `https://<你的用户名>.github.io/<仓库名>/`。
-
-> 必须用 `https://` 访问，Service Worker 与「添加到主屏幕」只在安全上下文下生效。
-> `.nojekyll` 用于关闭 GitHub Pages 的 Jekyll 处理，避免下划线开头的文件被忽略。
-
-### 方式二：使用 git 命令
-
-```bash
-npm run build
-cd dist
-git init -b main
-git add -A
-git commit -m "deploy: 肝病指南要点库"
-git remote add origin https://github.com/<用户名>/<仓库名>.git
-git push -f origin main
-```
-
-再按上面第 5 步开启 Pages。
+推送 `main` 后，仓库内的 GitHub Actions 会自动构建并把产物同步到 `docs/` 目录，GitHub Pages 只需一次性设置为 `Deploy from a branch: main / docs`。
 
 ## 免责声明
 

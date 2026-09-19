@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react'
 
+export type RouteName = 'home' | 'dept' | 'library' | 'detail' | 'favorites' | 'about'
+
 export interface Route {
-  name: 'home' | 'library' | 'detail' | 'favorites' | 'about'
+  name: RouteName
+  /** 科室 id */
+  deptId?: string
+  /** 肝病科亚病种 */
   disease?: string
+  /** 指南 id */
   id?: string
   query: URLSearchParams
   raw: string
@@ -14,7 +20,10 @@ export function parseRoute(raw: string): Route {
   const query = new URLSearchParams(search ?? '')
   const segs = path.split('/').filter(Boolean)
 
-  if (segs[0] === 'library') return { name: 'library', disease: query.get('d') ?? undefined, query, raw }
+  if (segs[0] === 'dept' && segs[1]) {
+    return { name: 'dept', deptId: segs[1], disease: query.get('d') ?? undefined, query, raw }
+  }
+  if (segs[0] === 'library') return { name: 'library', query, raw }
   if (segs[0] === 'detail' && segs[1]) return { name: 'detail', id: segs[1], query, raw }
   if (segs[0] === 'favorites') return { name: 'favorites', query, raw }
   if (segs[0] === 'about') return { name: 'about', query, raw }

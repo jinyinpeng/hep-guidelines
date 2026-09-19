@@ -29,13 +29,13 @@ export default function TopBar({ title, subtitle, onBack }: Props) {
             aria-hidden
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand text-[15px] font-semibold text-white"
           >
-            肝
+            临
           </span>
         )}
 
         <div className="min-w-0 flex-1">
           <h1 className="truncate text-[15px] font-semibold leading-tight tracking-tight text-ink">
-            {title ?? '肝病指南要点库'}
+            {title ?? '临床指南要点库'}
           </h1>
           <p className="truncate text-[11.5px] leading-tight text-ink-3">
             {subtitle ?? '国内外指南共识 · 要点速查'}

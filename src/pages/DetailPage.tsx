@@ -1,6 +1,6 @@
 import { Bookmark, CircleDot, ExternalLink, Star } from 'lucide-react'
 import Disclaimer from '../components/Disclaimer'
-import { DISEASE_MAP, getGuideline } from '../data'
+import { DEPT_MAP, getGuideline } from '../data'
 import { href } from '../lib/router'
 import { pointKey, useStore } from '../lib/store'
 
@@ -20,7 +20,7 @@ export default function DetailPage({ id }: { id: string }) {
   }
 
   const fav = favorites.has(g.id)
-  const disease = DISEASE_MAP[g.disease]
+  const dept = DEPT_MAP[g.dept]
   const markCount = g.sections.reduce(
     (n, s, si) => n + s.points.filter((_, pi) => marks.has(pointKey(g.id, si, pi))).length,
     0,
@@ -47,7 +47,12 @@ export default function DetailPage({ id }: { id: string }) {
         <p className="mt-2 text-[12.5px] leading-relaxed text-ink-3">{g.org}</p>
 
         <div className="mt-3 flex flex-wrap gap-1.5">
-          <span className="round-chip bg-surface-3 text-ink-2">{disease?.name}</span>
+          <a
+            href={href(`/dept/${g.dept}`)}
+            className="round-chip cursor-pointer bg-brand-soft text-brand-ink transition-opacity duration-200 hover:opacity-80"
+          >
+            {dept?.short}
+          </a>
           {g.tags.map((t) => (
             <span key={t} className="round-chip bg-surface-2 text-ink-3">
               {t}

@@ -1,15 +1,47 @@
-import { CN_GUIDELINES } from './cn'
-import { INTL_GUIDELINES } from './intl'
-import type { DiseaseId, Guideline, Point } from './types'
+import { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup } from './departments'
+import { CN_GUIDELINES } from './hepatology-cn'
+import { INTL_GUIDELINES } from './hepatology-intl'
+import { INTERNAL_1 } from './internal-1'
+import { INTERNAL_2 } from './internal-2'
+import { INTERNAL_3 } from './internal-3'
+import { SPECIALTY } from './specialty'
+import { SURGERY } from './surgery'
+import type { DeptId, Guideline } from './types'
+import { WOMEN_CHILD_CRITICAL } from './womenchild-critical'
 
-export const GUIDELINES: Guideline[] = [...CN_GUIDELINES, ...INTL_GUIDELINES].sort(
-  (a, b) => b.year - a.year || a.short.localeCompare(b.short, 'zh'),
-)
+export const GUIDELINES: Guideline[] = [
+  ...CN_GUIDELINES,
+  ...INTL_GUIDELINES,
+  ...INTERNAL_1,
+  ...INTERNAL_2,
+  ...INTERNAL_3,
+  ...SURGERY,
+  ...WOMEN_CHILD_CRITICAL,
+  ...SPECIALTY,
+].sort((a, b) => b.year - a.year || a.short.localeCompare(b.short, 'zh'))
 
 export const GUIDELINE_MAP = new Map(GUIDELINES.map((g) => [g.id, g]))
 
 export function getGuideline(id: string): Guideline | undefined {
   return GUIDELINE_MAP.get(id)
+}
+
+export function byDept(dept: DeptId): Guideline[] {
+  return GUIDELINES.filter((g) => g.dept === dept)
+}
+
+export function countByDept(dept: DeptId): number {
+  return byDept(dept).length
+}
+
+/** 科室下指南的最新版次年，用于卡片展示 */
+export function latestYearOf(dept: DeptId): number {
+  return byDept(dept).reduce((y, g) => Math.max(y, g.year), 0)
+}
+
+export function pointCount(dept?: DeptId): number {
+  const pool = dept ? byDept(dept) : GUIDELINES
+  return pool.reduce((n, g) => n + g.sections.reduce((m, s) => m + s.points.length, 0), 0)
 }
 
 export interface Stats {
@@ -19,16 +51,20 @@ export interface Stats {
   points: number
   latest: number
   year: number
+  depts: number
+  covered: number
 }
 
 export const STATS: Stats = (() => {
   let points = 0
   let latest = 0
   let year = 0
+  const seen = new Set<DeptId>()
   for (const g of GUIDELINES) {
     points += g.sections.reduce((n, s) => n + s.points.length, 0)
     if (g.latest) latest++
     if (g.year > year) year = g.year
+    seen.add(g.dept)
   }
   return {
     total: GUIDELINES.length,
@@ -37,12 +73,10 @@ export const STATS: Stats = (() => {
     points,
     latest,
     year,
+    depts: DEPARTMENTS.length,
+    covered: seen.size,
   }
 })()
-
-export function countByDisease(id: DiseaseId): number {
-  return GUIDELINES.filter((g) => g.disease === id).length
-}
 
 /* ----------------------------- 检索 ----------------------------- */
 
@@ -58,7 +92,7 @@ function norm(s: string): string {
 }
 
 /**
- * 轻量全文检索：标题/机构/标签权重最高，要点正文次之。
+ * 轻量全文检索：科室名/标题/机构/标签权重最高，要点正文次之。
  * 支持空格分隔的多关键词，所有关键词均需在某处命中。
  */
 export function search(query: string, pool: Guideline[] = GUIDELINES): Hit[] {
@@ -68,7 +102,10 @@ export function search(query: string, pool: Guideline[] = GUIDELINES): Hit[] {
   const hits: Hit[] = []
 
   for (const g of pool) {
-    const hayTitle = norm(`${g.title} ${g.short} ${g.org} ${g.tags.join(' ')}`)
+    const dept = DEPT_MAP[g.dept]
+    const hayTitle = norm(
+      `${g.title} ${g.short} ${g.org} ${g.tags.join(' ')} ${dept?.name ?? ''} ${dept?.short ?? ''}`,
+    )
     const haySummary = norm(g.summary)
     const hayYear = String(g.year)
 
@@ -116,5 +153,6 @@ export function search(query: string, pool: Guideline[] = GUIDELINES): Hit[] {
   return hits.sort((a, b) => b.score - a.score || b.guideline.year - a.guideline.year)
 }
 
-export type { Guideline, Point, DiseaseId }
+export type { Guideline, Point, DeptId } from './types'
 export { DISEASES, DISEASE_MAP } from './diseases'
+export { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup }

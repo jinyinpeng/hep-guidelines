@@ -1,12 +1,12 @@
 {
-  "name": "肝病指南要点库 · 国内外指南共识速查",
-  "short_name": "肝病指南",
-  "description": "收录肝病科国内外最新指南与共识的核心要点，支持全文检索、要点标记与收藏，安装后可完全离线使用。",
+  "name": "临床指南要点库 · 各科室指南共识速查",
+  "short_name": "临床指南",
+  "description": "覆盖 30 个临床科室的国内外最新指南与共识核心要点，支持全文检索、要点标记与收藏，安装后可完全离线使用。",
   "lang": "zh-CN",
   "dir": "ltr",
   "start_url": "./",
   "scope": "./",
-  "id": "hep-guidelines",
+  "id": "clinical-guidelines",
   "display": "standalone",
   "display_override": ["standalone", "minimal-ui", "browser"],
   "orientation": "portrait",
@@ -29,8 +29,8 @@
   ],
   "shortcuts": [
     {
-      "name": "搜索指南",
-      "url": "./#/"
+      "name": "全部指南",
+      "url": "./#/library"
     },
     {
       "name": "我的收藏",

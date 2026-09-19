@@ -1,4 +1,12 @@
-import type { Disease } from './types'
+import type { DiseaseId } from './types'
+
+/** 肝病科内部的亚病种分组 */
+export interface Disease {
+  id: DiseaseId
+  name: string
+  short: string
+  desc: string
+}
 
 export const DISEASES: Disease[] = [
   { id: 'hbv', name: '乙型病毒性肝炎', short: '乙肝', desc: '治疗适应证、一线药物、临床治愈与母婴阻断' },

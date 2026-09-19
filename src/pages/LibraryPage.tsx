@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react'
 import GuidelineCard from '../components/GuidelineCard'
 import SearchBar from '../components/SearchBar'
-import { DISEASES, GUIDELINES, search } from '../data'
-import type { DiseaseId } from '../data/types'
+import { DEPT_GROUPS, DEPARTMENTS, GUIDELINES, countByDept, search } from '../data'
+import type { DeptGroup } from '../data/types'
 
 const REGIONS = [
   { key: 'all', label: '全部' },
@@ -12,29 +12,33 @@ const REGIONS = [
 
 type RegionKey = (typeof REGIONS)[number]['key']
 
-export default function LibraryPage({ initialDisease }: { initialDisease?: string }) {
+export default function LibraryPage() {
   const [region, setRegion] = useState<RegionKey>('all')
-  const [disease, setDisease] = useState<string>(initialDisease ?? 'all')
+  const [group, setGroup] = useState<DeptGroup | 'all'>('all')
+  const [dept, setDept] = useState<string>('all')
   const [q, setQ] = useState('')
+
+  const deptOptions = useMemo(
+    () => (group === 'all' ? DEPARTMENTS : DEPARTMENTS.filter((d) => d.group === group)),
+    [group],
+  )
 
   const base = useMemo(
     () =>
       GUIDELINES.filter(
-        (g) => (region === 'all' || g.region === region) && (disease === 'all' || g.disease === disease),
+        (g) =>
+          (region === 'all' || g.region === region) && (dept === 'all' || g.dept === dept),
       ),
-    [region, disease],
+    [region, dept],
   )
 
   const list = useMemo(() => (q.trim() ? search(q, base).map((h) => h.guideline) : base), [q, base])
 
+  const activeDept = DEPARTMENTS.find((d) => d.id === dept)
+
   return (
     <div className="space-y-4">
-      <SearchBar
-        value={q}
-        onChange={setQ}
-        autoFocus={false}
-        placeholder="在当前筛选结果中检索"
-      />
+      <SearchBar value={q} onChange={setQ} placeholder="在当前筛选结果中检索" />
 
       <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
         {REGIONS.map((r) => (
@@ -51,21 +55,50 @@ export default function LibraryPage({ initialDisease }: { initialDisease?: strin
         <span className="mx-1 w-px shrink-0 bg-line" />
         <button
           type="button"
-          data-on={disease === 'all'}
-          onClick={() => setDisease('all')}
+          data-on={group === 'all'}
+          onClick={() => {
+            setGroup('all')
+            setDept('all')
+          }}
           className="chip-btn shrink-0"
         >
-          全部病种
+          全部科室
         </button>
-        {DISEASES.map((d) => (
+        {DEPT_GROUPS.map((g) => (
+          <button
+            key={g.id}
+            type="button"
+            data-on={group === g.id}
+            onClick={() => {
+              setGroup(g.id)
+              setDept('all')
+            }}
+            className="chip-btn shrink-0"
+          >
+            {g.name}
+          </button>
+        ))}
+      </div>
+
+      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
+        <button
+          type="button"
+          data-on={dept === 'all'}
+          onClick={() => setDept('all')}
+          className="chip-btn shrink-0"
+        >
+          {group === 'all' ? '全部科室' : '该组全部'}
+        </button>
+        {deptOptions.map((d) => (
           <button
             key={d.id}
             type="button"
-            data-on={disease === d.id}
-            onClick={() => setDisease(d.id as DiseaseId)}
+            data-on={dept === d.id}
+            onClick={() => setDept(d.id)}
             className="chip-btn shrink-0"
           >
             {d.short}
+            <span className="ml-1 tabular-nums opacity-60">{countByDept(d.id)}</span>
           </button>
         ))}
       </div>
@@ -73,7 +106,7 @@ export default function LibraryPage({ initialDisease }: { initialDisease?: strin
       <p className="text-[12.5px] text-ink-3">
         共 <strong className="font-semibold text-ink">{list.length}</strong> 部
         {region !== 'all' && ` · ${REGIONS.find((r) => r.key === region)?.label}`}
-        {disease !== 'all' && ` · ${DISEASES.find((d) => d.id === disease)?.name}`}
+        {activeDept && ` · ${activeDept.short}`}
       </p>
 
       {list.length === 0 ? (

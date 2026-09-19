@@ -1,6 +1,6 @@
 import { Check, Download, FileText, ListFilter, SquarePen, Wifi, WifiOff } from 'lucide-react'
 import Disclaimer from '../components/Disclaimer'
-import { DISEASES, STATS, countByDisease } from '../data'
+import { DEPARTMENTS, STATS, countByDept } from '../data'
 import { useInstallPrompt, useOnline, useStandalone } from '../lib/pwa'
 
 export default function AboutPage() {
@@ -82,10 +82,10 @@ export default function AboutPage() {
           收录概览
         </h2>
         <div className="mt-3 grid grid-cols-2 gap-2.5">
+          <Metric label="临床科室" value={`${STATS.depts} 个`} />
           <Metric label="指南与共识" value={`${STATS.total} 部`} />
           <Metric label="要点条目" value={`${STATS.points} 条`} />
-          <Metric label="国内" value={`${STATS.cn} 部`} />
-          <Metric label="国际" value={`${STATS.intl} 部`} />
+          <Metric label="国内 / 国际" value={`${STATS.cn} / ${STATS.intl}`} />
           <Metric label="当前最新版本" value={`${STATS.latest} 部`} />
           <Metric label="覆盖版次年" value={`至 ${STATS.year} 年`} />
         </div>
@@ -93,14 +93,14 @@ export default function AboutPage() {
         <div className="mt-4">
           <p className="flex items-center gap-1.5 text-[12.5px] font-medium text-ink">
             <ListFilter size={14} className="text-brand" />
-            覆盖病种
+            覆盖科室
           </p>
           <ul className="mt-2 space-y-1">
-            {DISEASES.map((d) => (
+            {DEPARTMENTS.map((d) => (
               <li key={d.id} className="flex items-baseline gap-2 text-[12.5px] text-ink-2">
                 <Check size={13} className="shrink-0 translate-y-[2px] text-brand" />
                 <span className="flex-1">{d.name}</span>
-                <span className="text-[11px] tabular-nums text-ink-3">{countByDisease(d.id)} 部</span>
+                <span className="text-[11px] tabular-nums text-ink-3">{countByDept(d.id)} 部</span>
               </li>
             ))}
           </ul>
