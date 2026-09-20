@@ -39,6 +39,10 @@ function buildVersion(): Plugin {
 
 export default defineConfig({
   base: './',
+  // 把构建时间注入到前端：即使在离线状态、还没做过版本检查，底部也能显示版本信息
+  define: {
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+  },
   plugins: [react(), tailwindcss(), buildVersion()],
   build: {
     outDir: 'dist',

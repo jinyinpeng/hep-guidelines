@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import PullToRefresh from './components/PullToRefresh'
 import TabBar from './components/TabBar'
 import TopBar from './components/TopBar'
+import VersionFooter from './components/VersionFooter'
 import { DEPT_GROUPS, DEPT_MAP } from './data'
 import { useMode } from './lib/mode'
 import { goBack, useRoute } from './lib/router'
@@ -95,7 +96,7 @@ function Shell() {
         }
       />
 
-      <main className="mx-auto w-full max-w-[760px] flex-1 px-4 pb-32 pt-4">
+      <main className="mx-auto flex w-full max-w-[760px] flex-1 flex-col px-4 pt-4">
         {route.name === 'home' &&
           (research ? (
             <ResearchHomePage query={query} onQueryChange={setQuery} />
@@ -120,6 +121,9 @@ function Shell() {
         {route.name === 'methods' && <MethodologyPage />}
         {route.name === 'favorites' && <FavoritesPage />}
         {route.name === 'about' && <AboutPage />}
+
+        {/* 底部版本条：任何页面都能看到当前版本号，并可手动检查更新 */}
+        <VersionFooter />
       </main>
 
       <TabBar active={route.name} />

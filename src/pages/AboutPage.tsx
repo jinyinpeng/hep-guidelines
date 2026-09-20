@@ -13,7 +13,14 @@ import {
 import Disclaimer from '../components/Disclaimer'
 import { DEPARTMENTS, RESEARCH_STATS, STATS, countByDept } from '../data'
 import { useInstallPrompt, useOnline, useStandalone } from '../lib/pwa'
-import { checkForUpdate, useUpdateState, type UpdateState } from '../lib/update'
+import {
+  checkForUpdate,
+  formatBuildTime,
+  formatCheckedAt,
+  shortBuild,
+  statusText,
+  useUpdateState,
+} from '../lib/update'
 
 export default function AboutPage() {
   const online = useOnline()
@@ -122,9 +129,12 @@ export default function AboutPage() {
 
         <p className="mt-2.5 text-[11.5px] leading-relaxed text-ink-3">
           {update.builtAt
-            ? `线上版本构建于 ${formatTime(update.builtAt)}`
+            ? `线上版本构建于 ${formatBuildTime(update.builtAt)}`
             : '版本号取自构建产物文件名（带内容哈希），文件名变了就是有新版本。'}
-          {update.checkedAt ? ` · 上次检查 ${formatDateTime(update.checkedAt)}` : ''}
+          {update.checkedAt ? ` · 上次检查 ${formatCheckedAt(update.checkedAt)}` : ''}
+        </p>
+        <p className="mt-2 text-[11.5px] leading-relaxed text-ink-3">
+          每个页面的最底部都有一条版本条，可以直接看到当前版本号、构建时间与更新状态，也能一键检查更新。
         </p>
       </section>
 
@@ -313,44 +323,5 @@ function Metric({ label, value }: { label: string; value: string }) {
   )
 }
 
-/** index-a1b2c3d4.js → a1b2c3d4，读起来更像版本号 */
-function shortBuild(id: string | null): string {
-  if (!id) return '开发预览'
-  return id.replace(/^index-/, '').replace(/\.js$/, '')
-}
+/* 版本号、状态文案与时间格式化统一放在 src/lib/update.ts，底部版本条与说明页共用同一套实现 */
 
-function statusText(u: UpdateState): string {
-  switch (u.status) {
-    case 'checking':
-      return '正在检查…'
-    case 'updating':
-      return '发现新版本，正在更新…'
-    case 'latest':
-      return '已是最新版本'
-    case 'stale':
-      return '线上有新版本但还没生效，稍后可再试'
-    case 'offline':
-      return '当前离线，无法检查更新'
-    case 'error':
-      return '检查失败，请稍后再试'
-    default:
-      return u.localId ? '尚未检查' : '开发模式不检查版本'
-  }
-}
-
-function formatTime(iso: string): string {
-  const d = new Date(iso)
-  return Number.isNaN(d.getTime())
-    ? iso
-    : d.toLocaleString('zh-CN', { hour12: false, month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
-}
-
-function formatDateTime(ts: number): string {
-  return new Date(ts).toLocaleString('zh-CN', {
-    hour12: false,
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-  })
-}

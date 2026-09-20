@@ -264,6 +264,61 @@ async function doCheck(): Promise<UpdateResult> {
   return 'updated'
 }
 
+/* ------------------------------ 版本展示 ------------------------------ */
+
+/** 本次构建时间（由 vite define 注入），离线也能用 */
+export function buildTime(): string {
+  return typeof __BUILD_TIME__ === 'string' ? __BUILD_TIME__ : ''
+}
+
+/** index-a1b2c3d4.js → a1b2c3d4，读起来更像版本号 */
+export function shortBuild(id: string | null): string {
+  if (!id) return '开发预览'
+  return id.replace(/^index-/, '').replace(/\.js$/, '')
+}
+
+/** ISO 字符串 → '2026-09-21 07:51' */
+function pad(n: number): string {
+  return String(n).padStart(2, '0')
+}
+
+function stamp(d: Date): string {
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(
+    d.getMinutes(),
+  )}`
+}
+
+export function formatBuildTime(iso: string | null): string {
+  if (!iso) return '—'
+  const d = new Date(iso)
+  return Number.isNaN(d.getTime()) ? iso : stamp(d)
+}
+
+export function formatCheckedAt(ts: number | null): string {
+  if (!ts) return '—'
+  const d = new Date(ts)
+  return Number.isNaN(d.getTime()) ? '—' : stamp(d)
+}
+
+export function statusText(u: UpdateState): string {
+  switch (u.status) {
+    case 'checking':
+      return '正在检查…'
+    case 'updating':
+      return '发现新版本，正在更新…'
+    case 'latest':
+      return '已是最新版本'
+    case 'stale':
+      return '线上有新版本但还没生效，稍后可再试'
+    case 'offline':
+      return '当前离线，无法检查更新'
+    case 'error':
+      return '检查失败，请稍后再试'
+    default:
+      return u.localId ? '尚未检查' : '开发模式不检查版本'
+  }
+}
+
 /* ------------------------------ 自动检查 ------------------------------ */
 
 /** 回到前台后距上次检查不足这个间隔就跳过，避免频繁切后台时反复请求 */
