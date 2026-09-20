@@ -1,5 +1,5 @@
 import { Star } from 'lucide-react'
-import { DEPT_MAP } from '../data'
+import { DEPT_MAP, topicOf } from '../data'
 import type { Guideline } from '../data/types'
 import { href } from '../lib/router'
 import { useStore } from '../lib/store'
@@ -8,6 +8,9 @@ export default function GuidelineCard({ g }: { g: Guideline }) {
   const { favorites } = useStore()
   const fav = favorites.has(g.id)
   const dept = DEPT_MAP[g.dept]
+  const topic = topicOf(g.dept, g.topic)
+  /** 病种芯片会占一个位置，此时少展示一个标签以控制卡片高度 */
+  const tagLimit = topic ? 2 : 3
 
   return (
     <a
@@ -52,12 +55,15 @@ export default function GuidelineCard({ g }: { g: Guideline }) {
 
       <div className="mt-3 flex flex-wrap items-center gap-1.5">
         <span className="round-chip bg-surface-3 text-ink-2">{dept?.short}</span>
-        {g.tags.slice(0, 3).map((t) => (
+        {topic && <span className="round-chip bg-brand-soft text-brand-ink">{topic.short}</span>}
+        {g.tags.slice(0, tagLimit).map((t) => (
           <span key={t} className="round-chip bg-surface-2 text-ink-3">
             {t}
           </span>
         ))}
-        {g.tags.length > 3 && <span className="text-[11px] text-ink-3">+{g.tags.length - 3}</span>}
+        {g.tags.length > tagLimit && (
+          <span className="text-[11px] text-ink-3">+{g.tags.length - tagLimit}</span>
+        )}
       </div>
     </a>
   )

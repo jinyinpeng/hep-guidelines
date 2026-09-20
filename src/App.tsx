@@ -17,7 +17,7 @@ function Shell() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
-  }, [route.name, route.id, route.deptId, route.disease])
+  }, [route.name, route.id, route.deptId, route.topic])
 
   const dept = route.deptId ? DEPT_MAP[route.deptId as keyof typeof DEPT_MAP] : undefined
 
@@ -53,7 +53,11 @@ function Shell() {
       <main className="mx-auto w-full max-w-[760px] flex-1 px-4 pb-32 pt-4">
         {route.name === 'home' && <HomePage query={query} onQueryChange={setQuery} />}
         {route.name === 'dept' && route.deptId && (
-          <DeptPage key={route.deptId} deptId={route.deptId} initialDisease={route.disease} />
+          <DeptPage
+            key={`${route.deptId}:${route.topic ?? ''}`}
+            deptId={route.deptId}
+            initialTopic={route.topic}
+          />
         )}
         {route.name === 'library' && <LibraryPage />}
         {route.name === 'detail' && route.id && <DetailPage id={route.id} />}

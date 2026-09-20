@@ -1,0 +1,307 @@
+/**
+ * 指南 → 病种 归属表。
+ *
+ * 与 topics.ts 配合：topics.ts 定义每个科室有哪些病种，
+ * 本文件把每部指南归到其中某一个病种上。
+ * 未在此处登记的指南会落到该科室的「其他」分组（若该科室有 other 病种）。
+ *
+ * 新增指南时在这里补一行即可，无需改动其他代码。
+ */
+export const TOPIC_OF: Record<string, string> = {
+  /* ---------------- 肝病科 ---------------- */
+  'cn-hbv-2025': 'hbv',
+  'cn-hbv-cure': 'hbv',
+  'cn-hbv-react-2026': 'hbv',
+  'easl-hbv-2017': 'hbv',
+  'who-hbv-hcv-2026': 'hbv',
+  'cn-hcv-2025': 'hcv',
+  'easl-hcv-2020': 'hcv',
+  'kasl-hcv-2025': 'hcv',
+  'aasld-idsa-hcv': 'hcv',
+  'cn-masld': 'masld',
+  'cn-masld-primary-2025': 'masld',
+  'easl-masld-2024': 'masld',
+  'aasld-masld-2023': 'masld',
+  'cn-ald-2018': 'ald',
+  'easl-ald-2018': 'ald',
+  'aasld-ald-2023': 'ald',
+  'cn-cirrhosis-2025': 'cirrhosis',
+  'cn-ascites-2023': 'cirrhosis',
+  'cn-varices-2022': 'cirrhosis',
+  'cn-he-2026': 'cirrhosis',
+  'easl-decompensated-2018': 'cirrhosis',
+  'baveno-8-2026': 'cirrhosis',
+  'aasld-ascites-2021': 'cirrhosis',
+  'aasld-critically-ill-2024': 'cirrhosis',
+  'cn-hcc-2026': 'hcc',
+  'easl-hcc-2024': 'hcc',
+  'aasld-hcc-2025': 'hcc',
+  'cn-dili-2023': 'dili',
+  'cn-dili-primary-2025': 'dili',
+  'easl-dili-2019': 'dili',
+  'cn-aih-2021': 'autoimmune',
+  'cn-pbc-2021': 'autoimmune',
+  'cn-psc-2021': 'autoimmune',
+  'easl-pbc-2017': 'autoimmune',
+  'easl-psc-2022': 'autoimmune',
+  'aasld-aih-2019': 'autoimmune',
+  'cn-aclf-2025': 'failure',
+  'cn-lf-2018': 'failure',
+  'easl-aclf-2023': 'failure',
+  'cn-wilson-2021': 'other',
+
+  /* ---------------- 心血管内科 ---------------- */
+  'cn-htn-2025': 'htn',
+  'cn-htn-cpcp-2022': 'htn',
+  'esc-htn-2024': 'htn',
+  'cn-lipid-2023': 'lipid',
+  'esc-eas-lipid-2025': 'lipid',
+  'cn-stemi-2019': 'cad',
+  'cn-pci-2016': 'cad',
+  'esc-acs-2023': 'cad',
+  'acc-aha-acs-2025': 'cad',
+  'esc-ccs-2024': 'cad',
+  'cn-hf-2024': 'hf',
+  'esc-hf-2021': 'hf',
+  'aha-hf-2022': 'hf',
+  'cn-af-2023': 'af',
+  'esc-af-2024': 'af',
+  'acc-af-2023': 'af',
+  'esc-svt-2019': 'arrhythmia',
+  'esc-va-scd-2022': 'arrhythmia',
+  'esc-cmp-2023': 'cmp',
+  'esc-pericardial-2015': 'cmp',
+  'esc-vhd-2021': 'vhd',
+  'cn-ph-2021': 'ph',
+  'esc-ers-ph-2022': 'ph',
+  'cn-cteph-2024': 'ph',
+  'esc-ie-2023': 'infection',
+  'esc-pacing-2021': 'device',
+  'cn-primary-prevention-2020': 'prevention',
+
+  /* ---------------- 呼吸科 ---------------- */
+  'cn-copd-2021': 'copd',
+  'cn-copd-primary-2024': 'copd',
+  'cn-aecopd-2017': 'copd',
+  'gold-2026': 'copd',
+  'cn-asthma-2024': 'asthma',
+  'gina-2026': 'asthma',
+  'cn-cap-2016': 'infection',
+  'cn-cap-er-2024': 'infection',
+  'cn-tb-2020': 'tb',
+  'cn-pe-2018': 'pe',
+  'esc-pe-2019': 'pe',
+  'cn-ipf-2016': 'ild',
+  'ats-ipf-2022': 'ild',
+  'cn-bronchiectasis-2021': 'bronchiectasis',
+  'cn-cough-2021': 'cough',
+  'cn-hfnc-consensus': 'respSupport',
+  'cn-niv-consensus': 'respSupport',
+  'cn-mpe-consensus': 'pleural',
+  'cn-pulmonary-function': 'function',
+  'cn-smoking-2015': 'smoking',
+
+  /* ---------------- 消化内科 ---------------- */
+  'cn-hp-2022': 'hp',
+  'cn-gastritis-2022': 'hp',
+  'cn-peptic-ulcer-2022': 'hp',
+  'cn-gerd-2020': 'gerd',
+  'cn-uc-2023': 'ibd',
+  'cn-cd-2023': 'ibd',
+  'cn-ap-2021': 'pancreatitis',
+  'cn-cp-2018': 'pancreatitis',
+  'cn-biliary-2021': 'biliary',
+  'cn-ercp-2018': 'biliary',
+  'cn-nvuegib-2021': 'bleeding',
+  'cn-antiplatelet-gi': 'bleeding',
+  'cn-gastric-screen-2017': 'tumorScreen',
+  'cn-ibs-2020': 'functional',
+  'cn-fd-consensus': 'functional',
+  'cn-constipation-2019': 'functional',
+  'rome-v-2026': 'functional',
+  'cn-bowel-prep-2019': 'endoscopy',
+  'cn-ischemic-bowel': 'ischemia',
+  'cn-microbiota-consensus': 'microbiota',
+
+  /* ---------------- 肾脏内科 ---------------- */
+  'kdigo-ckd-2024': 'ckd',
+  'kdigo-gn-2021': 'gn',
+  'cn-dkd-2021': 'dkd',
+  'cn-ckd-mbd-2019': 'mbd',
+  'cn-hd-sop-2021': 'dialysis',
+
+  /* ---------------- 血液科 ---------------- */
+  'cn-cml-2020': 'leukemia',
+  'cn-dlbcl-2021': 'lymphoma',
+  'cn-mm-2022': 'myeloma',
+  'cn-ida-2020': 'anemia',
+  'cn-itp-2020': 'plt',
+
+  /* ---------------- 内分泌代谢科 ---------------- */
+  'cn-dm-2024': 'dm',
+  'cn-t1dm-2021': 'dm',
+  'ada-2026': 'dm',
+  'cn-dm-remission': 'dm',
+  'cn-dm-nutrition': 'dm',
+  'cn-prediabetes-consensus': 'dm',
+  'cn-diabetic-foot': 'dmComplication',
+  'cn-thyroid-2022': 'thyroid',
+  'cn-hypothyroidism': 'thyroid',
+  'cn-obesity-2024': 'obesity',
+  'cn-osteoporosis-2022': 'osteoporosis',
+  'cn-gout-2019': 'gout',
+  'cn-pa-2024': 'adrenal',
+
+  /* ---------------- 风湿免疫科 ---------------- */
+  'cn-ra-2018': 'ra',
+  'cn-sle-2020': 'sle',
+  'eular-sle-2019': 'sle',
+  'asas-eular-axspa-2022': 'spa',
+  'acr-gout-2020': 'gout',
+
+  /* ---------------- 神经内科 ---------------- */
+  'cn-ais-2023': 'ischemic',
+  'cn-ais-reperfusion-2025': 'ischemic',
+  'aha-ais-2019': 'ischemic',
+  'cn-ich-2019': 'ich',
+  'cn-severe-stroke-2024': 'ich',
+  'cn-stroke-secondary-2022': 'prevention',
+  'aha-stroke-secondary-2021': 'prevention',
+  'cn-cvd-prevention-2024': 'prevention',
+  'cn-pd-2020': 'pd',
+  'cn-ad-2020': 'dementia',
+  'cn-epilepsy-2023': 'epilepsy',
+  'cn-ms-2023': 'ms',
+  'cn-mg-2020': 'ms',
+  'cn-migraine': 'headache',
+  'cn-vertigo-consensus': 'headache',
+
+  /* ---------------- 感染科 ---------------- */
+  'cn-sepsis-2018': 'sepsis',
+  'ssc-2021': 'sepsis',
+  'cn-antibiotic-2015': 'antibiotic',
+  'cn-influenza-2020': 'respiratory',
+
+  /* ---------------- 肿瘤内科 ---------------- */
+  'csco-nsclc': 'lung',
+  'cn-lung-screen-2021': 'lung',
+  'caca-breast': 'breast',
+  'cn-crc-screen-2020': 'colorectal',
+  'esmo-ici-toxicity-2022': 'toxicity',
+
+  /* ---------------- 老年医学科 ---------------- */
+  'cn-cga-consensus': 'cga',
+  'cn-frailty-2022': 'frailty',
+  'cn-falls-prevention': 'falls',
+  'cn-polypharmacy': 'polypharmacy',
+
+  /* ---------------- 精神心理科 ---------------- */
+  'cn-depression-2015': 'depression',
+  'cn-anxiety': 'anxiety',
+  'cn-schizophrenia-2015': 'schizophrenia',
+  'cn-insomnia-2017': 'sleep',
+
+  /* ---------------- 皮肤科 ---------------- */
+  'cn-atopic-derm-2020': 'eczema',
+  'cn-psoriasis-2023': 'psoriasis',
+  'cn-acne-2019': 'acne',
+  'cn-urticaria-2022': 'urticaria',
+
+  /* ---------------- 普通外科 ---------------- */
+  'cn-gallstone-2021': 'biliary',
+  'cn-hernia-2018': 'hernia',
+  'cn-thyroid-nodule-2023': 'thyroid',
+  'wses-appendicitis-2020': 'appendix',
+
+  /* ---------------- 骨科 ---------------- */
+  'cn-hip-fracture-consensus': 'trauma',
+  'cn-ldh-2020': 'degenerative',
+  'cn-oa-2021': 'oa',
+  'cn-vte-ortho-2016': 'vte',
+
+  /* ---------------- 神经外科 ---------------- */
+  'btf-tbi-2016': 'tbi',
+  'cn-asah-2016': 'sah',
+  'cn-glioma-2018': 'tumor',
+  'cn-hich-2020': 'ich',
+
+  /* ---------------- 泌尿外科 ---------------- */
+  'cn-urolithiasis': 'stone',
+  'cn-bph-consensus': 'bph',
+  'cn-prostate-screen-2022': 'tumor',
+  'cn-uti-2015': 'infection',
+
+  /* ---------------- 胸外科 ---------------- */
+  'cn-lung-nodule-2018': 'lung',
+  'cn-esophageal-cancer-2022': 'esophagus',
+  'cn-pneumothorax-consensus': 'pneumothorax',
+  'cn-thoracic-erase': 'airway',
+
+  /* ---------------- 血管外科 ---------------- */
+  'cn-aaa-guideline': 'aneurysm',
+  'cn-dvt-2017': 'dvt',
+  'cn-pad-2015': 'pad',
+  'cn-varicose-vein-consensus': 'vein',
+
+  /* ---------------- 妇产科 ---------------- */
+  'cn-gh-2020': 'hypertension',
+  'cn-gdm-2022': 'gdm',
+  'cn-pph-2023': 'pph',
+  'cn-endometriosis-2021': 'endometriosis',
+  'cn-cervical-screen-2023': 'cervical',
+
+  /* ---------------- 儿科 ---------------- */
+  'cn-child-asthma-2016': 'respiratory',
+  'cn-child-cap-2019': 'respiratory',
+  'cn-hfmd-2018': 'infectious',
+  'cn-febrile-seizure-2017': 'neuro',
+  'cn-neonatal-jaundice': 'neonatal',
+
+  /* ---------------- 急诊医学科 ---------------- */
+  'aha-cpr-2020': 'cpr',
+  'cn-chest-pain-consensus': 'chestPain',
+  'cn-poisoning-2016': 'poisoning',
+  'cn-sepsis-prevention-2020': 'sepsis',
+
+  /* ---------------- 重症医学科 ---------------- */
+  'cn-hap-vap-2018': 'infection',
+  'ards-global-2023': 'respiratory',
+  'cn-icu-sedation-2018': 'sedation',
+  'kdigo-aki-2012': 'aki',
+
+  /* ---------------- 麻醉科 ---------------- */
+  'cn-difficult-airway': 'airway',
+  'cn-geriatric-anesthesia': 'monitoring',
+  'cn-perioperative-blood': 'blood',
+  'cn-ponv-consensus': 'ponv',
+
+  /* ---------------- 眼科 ---------------- */
+  'cn-dr-guideline': 'retina',
+  'cn-glaucoma-2020': 'glaucoma',
+  'cn-endophthalmitis-2017': 'cataract',
+  'cn-dry-eye-2020': 'surface',
+
+  /* ---------------- 耳鼻咽喉科 ---------------- */
+  'cn-ar-2022': 'rhinitis',
+  'cn-crs-2018': 'sinusitis',
+  'cn-sudden-deafness-2015': 'hearing',
+  'cn-osa-2018': 'sleep',
+
+  /* ---------------- 口腔科 ---------------- */
+  'cn-caries-guideline': 'caries',
+  'cn-periodontitis-guideline': 'periodontal',
+  'cn-oral-mucosa': 'mucosa',
+  'cn-implant-consensus': 'implant',
+
+  /* ---------------- 康复医学科 ---------------- */
+  'cn-stroke-rehab-2017': 'strokeRehab',
+  'cn-cardiac-rehab': 'cardiac',
+  'cn-pulmonary-rehab': 'pulmonary',
+  'cn-dysphagia-consensus': 'dysphagia',
+
+  /* ---------------- 疼痛科 ---------------- */
+  'cn-cancer-pain-2018': 'cancer',
+  'cn-neuropathic-pain-consensus': 'neuropathic',
+  'cn-phn-2016': 'neuropathic',
+  'cn-lbp-pain-2020': 'spine',
+}

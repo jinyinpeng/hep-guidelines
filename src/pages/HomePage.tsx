@@ -3,10 +3,20 @@ import { useMemo } from 'react'
 import Disclaimer from '../components/Disclaimer'
 import GuidelineCard from '../components/GuidelineCard'
 import SearchBar from '../components/SearchBar'
-import { DEPT_GROUPS, DEPARTMENTS, GUIDELINES, STATS, countByDept, deptsByGroup, latestYearOf, search } from '../data'
+import {
+  DEPT_GROUPS,
+  DEPARTMENTS,
+  GUIDELINES,
+  STATS,
+  countByDept,
+  deptsByGroup,
+  latestYearOf,
+  search,
+  topicNamesOf,
+} from '../data'
 import { href } from '../lib/router'
 
-const HOT = ['高血压', '糖尿病', '脓毒症', '卒中溶栓', '慢阻肺', '抗菌药物', '癌痛', '骨折']
+const HOT = ['乙肝', '房颤', '糖尿病', '慢阻肺', '脓毒症', '卒中', '癌痛', '骨关节炎']
 
 interface Props {
   query: string
@@ -116,7 +126,10 @@ export default function HomePage({ query, onQueryChange }: Props) {
                         </span>
                       </div>
                       <p className="mt-1 line-clamp-2 text-[11.5px] leading-relaxed text-ink-3">{d.desc}</p>
-                      <p className="mt-1.5 text-[10.5px] tabular-nums text-ink-3">
+                      <p className="mt-1.5 line-clamp-1 text-[10.5px] leading-relaxed text-brand/85">
+                        {topicNamesOf(d.id).join(' · ') || '录入中'}
+                      </p>
+                      <p className="mt-1 text-[10.5px] tabular-nums text-ink-3">
                         最新 {latestYearOf(d.id) || '—'}
                       </p>
                     </a>

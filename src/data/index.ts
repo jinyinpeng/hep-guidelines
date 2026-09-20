@@ -10,10 +10,12 @@ import { NEURO } from './neuro'
 import { RESP } from './resp'
 import { SPECIALTY } from './specialty'
 import { SURGERY } from './surgery'
+import { TOPIC_OF } from './topic-map'
+import { topicOf, topicsOf } from './topics'
 import type { DeptId, Guideline } from './types'
 import { WOMEN_CHILD_CRITICAL } from './womenchild-critical'
 
-export const GUIDELINES: Guideline[] = [
+const RAW: Guideline[] = [
   ...CN_GUIDELINES,
   ...INTL_GUIDELINES,
   ...CARDIO,
@@ -26,7 +28,18 @@ export const GUIDELINES: Guideline[] = [
   ...SURGERY,
   ...WOMEN_CHILD_CRITICAL,
   ...SPECIALTY,
-].sort((a, b) => b.year - a.year || a.short.localeCompare(b.short, 'zh'))
+]
+
+/**
+ * 统一补齐病种归属。
+ * 数据文件可以完全不写 `topic`，由 topic-map.ts 集中登记，
+ * 未登记的指南自动落到该科室的「其他」分组。
+ */
+export const GUIDELINES: Guideline[] = RAW.map((g) => {
+  if (g.topic) return g
+  const fallback = topicsOf(g.dept).find((t) => t.id === 'other')?.id
+  return { ...g, topic: TOPIC_OF[g.id] ?? fallback }
+}).sort((a, b) => b.year - a.year || a.short.localeCompare(b.short, 'zh'))
 
 export const GUIDELINE_MAP = new Map(GUIDELINES.map((g) => [g.id, g]))
 
@@ -40,6 +53,27 @@ export function byDept(dept: DeptId): Guideline[] {
 
 export function countByDept(dept: DeptId): number {
   return byDept(dept).length
+}
+
+/** 某科室下某个病种的指南数 */
+export function countByTopic(dept: DeptId, topicId: string): number {
+  return byDept(dept).filter((g) => g.topic === topicId).length
+}
+
+/** 某科室实际有收录的病种，顺序与 topics.ts 一致；空病种不展示 */
+export function usedTopicsOf(dept: DeptId) {
+  return topicsOf(dept).filter((t) => countByTopic(dept, t.id) > 0)
+}
+
+/** 科室病种概览（首页卡片用） */
+export function topicNamesOf(dept: DeptId, limit = 0): string[] {
+  const names = usedTopicsOf(dept).map((t) => t.short)
+  return limit > 0 ? names.slice(0, limit) : names
+}
+
+/** 全库病种总数 */
+export function topicCount(): number {
+  return DEPARTMENTS.reduce((n, d) => n + usedTopicsOf(d.id).length, 0)
 }
 
 /** 科室下指南的最新版次年，用于卡片展示 */
@@ -111,8 +145,11 @@ export function search(query: string, pool: Guideline[] = GUIDELINES): Hit[] {
 
   for (const g of pool) {
     const dept = DEPT_MAP[g.dept]
+    const topic = topicOf(g.dept, g.topic)
     const hayTitle = norm(
-      `${g.title} ${g.short} ${g.org} ${g.tags.join(' ')} ${dept?.name ?? ''} ${dept?.short ?? ''}`,
+      `${g.title} ${g.short} ${g.org} ${g.tags.join(' ')} ${dept?.name ?? ''} ${dept?.short ?? ''} ${
+        topic?.name ?? ''
+      } ${topic?.short ?? ''}`,
     )
     const haySummary = norm(g.summary)
     const hayYear = String(g.year)
@@ -162,5 +199,6 @@ export function search(query: string, pool: Guideline[] = GUIDELINES): Hit[] {
 }
 
 export type { Guideline, Point, DeptId } from './types'
-export { DISEASES, DISEASE_MAP } from './diseases'
+export type { Topic } from './topics'
+export { TOPICS, topicsOf, topicOf } from './topics'
 export { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup }

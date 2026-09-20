@@ -6,8 +6,8 @@ export interface Route {
   name: RouteName
   /** 科室 id */
   deptId?: string
-  /** 肝病科亚病种 */
-  disease?: string
+  /** 科室下的亚病种 / 亚专业 */
+  topic?: string
   /** 指南 id */
   id?: string
   query: URLSearchParams
@@ -21,7 +21,7 @@ export function parseRoute(raw: string): Route {
   const segs = path.split('/').filter(Boolean)
 
   if (segs[0] === 'dept' && segs[1]) {
-    return { name: 'dept', deptId: segs[1], disease: query.get('d') ?? undefined, query, raw }
+    return { name: 'dept', deptId: segs[1], topic: query.get('d') ?? undefined, query, raw }
   }
   if (segs[0] === 'library') return { name: 'library', query, raw }
   if (segs[0] === 'detail' && segs[1]) return { name: 'detail', id: segs[1], query, raw }

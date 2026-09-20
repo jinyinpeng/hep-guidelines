@@ -41,19 +41,6 @@ export type DeptId =
 /** 科室分组，用于导航归类 */
 export type DeptGroup = 'internal' | 'surgery' | 'womenChild' | 'critical' | 'specialty'
 
-/** 肝病科内的亚病种 */
-export type DiseaseId =
-  | 'hbv'
-  | 'hcv'
-  | 'masld'
-  | 'ald'
-  | 'cirrhosis'
-  | 'hcc'
-  | 'dili'
-  | 'autoimmune'
-  | 'failure'
-  | 'other'
-
 export interface Point {
   /** 要点正文 */
   t: string
@@ -81,8 +68,8 @@ export interface Guideline {
   year: number
   /** 所属临床科室 */
   dept: DeptId
-  /** 亚病种（目前仅肝病科使用） */
-  disease?: DiseaseId
+  /** 亚病种 / 亚专业分组（取值见 topics.ts，id 在本科室内唯一） */
+  topic?: string
   tags: string[]
   /** 一句话定位 */
   summary: string

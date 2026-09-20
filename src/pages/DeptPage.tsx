@@ -1,6 +1,15 @@
 import { useMemo, useState } from 'react'
 import GuidelineCard from '../components/GuidelineCard'
-import { DEPT_MAP, DISEASES, byDept, countByDept, latestYearOf, pointCount } from '../data'
+import {
+  DEPT_MAP,
+  byDept,
+  countByDept,
+  countByTopic,
+  latestYearOf,
+  pointCount,
+  topicOf,
+  topicsOf,
+} from '../data'
 import type { DeptId } from '../data/types'
 
 const REGIONS = [
@@ -13,22 +22,28 @@ type RegionKey = (typeof REGIONS)[number]['key']
 
 interface Props {
   deptId: string
-  initialDisease?: string
+  initialTopic?: string
 }
 
-export default function DeptPage({ deptId, initialDisease }: Props) {
+export default function DeptPage({ deptId, initialTopic }: Props) {
   const dept = DEPT_MAP[deptId as DeptId]
   const [region, setRegion] = useState<RegionKey>('all')
-  const [disease, setDisease] = useState<string>(initialDisease ?? 'all')
+  const [topic, setTopic] = useState<string>(initialTopic ?? 'all')
 
   const all = useMemo(() => byDept(deptId as DeptId), [deptId])
+
+  /** 只展示本科室实际收录过的病种，避免出现空分组 */
+  const topics = useMemo(
+    () => topicsOf(deptId as DeptId).filter((t) => countByTopic(deptId as DeptId, t.id) > 0),
+    [deptId],
+  )
 
   const list = useMemo(
     () =>
       all.filter(
-        (g) => (region === 'all' || g.region === region) && (disease === 'all' || g.disease === disease),
+        (g) => (region === 'all' || g.region === region) && (topic === 'all' || g.topic === topic),
       ),
-    [all, region, disease],
+    [all, region, topic],
   )
 
   if (!dept) {
@@ -40,6 +55,7 @@ export default function DeptPage({ deptId, initialDisease }: Props) {
   }
 
   const count = countByDept(dept.id)
+  const activeTopic = topicOf(dept.id, topic === 'all' ? undefined : topic)
 
   return (
     <div className="animate-rise space-y-4">
@@ -48,6 +64,7 @@ export default function DeptPage({ deptId, initialDisease }: Props) {
         <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-2">{dept.desc}</p>
         <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11.5px] tabular-nums text-ink-3">
           <span>收录 {count} 部</span>
+          <span>病种 {topics.length} 类</span>
           <span>要点 {pointCount(dept.id)} 条</span>
           <span>最新版次 {latestYearOf(dept.id) || '—'}</span>
         </div>
@@ -60,46 +77,64 @@ export default function DeptPage({ deptId, initialDisease }: Props) {
         </div>
       ) : (
         <>
-          <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-            {REGIONS.map((r) => (
-              <button
-                key={r.key}
-                type="button"
-                data-on={region === r.key}
-                onClick={() => setRegion(r.key)}
-                className="chip-btn shrink-0"
-              >
-                {r.label}
-              </button>
-            ))}
-            {dept.id === 'hepatology' && (
-              <>
-                <span className="mx-1 w-px shrink-0 bg-line" />
+          <div className="space-y-2">
+            {/* 地区筛选 */}
+            <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
+              {REGIONS.map((r) => (
+                <button
+                  key={r.key}
+                  type="button"
+                  data-on={region === r.key}
+                  onClick={() => setRegion(r.key)}
+                  className="chip-btn shrink-0"
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+
+            {/* 病种筛选：每个科室都有自己的一套病种 */}
+            {topics.length > 0 && (
+              <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
                 <button
                   type="button"
-                  data-on={disease === 'all'}
-                  onClick={() => setDisease('all')}
+                  data-on={topic === 'all'}
+                  onClick={() => setTopic('all')}
                   className="chip-btn shrink-0"
                 >
                   全部病种
                 </button>
-                {DISEASES.map((d) => (
+                {topics.map((t) => (
                   <button
-                    key={d.id}
+                    key={t.id}
                     type="button"
-                    data-on={disease === d.id}
-                    onClick={() => setDisease(d.id)}
+                    data-on={topic === t.id}
+                    onClick={() => setTopic(t.id)}
                     className="chip-btn shrink-0"
                   >
-                    {d.short}
+                    {t.short}
+                    <span className="ml-1 tabular-nums opacity-60">
+                      {countByTopic(dept.id, t.id)}
+                    </span>
                   </button>
                 ))}
-              </>
+              </div>
             )}
           </div>
 
+          {activeTopic && (
+            <div className="rounded-[12px] border border-line bg-surface-2 px-3.5 py-2.5">
+              <p className="text-[13px] font-semibold text-ink">{activeTopic.name}</p>
+              {activeTopic.desc && (
+                <p className="mt-0.5 text-[12px] leading-relaxed text-ink-3">{activeTopic.desc}</p>
+              )}
+            </div>
+          )}
+
           <p className="text-[12.5px] text-ink-3">
             共 <strong className="font-semibold text-ink">{list.length}</strong> 部
+            {activeTopic && ` · ${activeTopic.short}`}
+            {region !== 'all' && ` · ${REGIONS.find((r) => r.key === region)?.label}`}
           </p>
 
           {list.length === 0 ? (
