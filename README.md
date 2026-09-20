@@ -32,6 +32,9 @@ npm run preview  # 预览生产构建 http://localhost:4173
 ## 目录结构
 
 ```
+scripts/
+  verify-data.mjs        数据完整性校验（发布前门禁）
+  deploy.mjs             一键发布：同步 → 校验 → 构建 → 推送 → 等 CI → 核验线上
 public/
   sw.js                  离线缓存策略（导航网络优先 + 静态资源缓存优先）
   manifest.json          PWA 清单（用 .json 以保证托管平台返回 JSON MIME）
@@ -142,7 +145,30 @@ src/
 
 ## 部署到 GitHub Pages
 
-推送 `main` 后，仓库内的 GitHub Actions 会自动构建并把产物同步到 `docs/` 目录，GitHub Pages 只需一次性设置为 `Deploy from a branch: main / docs`。
+推送 `main` 后，仓库内的 GitHub Actions（`.github/workflows/deploy-pages.yml`）会自动构建并把产物同步到 `docs/` 目录，GitHub Pages 只需一次性设置为 `Deploy from a branch: main / docs`。
+
+首次建仓用 `deploy-to-github.ps1`（创建仓库 + 推送 + 开启 Pages），日常更新用下面的 `npm run deploy`。
+
+## 自动更新与发布
+
+```bash
+npm run verify    # 只跑数据校验，不构建
+npm run deploy    # 一键发布：同步 → 校验 → 构建 → 提交推送 → 等 CI → 核验线上
+npm run deploy -- "feat: 新增 xx 指南"   # 自定义提交信息
+```
+
+`npm run deploy` 会依次完成：
+
+1. `git fetch` + 落后则 `pull`（CI 会把构建产物提交回 `docs/`，本地常常落后一两个提交）；
+2. 跑 `scripts/verify-data.mjs`：指南 id 唯一性与字符集、`dept` 合法性、`topic-map` 的 key/value 是否对得上科室病种、每个科室是否都有收录；**校验不通过直接终止，不会推送**；
+3. `tsc --noEmit` + `vite build`，任一失败即终止；
+4. 提交并推送到 `origin/main`；
+5. 轮询等待 GitHub Actions 产出新的 `docs/` 提交并拉回；
+6. 核验线上 `index.html` 引用的 JS 与本地 `docs/assets/index-*.js` 一致，确认「线上就是最新版」。
+
+附带两个环境变量：`DEPLOY_DRY_RUN=1` 只校验与构建、不提交；`DEPLOY_NO_WAIT=1` 推完即返回、不等待 CI。
+
+想让数据保持最新，可以把这个流程挂成定时自动化（每周检查一次国内外指南是否有新版本、是否漏了常见病种），让它在无人值守时自动跑完上面六步。
 
 ## 免责声明
 

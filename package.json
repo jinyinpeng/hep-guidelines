@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host --port 4173"
+    "preview": "vite preview --host --port 4173",
+    "verify": "node scripts/verify-data.mjs",
+    "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.47.0",
