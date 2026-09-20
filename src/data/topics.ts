@@ -28,6 +28,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'dili', name: '药物性肝损伤', short: 'DILI', desc: '分型、因果评估、常见可疑药物与救治' },
     { id: 'autoimmune', name: '自身免疫性肝病', short: '自免肝', desc: 'AIH、PBC、PSC 的诊断与治疗' },
     { id: 'failure', name: '肝衰竭与 ACLF', short: '肝衰竭', desc: '分型诊断、人工肝支持与肝移植时机' },
+    { id: 'acuteViral', name: '急性病毒性肝炎（甲型/戊型）', short: '甲戊肝' },
+    { id: 'transplant', name: '肝移植', short: '肝移植' },
     { id: 'other', name: '遗传代谢与其他', short: '综合', desc: '肝豆状核变性等少见肝病与综合管理' },
   ],
 
@@ -44,6 +46,11 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'infection', name: '感染性心内膜炎', short: '心内膜炎' },
     { id: 'device', name: '起搏与器械治疗', short: '起搏器械' },
     { id: 'prevention', name: '风险评估与一级预防', short: '一级预防' },
+    { id: 'syncope', name: '晕厥与猝死预防', short: '晕厥' },
+    { id: 'chd', name: '成人先天性心脏病', short: '先心病' },
+    { id: 'cardioOnco', name: '肿瘤心脏病学', short: '肿瘤心脏' },
+    { id: 'other', name: '其他心血管疾病', short: '其他' },
+
   ],
 
   resp: [
@@ -59,6 +66,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'pleural', name: '胸膜疾病与胸腔积液', short: '胸膜' },
     { id: 'function', name: '肺功能检查', short: '肺功能' },
     { id: 'smoking', name: '烟草依赖与戒烟', short: '戒烟' },
+    { id: 'bronchoscopy', name: '支气管镜与介入诊疗', short: '支气管镜' },
+    { id: 'other', name: '其他呼吸系统疾病', short: '其他' },
+
   ],
 
   gi: [
@@ -73,6 +83,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'endoscopy', name: '内镜诊疗与肠道准备', short: '内镜' },
     { id: 'ischemia', name: '缺血性肠病', short: '缺血性肠病' },
     { id: 'microbiota', name: '肠道微生态', short: '微生态' },
+    { id: 'other', name: '其他消化系统疾病', short: '其他' },
+
   ],
 
   renal: [
@@ -82,6 +94,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'mbd', name: 'CKD 矿物质骨代谢异常', short: '钙磷代谢' },
     { id: 'dialysis', name: '血液净化与透析通路', short: '透析' },
     { id: 'complication', name: '肾性贫血与 CKD 并发症', short: '肾性贫血' },
+    { id: 'aki', name: '急性肾损伤', short: 'AKI' },
+    { id: 'transplant', name: '肾移植与遗传性肾病', short: '移植遗传' },
+    { id: 'other', name: '其他肾脏疾病', short: '其他' },
+
   ],
 
   heme: [
@@ -91,6 +107,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'anemia', name: '贫血', short: '贫血' },
     { id: 'plt', name: '血小板疾病', short: '血小板' },
     { id: 'coagulation', name: '血友病与出凝血疾病', short: '出凝血' },
+    { id: 'mds', name: '骨髓增生异常综合征', short: 'MDS' },
+    { id: 'mpn', name: '骨髓增殖性肿瘤', short: 'MPN' },
+    { id: 'transplant', name: '造血干细胞移植', short: '移植' },
     { id: 'other', name: '其他血液病', short: '其他' },
   ],
 
@@ -102,6 +121,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'osteoporosis', name: '骨质疏松症', short: '骨质疏松' },
     { id: 'gout', name: '高尿酸血症与痛风', short: '痛风' },
     { id: 'adrenal', name: '肾上腺疾病', short: '肾上腺' },
+    { id: 'pituitary', name: '垂体疾病', short: '垂体' },
+    { id: 'gonad', name: '性腺与生殖内分泌', short: '性腺' },
+    { id: 'other', name: '其他内分泌代谢疾病', short: '其他' },
+
   ],
 
   rheum: [
@@ -110,6 +133,7 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'spa', name: '脊柱关节炎', short: '脊柱关节炎' },
     { id: 'gout', name: '痛风与晶体性关节炎', short: '痛风' },
     { id: 'vasculitis', name: '系统性血管炎', short: '血管炎' },
+    { id: 'aps', name: '抗磷脂综合征', short: '抗磷脂' },
     { id: 'other', name: '其他结缔组织病', short: '其他' },
   ],
 
@@ -122,6 +146,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'epilepsy', name: '癫痫', short: '癫痫' },
     { id: 'ms', name: '神经免疫病（MS 与重症肌无力）', short: '神经免疫' },
     { id: 'headache', name: '头痛与眩晕', short: '头痛眩晕' },
+    { id: 'peripheral', name: '周围神经病与神经肌病', short: '周围神经' },
+    { id: 'movement', name: '运动障碍性疾病', short: '运动障碍' },
     { id: 'other', name: '其他神经系统疾病', short: '其他' },
   ],
 
@@ -131,6 +157,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'respiratory', name: '呼吸道病毒感染', short: '流感' },
     { id: 'hiv', name: 'HIV / AIDS', short: '艾滋病' },
     { id: 'fever', name: '发热待查与不明原因发热', short: '发热待查' },
+    { id: 'cns', name: '中枢神经系统感染', short: 'CNS 感染' },
+    { id: 'fungal', name: '侵袭性真菌病', short: '真菌' },
+    { id: 'otherPathogen', name: '其他法定与输入性传染病', short: '其他传染病' },
+    { id: 'hai', name: '医疗相关感染与防控', short: '院感防控' },
     { id: 'other', name: '其他感染性疾病', short: '其他' },
   ],
 
@@ -143,6 +173,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'toxicity', name: '抗肿瘤治疗相关毒性', short: '治疗毒性' },
     { id: 'supportive', name: '支持治疗与并发症', short: '支持治疗' },
     { id: 'screen', name: '肿瘤筛查与早诊', short: '筛查' },
+    { id: 'pancreas', name: '胰腺癌', short: '胰腺癌' },
+    { id: 'melanoma', name: '黑色素瘤与软组织肉瘤', short: '黑色素瘤' },
+    { id: 'oncEmergency', name: '肿瘤急症', short: '肿瘤急症' },
     { id: 'other', name: '其他实体瘤', short: '其他' },
   ],
 
@@ -154,6 +187,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'polypharmacy', name: '多重用药与处方精简', short: '多重用药' },
     { id: 'chronic', name: '老年慢病管理', short: '老年慢病' },
     { id: 'nutrition', name: '老年营养支持', short: '老年营养' },
+    { id: 'disability', name: '失能与长期照护', short: '失能照护' },
+    { id: 'continence', name: '尿便失禁与便秘', short: '失禁便秘' },
+    { id: 'prevention', name: '老年预防与疫苗', short: '老年预防' },
     { id: 'other', name: '其他老年综合征', short: '其他' },
   ],
 
@@ -164,6 +200,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'bipolar', name: '双相障碍', short: '双相' },
     { id: 'sleep', name: '睡眠障碍', short: '失眠' },
     { id: 'child', name: '儿童青少年精神障碍', short: '儿童精神' },
+    { id: 'ptsd', name: '应激相关障碍', short: 'PTSD' },
+    { id: 'eating', name: '进食障碍', short: '进食障碍' },
+    { id: 'emergency', name: '精神科急症', short: '精神急症' },
     { id: 'other', name: '其他精神障碍', short: '其他' },
   ],
 
@@ -175,6 +214,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'hair', name: '毛发疾病', short: '斑秃' },
     { id: 'pigment', name: '色素性皮肤病', short: '白癜风' },
     { id: 'infection', name: '皮肤感染', short: '带状疱疹' },
+    { id: 'tumor', name: '皮肤肿瘤', short: '皮肤肿瘤' },
+    { id: 'bullous', name: '大疱性皮肤病', short: '大疱病' },
+    { id: 'sti', name: '性传播感染', short: '性病' },
+    { id: 'drugEruption', name: '药疹', short: '药疹' },
     { id: 'other', name: '其他皮肤病', short: '其他' },
   ],
 
@@ -188,6 +231,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'appendix', name: '阑尾炎', short: '阑尾炎' },
     { id: 'abdominal', name: '腹腔感染与急腹症', short: '腹腔感染' },
     { id: 'perioperative', name: '围手术期管理', short: '围术期' },
+    { id: 'breast', name: '乳腺疾病', short: '乳腺' },
+    { id: 'bariatric', name: '减重代谢外科', short: '减重' },
     { id: 'other', name: '其他普外科疾病', short: '其他' },
   ],
 
@@ -197,6 +242,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'oa', name: '骨关节炎与关节置换', short: '关节置换' },
     { id: 'tumor', name: '骨与软组织肿瘤', short: '骨肿瘤' },
     { id: 'vte', name: '围术期血栓预防', short: 'VTE 预防' },
+    { id: 'sports', name: '运动损伤与关节镜', short: '运动损伤' },
+    { id: 'infection', name: '骨与关节感染', short: '骨感染' },
     { id: 'other', name: '其他骨科疾病', short: '其他' },
   ],
 
@@ -206,6 +253,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'tumor', name: '颅内肿瘤', short: '颅内肿瘤' },
     { id: 'ich', name: '出血性卒中外科治疗', short: '脑出血外科' },
     { id: 'functional', name: '功能神经外科', short: '功能神外' },
+    { id: 'hydrocephalus', name: '脑积水与先天畸形', short: '脑积水' },
+    { id: 'moyamoya', name: '脑血管畸形与烟雾病', short: '烟雾病' },
+    { id: 'spine', name: '脊柱脊髓神经外科', short: '脊髓脊柱' },
     { id: 'other', name: '其他神经外科疾病', short: '其他' },
   ],
 
@@ -215,6 +265,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'tumor', name: '泌尿系肿瘤', short: '泌尿肿瘤' },
     { id: 'infection', name: '尿路感染与感染性结石', short: '尿路感染' },
     { id: 'function', name: '排尿功能障碍', short: '排尿功能' },
+    { id: 'andrology', name: '男科疾病', short: '男科' },
+    { id: 'adrenal', name: '肾上腺外科', short: '肾上腺' },
     { id: 'other', name: '其他泌尿外科疾病', short: '其他' },
   ],
 
@@ -225,6 +277,7 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'pneumothorax', name: '气胸与胸膜疾病', short: '气胸' },
     { id: 'chestTrauma', name: '胸部创伤', short: '胸部创伤' },
     { id: 'airway', name: '围术期气道与肺康复', short: '围术期管理' },
+    { id: 'chestWall', name: '胸壁畸形与手汗症', short: '胸壁' },
     { id: 'other', name: '其他胸外科疾病', short: '其他' },
   ],
 
@@ -234,6 +287,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'pad', name: '下肢动脉硬化闭塞症', short: '下肢动脉' },
     { id: 'carotid', name: '颈动脉狭窄', short: '颈动脉' },
     { id: 'vein', name: '慢性静脉疾病与静脉曲张', short: '静脉曲张' },
+    { id: 'visceral', name: '内脏血管疾病', short: '内脏血管' },
+    { id: 'lymph', name: '淋巴水肿', short: '淋巴水肿' },
     { id: 'other', name: '其他血管疾病', short: '其他' },
   ],
 
@@ -246,6 +301,11 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'endometriosis', name: '子宫内膜异位症', short: '内异症' },
     { id: 'cervical', name: '子宫颈癌筛查与预防', short: '宫颈癌筛查' },
     { id: 'tumor', name: '妇科肿瘤', short: '妇科肿瘤' },
+    { id: 'aub', name: '异常子宫出血', short: '异常出血' },
+    { id: 'menopause', name: '围绝经期与绝经管理', short: '绝经' },
+    { id: 'labor', name: '分娩与产程管理', short: '分娩产程' },
+    { id: 'antenatal', name: '产前筛查与孕期保健', short: '产前筛查' },
+    { id: 'infertility', name: '不孕与生殖', short: '不孕' },
     { id: 'other', name: '其他妇产科疾病', short: '其他' },
   ],
 
@@ -257,6 +317,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'cardio', name: '儿童心血管疾病', short: '儿童心血管' },
     { id: 'renal', name: '儿童肾脏疾病', short: '儿童肾脏' },
     { id: 'growth', name: '生长发育与营养', short: '生长发育' },
+    { id: 'endo', name: '儿童内分泌与代谢', short: '儿童内分泌' },
+    { id: 'tumor', name: '儿童肿瘤与血液', short: '儿童肿瘤' },
+    { id: 'immunization', name: '免疫规划与疫苗', short: '疫苗接种' },
     { id: 'other', name: '其他儿科疾病', short: '其他' },
   ],
 
@@ -267,6 +330,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'poisoning', name: '急性中毒', short: '急性中毒' },
     { id: 'sepsis', name: '脓毒症早期识别', short: '脓毒症' },
     { id: 'shock', name: '休克与液体复苏', short: '休克复苏' },
+    { id: 'trauma', name: '创伤救治', short: '创伤' },
+    { id: 'anaphylaxis', name: '过敏与免疫急症', short: '过敏急症' },
+    { id: 'environmental', name: '环境与理化损伤急症', short: '环境急症' },
+    { id: 'endo', name: '内分泌急症', short: '内分泌急症' },
     { id: 'other', name: '其他急症', short: '其他' },
   ],
 
@@ -276,6 +343,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'sedation', name: '镇痛镇静与谵妄', short: '镇痛镇静' },
     { id: 'aki', name: '急性肾损伤与血液净化', short: 'AKI 与 CRRT' },
     { id: 'nutrition', name: '重症营养支持', short: '重症营养' },
+    { id: 'hemodynamics', name: '血流动力学与重症超声', short: '血流动力学' },
+    { id: 'rehab', name: '重症康复与远期结局', short: '重症康复' },
     { id: 'other', name: '其他重症问题', short: '其他' },
   ],
 
@@ -287,6 +356,7 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'obstetric', name: '产科麻醉', short: '产科麻醉' },
     { id: 'regional', name: '术后疼痛与区域阻滞', short: '术后镇痛' },
     { id: 'pediatric', name: '小儿麻醉与镇痛', short: '小儿麻醉' },
+    { id: 'neuro', name: '神经外科麻醉', short: '神外麻醉' },
     { id: 'other', name: '其他麻醉问题', short: '其他' },
   ],
 
@@ -297,6 +367,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'cataract', name: '白内障与眼内炎', short: '白内障' },
     { id: 'surface', name: '眼表疾病与干眼', short: '干眼' },
     { id: 'myopia', name: '近视防控', short: '近视' },
+    { id: 'uveitis', name: '葡萄膜炎', short: '葡萄膜炎' },
+    { id: 'strabismus', name: '斜视与小儿眼科', short: '斜视弱视' },
+    { id: 'trauma', name: '眼外伤', short: '眼外伤' },
     { id: 'other', name: '其他眼科疾病', short: '其他' },
   ],
 
@@ -308,6 +381,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'otitis', name: '中耳炎与耳部感染', short: '中耳炎' },
     { id: 'sleep', name: '睡眠呼吸障碍', short: '打鼾 OSA' },
     { id: 'tumor', name: '头颈部肿瘤', short: '头颈肿瘤' },
+    { id: 'tonsil', name: '扁桃体与腺样体疾病', short: '扁桃体' },
+    { id: 'voice', name: '咽喉与嗓音疾病', short: '嗓音' },
     { id: 'other', name: '其他耳鼻咽喉疾病', short: '其他' },
   ],
 
@@ -317,6 +392,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'mucosa', name: '口腔黏膜病', short: '黏膜病' },
     { id: 'implant', name: '口腔种植与修复', short: '种植' },
     { id: 'tumor', name: '口腔颌面肿瘤', short: '口腔肿瘤' },
+    { id: 'oralSurgery', name: '牙槽外科与颌面创伤', short: '颌面外科' },
+    { id: 'tmj', name: '颞下颌关节疾病', short: '颞下颌关节' },
+    { id: 'ortho', name: '口腔正畸', short: '正畸' },
+    { id: 'pediatric', name: '儿童口腔', short: '儿童口腔' },
     { id: 'other', name: '其他口腔疾病', short: '其他' },
   ],
 
@@ -326,6 +405,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'pulmonary', name: '肺康复', short: '肺康复' },
     { id: 'dysphagia', name: '吞咽障碍康复', short: '吞咽障碍' },
     { id: 'pediatric', name: '儿童康复', short: '儿童康复' },
+    { id: 'ortho', name: '骨科与运动康复', short: '骨科康复' },
+    { id: 'critical', name: '重症康复', short: '重症康复' },
+    { id: 'pelvic', name: '盆底康复', short: '盆底康复' },
+    { id: 'prosthetics', name: '假肢与矫形器', short: '假肢矫形' },
     { id: 'other', name: '其他康复方向', short: '其他' },
   ],
 
@@ -333,6 +416,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'cancer', name: '癌性疼痛', short: '癌痛' },
     { id: 'neuropathic', name: '神经病理性疼痛', short: '神经痛' },
     { id: 'spine', name: '脊柱源性疼痛', short: '腰背痛' },
+    { id: 'myofascial', name: '肌筋膜与软组织疼痛', short: '肌筋膜' },
+    { id: 'postop', name: '术后慢性疼痛', short: '术后疼痛' },
     { id: 'other', name: '其他慢性疼痛', short: '其他' },
   ],
 }

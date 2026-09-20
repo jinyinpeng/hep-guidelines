@@ -1,4 +1,13 @@
-import { Check, Download, FileText, ListFilter, SquarePen, Wifi, WifiOff } from 'lucide-react'
+import {
+  Check,
+  Download,
+  FileText,
+  ListFilter,
+  ShieldCheck,
+  SquarePen,
+  Wifi,
+  WifiOff,
+} from 'lucide-react'
 import Disclaimer from '../components/Disclaimer'
 import { DEPARTMENTS, STATS, countByDept } from '../data'
 import { useInstallPrompt, useOnline, useStandalone } from '../lib/pwa'
@@ -88,6 +97,8 @@ export default function AboutPage() {
           <Metric label="国内 / 国际" value={`${STATS.cn} / ${STATS.intl}`} />
           <Metric label="当前最新版本" value={`${STATS.latest} 部`} />
           <Metric label="覆盖版次年" value={`至 ${STATS.year} 年`} />
+          <Metric label="含证据等级的指南" value={`${STATS.graded} 部`} />
+          <Metric label="已标注等级要点" value={`${STATS.gradedPoints} 条`} />
         </div>
 
         <div className="mt-4">
@@ -109,6 +120,45 @@ export default function AboutPage() {
 
       <section className="card p-4">
         <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+          <ShieldCheck size={16} className="text-brand" />
+          证据等级怎么看
+        </h2>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+          各指南体系不同，本应用一律
+          <span className="font-medium text-ink">按原文照录</span>
+          ，并在详情页「来源与版本」注明该指南采用的是哪一种。常见四类：
+        </p>
+        <ul className="mt-3 space-y-2.5 text-[12.5px] leading-relaxed text-ink-2">
+          <li>
+            <span className="font-medium text-ink">推荐类别 + 证据级别（I/IIa/IIb/III + A/B/C）</span>
+            <br />
+            多见于心血管领域（ESC/AHA 及中国心血管病系列指南）。类别数字越小推荐越强，A 级证据最充分。
+          </li>
+          <li>
+            <span className="font-medium text-ink">GRADE（证据质量 高/中/低/极低 + 推荐强度 强/弱）</span>
+            <br />
+            把「证据质量」与「推荐强度」分开评定，多用于消化、感染、重症等领域。
+          </li>
+          <li>
+            <span className="font-medium text-ink">KDIGO（推荐强度 1/2 + 证据质量 A/B/C/D）</span>
+            <br />
+            肾脏领域专用：1 表示「推荐」，2 表示「建议」，D 级表示证据极低。
+          </li>
+          <li>
+            <span className="font-medium text-ink">牛津 CEBM（1a/1b/2a/2b/3/4）</span>
+            <br />
+            按研究设计分层，1a 为随机对照试验的系统评价。
+          </li>
+        </ul>
+        <p className="mt-3 rounded-xl bg-surface-2 px-3 py-2 text-[11.5px] leading-relaxed text-ink-3">
+          部分指南与专家共识只给出推荐意见而未分级，这类条目不作标注——
+          <span className="text-ink-2">「未标注」不等于「无等级」</span>
+          。若需引用具体等级，请回查原文。
+        </p>
+      </section>
+
+      <section className="card p-4">
+        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
           <SquarePen size={16} className="text-brand" />
           使用与核对建议
         </h2>
@@ -117,7 +167,7 @@ export default function AboutPage() {
           <li>· 指南库可按「国内 / 国际」与病种筛选；收藏与标记会保存在本机，不上传服务器。</li>
           <li>· 标记「最新版」表示该条目为当前收录范围内的最新版本，仍可能与实际发布存在时间差。</li>
           <li>· 部分国际指南为持续更新（如 AASLD/IDSA HCV Guidance）或定期修订，引用前请访问官网确认版本号与发布日期。</li>
-          <li>· 摘编过程中会省略部分限定条件与推荐等级，涉及用药剂量、疗程、禁忌时务必回查原文。</li>
+          <li>· 推荐等级与证据级别按原文照录，且仅在该指南明确给出时标注；涉及用药剂量、疗程、禁忌时务必回查原文。</li>
         </ul>
       </section>
 

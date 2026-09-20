@@ -1,6 +1,6 @@
 import { Bookmark, CircleDot, ExternalLink, Star } from 'lucide-react'
 import Disclaimer from '../components/Disclaimer'
-import { DEPT_MAP, getGuideline } from '../data'
+import { DEPT_MAP, getGuideline, gradedPointCount } from '../data'
 import { href } from '../lib/router'
 import { pointKey, useStore } from '../lib/store'
 
@@ -25,6 +25,7 @@ export default function DetailPage({ id }: { id: string }) {
     (n, s, si) => n + s.points.filter((_, pi) => marks.has(pointKey(g.id, si, pi))).length,
     0,
   )
+  const graded = gradedPointCount(g)
 
   return (
     <article className="animate-rise space-y-5">
@@ -39,6 +40,11 @@ export default function DetailPage({ id }: { id: string }) {
           </span>
           <span className="round-chip bg-surface-3 text-ink-3">{g.year}</span>
           {g.latest && <span className="round-chip bg-warn-soft text-warn">当前最新版本</span>}
+          {graded > 0 && (
+            <span className="round-chip bg-brand-soft text-brand-ink">
+              含证据等级 {graded} 条
+            </span>
+          )}
         </div>
 
         <h2 className="mt-2.5 text-[19px] font-bold leading-snug tracking-tight text-ink">
@@ -115,10 +121,22 @@ export default function DetailPage({ id }: { id: string }) {
                       )}
                       {p.t}
                     </p>
-                    {p.tag && (
-                      <span className="round-chip mt-1.5 inline-flex bg-surface-3 text-ink-3">
-                        {p.tag}
-                      </span>
+                    {(p.tag || p.rec || p.ev) && (
+                      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                        {p.rec && (
+                          <span className="round-chip bg-brand-soft font-medium text-brand-ink">
+                            推荐 {p.rec}
+                          </span>
+                        )}
+                        {p.ev && (
+                          <span className="round-chip bg-accent-soft font-medium text-accent">
+                            证据 {p.ev}
+                          </span>
+                        )}
+                        {p.tag && (
+                          <span className="round-chip bg-surface-3 text-ink-3">{p.tag}</span>
+                        )}
+                      </div>
                     )}
                   </div>
                   <button
@@ -146,6 +164,12 @@ export default function DetailPage({ id }: { id: string }) {
             来源与版本
           </h3>
           {g.ref && <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-2">{g.ref}</p>}
+          {g.grading && (
+            <p className="mt-2 rounded-xl bg-surface-2 px-3 py-2 text-[12px] leading-relaxed text-ink-2">
+              <span className="font-medium text-ink">证据分级体系　</span>
+              {g.grading}
+            </p>
+          )}
           {g.url && (
             <a
               href={g.url}
@@ -158,7 +182,7 @@ export default function DetailPage({ id }: { id: string }) {
             </a>
           )}
           <p className="mt-2 text-[11.5px] leading-relaxed text-ink-3">
-            提示：本页为要点摘编。引用推荐等级、剂量或阈值前，请核对官方发布的原文与最新版本。
+            提示：本页为要点摘编，推荐等级与证据级别按原文照录、不作推断；未标注者表示摘编时未从原文取得该等级，不代表该条推荐没有等级。引用剂量、阈值或等级前，请核对官方发布的原文与最新版本。
           </p>
         </section>
       )}

@@ -124,6 +124,11 @@ export function pointCount(dept?: DeptId): number {
   return pool.reduce((n, g) => n + g.sections.reduce((m, s) => m + s.points.length, 0), 0)
 }
 
+/** 某部指南中标注了证据等级（推荐等级或证据级别）的要点数 */
+export function gradedPointCount(g: Guideline): number {
+  return g.sections.reduce((n, s) => n + s.points.filter((p) => p.rec || p.ev).length, 0)
+}
+
 export interface Stats {
   total: number
   cn: number
@@ -133,15 +138,24 @@ export interface Stats {
   year: number
   depts: number
   covered: number
+  /** 已标注证据等级的要点数 */
+  gradedPoints: number
+  /** 含证据等级标注的指南数 */
+  graded: number
 }
 
 export const STATS: Stats = (() => {
   let points = 0
   let latest = 0
   let year = 0
+  let gradedPoints = 0
+  let graded = 0
   const seen = new Set<DeptId>()
   for (const g of GUIDELINES) {
     points += g.sections.reduce((n, s) => n + s.points.length, 0)
+    const gp = gradedPointCount(g)
+    gradedPoints += gp
+    if (gp > 0) graded++
     if (g.latest) latest++
     if (g.year > year) year = g.year
     seen.add(g.dept)
@@ -155,6 +169,8 @@ export const STATS: Stats = (() => {
     year,
     depts: DEPARTMENTS.length,
     covered: seen.size,
+    gradedPoints,
+    graded,
   }
 })()
 

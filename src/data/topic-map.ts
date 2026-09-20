@@ -49,6 +49,8 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-lf-2018': 'failure',
   'easl-aclf-2023': 'failure',
   'cn-wilson-2021': 'other',
+  'cn-acute-viral-hepatitis': 'acuteViral',
+  'cn-liver-transplant': 'transplant',
 
   /* ---------------- 心血管内科 ---------------- */
   'cn-htn-2025': 'htn',
@@ -78,6 +80,10 @@ export const TOPIC_OF: Record<string, string> = {
   'esc-ie-2023': 'infection',
   'esc-pacing-2021': 'device',
   'cn-primary-prevention-2020': 'prevention',
+  'cn-syncope-2018': 'syncope',
+  'cn-chd-adult': 'chd',
+  'cn-cardio-onco': 'cardioOnco',
+  'cn-myocarditis': 'cmp',
 
   /* ---------------- 呼吸科 ---------------- */
   'cn-copd-2021': 'copd',
@@ -100,6 +106,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-mpe-consensus': 'pleural',
   'cn-pulmonary-function': 'function',
   'cn-smoking-2015': 'smoking',
+  'cn-tb-diagnosis-treatment': 'tb',
+  'cn-lung-fungal': 'infection',
+  'cn-bronchoscopy-standard': 'bronchoscopy',
+  'cn-massive-hemoptysis': 'bronchoscopy',
 
   /* ---------------- 消化内科 ---------------- */
   'cn-hp-2022': 'hp',
@@ -122,6 +132,9 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-bowel-prep-2019': 'endoscopy',
   'cn-ischemic-bowel': 'ischemia',
   'cn-microbiota-consensus': 'microbiota',
+  'cn-esd-consensus': 'endoscopy',
+  'cn-infectious-diarrhea': 'other',
+  'cn-eosinophilic-gi': 'other',
 
   /* ---------------- 肾脏内科 ---------------- */
   'kdigo-ckd-2024': 'ckd',
@@ -137,6 +150,9 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-dialysis-access-2024': 'dialysis',
   'cn-hd-sop-2021': 'dialysis',
   'cn-renal-anemia': 'complication',
+  'cn-aki-2023': 'aki',
+  'cn-kidney-transplant': 'transplant',
+  'cn-adpkd': 'transplant',
 
   /* ---------------- 血液科 ---------------- */
   'cn-aml-2023': 'leukemia',
@@ -151,6 +167,12 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-hemophilia-2025': 'coagulation',
   'cn-dic-2017': 'coagulation',
   'cn-fn-2020': 'other',
+  'cn-cll-2024': 'leukemia',
+  'cn-all-adult': 'leukemia',
+  'cn-mds-2023': 'mds',
+  'cn-mpn-2023': 'mpn',
+  'cn-ttp': 'plt',
+  'cn-hsct': 'transplant',
 
   /* ---------------- 内分泌代谢科 ---------------- */
   'cn-dm-2024': 'dm',
@@ -166,6 +188,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-osteoporosis-2022': 'osteoporosis',
   'cn-gout-2019': 'gout',
   'cn-pa-2024': 'adrenal',
+  'cn-cushing': 'adrenal',
+  'cn-acromegaly': 'pituitary',
+  'cn-pheo': 'adrenal',
+  'cn-male-hypogonadism': 'gonad',
 
   /* ---------------- 风湿免疫科 ---------------- */
   'cn-ra-2024': 'ra',
@@ -181,6 +207,12 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-ss-2020': 'other',
   'cn-ssc-2022': 'other',
   'cn-dm-dermatomyositis-2022': 'other',
+  'cn-aps': 'aps',
+  'cn-igg4-rd': 'other',
+  'cn-behcet': 'vasculitis',
+  'cn-psa': 'spa',
+  'cn-pmr-gca': 'vasculitis',
+  'cn-still': 'other',
 
   /* ---------------- 神经内科 ---------------- */
   'cn-ais-2023': 'ischemic',
@@ -198,6 +230,12 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-mg-2020': 'ms',
   'cn-migraine': 'headache',
   'cn-vertigo-consensus': 'headache',
+  'cn-nmosd-2021': 'ms',
+  'cn-gbs-2022': 'peripheral',
+  'cn-cidp-2023': 'peripheral',
+  'cn-vci-2023': 'dementia',
+  'cn-cerebral-small-vessel': 'ischemic',
+  'cn-tremor': 'movement',
 
   /* ---------------- 感染科 ---------------- */
   'ssc-2026': 'sepsis',
@@ -210,6 +248,11 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-hiv-2024': 'hiv',
   'cn-fever-consensus': 'fever',
   'cn-rabies-2016': 'other',
+  'cn-cns-infection': 'cns',
+  'cn-invasive-fungal': 'fungal',
+  'cn-brucellosis': 'otherPathogen',
+  'cn-hfrs': 'otherPathogen',
+  'cn-crbsi': 'hai',
 
   /* ---------------- 肿瘤内科 ---------------- */
   'csco-nsclc': 'lung',
@@ -227,6 +270,10 @@ export const TOPIC_OF: Record<string, string> = {
   'csco-nutrition-2026': 'supportive',
   'csco-thrombocytopenia-2026': 'supportive',
   'csco-anemia-2026': 'supportive',
+  'csco-pancreas-2026': 'pancreas',
+  'csco-melanoma-2026': 'melanoma',
+  'cn-onc-emergency': 'oncEmergency',
+  'cn-antiemetic': 'supportive',
 
   /* ---------------- 老年医学科 ---------------- */
   'cn-cga-consensus': 'cga',
@@ -238,6 +285,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-geriatric-hypertension': 'chronic',
   'cn-geriatric-dm': 'chronic',
   'cn-geriatric-nutrition': 'nutrition',
+  'cn-elderly-disability': 'disability',
+  'cn-elderly-incontinence': 'continence',
+  'cn-elderly-vaccine': 'prevention',
+  'cn-multimorbidity': 'chronic',
 
   /* ---------------- 精神心理科 ---------------- */
   'cn-depression-2025': 'depression',
@@ -248,6 +299,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-adhd': 'child',
   'cn-ocd': 'other',
   'cn-substance': 'other',
+  'cn-ptsd': 'ptsd',
+  'cn-eating-disorder': 'eating',
+  'cn-psych-emergency': 'emergency',
+  'cn-antipsychotic-metabolic': 'schizophrenia',
 
   /* ---------------- 皮肤科 ---------------- */
   'cn-atopic-derm-2025': 'eczema',
@@ -257,6 +312,12 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-alopecia-2025': 'hair',
   'cn-vitiligo-2024': 'pigment',
   'cn-herpes-zoster-2025': 'infection',
+  'cn-skin-tumor': 'tumor',
+  'cn-bullous': 'bullous',
+  'cn-sti': 'sti',
+  'cn-drug-eruption': 'drugEruption',
+  'cn-androgenetic-alopecia': 'hair',
+  'cn-superficial-fungal': 'infection',
 
   /* ---------------- 普通外科 ---------------- */
   'cn-gallstone-2021': 'biliary',
@@ -270,6 +331,11 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-intraabdominal': 'abdominal',
   'cn-erac': 'perioperative',
   'cn-portal-hypertension-surgery': 'other',
+  'cn-nlm': 'breast',
+  'cn-bariatric': 'bariatric',
+  'cn-parathyroid': 'thyroid',
+  'cn-stoma': 'colorectal',
+  'cn-surgical-nutrition': 'perioperative',
 
   /* ---------------- 骨科 ---------------- */
   'cn-hip-fracture-consensus': 'trauma',
@@ -282,6 +348,11 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-tha-tka-erac': 'oa',
   'csco-bone-soft-tissue-2026': 'tumor',
   'cn-vte-ortho-2016': 'vte',
+  'cn-acl': 'sports',
+  'cn-rotator-cuff': 'sports',
+  'cn-bone-infection': 'infection',
+  'cn-scoliosis': 'spine',
+  'cn-pelvic-fracture': 'trauma',
 
   /* ---------------- 神经外科 ---------------- */
   'btf-tbi-2016': 'tbi',
@@ -293,6 +364,11 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-pituitary-adenoma': 'tumor',
   'cn-hich-2020': 'ich',
   'cn-trigeminal-neuralgia': 'functional',
+  'cn-hydrocephalus': 'hydrocephalus',
+  'cn-moyamoya': 'moyamoya',
+  'cn-spinal-tumor': 'spine',
+  'cn-hemifacial-spasm': 'functional',
+  'cn-acoustic-neuroma': 'tumor',
 
   /* ---------------- 泌尿外科 ---------------- */
   'cn-urolithiasis': 'stone',
@@ -305,6 +381,12 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-uti-2015': 'infection',
   'cn-infection-stone-2024': 'infection',
   'cn-ed-guideline': 'other',
+  'cn-prostatitis': 'infection',
+  'cn-rcc': 'tumor',
+  'cn-neurogenic-bladder': 'function',
+  'cn-sui': 'function',
+  'cn-andrology': 'andrology',
+  'cn-adrenal-surgery': 'adrenal',
 
   /* ---------------- 胸外科 ---------------- */
   'cn-lung-cancer-2024': 'lung',
@@ -314,6 +396,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-pneumothorax-consensus': 'pneumothorax',
   'cn-chest-trauma': 'chestTrauma',
   'cn-thoracic-erase': 'airway',
+  'cn-lung-cancer-surgery': 'lung',
+  'cn-pectus': 'chestWall',
+  'cn-hyperhidrosis': 'chestWall',
+  'cn-hiatal-hernia': 'esophagus',
 
   /* ---------------- 血管外科 ---------------- */
   'cn-aortic-dissection-2025': 'aneurysm',
@@ -323,6 +409,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-pad-2015': 'pad',
   'cn-carotid-stenosis': 'carotid',
   'cn-varicose-vein-consensus': 'vein',
+  'cn-mesenteric-ischemia': 'visceral',
+  'cn-lymphedema': 'lymph',
+  'cn-buerger': 'pad',
+  'cn-vascular-trauma': 'other',
 
   /* ---------------- 妇产科 ---------------- */
   'cn-gh-2024': 'hypertension',
@@ -337,6 +427,12 @@ export const TOPIC_OF: Record<string, string> = {
   'csco-endometrial-2025': 'tumor',
   'cn-pcos': 'other',
   'cn-uterine-fibroid': 'other',
+  'cn-aub': 'aub',
+  'cn-menopause': 'menopause',
+  'cn-pprom': 'labor',
+  'cn-antenatal': 'antenatal',
+  'cn-infertility': 'infertility',
+  'cn-gestational-thyroid': 'other',
 
   /* ---------------- 儿科 ---------------- */
   'cn-child-cap-2024': 'respiratory',
@@ -351,6 +447,13 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-child-growth': 'growth',
   'cn-child-anemia': 'growth',
   'cn-child-obesity': 'growth',
+  'cn-child-dm': 'endo',
+  'cn-precocious-puberty': 'endo',
+  'cn-child-epilepsy': 'neuro',
+  'cn-child-htn': 'cardio',
+  'cn-asd': 'growth',
+  'cn-child-tumor': 'tumor',
+  'cn-immunization': 'immunization',
 
   /* ---------------- 急诊医学科 ---------------- */
   'cn-cpr-2025': 'cpr',
@@ -361,6 +464,11 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-sepsis-prevention-2020': 'sepsis',
   'cn-shock-consensus': 'shock',
   'cn-hf-emergency': 'other',
+  'cn-trauma-rescue': 'trauma',
+  'cn-anaphylaxis': 'anaphylaxis',
+  'cn-heat-stroke': 'environmental',
+  'cn-snake-bite': 'poisoning',
+  'cn-endo-emergency': 'endo',
 
   /* ---------------- 重症医学科 ---------------- */
   'cn-hap-vap-2018': 'infection',
@@ -372,6 +480,11 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-crrt-fluid-2026': 'aki',
   'cn-pn-2024': 'nutrition',
   'cn-ecmo': 'other',
+  'cn-hemodynamics': 'hemodynamics',
+  'cn-critical-ultrasound': 'hemodynamics',
+  'cn-weaning': 'respiratory',
+  'cn-post-arrest': 'other',
+  'cn-icu-aw': 'rehab',
 
   /* ---------------- 麻醉科 ---------------- */
   'cn-difficult-airway': 'airway',
@@ -381,6 +494,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-obstetric-anesthesia': 'obstetric',
   'cn-postop-pain-2023': 'regional',
   'cn-pediatric-analgesia-2024': 'pediatric',
+  'cn-regional-anesthesia': 'regional',
+  'cn-depth-monitoring': 'monitoring',
+  'cn-neurosurgical-anes': 'neuro',
+  'cn-malignant-hyperthermia': 'other',
 
   /* ---------------- 眼科 ---------------- */
   'cn-dr-guideline': 'retina',
@@ -391,6 +508,12 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-endophthalmitis-2017': 'cataract',
   'cn-dry-eye-2020': 'surface',
   'cn-myopia-2024': 'myopia',
+  'cn-uveitis': 'uveitis',
+  'cn-strabismus': 'strabismus',
+  'cn-rrd': 'retina',
+  'cn-eye-trauma': 'trauma',
+  'cn-tao': 'other',
+  'cn-rop': 'retina',
 
   /* ---------------- 耳鼻咽喉科 ---------------- */
   'cn-ar-2022': 'rhinitis',
@@ -400,6 +523,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-otitis-media': 'otitis',
   'cn-osa-2018': 'sleep',
   'csco-head-neck-2026': 'tumor',
+  'cn-tonsillectomy': 'tonsil',
+  'cn-voice': 'voice',
+  'cn-facial-palsy': 'other',
+  'cn-epistaxis': 'other',
 
   /* ---------------- 口腔科 ---------------- */
   'cn-caries-guideline': 'caries',
@@ -408,6 +535,11 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-implant-consensus': 'implant',
   'cn-oral-cancer-pathology': 'tumor',
   'cn-child-osa-ortho': 'other',
+  'cn-endodontics': 'caries',
+  'cn-oral-surgery': 'oralSurgery',
+  'cn-oral-infection': 'oralSurgery',
+  'cn-tmj': 'tmj',
+  'cn-orthodontics': 'ortho',
 
   /* ---------------- 康复医学科 ---------------- */
   'cn-stroke-rehab-2025': 'strokeRehab',
@@ -416,6 +548,12 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-pulmonary-rehab': 'pulmonary',
   'cn-dysphagia-consensus': 'dysphagia',
   'cn-fall-prevention-tech': 'other',
+  'cn-ortho-rehab': 'ortho',
+  'cn-sci-rehab': 'strokeRehab',
+  'cn-aphasia': 'strokeRehab',
+  'cn-critical-rehab': 'critical',
+  'cn-pelvic-rehab': 'pelvic',
+  'cn-prosthetics': 'prosthetics',
 
   /* ---------------- 疼痛科 ---------------- */
   'cn-cancer-pain-2018': 'cancer',
@@ -424,4 +562,8 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-lbp-pain-2020': 'spine',
   'cn-fibromyalgia': 'other',
   'cn-hospice': 'other',
+  'cn-myofascial': 'myofascial',
+  'cn-crps': 'neuropathic',
+  'cn-postop-pain': 'postop',
+  'cn-spinal-cord-stim': 'neuropathic',
 }

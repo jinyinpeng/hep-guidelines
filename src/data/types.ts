@@ -48,6 +48,16 @@ export interface Point {
   tag?: string
   /** 是否为核心/高频要点 */
   key?: boolean
+  /**
+   * 推荐强度 / 推荐类别，一律按原指南的写法记录，如 'I'、'IIa'、'IIb'、'强推荐'、'1'。
+   * 仅在原指南对该条推荐明确给出等级时填写；摘编时不做任何推断。
+   */
+  rec?: string
+  /**
+   * 证据级别 / 证据质量，一律按原指南的写法记录，如 'A'、'B'、'C'、'高'、'中等质量'。
+   * 仅在原指南对该条推荐明确给出等级时填写；摘编时不做任何推断。
+   */
+  ev?: string
 }
 
 export interface Section {
@@ -79,6 +89,12 @@ export interface Guideline {
   url?: string
   /** 是否该领域当前最新版本 */
   latest?: boolean
+  /**
+   * 该指南采用的证据分级体系说明，如
+   * 「推荐类别 I/IIa/IIb/III + 证据级别 A/B/C」或「GRADE：证据质量 高/中/低/极低」。
+   * 指南本身未采用分级体系时不填。
+   */
+  grading?: string
   sections: Section[]
 }
 
