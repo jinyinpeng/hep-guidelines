@@ -1,10 +1,11 @@
 import { CARDIO } from './cardio'
 import { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup } from './departments'
+import { GI } from './gi'
 import { CN_GUIDELINES } from './hepatology-cn'
 import { INTL_GUIDELINES } from './hepatology-intl'
 import { INTERNAL_2 } from './internal-2'
 import { INTERNAL_3 } from './internal-3'
-import { RESP_GI } from './resp-gi'
+import { RESP } from './resp'
 import { SPECIALTY } from './specialty'
 import { SURGERY } from './surgery'
 import type { DeptId, Guideline } from './types'
@@ -14,7 +15,8 @@ export const GUIDELINES: Guideline[] = [
   ...CN_GUIDELINES,
   ...INTL_GUIDELINES,
   ...CARDIO,
-  ...RESP_GI,
+  ...RESP,
+  ...GI,
   ...INTERNAL_2,
   ...INTERNAL_3,
   ...SURGERY,
