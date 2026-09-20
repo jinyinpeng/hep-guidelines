@@ -63,7 +63,9 @@ src/
     urology.ts           泌尿外科（结石、前列腺增生、泌尿系肿瘤、尿路感染、排尿功能）
     cts.ts               胸外科（肺结节与肺癌、食管、纵隔肿瘤、气胸、胸部创伤）
     vascular.ts          血管外科（主动脉疾病、静脉血栓、下肢动脉、颈动脉、静脉曲张）
-    womenchild-critical.ts  妇产科 / 儿科 / 急诊 / 重症 / 麻醉
+    obgyn.ts             妇产科（妊娠期高血压、妊娠期高血糖、产后出血、早产与流产、妇科肿瘤）
+    peds.ts              儿科（儿童呼吸与感染、新生儿、心血管、肾脏、生长发育与营养）
+    womenchild-critical.ts  急危重症与麻醉：急诊医学科 / 重症医学科 / 麻醉科
     specialty.ts         眼科 / 耳鼻咽喉科 / 口腔科 / 康复医学科 / 疼痛科
     index.ts             汇总、统计与全文检索
   components/            TopBar / TabBar / 指南卡片 / 搜索框 / 免责声明

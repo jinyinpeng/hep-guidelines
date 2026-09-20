@@ -242,8 +242,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'hypertension', name: '妊娠期高血压疾病', short: '妊高症' },
     { id: 'gdm', name: '妊娠期高血糖', short: '妊娠糖尿病' },
     { id: 'pph', name: '产后出血', short: '产后出血' },
+    { id: 'earlyPregnancy', name: '早产与复发性流产', short: '早产与流产' },
     { id: 'endometriosis', name: '子宫内膜异位症', short: '内异症' },
     { id: 'cervical', name: '子宫颈癌筛查与预防', short: '宫颈癌筛查' },
+    { id: 'tumor', name: '妇科肿瘤', short: '妇科肿瘤' },
     { id: 'other', name: '其他妇产科疾病', short: '其他' },
   ],
 
@@ -252,6 +254,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'infectious', name: '儿童感染性疾病', short: '儿童感染' },
     { id: 'neuro', name: '儿童神经系统疾病', short: '儿童神经' },
     { id: 'neonatal', name: '新生儿疾病', short: '新生儿' },
+    { id: 'cardio', name: '儿童心血管疾病', short: '儿童心血管' },
+    { id: 'renal', name: '儿童肾脏疾病', short: '儿童肾脏' },
+    { id: 'growth', name: '生长发育与营养', short: '生长发育' },
     { id: 'other', name: '其他儿科疾病', short: '其他' },
   ],
 

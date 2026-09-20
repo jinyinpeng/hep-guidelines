@@ -325,18 +325,32 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-varicose-vein-consensus': 'vein',
 
   /* ---------------- 妇产科 ---------------- */
-  'cn-gh-2020': 'hypertension',
+  'cn-gh-2024': 'hypertension',
   'cn-gdm-2022': 'gdm',
   'cn-pph-2023': 'pph',
+  'cn-preterm': 'earlyPregnancy',
+  'cn-rsa-2026': 'earlyPregnancy',
   'cn-endometriosis-2021': 'endometriosis',
   'cn-cervical-screen-2023': 'cervical',
+  'csco-cervical-2025': 'tumor',
+  'csco-ovarian-2025': 'tumor',
+  'csco-endometrial-2025': 'tumor',
+  'cn-pcos': 'other',
+  'cn-uterine-fibroid': 'other',
 
   /* ---------------- 儿科 ---------------- */
-  'cn-child-asthma-2016': 'respiratory',
-  'cn-child-cap-2019': 'respiratory',
+  'cn-child-cap-2024': 'respiratory',
+  'cn-child-asthma-2025': 'respiratory',
   'cn-hfmd-2018': 'infectious',
+  'cn-child-diarrhea': 'infectious',
+  'cn-kawasaki-2022': 'cardio',
+  'cn-nephrotic-syndrome': 'renal',
   'cn-febrile-seizure-2017': 'neuro',
+  'cn-neonatal-resuscitation-2025': 'neonatal',
   'cn-neonatal-jaundice': 'neonatal',
+  'cn-child-growth': 'growth',
+  'cn-child-anemia': 'growth',
+  'cn-child-obesity': 'growth',
 
   /* ---------------- 急诊医学科 ---------------- */
   'aha-cpr-2020': 'cpr',

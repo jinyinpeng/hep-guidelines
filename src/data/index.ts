@@ -12,8 +12,10 @@ import { INTL_GUIDELINES } from './hepatology-intl'
 import { INFECTIOUS } from './infectious'
 import { NEURO } from './neuro'
 import { NEUROSURG } from './neurosurg'
+import { OBGYN } from './obgyn'
 import { ONCOLOGY } from './oncology'
 import { ORTHO } from './ortho'
+import { PEDS } from './peds'
 import { PSYCHIATRY } from './psychiatry'
 import { RENAL } from './renal'
 import { RESP } from './resp'
@@ -48,6 +50,8 @@ const RAW: Guideline[] = [
   ...NEUROSURG,
   ...UROLOGY,
   ...VASCULAR,
+  ...OBGYN,
+  ...PEDS,
   ...WOMEN_CHILD_CRITICAL,
   ...SPECIALTY,
 ]
