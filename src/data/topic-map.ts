@@ -262,12 +262,25 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-gallstone-2021': 'biliary',
   'cn-hernia-2018': 'hernia',
   'cn-thyroid-nodule-2023': 'thyroid',
+  'caca-thyroid-2024': 'thyroid',
+  'cn-sbo-2023': 'giSurgery',
+  'cn-hemorrhoids-2025': 'colorectal',
+  'cn-anal-fistula': 'colorectal',
   'wses-appendicitis-2020': 'appendix',
+  'cn-intraabdominal': 'abdominal',
+  'cn-erac': 'perioperative',
+  'cn-portal-hypertension-surgery': 'other',
 
   /* ---------------- 骨科 ---------------- */
   'cn-hip-fracture-consensus': 'trauma',
-  'cn-ldh-2020': 'degenerative',
+  'cn-distal-radius-2023': 'trauma',
+  'cn-ankle-fracture-2025': 'trauma',
+  'cn-ldh-2020': 'spine',
+  'cn-lss-2023': 'spine',
+  'cn-cervical-spondylosis': 'spine',
   'cn-oa-2021': 'oa',
+  'cn-tha-tka-erac': 'oa',
+  'csco-bone-soft-tissue-2026': 'tumor',
   'cn-vte-ortho-2016': 'vte',
 
   /* ---------------- 神经外科 ---------------- */

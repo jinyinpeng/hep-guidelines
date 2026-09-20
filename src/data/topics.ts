@@ -182,15 +182,20 @@ export const TOPICS: Record<DeptId, Topic[]> = {
   gensurg: [
     { id: 'biliary', name: '胆囊与胆道疾病', short: '胆道疾病' },
     { id: 'hernia', name: '腹壁疝', short: '疝' },
-    { id: 'thyroid', name: '甲状腺与乳腺疾病', short: '甲状腺乳腺' },
+    { id: 'thyroid', name: '甲状腺疾病', short: '甲状腺' },
+    { id: 'giSurgery', name: '胃肠外科与肠梗阻', short: '胃肠外科' },
+    { id: 'colorectal', name: '结直肠与肛肠疾病', short: '肛肠' },
     { id: 'appendix', name: '阑尾炎', short: '阑尾炎' },
+    { id: 'abdominal', name: '腹腔感染与急腹症', short: '腹腔感染' },
+    { id: 'perioperative', name: '围手术期管理', short: '围术期' },
     { id: 'other', name: '其他普外科疾病', short: '其他' },
   ],
 
   ortho: [
     { id: 'trauma', name: '骨折与创伤', short: '骨折创伤' },
-    { id: 'degenerative', name: '脊柱退变性疾病', short: '脊柱' },
-    { id: 'oa', name: '骨关节炎与关节置换', short: '骨关节炎' },
+    { id: 'spine', name: '脊柱疾病', short: '脊柱' },
+    { id: 'oa', name: '骨关节炎与关节置换', short: '关节置换' },
+    { id: 'tumor', name: '骨与软组织肿瘤', short: '骨肿瘤' },
     { id: 'vte', name: '围术期血栓预防', short: 'VTE 预防' },
     { id: 'other', name: '其他骨科疾病', short: '其他' },
   ],
