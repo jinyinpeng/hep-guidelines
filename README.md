@@ -222,7 +222,7 @@ src/
 | `field` 本领域顶刊 | 该专科公认第一梯队 | 肝病科 Hepatology / J Hepatol；血液科 Blood / Lancet Haematol；消化 Gut / Gastroenterology；心血管 Circulation / Eur Heart J / JACC；肾脏 Kidney Int / JASN；外科 Ann Surg / Br J Surg；骨科 JBJS / Am J Sports Med；泌尿 Eur Urol；神外 J Neurosurg；妇产 AJOG / BJOG；儿科 Pediatrics；麻醉 Anesthesiology / BJA；眼科 Ophthalmology；口腔 J Dent Res / J Clin Periodontol |
 | `major` 权威期刊 | 本领域有影响力大刊与亚专科期刊 | Liver Int、Clin Gastroenterol Hepatol、Chest、Spine、J Arthroplasty、Surg Endosc、BJU Int |
 
-一套内容共 **309 条**研究、覆盖 30 个科室、来自 **136 种期刊**（近一年 291 条），研究模式可按层级 / 期刊 / 时间 / 影响程度筛选。
+一套内容共 **413 条**研究、覆盖 30 个科室、来自 **146 种期刊**（近一年 395 条），顶刊前沿可按层级 / 期刊 / 期次 / 时间 / 影响程度筛选。
 
 ### 其余收录口径
 
