@@ -125,8 +125,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
 
   infectious: [
     { id: 'sepsis', name: '脓毒症与重症感染', short: '脓毒症' },
-    { id: 'antibiotic', name: '抗菌药物合理应用', short: '抗菌药物' },
+    { id: 'antibiotic', name: '抗菌药物与耐药菌', short: '抗菌药物' },
     { id: 'respiratory', name: '呼吸道病毒感染', short: '流感' },
+    { id: 'hiv', name: 'HIV / AIDS', short: '艾滋病' },
     { id: 'fever', name: '发热待查与不明原因发热', short: '发热待查' },
     { id: 'other', name: '其他感染性疾病', short: '其他' },
   ],
@@ -135,7 +136,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'lung', name: '肺癌', short: '肺癌' },
     { id: 'breast', name: '乳腺癌', short: '乳腺癌' },
     { id: 'colorectal', name: '结直肠癌', short: '结直肠癌' },
+    { id: 'gastric', name: '胃癌', short: '胃癌' },
+    { id: 'esophagus', name: '食管癌', short: '食管癌' },
     { id: 'toxicity', name: '抗肿瘤治疗相关毒性', short: '治疗毒性' },
+    { id: 'supportive', name: '支持治疗与并发症', short: '支持治疗' },
     { id: 'screen', name: '肿瘤筛查与早诊', short: '筛查' },
     { id: 'other', name: '其他实体瘤', short: '其他' },
   ],

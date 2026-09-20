@@ -193,17 +193,33 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-vertigo-consensus': 'headache',
 
   /* ---------------- 感染科 ---------------- */
+  'ssc-2026': 'sepsis',
   'cn-sepsis-2018': 'sepsis',
-  'ssc-2021': 'sepsis',
   'cn-antibiotic-2015': 'antibiotic',
-  'cn-influenza-2020': 'respiratory',
+  'cn-cre-2021': 'antibiotic',
+  'cn-ab-consensus': 'antibiotic',
+  'cn-influenza-2025': 'respiratory',
+  'cn-covid-2023': 'respiratory',
+  'cn-hiv-2024': 'hiv',
+  'cn-fever-consensus': 'fever',
+  'cn-rabies-2016': 'other',
 
   /* ---------------- 肿瘤内科 ---------------- */
   'csco-nsclc': 'lung',
-  'cn-lung-screen-2021': 'lung',
+  'csco-sclc-2026': 'lung',
+  'cn-lung-screen-2021': 'screen',
+  'csco-breast-2026': 'breast',
   'caca-breast': 'breast',
-  'cn-crc-screen-2020': 'colorectal',
+  'csco-crc-2026': 'colorectal',
+  'cn-crc-screen-2020': 'screen',
+  'csco-gastric-2026': 'gastric',
+  'csco-esophagus-2026': 'esophagus',
+  'csco-ici-2026': 'toxicity',
   'esmo-ici-toxicity-2022': 'toxicity',
+  'cn-cin-2026': 'supportive',
+  'csco-nutrition-2026': 'supportive',
+  'csco-thrombocytopenia-2026': 'supportive',
+  'csco-anemia-2026': 'supportive',
 
   /* ---------------- 老年医学科 ---------------- */
   'cn-cga-consensus': 'cga',

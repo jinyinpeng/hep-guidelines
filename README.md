@@ -51,8 +51,10 @@ src/
     endo.ts              内分泌代谢科（糖尿病、甲状腺、骨质疏松、肥胖、痛风、肾上腺）
     renal.ts             肾脏内科（CKD 全程管理、肾小球疾病、糖尿病肾病、CKD-MBD、透析通路）
     rheum.ts             风湿免疫科（RA、SLE、脊柱关节炎、痛风、血管炎、其他结缔组织病）
+    infectious.ts        感染科（脓毒症、抗菌药物与耐药菌、呼吸道病毒、HIV/AIDS、发热待查）
+    oncology.ts          肿瘤内科（肺癌、乳腺癌、结直肠癌、胃癌、食管癌、支持治疗与筛查）
     internal-2.ts        内科系（二）：血液科
-    internal-3.ts        内科系（三）：感染 / 肿瘤 / 老年 / 精神 / 皮肤
+    internal-3.ts        内科系（三）：老年 / 精神 / 皮肤
     surgery.ts           外科系：普外 / 骨科 / 神外 / 泌尿 / 胸外 / 血管外科
     womenchild-critical.ts  妇产科 / 儿科 / 急诊 / 重症 / 麻醉
     specialty.ts         眼科 / 耳鼻咽喉科 / 口腔科 / 康复医学科 / 疼痛科

@@ -4,9 +4,11 @@ import { ENDO } from './endo'
 import { GI } from './gi'
 import { CN_GUIDELINES } from './hepatology-cn'
 import { INTL_GUIDELINES } from './hepatology-intl'
+import { INFECTIOUS } from './infectious'
 import { INTERNAL_2 } from './internal-2'
 import { INTERNAL_3 } from './internal-3'
 import { NEURO } from './neuro'
+import { ONCOLOGY } from './oncology'
 import { RENAL } from './renal'
 import { RESP } from './resp'
 import { RHEUM } from './rheum'
@@ -27,6 +29,8 @@ const RAW: Guideline[] = [
   ...NEURO,
   ...RENAL,
   ...RHEUM,
+  ...INFECTIOUS,
+  ...ONCOLOGY,
   ...INTERNAL_2,
   ...INTERNAL_3,
   ...SURGERY,
