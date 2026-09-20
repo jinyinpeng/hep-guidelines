@@ -1,4 +1,5 @@
 import { CARDIO } from './cardio'
+import { CTS } from './cts'
 import { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup } from './departments'
 import { DERM } from './derm'
 import { ENDO } from './endo'
@@ -10,6 +11,7 @@ import { HEME } from './heme'
 import { INTL_GUIDELINES } from './hepatology-intl'
 import { INFECTIOUS } from './infectious'
 import { NEURO } from './neuro'
+import { NEUROSURG } from './neurosurg'
 import { ONCOLOGY } from './oncology'
 import { ORTHO } from './ortho'
 import { PSYCHIATRY } from './psychiatry'
@@ -17,10 +19,11 @@ import { RENAL } from './renal'
 import { RESP } from './resp'
 import { RHEUM } from './rheum'
 import { SPECIALTY } from './specialty'
-import { SURGERY } from './surgery'
 import { TOPIC_OF } from './topic-map'
 import { topicOf, topicsOf } from './topics'
 import type { DeptId, Guideline } from './types'
+import { UROLOGY } from './urology'
+import { VASCULAR } from './vascular'
 import { WOMEN_CHILD_CRITICAL } from './womenchild-critical'
 
 const RAW: Guideline[] = [
@@ -41,7 +44,10 @@ const RAW: Guideline[] = [
   ...ORTHO,
   ...PSYCHIATRY,
   ...GENSURG,
-  ...SURGERY,
+  ...CTS,
+  ...NEUROSURG,
+  ...UROLOGY,
+  ...VASCULAR,
   ...WOMEN_CHILD_CRITICAL,
   ...SPECIALTY,
 ]

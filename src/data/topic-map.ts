@@ -285,26 +285,43 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 神经外科 ---------------- */
   'btf-tbi-2016': 'tbi',
+  'cn-ruptured-ia-2024': 'sah',
+  'cn-unruptured-ia-2024': 'sah',
   'cn-asah-2016': 'sah',
-  'cn-glioma-2018': 'tumor',
+  'caca-glioma-2024': 'tumor',
+  'cn-brain-metastasis': 'tumor',
+  'cn-pituitary-adenoma': 'tumor',
   'cn-hich-2020': 'ich',
+  'cn-trigeminal-neuralgia': 'functional',
 
   /* ---------------- 泌尿外科 ---------------- */
   'cn-urolithiasis': 'stone',
+  'cn-eswl-2024': 'stone',
   'cn-bph-consensus': 'bph',
+  'cn-oab': 'function',
   'cn-prostate-screen-2022': 'tumor',
+  'csco-prostate-2026': 'tumor',
+  'csco-urothelial-2026': 'tumor',
   'cn-uti-2015': 'infection',
+  'cn-infection-stone-2024': 'infection',
+  'cn-ed-guideline': 'other',
 
   /* ---------------- 胸外科 ---------------- */
+  'cn-lung-cancer-2024': 'lung',
   'cn-lung-nodule-2018': 'lung',
   'cn-esophageal-cancer-2022': 'esophagus',
+  'cn-mediastinal-tumor': 'mediastinum',
   'cn-pneumothorax-consensus': 'pneumothorax',
+  'cn-chest-trauma': 'chestTrauma',
   'cn-thoracic-erase': 'airway',
 
   /* ---------------- 血管外科 ---------------- */
+  'cn-aortic-dissection-2025': 'aneurysm',
   'cn-aaa-guideline': 'aneurysm',
   'cn-dvt-2017': 'dvt',
+  'cn-vte-prevention': 'dvt',
   'cn-pad-2015': 'pad',
+  'cn-carotid-stenosis': 'carotid',
   'cn-varicose-vein-consensus': 'vein',
 
   /* ---------------- 妇产科 ---------------- */

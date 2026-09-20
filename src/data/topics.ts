@@ -202,9 +202,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
 
   neurosurg: [
     { id: 'tbi', name: '颅脑创伤', short: '颅脑创伤' },
-    { id: 'sah', name: '蛛网膜下腔出血与颅内动脉瘤', short: '动脉瘤' },
+    { id: 'sah', name: '颅内动脉瘤与蛛网膜下腔出血', short: '动脉瘤' },
     { id: 'tumor', name: '颅内肿瘤', short: '颅内肿瘤' },
-    { id: 'ich', name: '高血压性脑出血外科治疗', short: '脑出血外科' },
+    { id: 'ich', name: '出血性卒中外科治疗', short: '脑出血外科' },
+    { id: 'functional', name: '功能神经外科', short: '功能神外' },
     { id: 'other', name: '其他神经外科疾病', short: '其他' },
   ],
 
@@ -212,14 +213,17 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'stone', name: '泌尿系结石', short: '结石' },
     { id: 'bph', name: '良性前列腺增生', short: '前列腺增生' },
     { id: 'tumor', name: '泌尿系肿瘤', short: '泌尿肿瘤' },
-    { id: 'infection', name: '尿路感染', short: '尿路感染' },
+    { id: 'infection', name: '尿路感染与感染性结石', short: '尿路感染' },
+    { id: 'function', name: '排尿功能障碍', short: '排尿功能' },
     { id: 'other', name: '其他泌尿外科疾病', short: '其他' },
   ],
 
   cts: [
-    { id: 'lung', name: '肺部结节与肺癌', short: '肺结节肺癌' },
+    { id: 'lung', name: '肺结节与肺癌', short: '肺结节肺癌' },
     { id: 'esophagus', name: '食管疾病', short: '食管' },
+    { id: 'mediastinum', name: '纵隔肿瘤', short: '纵隔肿瘤' },
     { id: 'pneumothorax', name: '气胸与胸膜疾病', short: '气胸' },
+    { id: 'chestTrauma', name: '胸部创伤', short: '胸部创伤' },
     { id: 'airway', name: '围术期气道与肺康复', short: '围术期管理' },
     { id: 'other', name: '其他胸外科疾病', short: '其他' },
   ],
@@ -228,6 +232,7 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'aneurysm', name: '主动脉疾病', short: '主动脉' },
     { id: 'dvt', name: '静脉血栓栓塞症', short: '深静脉血栓' },
     { id: 'pad', name: '下肢动脉硬化闭塞症', short: '下肢动脉' },
+    { id: 'carotid', name: '颈动脉狭窄', short: '颈动脉' },
     { id: 'vein', name: '慢性静脉疾病与静脉曲张', short: '静脉曲张' },
     { id: 'other', name: '其他血管疾病', short: '其他' },
   ],
