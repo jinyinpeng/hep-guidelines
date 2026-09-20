@@ -1,8 +1,16 @@
 import { useMemo, useState } from 'react'
 import GuidelineCard from '../components/GuidelineCard'
 import SearchBar from '../components/SearchBar'
-import { DEPT_GROUPS, DEPARTMENTS, GUIDELINES, countByDept, search } from '../data'
-import type { DeptGroup } from '../data/types'
+import {
+  DEPT_GROUPS,
+  DEPARTMENTS,
+  GUIDELINES,
+  countByDept,
+  countByTopic,
+  search,
+  topicsOf,
+} from '../data'
+import type { DeptGroup, DeptId } from '../data/types'
 
 const REGIONS = [
   { key: 'all', label: '全部' },
@@ -16,6 +24,7 @@ export default function LibraryPage() {
   const [region, setRegion] = useState<RegionKey>('all')
   const [group, setGroup] = useState<DeptGroup | 'all'>('all')
   const [dept, setDept] = useState<string>('all')
+  const [topic, setTopic] = useState<string>('all')
   const [q, setQ] = useState('')
 
   const deptOptions = useMemo(
@@ -23,18 +32,36 @@ export default function LibraryPage() {
     [group],
   )
 
+  /** 只有选中具体科室时才展示该科室的病种 */
+  const topics = useMemo(
+    () =>
+      dept === 'all'
+        ? []
+        : topicsOf(dept as DeptId).filter((t) => countByTopic(dept as DeptId, t.id) > 0),
+    [dept],
+  )
+
   const base = useMemo(
     () =>
       GUIDELINES.filter(
         (g) =>
-          (region === 'all' || g.region === region) && (dept === 'all' || g.dept === dept),
+          (region === 'all' || g.region === region) &&
+          (dept === 'all' || g.dept === dept) &&
+          (topic === 'all' || g.topic === topic),
       ),
-    [region, dept],
+    [region, dept, topic],
   )
 
   const list = useMemo(() => (q.trim() ? search(q, base).map((h) => h.guideline) : base), [q, base])
 
   const activeDept = DEPARTMENTS.find((d) => d.id === dept)
+  const activeTopic = topics.find((t) => t.id === topic)
+
+  /** 切换科室时清空病种选择，避免残留无效筛选 */
+  const pickDept = (id: string) => {
+    setDept(id)
+    setTopic('all')
+  }
 
   return (
     <div className="space-y-4">
@@ -58,7 +85,7 @@ export default function LibraryPage() {
           data-on={group === 'all'}
           onClick={() => {
             setGroup('all')
-            setDept('all')
+            pickDept('all')
           }}
           className="chip-btn shrink-0"
         >
@@ -71,7 +98,7 @@ export default function LibraryPage() {
             data-on={group === g.id}
             onClick={() => {
               setGroup(g.id)
-              setDept('all')
+              pickDept('all')
             }}
             className="chip-btn shrink-0"
           >
@@ -84,7 +111,7 @@ export default function LibraryPage() {
         <button
           type="button"
           data-on={dept === 'all'}
-          onClick={() => setDept('all')}
+          onClick={() => pickDept('all')}
           className="chip-btn shrink-0"
         >
           {group === 'all' ? '全部科室' : '该组全部'}
@@ -94,7 +121,7 @@ export default function LibraryPage() {
             key={d.id}
             type="button"
             data-on={dept === d.id}
-            onClick={() => setDept(d.id)}
+            onClick={() => pickDept(d.id)}
             className="chip-btn shrink-0"
           >
             {d.short}
@@ -103,10 +130,38 @@ export default function LibraryPage() {
         ))}
       </div>
 
+      {topics.length > 0 && (
+        <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
+          <button
+            type="button"
+            data-on={topic === 'all'}
+            onClick={() => setTopic('all')}
+            className="chip-btn shrink-0"
+          >
+            全部病种
+          </button>
+          {topics.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              data-on={topic === t.id}
+              onClick={() => setTopic(t.id)}
+              className="chip-btn shrink-0"
+            >
+              {t.short}
+              <span className="ml-1 tabular-nums opacity-60">
+                {countByTopic(dept as DeptId, t.id)}
+              </span>
+            </button>
+          ))}
+        </div>
+      )}
+
       <p className="text-[12.5px] text-ink-3">
         共 <strong className="font-semibold text-ink">{list.length}</strong> 部
         {region !== 'all' && ` · ${REGIONS.find((r) => r.key === region)?.label}`}
         {activeDept && ` · ${activeDept.short}`}
+        {activeTopic && ` · ${activeTopic.short}`}
       </p>
 
       {list.length === 0 ? (
