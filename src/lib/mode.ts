@@ -3,7 +3,7 @@ import { useSyncExternalStore } from 'react'
 /**
  * 全局内容模式：
  *   guide    —— 指南与共识要点（默认）
- *   research —— 各科室顶刊最新临床研究发现
+ *   research —— 顶刊前沿：各科室国内外顶刊最新临床研究发现
  *
  * 用极简的外部 store 实现，不依赖 Provider，任何组件都能直接读写；
  * 选择结果写入 localStorage，下次打开保持同一视图。
@@ -59,5 +59,5 @@ export function useMode(): Mode {
 
 export const MODE_LABEL: Record<Mode, string> = {
   guide: '指南共识',
-  research: '前沿研究',
+  research: '顶刊前沿',
 }

@@ -6,6 +6,7 @@ export type RouteName =
   | 'library'
   | 'detail'
   | 'finding'
+  | 'issues'
   | 'methods'
   | 'favorites'
   | 'about'
@@ -34,6 +35,7 @@ export function parseRoute(raw: string): Route {
   if (segs[0] === 'library') return { name: 'library', query, raw }
   if (segs[0] === 'detail' && segs[1]) return { name: 'detail', id: segs[1], query, raw }
   if (segs[0] === 'finding' && segs[1]) return { name: 'finding', id: segs[1], query, raw }
+  if (segs[0] === 'issues') return { name: 'issues', query, raw }
   if (segs[0] === 'methods') return { name: 'methods', query, raw }
   if (segs[0] === 'favorites') return { name: 'favorites', query, raw }
   if (segs[0] === 'about') return { name: 'about', query, raw }

@@ -1,4 +1,12 @@
-import { ArrowUpRight, CalendarClock, FlaskConical, Layers, Microscope, Sparkles } from 'lucide-react'
+import {
+  ArrowUpRight,
+  CalendarClock,
+  CalendarDays,
+  FlaskConical,
+  Layers,
+  Microscope,
+  Sparkles,
+} from 'lucide-react'
 import { useMemo } from 'react'
 import Disclaimer from '../components/Disclaimer'
 import FindingCard from '../components/FindingCard'
@@ -44,9 +52,9 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
       {!q && (
         <section className="animate-rise pt-1">
           <h2 className="text-[22px] font-bold leading-tight tracking-tight text-ink">
-            各科室顶刊
+            顶刊前沿
             <br />
-            最新研究发现
+            各科室临床研究
           </h2>
           <p className="mt-2 text-[13.5px] leading-relaxed text-ink-2">
             覆盖 {RESEARCH_STATS.depts} 个临床科室、{RESEARCH_STATS.journals} 种期刊：
@@ -121,7 +129,7 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
                 href={href('/library')}
                 className="ml-auto flex cursor-pointer items-center gap-0.5 text-[12px] text-ink-3 transition-colors duration-200 hover:text-brand"
               >
-                全部研究
+                顶刊库
                 <ArrowUpRight size={13} />
               </a>
             </div>
@@ -209,13 +217,33 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
                           href={href('/library')}
                           className="round-chip cursor-pointer bg-brand-soft text-brand-ink transition-opacity duration-200 hover:opacity-80"
                         >
-                          还有 {list.length - shown.length} 种，去研究库按层级筛选
+                          还有 {list.length - shown.length} 种，去顶刊库按层级筛选
                         </a>
                       )}
                     </div>
                   </div>
                 )
               })}
+            </div>
+          </section>
+
+          <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
+            <CalendarDays size={20} className="mt-0.5 shrink-0 text-accent" />
+            <div className="min-w-0 flex-1">
+              <h3 className="text-[13.5px] font-semibold text-ink">按期次浏览</h3>
+              <p className="mt-1 text-[12.5px] leading-relaxed text-ink-2">
+                按
+                <strong className="font-semibold text-ink">期刊 × 期次</strong>
+                逐期查看：选定一本顶刊就看到它各期收录的临床研究；也可以「按时间」把同一期各刊的研究放在一起看。
+                周刊每月约 4 期、月刊每月 1 期。
+              </p>
+              <a
+                href={href('/issues')}
+                className="mt-2 inline-flex cursor-pointer items-center gap-0.5 text-[12.5px] text-accent transition-opacity duration-200 hover:opacity-80"
+              >
+                进入按期次浏览
+                <ArrowUpRight size={13} />
+              </a>
             </div>
           </section>
 

@@ -1,5 +1,15 @@
 import { ArrowRight, BookOpenText, ExternalLink, FlaskConical, Microscope, Star } from 'lucide-react'
-import { DEPT_MAP, LEVEL_LABEL, TIER_LABEL, getFinding, journalMeta, topicOf } from '../data'
+import {
+  DEPT_MAP,
+  FREQUENCY_LABEL,
+  LEVEL_LABEL,
+  TIER_LABEL,
+  getFinding,
+  issueLabel,
+  journalFrequency,
+  journalMeta,
+  topicOf,
+} from '../data'
 import { href } from '../lib/router'
 import { useStore } from '../lib/store'
 
@@ -27,7 +37,7 @@ export default function FindingPage({ id }: { id: string }) {
       <div className="card p-6 text-center">
         <p className="text-[14px] font-medium text-ink">未找到这条研究</p>
         <a href={href('/library')} className="mt-2 inline-block cursor-pointer text-[13px] text-brand">
-          返回研究库
+          返回顶刊库
         </a>
       </div>
     )
@@ -158,22 +168,34 @@ export default function FindingPage({ id }: { id: string }) {
         </h3>
         <ul className="mt-1.5 space-y-1 text-[12.5px] leading-relaxed text-ink-2">
           <li>
-            期刊：{f.journal}（{TIER_LABEL[meta.tier]} · {meta.field}）
+            期刊：{f.journal}（{TIER_LABEL[meta.tier]} · {meta.field} ·{' '}
+            {FREQUENCY_LABEL[journalFrequency(f.journal)]}）
           </li>
-          <li>发表时间：{f.date.replace('-', ' 年 ')} 月</li>
+          <li>
+            期次：{issueLabel(f.date)}（按公开发表月份归期）
+          </li>
           {f.en && <li>英文题名：{f.en}</li>}
         </ul>
-        {f.url && (
+        <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1.5">
+          {f.url && (
+            <a
+              href={f.url}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex cursor-pointer items-center gap-1 text-[12.5px] text-accent transition-colors duration-200 hover:underline"
+            >
+              检索原文
+              <ExternalLink size={13} />
+            </a>
+          )}
           <a
-            href={f.url}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="mt-2 inline-flex cursor-pointer items-center gap-1 text-[12.5px] text-accent transition-colors duration-200 hover:underline"
+            href={href('/issues')}
+            className="inline-flex cursor-pointer items-center gap-1 text-[12.5px] text-accent transition-colors duration-200 hover:underline"
           >
-            检索原文
+            看向该期其他研究
             <ExternalLink size={13} />
           </a>
-        )}
+        </div>
         <p className="mt-2 text-[11.5px] leading-relaxed text-ink-3">
           提示：本条为研究结果的要点摘编，旨在提示「有什么新证据」；具体数值、亚组、安全性与适用人群请务必核对原文全文与期刊正式版本。
           研究结论不等同于临床推荐，是否改变本机构诊疗流程需经多学科讨论与指南更新确认。

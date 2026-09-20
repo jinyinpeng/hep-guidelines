@@ -8,7 +8,7 @@ const OPTIONS: { id: Mode; Icon: typeof BookOpenText }[] = [
 ]
 
 /**
- * 「指南共识 / 前沿研究」一键切换。
+ * 「指南共识 / 顶刊前沿」一键切换。
  * 放在顶栏，任何页面都能一次点击切换全局内容视图。
  */
 export default function ModeSwitch() {

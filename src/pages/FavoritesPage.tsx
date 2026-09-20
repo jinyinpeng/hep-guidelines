@@ -38,7 +38,7 @@ export default function FavoritesPage() {
           <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-3">
             在指南卡片或详情页点击星标即可收藏
             <br />
-            切到「前沿研究」也能收藏顶刊研究，在要点右侧点击书签图标可标记重点条款
+            切到「顶刊前沿」也能收藏顶刊研究，在要点右侧点击书签图标可标记重点条款
           </p>
           <a
             href={href('/library')}

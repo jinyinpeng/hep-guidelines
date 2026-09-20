@@ -257,12 +257,14 @@ export type { Topic } from './topics'
 export { TOPICS, topicsOf, topicOf } from './topics'
 export { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup }
 
-/* --------------------- 顶刊最新临床研究（前沿研究模式） --------------------- */
+/* --------------------- 顶刊前沿：各科室顶刊临床研究 --------------------- */
 
 export type {
   Finding,
   FindingHit,
+  Frequency,
   ImpactLevel,
+  IssueGroup,
   JournalMeta,
   JournalStat,
   JournalTier,
@@ -271,6 +273,7 @@ export {
   DATA_CUTOFF,
   FINDINGS,
   FINDING_MAP,
+  FREQUENCY_LABEL,
   IMPACT_LEVELS,
   JOURNAL_NAMES,
   JOURNALS,
@@ -281,14 +284,20 @@ export {
   TIER_RANK,
   WINDOWS,
   WINDOW_MONTHS,
+  allIssues,
   countFindingsByDept,
   countFindingsByTopic,
   dateNum,
   featuredFindings,
   fieldOf,
   findingsByDept,
+  findingsByJournal,
   findingsByTopic,
   getFinding,
+  issueLabel,
+  issueStatsOfJournal,
+  issuesOfJournal,
+  journalFrequency,
   journalMeta,
   journalsByTier,
   journalsOfDept,

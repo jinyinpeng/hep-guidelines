@@ -19,6 +19,7 @@ import {
 } from '../data'
 import type { ImpactLevel, JournalTier } from '../data'
 import type { DeptGroup, DeptId } from '../data/types'
+import { href } from '../lib/router'
 
 type WindowKey = (typeof WINDOWS)[number]['id']
 
@@ -248,12 +249,20 @@ export default function ResearchLibraryPage() {
         </div>
       )}
 
-      <p className="text-[12.5px] text-ink-3">
-        共 <strong className="font-semibold text-ink">{list.length}</strong> 条
-        {activeWindow.months > 0 && ` · ${activeWindow.label}`}
-        {activeDept && ` · ${activeDept.short}`}
-        {tier !== 'all' && ` · ${TIERS.find((t) => t.id === tier)?.label}`}
-        {journal !== 'all' && ` · ${journal}`}
+      <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px] text-ink-3">
+        <span>
+          共 <strong className="font-semibold text-ink">{list.length}</strong> 条
+          {activeWindow.months > 0 && ` · ${activeWindow.label}`}
+          {activeDept && ` · ${activeDept.short}`}
+          {tier !== 'all' && ` · ${TIERS.find((t) => t.id === tier)?.label}`}
+          {journal !== 'all' && ` · ${journal}`}
+        </span>
+        <a
+          href={href('/issues')}
+          className="ml-auto shrink-0 cursor-pointer text-accent transition-opacity duration-200 hover:opacity-80"
+        >
+          按期次浏览 →
+        </a>
       </p>
 
       {list.length === 0 ? (

@@ -131,12 +131,23 @@ export default function AboutPage() {
       <section className="card p-4">
         <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
           <FlaskConical size={16} className="text-accent" />
-          指南共识 ⇄ 前沿研究
+          指南共识 ⇄ 顶刊前沿
         </h2>
         <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
           顶部有一个
-          <span className="font-medium text-ink">「指南共识 / 前沿研究」切换按钮</span>
-          ，点一下即可在两套内容间切换（切换后科室、首页、内容库都会跟着变，选择会记住）。
+          <span className="font-medium text-ink">「指南共识 / 顶刊前沿」切换按钮</span>
+          ，点一下即可在两套内容间切换（切换后科室、首页、顶刊库都会跟着变，选择会记住）。
+        </p>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+          顶刊前沿除按科室与期刊浏览外，还提供
+          <span className="font-medium text-ink">「按期次浏览」</span>
+          ：可以看到某本顶刊每一期收录的临床研究；也可以切到「按时间」，把同一期各刊的研究放在一起看。
+          <a
+            href="#/issues"
+            className="ml-1 cursor-pointer text-accent transition-opacity duration-200 hover:opacity-80"
+          >
+            进入按期次浏览 →
+          </a>
         </p>
         <div className="mt-3 grid grid-cols-2 gap-2.5">
           <Metric label="研究条目" value={`${RESEARCH_STATS.total} 条`} />
@@ -274,8 +285,9 @@ export default function AboutPage() {
         </h2>
         <ul className="mt-3 space-y-2 text-[12.5px] leading-relaxed text-ink-2">
           <li>· 打开应用会自动检查更新；在页面顶部下拉并松开，也能立刻更新到最新版。</li>
-          <li>· 顶部「指南共识 / 前沿研究」按钮一键切换两套内容；研究模式可按「近一年 / 近两年 / 近三年 / 全部」、期刊层级（综合顶刊 / 本领域顶刊 / 权威期刊）、期刊与影响程度筛选。</li>
-          <li>· 首页搜索支持病种、药物、指标、阈值等多关键词组合，例如「乙肝 停药」「腹水 白蛋白」；研究模式同样支持跨科室检索。</li>
+          <li>· 顶部「指南共识 / 顶刊前沿」按钮一键切换两套内容；顶刊前沿可按「近一年 / 近两年 / 近三年 / 全部」、期刊层级（综合顶刊 / 本领域顶刊 / 权威期刊）、期刊与影响程度筛选。</li>
+          <li>· 顶刊前沿支持「按期次浏览」：按期刊逐期看，或按时间把同一期各刊的研究合并看；期次按公开发表月份归期，不等于期刊卷期号。</li>
+          <li>· 首页搜索支持病种、药物、指标、阈值等多关键词组合，例如「乙肝 停药」「腹水 白蛋白」；顶刊前沿同样支持跨科室检索，方法学字段（人群、终点）也可检出。</li>
           <li>· 指南库可按「国内 / 国际」与病种筛选；收藏与标记会保存在本机，不上传服务器（指南与研究分别收藏）。</li>
           <li>· 标记「最新版」表示该条目为当前收录范围内的最新版本，仍可能与实际发布存在时间差。</li>
           <li>· 部分国际指南为持续更新（如 AASLD/IDSA HCV Guidance）或定期修订，引用前请访问官网确认版本号与发布日期。</li>

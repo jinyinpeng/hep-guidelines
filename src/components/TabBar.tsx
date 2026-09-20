@@ -10,8 +10,8 @@ const TABS = [
   { key: 'about', to: '/about', label: '说明', Icon: Info },
 ] as const
 
-/** 「研究」模式下第二栏改为研究库 */
-const RESEARCH_LABEL: Record<string, string> = { library: '研究库' }
+/** 「顶刊前沿」模式下第二栏改为顶刊库 */
+const RESEARCH_LABEL: Record<string, string> = { library: '顶刊库' }
 
 export default function TabBar({ active }: { active: string }) {
   const { favorites, rfavorites, marks } = useStore()

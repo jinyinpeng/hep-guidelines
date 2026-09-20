@@ -296,6 +296,90 @@ const RAW: Record<string, [JournalTier, string]> = {
   'Pain Med': ['major', '疼痛'],
 }
 
+/* ----------------------------- 出版频次 ----------------------------- */
+
+/**
+ * 出版频次。用于「按期次浏览」时说明每一期的时间跨度：
+ * 四大顶刊多为周刊，JAMA/Lancet 系列子刊与多数专科大刊为半月刊或月刊。
+ * 未单列的期刊按月刊处理（不影响按年月归期，只是标注上的区别）。
+ */
+export type Frequency = 'weekly' | 'biweekly' | 'monthly' | 'bimonthly'
+
+export const FREQUENCY_LABEL: Record<Frequency, string> = {
+  weekly: '周刊',
+  biweekly: '半月刊',
+  monthly: '月刊',
+  bimonthly: '双月刊',
+}
+
+const WEEKLY = new Set([
+  'NEJM',
+  'Lancet',
+  'JAMA',
+  'BMJ',
+  'Nature',
+  'Cell',
+  'Circulation',
+  'Blood',
+  'Eur Heart J',
+  'Gut',
+  'Hepatology',
+  'J Hepatol',
+  'Gastroenterology',
+  'Brain',
+  'Neurology',
+  'Stroke',
+  'Kidney Int',
+  'Ann Surg',
+  'Pediatrics',
+  'Anesthesiology',
+  'Thorax',
+  'Gut',
+])
+
+const BIWEEKLY = new Set([
+  'Ann Intern Med',
+  'JAMA Intern Med',
+  'JAMA Oncol',
+  'JAMA Cardiol',
+  'JAMA Neurol',
+  'JAMA Psychiatry',
+  'JAMA Dermatol',
+  'JAMA Pediatr',
+  'JAMA Surg',
+  'JAMA Ophthalmol',
+  'JAMA Otolaryngol Head Neck Surg',
+  'Lancet Oncol',
+  'Lancet Neurol',
+  'Lancet Infect Dis',
+  'Lancet Haematol',
+  'Lancet Respir Med',
+  'Lancet Gastroenterol Hepatol',
+  'Lancet Child Adolesc Health',
+  'Lancet Rheumatol',
+  'Lancet Diabetes Endocrinol',
+  'Lancet Psychiatry',
+  'Lancet Healthy Longev',
+  'J Am Coll Cardiol',
+  'Br J Surg',
+  'Am J Respir Crit Care Med',
+])
+
+const BIMONTHLY = new Set([
+  'Hepatol Commun',
+  'Clin Kidney J',
+  'J Rehabil Med',
+  'Acta Paediatr',
+  'Scand J Gastroenterol',
+])
+
+export function journalFrequency(name: string): Frequency {
+  if (WEEKLY.has(name)) return 'weekly'
+  if (BIWEEKLY.has(name)) return 'biweekly'
+  if (BIMONTHLY.has(name)) return 'bimonthly'
+  return 'monthly'
+}
+
 export const JOURNALS: Record<string, JournalMeta> = Object.fromEntries(
   Object.entries(RAW).map(([name, [tier, field]]) => [name, { name, tier, field }]),
 )

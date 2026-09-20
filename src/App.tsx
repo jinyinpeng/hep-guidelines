@@ -13,6 +13,7 @@ import DetailPage from './pages/DetailPage'
 import FavoritesPage from './pages/FavoritesPage'
 import FindingPage from './pages/FindingPage'
 import HomePage from './pages/HomePage'
+import IssuesPage from './pages/IssuesPage'
 import LibraryPage from './pages/LibraryPage'
 import MethodologyPage from './pages/MethodologyPage'
 import ResearchDeptPage from './pages/ResearchDeptPage'
@@ -44,8 +45,8 @@ function Shell() {
   const dept = route.deptId ? DEPT_MAP[route.deptId as keyof typeof DEPT_MAP] : undefined
   const research = mode === 'research'
 
-  let title = research ? '临床前沿研究库' : '临床指南要点库'
-  let subtitle = research ? '国内外顶刊最新研究 · 近一年速览' : '国内外指南共识 · 要点速查'
+  let title = research ? '顶刊前沿' : '临床指南要点库'
+  let subtitle = research ? '国内外顶刊临床研究 · 按期速览' : '国内外指南共识 · 要点速查'
 
   if (route.name === 'dept') {
     title = dept?.name ?? '科室'
@@ -56,8 +57,11 @@ function Shell() {
         ? `${groupName} · 指南共识要点`
         : '指南共识要点'
   } else if (route.name === 'library') {
-    title = research ? '全部研究' : '全部指南'
-    subtitle = research ? '按科室 · 期刊 · 时间筛选' : '按科室 · 地区筛选'
+    title = research ? '顶刊库' : '全部指南'
+    subtitle = research ? '按科室 · 层级 · 期刊 · 时间筛选' : '按科室 · 地区筛选'
+  } else if (route.name === 'issues') {
+    title = '按期次浏览'
+    subtitle = '顶刊每一期收录的临床研究'
   } else if (route.name === 'detail') {
     title = '指南详情'
     subtitle = '要点摘编 · 请以原文为准'
@@ -84,6 +88,7 @@ function Shell() {
           route.name === 'detail' ||
           route.name === 'dept' ||
           route.name === 'finding' ||
+          route.name === 'issues' ||
           route.name === 'methods'
             ? goBack
             : undefined
@@ -111,6 +116,7 @@ function Shell() {
         {route.name === 'library' && (research ? <ResearchLibraryPage /> : <LibraryPage />)}
         {route.name === 'detail' && route.id && <DetailPage id={route.id} />}
         {route.name === 'finding' && route.id && <FindingPage id={route.id} />}
+        {route.name === 'issues' && <IssuesPage />}
         {route.name === 'methods' && <MethodologyPage />}
         {route.name === 'favorites' && <FavoritesPage />}
         {route.name === 'about' && <AboutPage />}

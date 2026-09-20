@@ -150,6 +150,69 @@ export function journalsOfDept(dept: DeptId): JournalStat[] {
   return journalStats(findingsByDept(dept))
 }
 
+/* ----------------------------- 期次（按期浏览） ----------------------------- */
+
+/** '2026-05' → '2026 年 5 月期' */
+export function issueLabel(date: string): string {
+  const [y, m] = date.split('-')
+  return `${y} 年 ${Number(m)} 月期`
+}
+
+export interface IssueGroup {
+  key: string
+  label: string
+  /** 指定期刊时才有值 */
+  journal?: string
+  date: string
+  findings: Finding[]
+}
+
+export function findingsByJournal(journal: string): Finding[] {
+  return FINDINGS.filter((f) => f.journal === journal)
+}
+
+function groupByDate(list: Finding[], journal?: string): IssueGroup[] {
+  const map = new Map<string, Finding[]>()
+  for (const f of list) {
+    const cur = map.get(f.date)
+    if (cur) cur.push(f)
+    else map.set(f.date, [f])
+  }
+  return [...map]
+    .map(([date, findings]) => ({
+      key: journal ? `${journal}@${date}` : date,
+      label: issueLabel(date),
+      journal,
+      date,
+      findings,
+    }))
+    .sort((a, b) => dateNum(b.date) - dateNum(a.date))
+}
+
+/** 某期刊的各期（按年月倒序），只保留本库有收录的期次 */
+export function issuesOfJournal(journal: string): IssueGroup[] {
+  return groupByDate(findingsByJournal(journal), journal)
+}
+
+/** 全部期刊按期次合并：同一个月视为同一期 */
+export function allIssues(pool: Finding[] = FINDINGS): IssueGroup[] {
+  return groupByDate(pool)
+}
+
+/** 某期刊的期次统计 */
+export function issueStatsOfJournal(journal: string): {
+  issues: number
+  latest: string
+  total: number
+} {
+  const list = findingsByJournal(journal)
+  return {
+    issues: new Set(list.map((f) => f.date)).size,
+    latest: list[0]?.date ?? '',
+    total: list.length,
+  }
+}
+
 export interface ResearchStats {
   total: number
   inWindow: number
@@ -268,5 +331,15 @@ export function searchFindings(query: string, pool: Finding[] = FINDINGS): Findi
 }
 
 export type { Finding, ImpactLevel, JournalTier } from './types'
-export type { JournalMeta } from './journals'
-export { JOURNAL_NAMES, JOURNALS, TIER_LABEL, TIER_RANK, journalMeta, journalTier, journalsByTier } from './journals'
+export type { Frequency, JournalMeta } from './journals'
+export {
+  FREQUENCY_LABEL,
+  JOURNAL_NAMES,
+  JOURNALS,
+  TIER_LABEL,
+  TIER_RANK,
+  journalFrequency,
+  journalMeta,
+  journalTier,
+  journalsByTier,
+} from './journals'
