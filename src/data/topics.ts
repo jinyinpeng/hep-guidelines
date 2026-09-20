@@ -89,7 +89,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'lymphoma', name: '淋巴瘤', short: '淋巴瘤' },
     { id: 'myeloma', name: '多发性骨髓瘤', short: '骨髓瘤' },
     { id: 'anemia', name: '贫血', short: '贫血' },
-    { id: 'plt', name: '血小板与出凝血疾病', short: '血小板' },
+    { id: 'plt', name: '血小板疾病', short: '血小板' },
+    { id: 'coagulation', name: '血友病与出凝血疾病', short: '出凝血' },
+    { id: 'other', name: '其他血液病', short: '其他' },
   ],
 
   endo: [
@@ -146,9 +148,12 @@ export const TOPICS: Record<DeptId, Topic[]> = {
 
   geriatrics: [
     { id: 'cga', name: '老年综合评估', short: '综合评估' },
-    { id: 'frailty', name: '衰弱与肌少症', short: '衰弱' },
+    { id: 'frailty', name: '衰弱与肌少症', short: '衰弱肌少' },
     { id: 'falls', name: '跌倒预防', short: '跌倒' },
+    { id: 'delirium', name: '谵妄', short: '谵妄' },
     { id: 'polypharmacy', name: '多重用药与处方精简', short: '多重用药' },
+    { id: 'chronic', name: '老年慢病管理', short: '老年慢病' },
+    { id: 'nutrition', name: '老年营养支持', short: '老年营养' },
     { id: 'other', name: '其他老年综合征', short: '其他' },
   ],
 
@@ -156,7 +161,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'depression', name: '抑郁障碍', short: '抑郁' },
     { id: 'anxiety', name: '焦虑障碍', short: '焦虑' },
     { id: 'schizophrenia', name: '精神分裂症', short: '精神分裂症' },
+    { id: 'bipolar', name: '双相障碍', short: '双相' },
     { id: 'sleep', name: '睡眠障碍', short: '失眠' },
+    { id: 'child', name: '儿童青少年精神障碍', short: '儿童精神' },
     { id: 'other', name: '其他精神障碍', short: '其他' },
   ],
 
@@ -165,6 +172,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'psoriasis', name: '银屑病', short: '银屑病' },
     { id: 'acne', name: '痤疮', short: '痤疮' },
     { id: 'urticaria', name: '荨麻疹', short: '荨麻疹' },
+    { id: 'hair', name: '毛发疾病', short: '斑秃' },
+    { id: 'pigment', name: '色素性皮肤病', short: '白癜风' },
+    { id: 'infection', name: '皮肤感染', short: '带状疱疹' },
     { id: 'other', name: '其他皮肤病', short: '其他' },
   ],
 

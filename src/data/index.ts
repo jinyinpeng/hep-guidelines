@@ -1,14 +1,16 @@
 import { CARDIO } from './cardio'
 import { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup } from './departments'
+import { DERM } from './derm'
 import { ENDO } from './endo'
+import { GERIATRICS } from './geriatrics'
 import { GI } from './gi'
 import { CN_GUIDELINES } from './hepatology-cn'
+import { HEME } from './heme'
 import { INTL_GUIDELINES } from './hepatology-intl'
 import { INFECTIOUS } from './infectious'
-import { INTERNAL_2 } from './internal-2'
-import { INTERNAL_3 } from './internal-3'
 import { NEURO } from './neuro'
 import { ONCOLOGY } from './oncology'
+import { PSYCHIATRY } from './psychiatry'
 import { RENAL } from './renal'
 import { RESP } from './resp'
 import { RHEUM } from './rheum'
@@ -23,16 +25,18 @@ const RAW: Guideline[] = [
   ...CN_GUIDELINES,
   ...INTL_GUIDELINES,
   ...CARDIO,
+  ...DERM,
   ...RESP,
   ...GI,
+  ...GERIATRICS,
   ...ENDO,
   ...NEURO,
   ...RENAL,
   ...RHEUM,
+  ...HEME,
   ...INFECTIOUS,
   ...ONCOLOGY,
-  ...INTERNAL_2,
-  ...INTERNAL_3,
+  ...PSYCHIATRY,
   ...SURGERY,
   ...WOMEN_CHILD_CRITICAL,
   ...SPECIALTY,

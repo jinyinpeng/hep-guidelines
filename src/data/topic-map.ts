@@ -139,11 +139,18 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-renal-anemia': 'complication',
 
   /* ---------------- 血液科 ---------------- */
+  'cn-aml-2023': 'leukemia',
   'cn-cml-2020': 'leukemia',
+  'csco-lymphoma-2026': 'lymphoma',
   'cn-dlbcl-2021': 'lymphoma',
+  'csco-plasma-2026': 'myeloma',
   'cn-mm-2022': 'myeloma',
+  'cn-aa-2022': 'anemia',
   'cn-ida-2020': 'anemia',
   'cn-itp-2020': 'plt',
+  'cn-hemophilia-2025': 'coagulation',
+  'cn-dic-2017': 'coagulation',
+  'cn-fn-2020': 'other',
 
   /* ---------------- 内分泌代谢科 ---------------- */
   'cn-dm-2024': 'dm',
@@ -224,20 +231,32 @@ export const TOPIC_OF: Record<string, string> = {
   /* ---------------- 老年医学科 ---------------- */
   'cn-cga-consensus': 'cga',
   'cn-frailty-2022': 'frailty',
+  'cn-sarcopenia-2023': 'frailty',
   'cn-falls-prevention': 'falls',
+  'cn-delirium': 'delirium',
   'cn-polypharmacy': 'polypharmacy',
+  'cn-geriatric-hypertension': 'chronic',
+  'cn-geriatric-dm': 'chronic',
+  'cn-geriatric-nutrition': 'nutrition',
 
   /* ---------------- 精神心理科 ---------------- */
-  'cn-depression-2015': 'depression',
+  'cn-depression-2025': 'depression',
   'cn-anxiety': 'anxiety',
-  'cn-schizophrenia-2015': 'schizophrenia',
+  'cn-schizophrenia-2025': 'schizophrenia',
+  'cn-bipolar': 'bipolar',
   'cn-insomnia-2017': 'sleep',
+  'cn-adhd': 'child',
+  'cn-ocd': 'other',
+  'cn-substance': 'other',
 
   /* ---------------- 皮肤科 ---------------- */
-  'cn-atopic-derm-2020': 'eczema',
+  'cn-atopic-derm-2025': 'eczema',
   'cn-psoriasis-2023': 'psoriasis',
   'cn-acne-2019': 'acne',
   'cn-urticaria-2022': 'urticaria',
+  'cn-alopecia-2025': 'hair',
+  'cn-vitiligo-2024': 'pigment',
+  'cn-herpes-zoster-2025': 'infection',
 
   /* ---------------- 普通外科 ---------------- */
   'cn-gallstone-2021': 'biliary',
