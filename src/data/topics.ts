@@ -296,6 +296,7 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'glaucoma', name: '青光眼', short: '青光眼' },
     { id: 'cataract', name: '白内障与眼内炎', short: '白内障' },
     { id: 'surface', name: '眼表疾病与干眼', short: '干眼' },
+    { id: 'myopia', name: '近视防控', short: '近视' },
     { id: 'other', name: '其他眼科疾病', short: '其他' },
   ],
 
@@ -303,7 +304,10 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'rhinitis', name: '变应性鼻炎', short: '过敏性鼻炎' },
     { id: 'sinusitis', name: '慢性鼻窦炎', short: '鼻窦炎' },
     { id: 'hearing', name: '听力障碍与突发性聋', short: '听力障碍' },
+    { id: 'vertigo', name: '眩晕与梅尼埃病', short: '眩晕' },
+    { id: 'otitis', name: '中耳炎与耳部感染', short: '中耳炎' },
     { id: 'sleep', name: '睡眠呼吸障碍', short: '打鼾 OSA' },
+    { id: 'tumor', name: '头颈部肿瘤', short: '头颈肿瘤' },
     { id: 'other', name: '其他耳鼻咽喉疾病', short: '其他' },
   ],
 
@@ -311,7 +315,8 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'caries', name: '龋病', short: '龋病' },
     { id: 'periodontal', name: '牙周病', short: '牙周病' },
     { id: 'mucosa', name: '口腔黏膜病', short: '黏膜病' },
-    { id: 'implant', name: '口腔种植', short: '种植' },
+    { id: 'implant', name: '口腔种植与修复', short: '种植' },
+    { id: 'tumor', name: '口腔颌面肿瘤', short: '口腔肿瘤' },
     { id: 'other', name: '其他口腔疾病', short: '其他' },
   ],
 
@@ -320,6 +325,7 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'cardiac', name: '心脏康复', short: '心脏康复' },
     { id: 'pulmonary', name: '肺康复', short: '肺康复' },
     { id: 'dysphagia', name: '吞咽障碍康复', short: '吞咽障碍' },
+    { id: 'pediatric', name: '儿童康复', short: '儿童康复' },
     { id: 'other', name: '其他康复方向', short: '其他' },
   ],
 

@@ -5,6 +5,7 @@ import { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup } from './departments'
 import { DERM } from './derm'
 import { EMERGENCY } from './emergency'
 import { ENDO } from './endo'
+import { ENT } from './ent'
 import { GENSURG } from './gensurg'
 import { GERIATRICS } from './geriatrics'
 import { GI } from './gi'
@@ -17,13 +18,16 @@ import { NEURO } from './neuro'
 import { NEUROSURG } from './neurosurg'
 import { OBGYN } from './obgyn'
 import { ONCOLOGY } from './oncology'
+import { OPHTHO } from './ophtho'
 import { ORTHO } from './ortho'
+import { PAIN } from './pain'
 import { PEDS } from './peds'
 import { PSYCHIATRY } from './psychiatry'
+import { REHAB } from './rehab'
 import { RENAL } from './renal'
 import { RESP } from './resp'
 import { RHEUM } from './rheum'
-import { SPECIALTY } from './specialty'
+import { STOMATOLOGY } from './stomatology'
 import { TOPIC_OF } from './topic-map'
 import { topicOf, topicsOf } from './topics'
 import type { DeptId, Guideline } from './types'
@@ -57,7 +61,11 @@ const RAW: Guideline[] = [
   ...EMERGENCY,
   ...ICU,
   ...ANES,
-  ...SPECIALTY,
+  ...OPHTHO,
+  ...ENT,
+  ...STOMATOLOGY,
+  ...REHAB,
+  ...PAIN,
 ]
 
 /**

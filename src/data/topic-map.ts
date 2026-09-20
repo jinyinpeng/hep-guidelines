@@ -384,31 +384,44 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 眼科 ---------------- */
   'cn-dr-guideline': 'retina',
+  'cn-amd-2023': 'retina',
+  'cn-diabetic-eye-2021': 'retina',
   'cn-glaucoma-2020': 'glaucoma',
+  'cn-cataract-diabetes-2020': 'cataract',
   'cn-endophthalmitis-2017': 'cataract',
   'cn-dry-eye-2020': 'surface',
+  'cn-myopia-2024': 'myopia',
 
   /* ---------------- 耳鼻咽喉科 ---------------- */
   'cn-ar-2022': 'rhinitis',
   'cn-crs-2018': 'sinusitis',
   'cn-sudden-deafness-2015': 'hearing',
+  'cn-menieres-2017': 'vertigo',
+  'cn-otitis-media': 'otitis',
   'cn-osa-2018': 'sleep',
+  'csco-head-neck-2026': 'tumor',
 
   /* ---------------- 口腔科 ---------------- */
   'cn-caries-guideline': 'caries',
   'cn-periodontitis-guideline': 'periodontal',
   'cn-oral-mucosa': 'mucosa',
   'cn-implant-consensus': 'implant',
+  'cn-oral-cancer-pathology': 'tumor',
+  'cn-child-osa-ortho': 'other',
 
   /* ---------------- 康复医学科 ---------------- */
-  'cn-stroke-rehab-2017': 'strokeRehab',
+  'cn-stroke-rehab-2025': 'strokeRehab',
+  'cn-cp-rehab-2022': 'pediatric',
   'cn-cardiac-rehab': 'cardiac',
   'cn-pulmonary-rehab': 'pulmonary',
   'cn-dysphagia-consensus': 'dysphagia',
+  'cn-fall-prevention-tech': 'other',
 
   /* ---------------- 疼痛科 ---------------- */
   'cn-cancer-pain-2018': 'cancer',
+  'cn-zap-2025': 'neuropathic',
   'cn-neuropathic-pain-consensus': 'neuropathic',
-  'cn-phn-2016': 'neuropathic',
   'cn-lbp-pain-2020': 'spine',
+  'cn-fibromyalgia': 'other',
+  'cn-hospice': 'other',
 }
