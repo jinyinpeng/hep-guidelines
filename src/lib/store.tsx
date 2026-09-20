@@ -6,6 +6,8 @@ type SetApi = ReturnType<typeof usePersistentSet>
 interface StoreValue {
   /** 收藏的指南 id */
   favorites: SetApi
+  /** 收藏的研究发现 id */
+  rfavorites: SetApi
   /** 标记的要点 id，格式 guid:sectionIndex:pointIndex */
   marks: SetApi
 }
@@ -14,8 +16,12 @@ const StoreContext = createContext<StoreValue | null>(null)
 
 export function StoreProvider({ children }: { children: ReactNode }) {
   const favorites = usePersistentSet('favorites')
+  const rfavorites = usePersistentSet('rfavorites')
   const marks = usePersistentSet('marks')
-  const value = useMemo<StoreValue>(() => ({ favorites, marks }), [favorites, marks])
+  const value = useMemo<StoreValue>(
+    () => ({ favorites, rfavorites, marks }),
+    [favorites, rfavorites, marks],
+  )
   return <StoreContext.Provider value={value}>{children}</StoreContext.Provider>
 }
 

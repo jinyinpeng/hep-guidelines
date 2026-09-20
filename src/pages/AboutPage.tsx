@@ -2,6 +2,7 @@ import {
   Check,
   Download,
   FileText,
+  FlaskConical,
   ListFilter,
   RefreshCw,
   ShieldCheck,
@@ -10,7 +11,7 @@ import {
   WifiOff,
 } from 'lucide-react'
 import Disclaimer from '../components/Disclaimer'
-import { DEPARTMENTS, STATS, countByDept } from '../data'
+import { DEPARTMENTS, RESEARCH_STATS, STATS, countByDept } from '../data'
 import { useInstallPrompt, useOnline, useStandalone } from '../lib/pwa'
 import { checkForUpdate, useUpdateState, type UpdateState } from '../lib/update'
 
@@ -129,8 +130,75 @@ export default function AboutPage() {
 
       <section className="card p-4">
         <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+          <FlaskConical size={16} className="text-accent" />
+          指南共识 ⇄ 前沿研究
+        </h2>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+          顶部有一个
+          <span className="font-medium text-ink">「指南共识 / 前沿研究」切换按钮</span>
+          ，点一下即可在两套内容间切换（切换后科室、首页、内容库都会跟着变，选择会记住）。
+        </p>
+        <div className="mt-3 grid grid-cols-2 gap-2.5">
+          <Metric label="研究条目" value={`${RESEARCH_STATS.total} 条`} />
+          <Metric label="近一年" value={`${RESEARCH_STATS.inWindow} 条`} />
+          <Metric label="可能改变实践" value={`${RESEARCH_STATS.practice} 条`} />
+          <Metric label="来源期刊" value={`${RESEARCH_STATS.journals} 种`} />
+          <Metric label="综合顶刊" value={`${RESEARCH_STATS.top} 条`} />
+          <Metric label="本领域顶刊" value={`${RESEARCH_STATS.field} 条`} />
+        </div>
+        <p className="mt-3 text-[12.5px] leading-relaxed text-ink-2">
+          <span className="font-medium text-ink">期刊口径不只看新英格兰等综合顶刊</span>
+          ：每个科室的本领域顶刊同样收录，并单独标注，例如肝病科的
+          <span className="font-medium text-ink">Hepatology、J Hepatol</span>
+          ，血液科的
+          <span className="font-medium text-ink">Blood、Lancet Haematol</span>
+          ，消化科的
+          <span className="font-medium text-ink">Gut、Gastroenterology</span>
+          ，心血管的
+          <span className="font-medium text-ink">Circulation、Eur Heart J、J Am Coll Cardiol</span>
+          ，肾脏的
+          <span className="font-medium text-ink">Kidney Int、J Am Soc Nephrol</span>
+          ，外科的
+          <span className="font-medium text-ink">Ann Surg</span>
+          等。期刊按三档登记：
+          <span className="font-medium text-ink">综合顶刊 / 本领域顶刊 / 权威期刊</span>
+          ，可按层级筛选。
+        </p>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+          收录以
+          <span className="font-medium text-ink">随机对照试验、前瞻性队列与荟萃分析</span>
+          为主，标注期刊、发表年月、研究设计与样本量；只关注阳性结果容易失真，因此中性/阴性研究同样收录，
+          影响程度另按「可能改变实践 / 有前景待验证 / 探索性」标注。
+        </p>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+          每条研究都写清了
+          <span className="font-medium text-ink">
+            入组人群、干预与对照、主要终点、统计与分析
+          </span>
+          四项方法学要素——同一条阳性结果，在优效性与非劣效性设计、硬终点与替代终点之间分量完全不同。
+          <a
+            href="#/methods"
+            className="ml-1 cursor-pointer text-accent transition-opacity duration-200 hover:opacity-80"
+          >
+            研究方法速读 →
+          </a>
+        </p>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+          研究按发表时间由近及远排列，
+          <span className="font-medium text-ink">默认只看「近一年」</span>
+          ，可切换到「近两年 / 全部」；还可按期刊与「影响程度」（可能改变实践 / 有前景待验证 / 探索性）筛选。
+        </p>
+        <p className="mt-3 rounded-xl bg-surface-2 px-3 py-2 text-[11.5px] leading-relaxed text-ink-3">
+          研究结论
+          <span className="text-ink-2">不等于临床推荐</span>
+          ，条目为结果要点摘编，具体数值、亚组与安全性请核对原文全文；是否改变本机构流程需经多学科讨论与指南更新确认。
+        </p>
+      </section>
+
+      <section className="card p-4">
+        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
           <FileText size={16} className="text-brand" />
-          收录概览
+          收录概览（指南共识）
         </h2>
         <div className="mt-3 grid grid-cols-2 gap-2.5">
           <Metric label="临床科室" value={`${STATS.depts} 个`} />
@@ -206,8 +274,9 @@ export default function AboutPage() {
         </h2>
         <ul className="mt-3 space-y-2 text-[12.5px] leading-relaxed text-ink-2">
           <li>· 打开应用会自动检查更新；在页面顶部下拉并松开，也能立刻更新到最新版。</li>
-          <li>· 首页搜索支持病种、药物、指标、阈值等多关键词组合，例如「乙肝 停药」「腹水 白蛋白」。</li>
-          <li>· 指南库可按「国内 / 国际」与病种筛选；收藏与标记会保存在本机，不上传服务器。</li>
+          <li>· 顶部「指南共识 / 前沿研究」按钮一键切换两套内容；研究模式可按「近一年 / 近两年 / 近三年 / 全部」、期刊层级（综合顶刊 / 本领域顶刊 / 权威期刊）、期刊与影响程度筛选。</li>
+          <li>· 首页搜索支持病种、药物、指标、阈值等多关键词组合，例如「乙肝 停药」「腹水 白蛋白」；研究模式同样支持跨科室检索。</li>
+          <li>· 指南库可按「国内 / 国际」与病种筛选；收藏与标记会保存在本机，不上传服务器（指南与研究分别收藏）。</li>
           <li>· 标记「最新版」表示该条目为当前收录范围内的最新版本，仍可能与实际发布存在时间差。</li>
           <li>· 部分国际指南为持续更新（如 AASLD/IDSA HCV Guidance）或定期修订，引用前请访问官网确认版本号与发布日期。</li>
           <li>· 推荐等级与证据级别按原文照录，且仅在该指南明确给出时标注；涉及用药剂量、疗程、禁忌时务必回查原文。</li>

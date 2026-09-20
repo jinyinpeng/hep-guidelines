@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react'
 
-export type RouteName = 'home' | 'dept' | 'library' | 'detail' | 'favorites' | 'about'
+export type RouteName =
+  | 'home'
+  | 'dept'
+  | 'library'
+  | 'detail'
+  | 'finding'
+  | 'methods'
+  | 'favorites'
+  | 'about'
 
 export interface Route {
   name: RouteName
@@ -8,7 +16,7 @@ export interface Route {
   deptId?: string
   /** 科室下的亚病种 / 亚专业 */
   topic?: string
-  /** 指南 id */
+  /** 指南 id 或研究发现 id */
   id?: string
   query: URLSearchParams
   raw: string
@@ -25,6 +33,8 @@ export function parseRoute(raw: string): Route {
   }
   if (segs[0] === 'library') return { name: 'library', query, raw }
   if (segs[0] === 'detail' && segs[1]) return { name: 'detail', id: segs[1], query, raw }
+  if (segs[0] === 'finding' && segs[1]) return { name: 'finding', id: segs[1], query, raw }
+  if (segs[0] === 'methods') return { name: 'methods', query, raw }
   if (segs[0] === 'favorites') return { name: 'favorites', query, raw }
   if (segs[0] === 'about') return { name: 'about', query, raw }
   return { name: 'home', query, raw }

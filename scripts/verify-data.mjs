@@ -14,8 +14,16 @@
  *   6. region / latest 字段取值合法，year 落在合理区间
  *   7. 警告项：未登记病种的指南（会落到「其他」）
  *   8. 提示项：定义了但还没有指南使用的病种（内容缺口，可按需补指南）
+ *
+ * 顶刊研究（src/data/research/）：
+ *   9.  研究 id 唯一、仅含 ASCII 小写字母/数字/连字符，且以 r- 开头
+ *   10. dept 必须是已登记科室，topic 必须是该科室定义过的病种
+ *   11. date 必须是 YYYY-MM，且不能晚于当前月份
+ *   12. journal 必须在 research/journals.ts 登记（层级由登记表统一决定）
+ *   13. level 取值合法，results 至少 1 条、impact 非空
+ *   14. 每个科室至少有 1 条研究
  */
-import { readFileSync, readdirSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -199,6 +207,122 @@ for (const [dept, list] of TOPICS) {
 }
 if (unused.length) info(`定义了但还没有指南使用的病种 ${unused.length} 个：${unused.join('、')}`)
 
+/* ------------------------------ 顶刊研究 ------------------------------ */
+
+const RESEARCH = join(DATA, 'research')
+const RESEARCH_SKIP = new Set(['types.ts', 'index.ts', 'link.ts'])
+const researchFiles = existsSync(RESEARCH)
+  ? readdirSync(RESEARCH)
+      .filter((f) => f.endsWith('.ts') && !RESEARCH_SKIP.has(f))
+      .sort()
+  : []
+
+const LEVELS = new Set(['practice', 'promising', 'exploratory'])
+
+/** 从 journals.ts 读期刊登记表：name → tier */
+const journalSrc = readFileSync(join(RESEARCH, 'journals.ts'), 'utf8')
+const JOURNALS = new Map()
+for (const m of journalSrc.matchAll(/^[ \t]*'?([^':\r\n][^':\r\n]*?)'?:[ \t]*\['(top|field|major)',[ \t]*'([^']+)'\]/gm)) {
+  if (JOURNALS.has(m[1])) err(`journals.ts 期刊重复登记：${m[1]}`)
+  JOURNALS.set(m[1], { tier: m[2], field: m[3] })
+}
+if (JOURNALS.size < 40) err(`journals.ts 只解析到 ${JOURNALS.size} 个期刊，疑似解析逻辑或数据异常`)
+
+/** 解析单个研究数据文件里的所有条目 */
+function parseFindings(file) {
+  const src = readFileSync(join(RESEARCH, file), 'utf8')
+  const marks = []
+  const re = /^\s*id:\s*'([^']+)'/gm
+  let m
+  while ((m = re.exec(src))) marks.push({ id: m[1], at: m.index })
+
+  return marks.map((mark, i) => {
+    const chunk = src.slice(mark.at, i + 1 < marks.length ? marks[i + 1].at : src.length)
+    const pick = (key) => chunk.match(new RegExp(`\\b${key}:\\s*'([^']*)'`))?.[1]
+    return {
+      id: mark.id,
+      file,
+      dept: pick('dept'),
+      topic: pick('topic'),
+      journal: pick('journal'),
+      date: pick('date'),
+      level: pick('level'),
+      impact: pick('impact'),
+      title: pick('title'),
+      population: pick('population'),
+      arms: pick('arms'),
+      endpoint: pick('endpoint'),
+      stats: pick('stats'),
+      resultCount: (chunk.match(/^\s*'[^']*',\s*$/gm) ?? []).length,
+      hasResults: /\bresults:\s*\[/.test(chunk),
+    }
+  })
+}
+
+const FINDINGS = researchFiles.flatMap(parseFindings)
+
+if (!FINDINGS.length) err('未能从 src/data/research/ 解析出任何研究条目，请检查数据或解析逻辑')
+
+const now = new Date()
+const nowNum = now.getFullYear() * 12 + now.getMonth()
+const seenFinding = new Map()
+
+for (const f of FINDINGS) {
+  if (seenFinding.has(f.id)) err(`研究 id 重复：${f.id}（${seenFinding.get(f.id)} 与 ${f.file}）`)
+  else seenFinding.set(f.id, f.file)
+
+  if (!/^r-[a-z0-9-]+$/.test(f.id)) err(`研究 id 命名不规范：${f.id}（${f.file}，应形如 r-cardio-01）`)
+  if (!f.title) err(`${f.file} 的 ${f.id} 缺少 title`)
+  if (!f.journal) err(`${f.file} 的 ${f.id} 缺少 journal`)
+  if (!f.impact) err(`${f.file} 的 ${f.id} 缺少 impact（临床意义）`)
+  if (!f.hasResults || !f.resultCount) err(`${f.file} 的 ${f.id} 没有 results 内容`)
+
+  if (!f.journal) {
+    // 上面已报缺失
+  } else if (!JOURNALS.has(f.journal)) {
+    err(`${f.file} 的 ${f.id} 用了未登记的期刊「${f.journal}」，请在 research/journals.ts 补一行`)
+  }
+
+  if (!f.level || !LEVELS.has(f.level)) {
+    err(
+      `${f.file} 的 ${f.id} 的 level 非法：${f.level ?? '(空)'}（应为 practice / promising / exploratory）`,
+    )
+  }
+
+  // 研究方法四要素：人群、干预与对照、主要终点、统计分析，缺一不可
+  const methodMissing = ['population', 'arms', 'endpoint', 'stats'].filter((k) => !f[k])
+  if (methodMissing.length) {
+    err(`${f.file} 的 ${f.id} 缺少研究方法字段：${methodMissing.join('、')}`)
+  }
+
+  if (!f.dept) err(`${f.file} 的 ${f.id} 缺少 dept`)
+  else if (!DEPT_IDS.has(f.dept)) err(`${f.file} 的 ${f.id} 指向未登记科室：${f.dept}`)
+  else if (f.topic && !topicSetOf(f.dept).has(f.topic)) {
+    err(`${f.file} 的 ${f.id} 的病种 ${f.topic} 不属于科室 ${f.dept}`)
+  }
+
+  const dm = f.date?.match(/^(\d{4})-(\d{2})$/)
+  if (!dm) {
+    err(`${f.file} 的 ${f.id} 的 date 格式错误：${f.date ?? '(空)'}（应为 YYYY-MM）`)
+  } else {
+    const mn = Number(dm[2])
+    const num = Number(dm[1]) * 12 + (mn - 1)
+    if (mn < 1 || mn > 12) err(`${f.file} 的 ${f.id} 的 date 月份非法：${f.date}`)
+    else if (num > nowNum) err(`${f.file} 的 ${f.id} 的 date 晚于当前月份：${f.date}`)
+  }
+}
+
+for (const d of DEPTS) {
+  if (!FINDINGS.some((f) => f.dept === d.id)) {
+    err(`科室「${d.name}」(${d.id}) 没有任何顶刊研究`)
+  }
+}
+
+const findingsInWindow = FINDINGS.filter((f) => {
+  const num = Number(f.date?.slice(0, 4)) * 12 + (Number(f.date?.slice(5, 7)) - 1)
+  return num > nowNum - 12
+}).length
+
 /* ------------------------------ 输出 ------------------------------ */
 
 const cn = GUIDES.filter((g) => g.region === 'cn').length
@@ -206,8 +330,18 @@ const intl = GUIDES.filter((g) => g.region === 'intl').length
 const usedTopicCount = usedTopics.size
 
 console.log('=== 数据校验 ===')
-console.log(`数据文件：${guidelineFiles.length} 个`)
+console.log(`指南数据文件：${guidelineFiles.length} 个`)
 console.log(`指南条目：${GUIDES.length}（国内 ${cn} / 国际 ${intl}）`)
+const tierCount = { top: 0, field: 0, major: 0 }
+for (const f of FINDINGS) {
+  const t = JOURNALS.get(f.journal)?.tier
+  if (t) tierCount[t]++
+}
+console.log(`研究数据文件：${researchFiles.length} 个 · 研究条目：${FINDINGS.length}（近一年 ${findingsInWindow} 条）`)
+console.log(
+  `研究期刊：登记 ${JOURNALS.size} 种 / 已使用 ${new Set(FINDINGS.map((f) => f.journal)).size} 种` +
+    `（综合顶刊 ${tierCount.top} 条 / 本领域顶刊 ${tierCount.field} 条 / 权威期刊 ${tierCount.major} 条）`,
+)
 console.log(`科室：${DEPTS.length}`)
 console.log(`病种：定义 ${[...TOPICS.values()].reduce((n, l) => n + l.length, 0)} / 已使用 ${usedTopicCount}`)
 console.log(`病种归属登记：${MAP.size} 条`)

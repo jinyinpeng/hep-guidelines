@@ -1,9 +1,17 @@
 # 临床指南要点库
 
-手机端优先、**完全离线可用**的临床指南共识速查前端。覆盖 **30 个临床科室**，收录国内外最新指南/共识的核心要点，支持全文检索、要点标记与收藏。
+手机端优先、**完全离线可用**的临床速查前端。覆盖 **30 个临床科室**，包含两套可一键切换的内容：
+
+1. **指南共识**——国内外最新指南/共识的核心要点；
+2. **前沿研究**——各科室发表在国内外顶刊的最新临床研究发现（默认只看近一年）。
+
+两套内容都支持全文检索、收藏与标记。
 
 ## 特性
 
+- **一键切换双内容**：顶栏「**指南共识 / 前沿研究**」切换按钮，一次点击即可在「指南要点」与「各科室顶刊最新临床研究发现」之间切换，首页、科室页、内容库、详情页整体换套；选择记在本机，下次打开保持同一视图。
+- **期刊口径覆盖专科顶刊**：不止 NEJM / Lancet / JAMA / BMJ，每个科室的本领域顶刊同样收录并单独标注——肝病科的 Hepatology、J Hepatol，血液科的 Blood，消化科的 Gut、Gastroenterology，心血管的 Circulation、Eur Heart J、JACC，肾脏的 Kidney Int、JASN，外科的 Ann Surg、JBJS 等，共 200+ 种期刊按「综合顶刊 / 本领域顶刊 / 权威期刊」三档登记，可按层级筛选。
+- **写明研究方法**：每条研究都记录**入组人群、干预与对照、主要终点、统计与分析**四项方法学要素，并附「研究方法速读」页讲清证据层级、优效与非劣效、硬终点与替代终点、ITT 与提前终止等解读要点——避免只看到「阳性」就照搬结论。
 - **全科室覆盖**：内科系、外科系、妇产与儿科、急危重症与麻醉、专科（眼科/耳鼻喉/口腔/康复/疼痛）五大分组，共 30 个科室。
 - **病种分类**：每个科室都有自己的一套亚病种 / 亚专业分类（肝病科的「乙肝 / 丙肝 / 脂肪肝」、神经内科的「缺血性卒中 / 帕金森 / 癫痫」、心内科的「高血压 / 冠心病 / 心衰 / 房颤」等），科室页可按病种一键筛选并显示该类收录数，指南卡片上也会标出所属病种。
 - **证据等级标注**：原指南明确给出推荐等级 / 证据级别的推荐，会在要点下方以芯片形式标出（如「推荐 I · 证据 A」），详情页「来源与版本」同时注明该指南采用的是哪一种分级体系。等级**一律按原文照录、不作推断**；未标注表示摘编时未从原文取得该等级，不代表该条推荐没有等级。
@@ -79,8 +87,19 @@ src/
     rehab.ts             康复医学科（神经康复、心脏康复、肺康复、吞咽障碍、跌倒干预）
     pain.ts              疼痛科（癌痛、神经病理性疼痛、脊柱源性疼痛、纤维肌痛、安宁疗护）
     index.ts             汇总、统计与全文检索
-  components/            TopBar / TabBar / 指南卡片 / 搜索框 / 免责声明 / 下拉刷新
-  pages/                 首页 / 科室页 / 全部指南 / 详情 / 收藏 / 说明
+    research/            顶刊最新临床研究（第二套内容）
+      types.ts           Finding 模型（journal / date / design / level / results / impact）
+      journals.ts        期刊登记表：200+ 种期刊的层级（综合顶刊/本领域顶刊/权威期刊）与学科
+      link.ts            PubMed 检索链接生成（不臆造 DOI）
+      internal.ts        内科系 14 个科室
+      surgery.ts         外科系 6 个科室
+      women-child.ts     妇产科、儿科
+      critical.ts        急诊、重症、麻醉
+      specialty.ts       眼科、耳鼻喉、口腔、康复、疼痛
+      index.ts           汇总、近一年窗口、期刊统计、研究检索
+  components/            TopBar / TabBar / 模式切换 / 指南卡片 / 研究卡片 / 搜索框 / 免责声明 / 下拉刷新
+  pages/                 首页 / 科室页 / 全部指南 / 详情 / 收藏 / 说明（研究模式各有一套对应页面）
+    MethodologyPage.tsx  研究方法速读（#/methods）
   lib/
     router.ts            hash 路由
     storage.ts           主题与本地偏好
@@ -174,6 +193,46 @@ src/
 - **病种 id 在科室内唯一**，跨科室可重名（如 `other`、`tumor`）。
 - **`rec` / `ev` / `grading` 只照录、不推断**。宁可留空，也不要凭印象填写推荐等级——这是本项目最容易被误用的一类信息。
 - 数据文件按科室拆分，一个科室一个文件；新增科室时不要往已有文件里追加其他科室的条目。
+- **顶刊研究**（`src/data/research/`）按科室分组存放：内科系 `internal.ts`、外科系 `surgery.ts`、妇产儿科 `women-child.ts`、急危重症与麻醉 `critical.ts`、专科与其他 `specialty.ts`。研究 `id` 统一以 `r-` 开头（如 `r-cardio-01`），`topic` 必须复用本科室 `topics.ts` 里已有的病种 id。
+- **期刊层级只在 `src/data/research/journals.ts` 登记一次**（`top` / `field` / `major` + 学科领域），条目里只写期刊名；同一期刊在多个科室出现时层级必然一致，新增期刊时补一行即可。
+
+## 顶刊前沿研究（第二套内容）
+
+顶部有一个「**指南共识 / 前沿研究**」一键切换按钮（`src/components/ModeSwitch.tsx`），切换后首页、科室页、内容库与详情页整体换套内容，选择写入 `localStorage`（`hep.mode`）下次打开保持不变。
+
+研究模式的三个入口：
+
+- **首页**（`src/pages/ResearchHomePage.tsx`）：收录概览、跨科室检索（标题/期刊/标签/结果正文都可命中）、按科室浏览、近一年值得关注、来源期刊分布；
+- **科室页**（`src/pages/ResearchDeptPage.tsx`）：按「近一年 / 近两年 / 全部」+ 期刊 + 病种三重筛选；
+- **内容库**（`src/pages/ResearchLibraryPage.tsx`）：科室分组 / 科室 / 期刊 / 影响程度 + 关键词检索；
+- **详情页**（`src/pages/FindingPage.tsx`）：研究设计、样本量、主要结果、临床意义、与现行指南的关系、来源文献。
+
+### 期刊口径：不只看 NEJM
+
+期刊层级集中在 `src/data/research/journals.ts` 登记（目前 200+ 种），数据条目**不再自己写 tier**，层级由登记表统一决定，避免同一个期刊在不同科室被判成不同档次。三档：
+
+| 层级 | 含义 | 举例 |
+| --- | --- | --- |
+| `top` 综合顶刊 | 面向全医学界 | NEJM、Lancet、JAMA、BMJ、Nat Med、Nature、Cell、Ann Intern Med |
+| `field` 本领域顶刊 | 该专科公认第一梯队 | 肝病科 Hepatology / J Hepatol；血液科 Blood / Lancet Haematol；消化 Gut / Gastroenterology；心血管 Circulation / Eur Heart J / JACC；肾脏 Kidney Int / JASN；外科 Ann Surg / Br J Surg；骨科 JBJS / Am J Sports Med；泌尿 Eur Urol；神外 J Neurosurg；妇产 AJOG / BJOG；儿科 Pediatrics；麻醉 Anesthesiology / BJA；眼科 Ophthalmology；口腔 J Dent Res / J Clin Periodontol |
+| `major` 权威期刊 | 本领域有影响力大刊与亚专科期刊 | Liver Int、Clin Gastroenterol Hepatol、Chest、Spine、J Arthroplasty、Surg Endosc、BJU Int |
+
+一套内容共 **309 条**研究、覆盖 30 个科室、来自 **136 种期刊**（近一年 291 条），研究模式可按层级 / 期刊 / 时间 / 影响程度筛选。
+
+### 其余收录口径
+
+- `method` 为**研究方法四要素**（`StudyMethod`）：`population` 入组人群、`arms` 干预与对照、`endpoint` 主要终点、`stats` 统计与分析。**四条都必填**，`npm run verify` 会逐个检查——同一条阳性结果在优效性与非劣效性设计、硬终点与替代终点之间分量完全不同，只写一句「随机对照」不足以判断能否改变做法。方法学字段同时参与检索（可按终点、人群关键词搜到研究）。
+- `level` 分三档：`practice` 可能改变实践、`promising` 有前景待验证、`exploratory` 探索性——**中性/阴性结果同样收录**，避免只看阳性结论；
+- `date` 为 `YYYY-MM`，「近一年」以数据中最新一条为基准（`WINDOW_MONTHS = 12`），筛选栏可切到「近两年 / 近三年 / 全部」查看更早的里程碑研究；
+- 条目的 `url` 默认由 `link.ts` 的 `pm(title)` 生成 PubMed 检索链接，**不臆造 DOI**；确知期刊页地址时再显式写 `url` 覆盖。
+
+### 研究方法速读页
+
+研究详情页的「研究方法」区块只列事实；**怎么读这些事实**放在独立页面 `/methods`（`src/pages/MethodologyPage.tsx`），从研究首页「研究方法速读」入口或在详情页点击「这些方法学信息该怎么读」进入。内容覆盖：证据层级、入组人群的外推边界、对照与设盲、硬终点与替代终点、优效 / 非劣效与 ITT、提前终止与亚组分析的误读风险、观察性研究的因果陷阱，以及本库 `tier / design / method / level` 四个标注的口径。
+
+新增期刊时只需在 `journals.ts` 的 `RAW` 里加一行 `'期刊名': ['field', '学科']`；写了未登记的期刊名，`npm run verify` 会直接报错并提示补登记。
+
+`npm run verify` 会一并校验研究数据：id 唯一性与 `r-` 前缀、`dept` 是否登记、`topic` 是否属于该科室、`date` 格式与是否晚于当月、`journal` 是否已登记、`level` 取值、`results` 与 `impact` 是否为空、**研究方法四要素是否齐全**，以及**每个科室是否都有研究**。
 
 ## 部署到 GitHub Pages
 

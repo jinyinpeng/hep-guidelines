@@ -256,3 +256,47 @@ export type { Guideline, Point, DeptId } from './types'
 export type { Topic } from './topics'
 export { TOPICS, topicsOf, topicOf } from './topics'
 export { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup }
+
+/* --------------------- 顶刊最新临床研究（前沿研究模式） --------------------- */
+
+export type {
+  Finding,
+  FindingHit,
+  ImpactLevel,
+  JournalMeta,
+  JournalStat,
+  JournalTier,
+} from './research'
+export {
+  DATA_CUTOFF,
+  FINDINGS,
+  FINDING_MAP,
+  IMPACT_LEVELS,
+  JOURNAL_NAMES,
+  JOURNALS,
+  LEVEL_LABEL,
+  RESEARCH_STATS,
+  TIERS,
+  TIER_LABEL,
+  TIER_RANK,
+  WINDOWS,
+  WINDOW_MONTHS,
+  countFindingsByDept,
+  countFindingsByTopic,
+  dateNum,
+  featuredFindings,
+  fieldOf,
+  findingsByDept,
+  findingsByTopic,
+  getFinding,
+  journalMeta,
+  journalsByTier,
+  journalsOfDept,
+  journalStats,
+  journalTier,
+  latestFindingDateOf,
+  researchTopicIds,
+  searchFindings,
+  tierOf,
+  withinMonths,
+} from './research'

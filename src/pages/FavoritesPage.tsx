@@ -1,15 +1,20 @@
-import { Bookmark, Star } from 'lucide-react'
+import { Bookmark, FlaskConical, Star } from 'lucide-react'
+import FindingCard from '../components/FindingCard'
 import GuidelineCard from '../components/GuidelineCard'
-import { getGuideline } from '../data'
+import { getFinding, getGuideline } from '../data'
 import { href } from '../lib/router'
 import { parsePointKey, useStore } from '../lib/store'
 
 export default function FavoritesPage() {
-  const { favorites, marks } = useStore()
+  const { favorites, rfavorites, marks } = useStore()
 
   const favList = favorites.items
     .map((id) => getGuideline(id))
     .filter((g): g is NonNullable<typeof g> => Boolean(g))
+
+  const favFindings = rfavorites.items
+    .map((id) => getFinding(id))
+    .filter((f): f is NonNullable<typeof f> => Boolean(f))
 
   const markedPoints = marks.items
     .map((key) => {
@@ -26,20 +31,20 @@ export default function FavoritesPage() {
 
   return (
     <div className="space-y-5">
-      {favList.length === 0 && markedPoints.length === 0 && (
+      {favList.length === 0 && favFindings.length === 0 && markedPoints.length === 0 && (
         <div className="card p-8 text-center">
           <Star size={26} className="mx-auto text-line-strong" />
           <p className="mt-3 text-[14.5px] font-medium text-ink">还没有收藏内容</p>
           <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-3">
             在指南卡片或详情页点击星标即可收藏
             <br />
-            在要点右侧点击书签图标可标记重点条款
+            切到「前沿研究」也能收藏顶刊研究，在要点右侧点击书签图标可标记重点条款
           </p>
           <a
             href={href('/library')}
             className="mt-4 inline-block cursor-pointer rounded-xl bg-brand px-4 py-2 text-[13px] font-medium text-white transition-opacity duration-200 hover:opacity-90"
           >
-            去指南库看看
+            去内容库看看
           </a>
         </div>
       )}
@@ -63,6 +68,30 @@ export default function FavoritesPage() {
           <div className="mt-3 space-y-3">
             {favList.map((g) => (
               <GuidelineCard key={g.id} g={g} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {favFindings.length > 0 && (
+        <section>
+          <div className="flex items-center gap-2">
+            <FlaskConical size={15} className="text-accent" />
+            <h2 className="text-[14.5px] font-semibold text-ink">
+              收藏的研究
+              <span className="ml-1.5 text-[12px] font-normal text-ink-3">{favFindings.length}</span>
+            </h2>
+            <button
+              type="button"
+              onClick={() => rfavorites.clear()}
+              className="ml-auto cursor-pointer text-[12px] text-ink-3 transition-colors duration-200 hover:text-danger"
+            >
+              清空
+            </button>
+          </div>
+          <div className="mt-3 space-y-3">
+            {favFindings.map((f) => (
+              <FindingCard key={f.id} f={f} />
             ))}
           </div>
         </section>

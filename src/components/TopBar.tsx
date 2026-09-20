@@ -1,6 +1,7 @@
 import { ChevronLeft, Moon, Sun, WifiOff } from 'lucide-react'
 import { useOnline } from '../lib/pwa'
 import { useTheme } from '../lib/storage'
+import ModeSwitch from './ModeSwitch'
 
 interface Props {
   title?: string
@@ -57,6 +58,11 @@ export default function TopBar({ title, subtitle, onBack }: Props) {
         >
           {dark ? <Sun size={18} /> : <Moon size={18} />}
         </button>
+      </div>
+
+      {/* 一键切换：指南共识 ⇄ 各科室顶刊最新研究 */}
+      <div className="mx-auto w-full max-w-[760px] px-4 pb-2.5">
+        <ModeSwitch />
       </div>
     </header>
   )

@@ -1,4 +1,5 @@
 import { House, Info, Library, Star } from 'lucide-react'
+import { useMode } from '../lib/mode'
 import { href } from '../lib/router'
 import { useStore } from '../lib/store'
 
@@ -9,15 +10,22 @@ const TABS = [
   { key: 'about', to: '/about', label: '说明', Icon: Info },
 ] as const
 
+/** 「研究」模式下第二栏改为研究库 */
+const RESEARCH_LABEL: Record<string, string> = { library: '研究库' }
+
 export default function TabBar({ active }: { active: string }) {
-  const { favorites, marks } = useStore()
-  const badge = favorites.size + marks.size
+  const { favorites, rfavorites, marks } = useStore()
+  const mode = useMode()
+  const badge = favorites.size + rfavorites.size + marks.size
 
   return (
     <nav className="safe-bottom no-print fixed bottom-0 left-0 right-0 z-30 border-t border-line bg-surface/92 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-[760px] items-stretch">
         {TABS.map(({ key, to, label, Icon }) => {
-          const on = active === key || (key === 'library' && active === 'detail')
+          const on =
+            active === key ||
+            (key === 'library' && (active === 'detail' || active === 'finding'))
+          const text = mode === 'research' ? (RESEARCH_LABEL[key] ?? label) : label
           return (
             <a
               key={key}
@@ -35,7 +43,7 @@ export default function TabBar({ active }: { active: string }) {
                   </span>
                 )}
               </span>
-              <span className="text-[11px] font-medium leading-none">{label}</span>
+              <span className="text-[11px] font-medium leading-none">{text}</span>
             </a>
           )
         })}
