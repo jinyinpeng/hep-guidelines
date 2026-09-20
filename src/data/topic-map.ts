@@ -353,22 +353,34 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-child-obesity': 'growth',
 
   /* ---------------- 急诊医学科 ---------------- */
+  'cn-cpr-2025': 'cpr',
   'aha-cpr-2020': 'cpr',
   'cn-chest-pain-consensus': 'chestPain',
-  'cn-poisoning-2016': 'poisoning',
+  'cn-acs-emergency': 'chestPain',
+  'cn-poisoning-2025': 'poisoning',
   'cn-sepsis-prevention-2020': 'sepsis',
+  'cn-shock-consensus': 'shock',
+  'cn-hf-emergency': 'other',
 
   /* ---------------- 重症医学科 ---------------- */
   'cn-hap-vap-2018': 'infection',
   'ards-global-2023': 'respiratory',
+  'cn-mechanical-ventilation-2024': 'respiratory',
   'cn-icu-sedation-2018': 'sedation',
+  'cn-icu-delirium': 'sedation',
   'kdigo-aki-2012': 'aki',
+  'cn-crrt-fluid-2026': 'aki',
+  'cn-pn-2024': 'nutrition',
+  'cn-ecmo': 'other',
 
   /* ---------------- 麻醉科 ---------------- */
   'cn-difficult-airway': 'airway',
   'cn-geriatric-anesthesia': 'monitoring',
   'cn-perioperative-blood': 'blood',
   'cn-ponv-consensus': 'ponv',
+  'cn-obstetric-anesthesia': 'obstetric',
+  'cn-postop-pain-2023': 'regional',
+  'cn-pediatric-analgesia-2024': 'pediatric',
 
   /* ---------------- 眼科 ---------------- */
   'cn-dr-guideline': 'retina',

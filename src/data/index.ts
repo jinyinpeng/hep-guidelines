@@ -1,13 +1,16 @@
+import { ANES } from './anes'
 import { CARDIO } from './cardio'
 import { CTS } from './cts'
 import { DEPARTMENTS, DEPT_GROUPS, DEPT_MAP, deptsByGroup } from './departments'
 import { DERM } from './derm'
+import { EMERGENCY } from './emergency'
 import { ENDO } from './endo'
 import { GENSURG } from './gensurg'
 import { GERIATRICS } from './geriatrics'
 import { GI } from './gi'
 import { CN_GUIDELINES } from './hepatology-cn'
 import { HEME } from './heme'
+import { ICU } from './icu'
 import { INTL_GUIDELINES } from './hepatology-intl'
 import { INFECTIOUS } from './infectious'
 import { NEURO } from './neuro'
@@ -26,7 +29,6 @@ import { topicOf, topicsOf } from './topics'
 import type { DeptId, Guideline } from './types'
 import { UROLOGY } from './urology'
 import { VASCULAR } from './vascular'
-import { WOMEN_CHILD_CRITICAL } from './womenchild-critical'
 
 const RAW: Guideline[] = [
   ...CN_GUIDELINES,
@@ -52,7 +54,9 @@ const RAW: Guideline[] = [
   ...VASCULAR,
   ...OBGYN,
   ...PEDS,
-  ...WOMEN_CHILD_CRITICAL,
+  ...EMERGENCY,
+  ...ICU,
+  ...ANES,
   ...SPECIALTY,
 ]
 

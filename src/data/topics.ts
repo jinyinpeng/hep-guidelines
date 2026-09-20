@@ -266,14 +266,16 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'chestPain', name: '急性胸痛', short: '急性胸痛' },
     { id: 'poisoning', name: '急性中毒', short: '急性中毒' },
     { id: 'sepsis', name: '脓毒症早期识别', short: '脓毒症' },
+    { id: 'shock', name: '休克与液体复苏', short: '休克复苏' },
     { id: 'other', name: '其他急症', short: '其他' },
   ],
 
   icu: [
     { id: 'infection', name: '重症感染与脓毒症', short: '重症感染' },
-    { id: 'respiratory', name: 'ARDS 与呼吸支持', short: 'ARDS' },
+    { id: 'respiratory', name: 'ARDS 与机械通气', short: 'ARDS 通气' },
     { id: 'sedation', name: '镇痛镇静与谵妄', short: '镇痛镇静' },
-    { id: 'aki', name: '急性肾损伤与器官支持', short: 'AKI' },
+    { id: 'aki', name: '急性肾损伤与血液净化', short: 'AKI 与 CRRT' },
+    { id: 'nutrition', name: '重症营养支持', short: '重症营养' },
     { id: 'other', name: '其他重症问题', short: '其他' },
   ],
 
@@ -282,6 +284,9 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'monitoring', name: '特殊人群麻醉与监测', short: '特殊人群' },
     { id: 'blood', name: '围术期血液管理', short: '血液管理' },
     { id: 'ponv', name: '术后恶心呕吐', short: '术后恶心呕吐' },
+    { id: 'obstetric', name: '产科麻醉', short: '产科麻醉' },
+    { id: 'regional', name: '术后疼痛与区域阻滞', short: '术后镇痛' },
+    { id: 'pediatric', name: '小儿麻醉与镇痛', short: '小儿麻醉' },
     { id: 'other', name: '其他麻醉问题', short: '其他' },
   ],
 
