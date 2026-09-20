@@ -176,7 +176,6 @@ if (DRY_RUN) {
 
 step(5, '提交并推送')
 
-const headBefore = git(['rev-parse', 'HEAD']).out
 git(['add', '-A'])
 const staged = git(['diff', '--cached', '--name-only']).out
 
@@ -197,7 +196,6 @@ if (!staged) {
 }
 
 const localHead = git(['rev-parse', 'HEAD']).out
-const pushed = localHead !== headBefore
 
 /* ------------------------------ 6. 等待 CI 并核验线上 ------------------------------ */
 
@@ -208,33 +206,39 @@ if (NO_WAIT) {
 
 step(6, '等待 GitHub Actions 构建并核验线上')
 
-if (pushed) {
-  const deadline = Date.now() + CI_TIMEOUT_MS
+// 构建产物与已发布的 docs/ 一致 → 源码改动不影响产物（如只改了脚本/文档），CI 不会产生新提交，无需等待
+const docsBefore = newestDocsAsset()
+const ciNeeded = !docsBefore || docsBefore !== freshAsset
+
+if (!ciNeeded) {
+  note(`本地构建产物与已发布版本一致（${freshAsset}），无需等待 CI`)
+} else {
+  const startedAt = Date.now()
+  const deadline = startedAt + CI_TIMEOUT_MS
   let ciCommit = null
   while (Date.now() < deadline) {
-    await sleep(CI_POLL_MS)
     git(['fetch', 'origin', BRANCH], { allowFail: true })
     const remote = git(['rev-parse', `origin/${BRANCH}`], { allowFail: true }).out
     if (remote && remote !== localHead) {
       ciCommit = remote
       break
     }
-    note('CI 构建中…')
+    note(`CI 构建中… 已等待 ${Math.round((Date.now() - startedAt) / 1000)}s`)
+    await sleep(CI_POLL_MS)
   }
 
   if (!ciCommit) {
-    console.log('\n等待 CI 超时。可稍后自行执行：git pull origin main')
-    process.exit(0)
+    console.log('\n等待 CI 超时。可稍后自行执行：git pull origin main，或到仓库 Actions 页查看失败原因。')
+    process.exit(1)
   }
 
   git([...COMMIT_IDENT, 'pull', '--no-rebase', '--no-edit', 'origin', BRANCH], { allowFail: true })
   ok(`CI 已产出 docs 提交 ${ciCommit.slice(0, 7)}`)
-} else {
-  note('没有新提交，直接核验线上是否已是最新')
-}
 
-const localAsset = newestDocsAsset()
-ok(`本地 docs 产物 ${localAsset ?? '(缺失)'}`)
+  const docsAfter = newestDocsAsset()
+  if (docsAfter === freshAsset) ok('CI 产物与本地构建一致')
+  else note(`CI 产物为 ${docsAfter ?? '(缺失)'}，与本地 ${freshAsset} 不同`)
+}
 
 const url = pagesUrl()
 if (!url) {
@@ -242,11 +246,13 @@ if (!url) {
   process.exit(0)
 }
 
-if (await waitForOnline(url, localAsset)) {
+if (await waitForOnline(url, freshAsset)) {
   console.log(`\n线上已是最新版本：${url}`)
+  console.log(`线上产物 ${freshAsset}`)
 } else {
   console.log(`\n线上核验超时：${url}`)
-  console.log(`本地 docs 产物为 ${localAsset ?? '(缺失)'}，请稍后手动刷新确认，或查看仓库 Actions 日志。`)
+  console.log(`期望产物 ${freshAsset}，请稍后手动刷新确认，或到仓库 Actions 页查看部署日志。`)
+  process.exit(1)
 }
 
 /* ------------------------------ 辅助 ------------------------------ */
