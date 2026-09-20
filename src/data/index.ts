@@ -7,7 +7,9 @@ import { INTL_GUIDELINES } from './hepatology-intl'
 import { INTERNAL_2 } from './internal-2'
 import { INTERNAL_3 } from './internal-3'
 import { NEURO } from './neuro'
+import { RENAL } from './renal'
 import { RESP } from './resp'
+import { RHEUM } from './rheum'
 import { SPECIALTY } from './specialty'
 import { SURGERY } from './surgery'
 import { TOPIC_OF } from './topic-map'
@@ -23,6 +25,8 @@ const RAW: Guideline[] = [
   ...GI,
   ...ENDO,
   ...NEURO,
+  ...RENAL,
+  ...RHEUM,
   ...INTERNAL_2,
   ...INTERNAL_3,
   ...SURGERY,

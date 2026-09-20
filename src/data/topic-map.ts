@@ -125,10 +125,18 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 肾脏内科 ---------------- */
   'kdigo-ckd-2024': 'ckd',
-  'kdigo-gn-2021': 'gn',
+  'cn-ckd-early-2023': 'ckd',
+  'cn-ckd-htn-2023': 'ckd',
+  'kdigo-bp-2021': 'ckd',
   'cn-dkd-2021': 'dkd',
+  'kdigo-diabetes-2022': 'dkd',
+  'kdigo-gn-2021': 'gn',
+  'cn-igan-2024': 'gn',
+  'kdigo-ln-2024': 'gn',
   'cn-ckd-mbd-2019': 'mbd',
+  'cn-dialysis-access-2024': 'dialysis',
   'cn-hd-sop-2021': 'dialysis',
+  'cn-renal-anemia': 'complication',
 
   /* ---------------- 血液科 ---------------- */
   'cn-cml-2020': 'leukemia',
@@ -153,11 +161,19 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-pa-2024': 'adrenal',
 
   /* ---------------- 风湿免疫科 ---------------- */
-  'cn-ra-2018': 'ra',
-  'cn-sle-2020': 'sle',
+  'cn-ra-2024': 'ra',
+  'eular-ra-2022': 'ra',
+  'acr-ra-2021': 'ra',
+  'cn-sle-2025': 'sle',
   'eular-sle-2019': 'sle',
   'asas-eular-axspa-2022': 'spa',
+  'cn-gout-2023': 'gout',
   'acr-gout-2020': 'gout',
+  'cn-aav-2025': 'vasculitis',
+  'cn-takayasu-2023': 'vasculitis',
+  'cn-ss-2020': 'other',
+  'cn-ssc-2022': 'other',
+  'cn-dm-dermatomyositis-2022': 'other',
 
   /* ---------------- 神经内科 ---------------- */
   'cn-ais-2023': 'ischemic',

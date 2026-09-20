@@ -81,6 +81,7 @@ export const TOPICS: Record<DeptId, Topic[]> = {
     { id: 'dkd', name: '糖尿病肾脏病', short: '糖肾病' },
     { id: 'mbd', name: 'CKD 矿物质骨代谢异常', short: '钙磷代谢' },
     { id: 'dialysis', name: '血液净化与透析通路', short: '透析' },
+    { id: 'complication', name: '肾性贫血与 CKD 并发症', short: '肾性贫血' },
   ],
 
   heme: [
