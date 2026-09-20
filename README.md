@@ -42,7 +42,8 @@ src/
     diseases.ts          肝病科内部亚病种分组
     hepatology-cn.ts     肝病科 · 国内指南
     hepatology-intl.ts   肝病科 · 国际指南
-    internal-1.ts        内科系（一）：心血管 / 呼吸 / 消化
+    cardio.ts            心血管内科（含高血压、血脂、ACS/CCS、心衰、心律失常、心肌病、瓣膜病、肺血管病）
+    resp-gi.ts           呼吸与危重症医学科 / 消化内科
     internal-2.ts        内科系（二）：肾脏 / 血液 / 内分泌 / 风湿免疫
     internal-3.ts        内科系（三）：神经 / 感染 / 肿瘤 / 老年 / 精神 / 皮肤
     surgery.ts           外科系：普外 / 骨科 / 神外 / 泌尿 / 胸外 / 血管外科
