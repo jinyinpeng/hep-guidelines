@@ -3,6 +3,7 @@ import {
   Download,
   FileText,
   ListFilter,
+  RefreshCw,
   ShieldCheck,
   SquarePen,
   Wifi,
@@ -11,11 +12,14 @@ import {
 import Disclaimer from '../components/Disclaimer'
 import { DEPARTMENTS, STATS, countByDept } from '../data'
 import { useInstallPrompt, useOnline, useStandalone } from '../lib/pwa'
+import { checkForUpdate, useUpdateState, type UpdateState } from '../lib/update'
 
 export default function AboutPage() {
   const online = useOnline()
   const standalone = useStandalone()
   const { canInstall, install } = useInstallPrompt()
+  const update = useUpdateState()
+  const checking = update.status === 'checking' || update.status === 'updating'
 
   return (
     <div className="space-y-5">
@@ -83,6 +87,44 @@ export default function AboutPage() {
             添加到主屏后无需应用商店，也不占用额外存储；首次打开会自动缓存全部内容。
           </p>
         </div>
+      </section>
+
+      <section className="card p-4">
+        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+          <RefreshCw size={16} className="text-brand" />
+          版本与更新
+        </h2>
+        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+          <span className="font-medium text-ink">打开应用时会自动检查更新</span>
+          （从后台切回、恢复联网时也会检查一次）；在页面最顶部
+          <span className="font-medium text-ink">下拉并松开</span>
+          ，同样会检查并更新到最新版。
+        </p>
+
+        <div className="mt-3 grid grid-cols-2 gap-2.5">
+          <Metric label="本机版本" value={shortBuild(update.localId)} />
+          <Metric label="线上最新" value={shortBuild(update.remoteId)} />
+        </div>
+
+        <div className="mt-3 flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => void checkForUpdate()}
+            disabled={checking}
+            className="flex cursor-pointer items-center gap-1.5 rounded-full border border-line bg-surface-2 px-3.5 py-2 text-[12.5px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink disabled:cursor-default disabled:opacity-60"
+          >
+            <RefreshCw size={14} className={checking ? 'animate-spin' : undefined} />
+            {checking ? '正在检查…' : '检查更新'}
+          </button>
+          <span className="text-[12px] text-ink-3">{statusText(update)}</span>
+        </div>
+
+        <p className="mt-2.5 text-[11.5px] leading-relaxed text-ink-3">
+          {update.builtAt
+            ? `线上版本构建于 ${formatTime(update.builtAt)}`
+            : '版本号取自构建产物文件名（带内容哈希），文件名变了就是有新版本。'}
+          {update.checkedAt ? ` · 上次检查 ${formatDateTime(update.checkedAt)}` : ''}
+        </p>
       </section>
 
       <section className="card p-4">
@@ -163,6 +205,7 @@ export default function AboutPage() {
           使用与核对建议
         </h2>
         <ul className="mt-3 space-y-2 text-[12.5px] leading-relaxed text-ink-2">
+          <li>· 打开应用会自动检查更新；在页面顶部下拉并松开，也能立刻更新到最新版。</li>
           <li>· 首页搜索支持病种、药物、指标、阈值等多关键词组合，例如「乙肝 停药」「腹水 白蛋白」。</li>
           <li>· 指南库可按「国内 / 国际」与病种筛选；收藏与标记会保存在本机，不上传服务器。</li>
           <li>· 标记「最新版」表示该条目为当前收录范围内的最新版本，仍可能与实际发布存在时间差。</li>
@@ -187,4 +230,46 @@ function Metric({ label, value }: { label: string; value: string }) {
       <div className="mt-0.5 text-[11px] text-ink-3">{label}</div>
     </div>
   )
+}
+
+/** index-a1b2c3d4.js → a1b2c3d4，读起来更像版本号 */
+function shortBuild(id: string | null): string {
+  if (!id) return '开发预览'
+  return id.replace(/^index-/, '').replace(/\.js$/, '')
+}
+
+function statusText(u: UpdateState): string {
+  switch (u.status) {
+    case 'checking':
+      return '正在检查…'
+    case 'updating':
+      return '发现新版本，正在更新…'
+    case 'latest':
+      return '已是最新版本'
+    case 'stale':
+      return '线上有新版本但还没生效，稍后可再试'
+    case 'offline':
+      return '当前离线，无法检查更新'
+    case 'error':
+      return '检查失败，请稍后再试'
+    default:
+      return u.localId ? '尚未检查' : '开发模式不检查版本'
+  }
+}
+
+function formatTime(iso: string): string {
+  const d = new Date(iso)
+  return Number.isNaN(d.getTime())
+    ? iso
+    : d.toLocaleString('zh-CN', { hour12: false, month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+}
+
+function formatDateTime(ts: number): string {
+  return new Date(ts).toLocaleString('zh-CN', {
+    hour12: false,
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
 }

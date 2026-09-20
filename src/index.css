@@ -83,6 +83,8 @@
 
   html {
     -webkit-text-size-adjust: 100%;
+    /* 关掉浏览器自带的下拉回弹/刷新，交给应用自己的下拉刷新 */
+    overscroll-behavior-y: none;
   }
 
   body {

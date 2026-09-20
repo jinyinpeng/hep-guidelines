@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import PullToRefresh from './components/PullToRefresh'
 import TabBar from './components/TabBar'
 import TopBar from './components/TopBar'
 import { DEPT_GROUPS, DEPT_MAP } from './data'
 import { goBack, useRoute } from './lib/router'
 import { StoreProvider } from './lib/store'
+import { restoreAfterUpdate, useAutoUpdate } from './lib/update'
 import AboutPage from './pages/AboutPage'
 import DeptPage from './pages/DeptPage'
 import DetailPage from './pages/DetailPage'
@@ -14,6 +16,14 @@ import LibraryPage from './pages/LibraryPage'
 function Shell() {
   const route = useRoute()
   const [query, setQuery] = useState('')
+
+  // 打开应用、切回前台、恢复联网时都自动检查一次是否有新版本
+  useAutoUpdate()
+
+  // 因自动更新而重载时，把滚动位置还原回来（须在上面的回顶逻辑之后执行）
+  useEffect(() => {
+    restoreAfterUpdate()
+  }, [])
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' })
@@ -73,7 +83,9 @@ function Shell() {
 export default function App() {
   return (
     <StoreProvider>
-      <Shell />
+      <PullToRefresh>
+        <Shell />
+      </PullToRefresh>
     </StoreProvider>
   )
 }

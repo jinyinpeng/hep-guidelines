@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react'
  * 注册 Service Worker（仅生产构建）。
  * 注册完成后把首屏已加载的同源资源推送给 SW 预热缓存，
  * 这样「第一次访问结束」即可完全离线使用。
+ *
+ * 用 `updateViaCache: 'none'` 保证 sw.js 自己不做 HTTP 缓存，
+ * 否则浏览器可能拿 10 分钟前的旧脚本，导致更新迟迟不生效。
  */
 export function registerServiceWorker() {
   if (typeof navigator === 'undefined' || !('serviceWorker' in navigator)) return
@@ -11,19 +14,27 @@ export function registerServiceWorker() {
 
   const start = async () => {
     try {
-      await navigator.serviceWorker.register('./sw.js', { scope: './' })
-      const reg = await navigator.serviceWorker.ready
+      const reg = await navigator.serviceWorker.register('./sw.js', {
+        scope: './',
+        updateViaCache: 'none',
+      })
+      // 立刻检查一次 sw.js 是否有新版本
+      void reg.update().catch(() => {})
 
+      const ready = await navigator.serviceWorker.ready
+
+      // 版本清单与 SW 自身不进缓存
+      const skip = /(?:\/sw\.js|\/version\.json)$/
       const resources = performance
         .getEntriesByType('resource')
         .map((e) => e.name)
-        .filter((u) => u.startsWith(location.origin) && !u.endsWith('/sw.js'))
+        .filter((u) => u.startsWith(location.origin) && !skip.test(u))
 
       const urls = Array.from(
         new Set([...resources, location.origin + location.pathname]),
       )
 
-      reg.active?.postMessage({ type: 'CACHE_URLS', urls })
+      ready.active?.postMessage({ type: 'CACHE_URLS', urls })
     } catch {
       /* 离线能力注册失败不影响主流程 */
     }
