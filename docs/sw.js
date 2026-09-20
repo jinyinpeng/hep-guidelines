@@ -2,13 +2,17 @@
 /**
  * 离线优先的 Service Worker
  * 策略：
- *  - 导航请求：网络优先，失败回退缓存的 index.html（保证离线可打开应用）
- *  - 静态资源：缓存优先，首次成功后写入缓存（保证第二次及离线访问瞬时可用）
+ *  - 导航请求：网络优先（绕过 HTTP 缓存），失败回退缓存的 index.html
+ *  - 静态资源：缓存优先，首次成功后写入缓存（文件名带内容哈希，所以缓存不会过期）
+ *  - version.json / index.html / sw.js 永不缓存，保证「检查更新」拿到的一定是线上最新版
  *  - 支持主线程把首屏已加载的资源列表推送进来做「预热缓存」
  */
-const VERSION = 'v1'
+const VERSION = 'v2'
 const CACHE = `hep-guidelines-${VERSION}`
 const APP_SHELL = ['./', './index.html', './manifest.json', './icon.svg', './icon-maskable.svg']
+
+/** 这些文件必须每次都走网络，否则用户会卡在旧版本 */
+const NEVER_CACHE = /(?:^|\/)(?:sw\.js|index\.html|version\.json)$/
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -57,15 +61,17 @@ self.addEventListener('message', (event) => {
       (async () => {
         const cache = await caches.open(CACHE)
         await Promise.all(
-          data.urls.map(async (url) => {
-            try {
-              const req = new Request(url, { cache: 'reload' })
-              const hit = await cache.match(req)
-              if (hit) return
-              const res = await fetch(req)
-              if (res && res.ok) await cache.put(req, res.clone())
-            } catch (e) {}
-          }),
+          data.urls
+            .filter((url) => !NEVER_CACHE.test(new URL(url, self.location.href).pathname))
+            .map(async (url) => {
+              try {
+                const req = new Request(url, { cache: 'reload' })
+                const hit = await cache.match(req)
+                if (hit) return
+                const res = await fetch(req)
+                if (res && res.ok) await cache.put(req, res.clone())
+              } catch (e) {}
+            }),
         )
         const clients = await self.clients.matchAll()
         clients.forEach((c) => c.postMessage({ type: 'PRECACHE_DONE' }))
@@ -80,14 +86,16 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(req.url)
   if (url.origin !== self.location.origin) return
-  if (url.pathname.endsWith('/sw.js')) return
+  // 更新相关的入口文件一律交给浏览器直连网络，不缓存、不拦截
+  if (NEVER_CACHE.test(url.pathname)) return
 
   // 页面导航
   if (req.mode === 'navigate') {
     event.respondWith(
       (async () => {
         try {
-          const fresh = await fetch(req)
+          // cache: 'reload' 绕过 HTTP 缓存，确保拿到最新一版 index.html
+          const fresh = await fetch(new Request(req, { cache: 'reload' }))
           const cache = await caches.open(CACHE)
           cache.put('./index.html', fresh.clone())
           return fresh
