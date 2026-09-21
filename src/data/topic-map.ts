@@ -130,6 +130,8 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 消化内科 ---------------- */
   'cn-hp-2022': 'hp',
+  'cn-hp-2026': 'hp',
+  'cn-hp-dual-2026': 'hp',
   'cn-gastritis-2022': 'hp',
   'cn-peptic-ulcer-2022': 'hp',
   'cn-gerd-2020': 'gerd',
