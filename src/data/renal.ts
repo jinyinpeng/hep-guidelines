@@ -518,4 +518,141 @@ export const RENAL: Guideline[] = [
       },
     ],
   },
+
+  /* ================= 2025—2026 新增指南 ================= */
+  {
+    id: 'esc-cvd-ckd-2026',
+    title: '2026 ESC 心血管疾病与慢性肾脏病管理指南',
+    short: 'ESC 心血管病与 CKD 指南 2026',
+    org: '欧洲心脏病学会（ESC）与欧洲肾脏协会（ERA）',
+    region: 'intl',
+    dept: 'renal',
+    year: 2026,
+    latest: true,
+    tags: ['STAMP on CKD', 'eGFR', '白蛋白尿', '四支柱'],
+    summary: 'ESC 首部专门针对心血管疾病与慢性肾脏病的管理指南，提出 STAMP ON CKD 五步框架并启用证据等级 B1/B2 改版。',
+    ref: '2026 ESC Guidelines for the management of cardiovascular disease and chronic kidney disease, in collaboration with the European Renal Association (ERA)（Eur Heart J 2026；doi:10.1093/eurheartj/ehag098；2026 年 8 月 28 日发布）',
+    grading: 'ESC 2026 新版分级：推荐类别 I/IIa/IIb/III + 证据级别 A/B1/B2/C；诊断测试与预测模型另用一套评分表',
+    sections: [
+      {
+        title: 'STAMP ON CKD：筛查与分期',
+        points: [
+          { t: '所有心血管疾病患者均应筛查 CKD，同时检测 eGFR 与尿白蛋白肌酐比（uACR）——只查其中一项会漏掉大量患者。', tag: '筛查', rec: 'I', ev: 'C', key: true },
+          { t: 'CKD 定义为 eGFR < 60 mL/min/1.73 m² 或 uACR ≥ 3 mg/mmol 持续 ≥ 3 个月，并以至少间隔 3 个月的两次检测确立慢性化。', tag: '定义', rec: 'I', ev: 'C', key: true },
+          { t: '糖尿病或肾功能恶化高风险者至少每年复测 eGFR；新发现的异常应在数天至数周内复查，以识别急性肾损伤。', tag: '随访', rec: 'I', ev: 'C', key: true },
+          { t: '按 eGFR 与白蛋白尿进行 CKD 风险分层（中/高/极高危），并使用 KFRE 评估进展至需要肾脏替代治疗的绝对风险。', tag: '分期', rec: 'I', ev: 'A', key: true },
+          { t: '新诊断 CKD 应查尿试纸镜下血尿；新诊断 CKD 或不明原因 eGFR 骤降时可考虑泌尿系超声寻找病因。', tag: '病因', key: true },
+          { t: 'G5（GFR 持续 < 15）称为「肾衰竭」，不再使用「终末期肾病」这一表述。', tag: '术语' },
+        ],
+      },
+      {
+        title: '风险干预',
+        points: [
+          { t: '收缩压目标 120～129 mmHg 适用于多数合并 CKD 的患者。', tag: '血压', rec: 'I', key: true },
+          { t: '降低 CKD 进展与心血管风险的基石是 ACEI/ARB、SGLT2 抑制剂与他汀；合并 2 型糖尿病者加用 GLP-1 受体激动剂与非甾体类 MRA（finerenone）。', tag: '四支柱', rec: 'I', key: true },
+          { t: '一般建议包括戒烟、控制体重与规律身体活动；同时应避免肾毒性药物并按 eGFR 调整剂量。', tag: '生活方式', rec: 'I' },
+          { t: '风险预测推荐 SCORE2 / SCORE2-OP 联合 CKD 附加项；严重 CKD 视为相对极高心血管风险。', tag: '风险计算', rec: 'I', ev: 'B' },
+          { t: '药物剂量决策需把标准化 eGFR 换算为绝对 GFR：绝对 GFR = eGFR ×（BSA ÷ 1.73），对地高辛、DOAC 等窄治疗窗药物尤为重要。', tag: '用药安全', key: true },
+        ],
+      },
+      {
+        title: '心血管处置的调整',
+        points: [
+          { t: '心衰合并 CKD：eGFR ≥ 20 可使用 SGLT2 抑制剂，eGFR ≥ 30 可使用甾体类 MRA。', tag: '心衰', rec: 'I' },
+          { t: '急性冠脉综合征不应因合并 CKD 而延迟介入治疗。', tag: 'ACS', rec: 'I', key: true },
+          { t: '房颤合并 CKD：eGFR 15～29 可使用 Xa 因子抑制剂；eGFR < 15（含透析）需个体化决策。', tag: '房颤' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'kdigo-igan-2025',
+    title: 'KDIGO 2025 IgA 肾病与 IgA 血管炎管理临床实践指南',
+    short: 'KDIGO IgA 肾病指南 2025',
+    org: '改善全球肾脏病预后组织（KDIGO）',
+    region: 'intl',
+    dept: 'renal',
+    year: 2025,
+    latest: true,
+    tags: ['Nefecon', 'sparsentan', '蛋白尿目标', '双重协同'],
+    summary: '降低肾活检门槛、收紧蛋白尿目标，并提出同时针对免疫发病机制与 CKD 进展的「双重协同」终身管理策略。',
+    ref: 'KDIGO 2025 Clinical Practice Guideline for the Management of Immunoglobulin A Nephropathy (IgAN) and IgA Vasculitis (IgAV)（Kidney Int 2025；执行摘要 2025 年 9 月）',
+    grading: 'KDIGO：推荐强度 1（强）/2（弱）+ 证据质量 A/B/C/D',
+    sections: [
+      {
+        title: '诊断与评估',
+        points: [
+          { t: 'IgA 肾病无可靠的血清或尿液生物标志物，确诊仍需肾活检；疑似且尿蛋白 ≥ 0.5 g/d（或等效水平）的成人均应考虑活检。', tag: '活检', key: true },
+          { t: '病理采用牛津 MEST-C 评分（系膜增生、毛细血管内增生、节段性硬化、小管间质萎缩/纤维化、新月体），须结合临床表现解读。', tag: '病理' },
+          { t: '使用国际 IgAN 预测工具进行风险分层；该工具与 MEST-C 评分均不能作为疗效判断依据，不应据此决定治疗方案。', tag: '风险分层', key: true },
+          { t: '尿蛋白排泄是唯一经验证可用于指导临床决策的早期生物标志物。', tag: '标志物', key: true },
+        ],
+      },
+      {
+        title: '治疗目标与「双重协同」策略',
+        points: [
+          { t: '有进展风险者，治疗目标为把肾功能衰退速度降至生理水平（eGFR 年下降 < 1 mL/min）并终身维持。', tag: '目标', key: true },
+          { t: '蛋白尿目标由 2021 版的 < 1 g/d 收紧至 < 0.5 g/d，理想目标 < 0.3 g/d（或等效值）。', tag: '关键更新', key: true },
+          { t: '需同时针对两条路径：一是免疫因素（减少致病性 IgA 与免疫复合物形成及其所致肾小球损伤），二是 CKD 进展管理。', tag: '双重协同', key: true },
+          { t: '所有患者均应接受生活方式干预：戒烟、控制体重、限钠 < 2 g/d、规律运动，血压 ≤ 120/70 mmHg。', tag: '基础' },
+        ],
+      },
+      {
+        title: '药物定位',
+        points: [
+          { t: 'RAS 抑制剂为首选，推荐所有无禁忌证者使用最大耐受剂量的 ACEI 或 ARB。', tag: '一线', rec: '1', ev: 'B', key: true },
+          { t: '布地奈德肠溶胶囊（Nefecon）是唯一被证实可显著降低致病性 IgA（Gd-IgA1）及 IgA 免疫复合物的药物；有进行性肾功能丧失风险者建议 9 个月疗程。', tag: '免疫', rec: '2', ev: 'B', key: true },
+          { t: '斯帕森坦（sparsentan，双重内皮素/血管紧张素受体拮抗剂）可用于有进展风险者，但有显著胚胎-胎儿毒性，且不应与 RAS 抑制剂联用。', tag: '免疫', rec: '2', ev: 'B', key: true },
+          { t: '有进行性肾功能丧失风险者推荐 SGLT2 抑制剂以延缓肾功能下降。', tag: 'CKD 进展', rec: '2', ev: 'B' },
+          { t: '不推荐抗血小板药、抗凝剂、硫唑嘌呤、环磷酰胺（急进性 IgAN 除外）、钙调神经磷酸酶抑制剂、利妥昔单抗与鱼油。', tag: '不推荐', key: true },
+          { t: '急进性 IgA 肾病（3 个月内 eGFR 下降 ≥ 50%）参照 KDIGO ANCA 相关血管炎指南，使用环磷酰胺联合全身糖皮质激素。', tag: '急进性' },
+          { t: 'IgA 血管炎仅有肾外表现者，不推荐使用全身糖皮质激素预防肾炎。', tag: 'IgAV', rec: '1', ev: 'B' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'kdigo-anemia-2026',
+    title: 'KDIGO 2026 慢性肾脏病贫血管理临床实践指南',
+    short: 'KDIGO CKD 贫血指南 2026',
+    org: '改善全球肾脏病预后组织（KDIGO）',
+    region: 'intl',
+    dept: 'renal',
+    year: 2026,
+    latest: true,
+    tags: ['ESA', 'HIF-PHI', '血红蛋白目标', '铁缺乏'],
+    summary: '更新 CKD 贫血的评估与治疗，新增 HIF-PHI 专章，确立 ESA 的一线地位与「血红蛋白目标低于 11.5 g/dl」的强推荐。',
+    ref: 'KDIGO 2026 Clinical Practice Guideline for the Management of Anemia in CKD（Kidney Int；doi:10.1016/j.kint.2025.06.005）',
+    grading: 'KDIGO：推荐强度 1（强）/2（弱）+ 证据质量 A/B/C/D',
+    sections: [
+      {
+        title: '治疗原则与选药',
+        points: [
+          { t: '启动 ESA 或 HIF-PHI 前必须先纠正所有可纠正的贫血原因，尤其是铁缺乏。', tag: '前置条件', key: true },
+          { t: '常见可纠正原因包括：铁缺乏、感染/炎症、透析失血与透析不充分、甲状旁腺功能亢进、营养不良、B12/叶酸缺乏、恶性疾病、溶血与骨髓功能异常。', tag: '病因', key: true },
+          { t: '可逆原因纠正后，建议以 ESA 而非 HIF-PHI 作为一线——HIF-PHI 的大型随机试验多仅证明其对主要心血管终点非劣于 ESA，未证明更优。', tag: '选药', rec: '2', ev: 'D', key: true },
+          { t: 'ESA 与 HIF-PHI 不可联合使用，包括低反应患者。', tag: '禁忌', key: true },
+        ],
+      },
+      {
+        title: '血红蛋白目标与起始时机',
+        points: [
+          { t: '成人 ESA 治疗的血红蛋白目标为低于 11.5 g/dl（115 g/l），这是本次指南唯一的强推荐。', tag: '目标', rec: '1', ev: 'D', key: true },
+          { t: '透析（HD 或 PD）患者在血红蛋白 ≤ 9.0～10.0 g/dl 时起始 ESA。', tag: '起始', rec: '2', ev: 'D', key: true },
+          { t: '非透析患者（含肾移植受者与儿童）的起始时机应个体化，权衡贫血症状与较高血红蛋白的潜在风险。', tag: '起始', rec: '2', key: true },
+          { t: '治疗中避免每 2～4 周血红蛋白上升超过 1.0 g/dl，并使用能够达标的最低剂量。', tag: '安全', key: true },
+        ],
+      },
+      {
+        title: 'HIF-PHI 与低反应处理',
+        points: [
+          { t: 'HIF-PHI 高风险人群按证据强度分层，包括：活动性癌症或未达完全缓解 ≥ 2～5 年、多囊肾、增殖性视网膜病变、肺动脉高压、妊娠（禁忌）、既往心血管或血栓栓塞事件、肝功能损害等。', tag: '禁忌', key: true },
+          { t: 'ESA 低反应的分型：起始后第一个月血红蛋白无上升为初始型；原本稳定剂量后需两次、每次增量 ≥ 50% 才能维持为获得型。', tag: '定义', key: true },
+          { t: '低反应的处理核心是寻找并纠正原因（铁缺乏居首位，约 30% 原因不明），而非一味上调 ESA 剂量。', tag: '关键', key: true },
+          { t: '原因已处理仍低反应且有症状者，可试用 HIF-PHI 3～4 个月，无效即停，必要时输血。', tag: '流程' },
+          { t: '使用罗沙司他（roxadustat）者前 3 个月应监测甲状腺功能；发生心血管事件、血栓栓塞、血管通路血栓或新诊断癌症时应暂停。', tag: '安全' },
+        ],
+      },
+    ],
+  },
 ]

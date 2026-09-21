@@ -848,4 +848,233 @@ export const INTL_GUIDELINES: Guideline[] = [
       },
     ],
   },
+
+  /* ================= EASL 2025 年新发布指南 ================= */
+  {
+    id: 'easl-hbv-2025',
+    title: 'EASL 乙型肝炎病毒感染管理临床实践指南（2025）',
+    short: 'EASL 乙肝指南 2025',
+    org: '欧洲肝病学会（EASL）',
+    region: 'intl',
+    dept: 'hepatology',
+    year: 2025,
+    topic: 'hbv',
+    latest: true,
+    tags: ['治疗指征', 'HCC 监测', '再激活', '特殊人群'],
+    summary:
+      'EASL 乙肝指南全面更新，覆盖诊断、治疗目标与指征、治疗选择、肝癌监测、特殊人群与再激活预防等十个主题。',
+    ref: 'EASL Clinical Practice Guidelines on the management of hepatitis B virus infection（2025 年 5 月发布）',
+    sections: [
+      {
+        title: '覆盖范围与治疗决策',
+        points: [
+          { t: '指南分十个主题部分：诊断、治疗目标、治疗指征、治疗方案、肝细胞癌监测、特殊人群管理、HBV 再激活预防、移植后管理及预防等。', tag: '结构', key: true },
+          { t: '治疗指征需结合 HBV DNA、ALT 与无创肝纤维化评估共同判断，而非依赖单一指标。', tag: '治疗指征', key: true },
+          { t: '核苷（酸）类似物为一线且多需长期治疗，药物选择需考虑肾功能与骨安全性。', tag: '治疗' },
+          { t: '肝癌监测覆盖肝硬化与高风险人群，按风险分层确定监测间隔与手段。', tag: 'HCC 监测', key: true },
+        ],
+      },
+      {
+        title: '再激活预防与特殊人群',
+        points: [
+          { t: '接受免疫抑制治疗或靶向治疗者需按再激活风险分层，决定预防性抗病毒用药与监测频率。', tag: '再激活', key: true },
+          { t: '特殊人群管理涵盖妊娠、儿童、合并 HIV/HDV/HCV 感染、肾功能不全与移植受者。', tag: '特殊人群', key: true },
+          { t: '移植后管理强调抗病毒策略与免疫抑制方案的协同。', tag: '移植' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'easl-aih-2025',
+    title: 'EASL 自身免疫性肝炎管理临床实践指南（2025）',
+    short: 'EASL 自身免疫性肝炎指南 2025',
+    org: '欧洲肝病学会（EASL）',
+    region: 'intl',
+    dept: 'hepatology',
+    year: 2025,
+    topic: 'autoimmune',
+    latest: true,
+    tags: ['AIH', '自身抗体', '激素', '儿童'],
+    summary: '为成人与儿童自身免疫性肝炎的诊断和治疗提供最新指导，并覆盖不同临床表型与特殊类型。',
+    ref: 'EASL Clinical Practice Guidelines on the management of autoimmune hepatitis（2025 年 5 月发布）',
+    sections: [
+      {
+        title: '诊断',
+        points: [
+          { t: '所有不明原因转氨酶升高的患者，尤其是 IgG 水平升高和自身抗体阳性者，均应怀疑自身免疫性肝炎。', tag: '警示', key: true },
+          { t: '诊断需综合生化、免疫球蛋白、自身抗体与肝组织学，并排除病毒性肝炎、药物性肝损伤等其他原因。', tag: '路径', key: true },
+          { t: '对不典型或诊断存疑者建议行肝活检，以明确诊断并评估炎症活动度与纤维化程度。', tag: '病理' },
+        ],
+      },
+      {
+        title: '治疗',
+        points: [
+          { t: '糖皮质激素（多与硫唑嘌呤联合）仍是一线诱导与维持方案，需按生化应答动态调整。', tag: '一线', key: true },
+          { t: '对一线治疗不应答或不耐受者，可考虑二线免疫抑制剂与新型治疗。', tag: '二线', key: true },
+          { t: '指南同时覆盖儿童 AIH、妊娠与急性重症等特殊情形的管理。', tag: '特殊人群' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'easl-tips-2025',
+    title: 'EASL 经颈静脉肝内门体分流术（TIPS）临床实践指南（2025）',
+    short: 'EASL TIPS 指南 2025',
+    org: '欧洲肝病学会（EASL）',
+    region: 'intl',
+    dept: 'hepatology',
+    year: 2025,
+    topic: 'cirrhosis',
+    latest: true,
+    tags: ['TIPS', '门静脉高压', '静脉曲张出血', '适应证'],
+    summary: '系统覆盖 TIPS 的适应证、术前评估、技术与随访，明确早期 TIPS 在高风险急性静脉曲张出血中的地位。',
+    ref: 'EASL Clinical Practice Guidelines on TIPS（2025 年 4 月发布）',
+    sections: [
+      {
+        title: '适应证与时机',
+        points: [
+          { t: '高风险急性静脉曲张出血患者应考虑早期 TIPS，而非仅在标准治疗失败后作为补救措施。', tag: '关键', key: true },
+          { t: 'TIPS 亦用于难治性腹水、顽固性胸腔积液、肝肾综合征等门静脉高压并发症，以及部分门静脉血栓患者。', tag: '适应证', key: true },
+          { t: '术前需评估肝功能与全身状况以判断能否耐受分流；MELD 评分 ≥ 30、乳酸 ≥ 12 mmol/L 或慢加急性肝衰竭者风险显著升高。', tag: '评估', key: true },
+        ],
+      },
+      {
+        title: '技术与随访',
+        points: [
+          { t: '推荐使用覆膜支架而非裸支架，以降低分流道再狭窄与失功风险。', tag: '技术', key: true },
+          { t: '术后抗凝或抗血小板策略需个体化，并定期超声评估分流道通畅情况。', tag: '随访', key: true },
+          { t: '需警惕肝性脑病、肝功能恶化与支架失功，并制定相应的识别与处置路径。', tag: '并发症', key: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'easl-vascular-liver-2025',
+    title: 'EASL 肝脏血管性疾病临床实践指南（2025）',
+    short: 'EASL 肝脏血管病指南 2025',
+    org: '欧洲肝病学会（EASL）',
+    region: 'intl',
+    dept: 'hepatology',
+    year: 2025,
+    topic: 'other',
+    latest: true,
+    tags: ['门静脉血栓', 'Budd-Chiari', '肝窦阻塞综合征', '抗凝'],
+    summary: '覆盖门静脉血栓、Budd-Chiari 综合征、肝窦阻塞综合征与内脏动脉瘤等肝脏血管性疾病的诊治。',
+    ref: 'EASL Clinical Practice Guidelines on vascular diseases of the liver（2025 年发布）',
+    sections: [
+      {
+        title: '门静脉血栓',
+        points: [
+          { t: '肝硬化合并非肿瘤性门静脉血栓者，抗凝需权衡出血风险与血栓进展风险，并个体化决定疗程。', tag: '抗凝', key: true },
+          { t: '非肝硬化门静脉血栓应积极寻找易栓因素，如骨髓增殖性肿瘤、遗传性血栓倾向与口服避孕药等。', tag: '病因', key: true },
+          { t: '血栓范围与门静脉高压并发症是决定治疗强度与随访策略的重要依据。', tag: '评估' },
+        ],
+      },
+      {
+        title: '其他肝脏血管病变',
+        points: [
+          { t: 'Budd-Chiari 综合征应尽早启动抗凝，必要时行血管成形/支架或 TIPS，并筛查骨髓增殖性肿瘤。', tag: 'Budd-Chiari', key: true },
+          { t: '肝窦阻塞综合征多与造血干细胞移植或吡咯里西啶类生物碱暴露相关，重在预防与早期识别。', tag: 'SOS', key: true },
+          { t: '指南同时涵盖非梗阻性肝窦扩张与紫癜、内脏动脉瘤、肝动静脉瘘等少见病变。', tag: '少见病' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'easl-surgery-cirrhosis-2025',
+    title: 'EASL 肝硬化与晚期慢性肝病患者腹部肝外手术临床实践指南（2025）',
+    short: 'EASL 肝硬化手术指南 2025',
+    org: '欧洲肝病学会（EASL）',
+    region: 'intl',
+    dept: 'hepatology',
+    year: 2025,
+    topic: 'cirrhosis',
+    latest: true,
+    tags: ['围手术期', '风险分层', '门静脉高压', '术前评估'],
+    summary:
+      '针对肝硬化与晚期慢性肝病患者接受腹部肝外手术的术前风险评估、围手术期管理与术后随访给出建议。',
+    ref: 'EASL Clinical Practice Guidelines on abdominal extrahepatic surgery in cirrhosis and advanced chronic liver disease（2025 年发布）',
+    sections: [
+      {
+        title: '术前风险评估',
+        points: [
+          { t: '应以肝功能储备（Child-Pugh、MELD）、门静脉高压程度与手术类型综合评估风险，而非仅依据单一评分。', tag: '评估', key: true },
+          { t: '存在临床显著门静脉高压（食管胃静脉曲张、腹水、血小板减少）者围手术期风险显著升高，需多学科评估。', tag: '高危', key: true },
+          { t: '术前应评估并优化营养状态、感染灶、凝血功能与肾功能。', tag: '优化', key: true },
+        ],
+      },
+      {
+        title: '围手术期与术后管理',
+        points: [
+          { t: '术中与术后需维持有效循环血容量，避免过量输液与低血压，以降低肝功能失代偿风险。', tag: '循环', key: true },
+          { t: '术后应警惕腹水、肝性脑病、感染、急性肾损伤与慢加急性肝衰竭，并制定早期识别与处理流程。', tag: '并发症', key: true },
+          { t: '高危患者宜在移植中心协作下手术，并评估是否需要术前肝移植评估。', tag: '协作' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'easl-wilson-2025',
+    title: 'EASL-ERN 威尔逊病临床实践指南（2025）',
+    short: 'EASL-ERN 威尔逊病指南 2025',
+    org: '欧洲肝病学会（EASL）与欧洲罕见病参考网络（ERN）',
+    region: 'intl',
+    dept: 'hepatology',
+    year: 2025,
+    topic: 'other',
+    latest: true,
+    tags: ['Wilson 病', '铜代谢', 'K-F 环', '罕见病'],
+    summary: '由 EASL 与欧洲罕见病参考网络联合发布，规范威尔逊病的诊断路径、表型分型与长期治疗随访。',
+    ref: 'EASL-ERN Clinical Practice Guidelines on Wilson disease（2025 年发布）',
+    sections: [
+      {
+        title: '诊断',
+        points: [
+          { t: '对不明原因肝病、尤其 40 岁以下者，以及存在神经精神症状者应考虑威尔逊病。', tag: '警示', key: true },
+          { t: '诊断需结合角膜 K-F 环、血清铜蓝蛋白、24 小时尿铜、肝铜含量与基因检测综合判断，单一指标不足以确诊或排除。', tag: '组合诊断', key: true },
+          { t: '对确诊者的家系筛查是发现无症状患者的关键。', tag: '家系', key: true },
+        ],
+      },
+      {
+        title: '治疗与随访',
+        points: [
+          { t: '螯合剂（青霉胺、曲恩汀）与锌剂为主要治疗，需终身用药并定期随访。', tag: '药物', key: true },
+          { t: '急性肝衰竭或失代偿期肝硬化为肝移植指征，应尽早转诊移植中心。', tag: '移植', key: true },
+          { t: '治疗目标为把游离铜与尿铜维持在目标范围，并监测神经系统症状与药物不良反应。', tag: '监测', key: true },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'easl-cholangiocarcinoma-2025',
+    title: 'EASL 肝外胆管癌临床实践指南（2025）',
+    short: 'EASL 肝外胆管癌指南 2025',
+    org: '欧洲肝病学会（EASL）',
+    region: 'intl',
+    dept: 'hepatology',
+    year: 2025,
+    topic: 'other',
+    latest: true,
+    tags: ['胆管癌', '分子分型', '靶向治疗', '多学科'],
+    summary: '覆盖肝外胆管癌的诊断、分期、手术与系统治疗，强调分子检测与多学科协作。',
+    ref: 'EASL Clinical Practice Guidelines on extrahepatic cholangiocarcinoma（2025 年发布）',
+    sections: [
+      {
+        title: '诊断与分期',
+        points: [
+          { t: '推荐以增强影像结合磁共振胰胆管成像评估胆道梗阻部位与范围，必要时行内镜取材确诊。', tag: '影像', key: true },
+          { t: '对拟行系统治疗者应进行分子检测，以寻找可靶向的驱动改变。', tag: '分子检测', key: true },
+          { t: '分期重点在于判断可切除性与是否存在远处转移。', tag: '分期', key: true },
+        ],
+      },
+      {
+        title: '治疗',
+        points: [
+          { t: '可切除者以根治性手术（含淋巴结清扫）为核心，切缘状态直接影响预后。', tag: '手术', key: true },
+          { t: '不可切除或转移性患者采用化疗联合免疫治疗，并按分子分型选择靶向治疗。', tag: '系统治疗', key: true },
+          { t: '胆道梗阻与胆管炎的处理需外科、内镜与肿瘤科协作，优先保障肝功能与感染控制。', tag: '多学科', key: true },
+        ],
+      },
+    ],
+  },
 ]

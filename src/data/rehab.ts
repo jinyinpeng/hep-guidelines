@@ -408,4 +408,36 @@ export const REHAB: Guideline[] = [
       },
     ],
   },
+  {
+    id: 'esc-cardiac-rehab-2026',
+    title: '2026 ESC 心脏康复指南',
+    short: 'ESC 心脏康复指南 2026',
+    org: '欧洲心脏病学会（ESC）',
+    region: 'intl',
+    dept: 'rehab',
+    year: 2026,
+    latest: true,
+    tags: ['心脏康复', '运动处方', '二级预防', '多学科'],
+    summary: 'ESC 首部心脏康复专门指南，与现行 ESC 各指南相互补充，系统规范心脏康复的评估、处方与实施。',
+    ref: '2026 ESC Guidelines on Cardiac Rehabilitation（ESC Congress 2026 发布，2026 年 8 月 28 日）',
+    grading: 'ESC 2026 新版分级：推荐类别 I/IIa/IIb/III + 证据级别 A/B1/B2/C',
+    sections: [
+      {
+        title: '定位与适用人群',
+        points: [
+          { t: '这是 ESC 首部专门针对心脏康复的指南，用于补充现行 ESC 指南中关于康复与二级预防的建议。', tag: '定位', key: true },
+          { t: '心脏康复适用于心肌梗死后、血运重建术后、心力衰竭、瓣膜手术与器械植入等广泛人群。', tag: '适应证', key: true },
+          { t: '康复应在出院前启动评估与转介，并延续至院外长期管理。', tag: '路径', key: true },
+        ],
+      },
+      {
+        title: '核心组件',
+        points: [
+          { t: '以运动训练为核心，并结合危险因素控制、营养与心理社会支持、用药依从性与自我管理教育。', tag: '构成', key: true },
+          { t: '运动处方需基于基线评估（心肺运动试验或六分钟步行试验）个体化制定强度、频率与形式。', tag: '处方', key: true },
+          { t: '推荐采用多学科团队模式，并关注依从性与可及性（居家或远程康复）。', tag: '实施' },
+        ],
+      },
+    ],
+  },
 ]
