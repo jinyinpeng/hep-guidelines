@@ -74,6 +74,7 @@ export const TOPIC_OF: Record<string, string> = {
   'esc-hf-2021': 'hf',
   'esc-hf-2026': 'hf',
   'aha-hf-2022': 'hf',
+  'acc-aha-lipid-2026': 'lipid',
   'aha-acc-htn-2025': 'htn',
   'esc-mi-ud-2026': 'cad',
   'cn-af-2023': 'af',
@@ -108,6 +109,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-tb-2020': 'tb',
   'cn-pe-2018': 'pe',
   'esc-pe-2019': 'pe',
+  'aha-acc-pe-2026': 'pe',
   'cn-ipf-2016': 'ild',
   'ats-ipf-2022': 'ild',
   'cn-bronchiectasis-2021': 'bronchiectasis',
@@ -545,6 +547,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-eye-trauma': 'trauma',
   'cn-tao': 'other',
   'cn-rop': 'retina',
+  'cn-traumatic-cataract-2026': 'cataract',
 
   /* ---------------- 耳鼻咽喉科 ---------------- */
   'cn-ar-2022': 'rhinitis',

@@ -1,0 +1,1031 @@
+TOTAL 537
+
+## A. latest=true 且 year <= 2023（疑似已有新版可替代）
+anes	cn-obstetric-anesthesia	2020	产科麻醉专家共识
+anes	cn-postop-pain-2023	2023	术后疼痛管理共识 2023
+cardio	esc-pericardial-2015	2015	ESC 心包疾病指南
+cardio	cn-stemi-2019	2019	中国 STEMI 诊治指南
+cardio	esc-svt-2019	2019	ESC 室上性心动过速指南
+cardio	cn-primary-prevention-2020	2020	中国心血管病一级预防指南
+cardio	cn-ph-2021	2021	中国肺动脉高压指南
+cardio	esc-pacing-2021	2021	ESC 起搏与 CRT 指南
+cardio	aha-hf-2022	2022	AHA/ACC 心力衰竭指南
+cardio	esc-ers-ph-2022	2022	ESC/ERS 肺动脉高压指南
+cardio	esc-va-scd-2022	2022	ESC 室性心律失常与猝死指南
+cardio	acc-af-2023	2023	ACC/AHA 心房颤动指南
+cardio	cn-af-2023	2023	中国房颤诊治指南
+cardio	cn-lipid-2023	2023	中国血脂管理指南
+cardio	esc-acs-2023	2023	ESC 急性冠脉综合征指南
+cardio	esc-cmp-2023	2023	ESC 心肌病管理指南
+cardio	esc-ie-2023	2023	ESC 感染性心内膜炎指南
+cts	cn-esophageal-cancer-2022	2022	食管癌诊疗指南
+derm	cn-sti	2020	性传播感染诊疗指南
+derm	cn-urticaria-2022	2022	荨麻疹诊疗指南
+derm	cn-psoriasis-2023	2023	银屑病诊疗指南
+endo	cn-t1dm-2021	2021	1 型糖尿病诊治指南
+endo	cn-osteoporosis-2022	2022	骨质疏松症诊疗指南
+endo	cn-thyroid-2022	2022	甲亢诊治指南
+ent	cn-ar-2022	2022	变应性鼻炎指南
+gensurg	wses-appendicitis-2020	2020	急性阑尾炎诊治指南
+gensurg	cn-gallstone-2021	2021	胆囊良性疾病外科共识
+gensurg	cn-sbo-2023	2023	小肠梗阻诊治共识 2023
+gensurg	cn-thyroid-nodule-2023	2023	甲状腺结节与甲状腺癌指南
+geriatrics	cn-frailty-2022	2022	老年衰弱预防共识
+geriatrics	cn-geriatric-hypertension	2023	老年高血压管理指南 2023
+geriatrics	cn-sarcopenia-2023	2023	老年肌少症共识 2023
+gi	cn-ercp-2018	2018	中国 ERCP 指南
+gi	cn-bowel-prep-2019	2019	肠道准备指南 2019
+gi	cn-constipation-2019	2019	慢性便秘专家共识
+gi	cn-ap-2021	2021	急性胰腺炎诊治指南
+gi	cn-biliary-2021	2021	急性胆道感染诊治指南
+gi	cn-nvuegib-2021	2021	上消化道出血诊治指南
+gi	cn-gastritis-2022	2022	慢性胃炎诊治指南 2022
+gi	cn-hp-2022	2022	幽门螺杆菌处理共识
+gi	cn-peptic-ulcer-2022	2022	消化性溃疡诊治共识
+gi	cn-cd-2023	2023	克罗恩病诊治指南 2023
+gi	cn-uc-2023	2023	溃疡性结肠炎诊治指南 2023
+heme	cn-aa-2022	2022	再障诊治指南 2022
+heme	cn-mm-2022	2022	骨髓瘤诊治指南 2022
+heme	cn-aml-2023	2023	成人 AML 中国指南 2023
+hepatology	aasld-ascites-2021	2021	AASLD 腹水/SBP/HRS 指导
+hepatology	cn-ascites-2023	2023	肝硬化腹水诊疗指南
+hepatology	cn-dili-2023	2023	药物性肝损伤诊治指南
+hepatology	easl-aclf-2023	2023	EASL ACLF 指南
+icu	cn-hap-vap-2018	2018	HAP/VAP 诊治指南
+icu	cn-icu-sedation-2018	2018	ICU 镇痛镇静指南
+icu	ards-global-2023	2023	ARDS 全球新定义
+neuro	cn-ich-2019	2019	脑出血诊治指南
+neuro	cn-ad-2020	2020	阿尔茨海默病诊疗指南
+neuro	cn-mg-2020	2020	重症肌无力诊疗指南
+neuro	cn-pd-2020	2020	帕金森病治疗指南
+neuro	aha-stroke-secondary-2021	2021	AHA/ASA 卒中二级预防指南
+neuro	cn-nmosd-2021	2021	NMOSD 诊疗指南
+neuro	cn-stroke-secondary-2022	2022	缺血性卒中二级预防指南
+neuro	cn-ais-2023	2023	中国急性缺血性卒中诊治指南
+neuro	cn-epilepsy-2023	2023	癫痫病诊疗指南 2023
+neuro	cn-ms-2023	2023	多发性硬化诊疗指南 2023
+neurosurg	cn-hich-2020	2020	高血压性脑出血诊治指南
+obgyn	cn-endometriosis-2021	2021	子宫内膜异位症指南
+obgyn	cn-gdm-2022	2022	妊娠期高血糖指南
+obgyn	cn-cervical-screen-2023	2023	子宫颈癌筛查指南
+obgyn	cn-pph-2023	2023	产后出血防治指南
+oncology	cn-crc-screen-2020	2020	结直肠癌筛查指南
+oncology	cn-lung-screen-2021	2021	中国肺癌筛查指南
+oncology	esmo-ici-toxicity-2022	2022	ESMO 免疫治疗毒性指南
+ophtho	cn-cataract-diabetes-2020	2020	糖尿病白内障围术期共识
+ophtho	cn-dry-eye-2020	2020	干眼专家共识
+ophtho	cn-glaucoma-2020	2020	青光眼指南
+ophtho	cn-diabetic-eye-2021	2021	糖尿病相关眼病共识
+ophtho	cn-dr-guideline	2022	糖尿病视网膜病变指南
+ophtho	cn-amd-2023	2023	年龄相关性黄斑变性指南 2023
+ortho	cn-distal-radius-2023	2023	桡骨远端骨折指南 2023
+ortho	cn-lss-2023	2023	腰椎管狭窄症指南 2023
+pain	cn-cancer-pain-2018	2018	癌痛诊疗规范
+pain	cn-lbp-pain-2020	2020	腰突症疼痛诊疗共识
+peds	cn-febrile-seizure-2017	2017	热性惊厥专家共识
+peds	cn-kawasaki-2022	2022	川崎病专家共识
+rehab	cn-cp-rehab-2022	2022	脑性瘫痪康复指南
+renal	cn-ckd-mbd-2019	2019	CKD-MBD 诊治指南
+renal	cn-dkd-2021	2021	糖尿病肾病中国指南
+renal	cn-hd-sop-2021	2021	血液净化 SOP 2021
+renal	kdigo-bp-2021	2021	KDIGO 血压管理指南
+renal	kdigo-gn-2021	2021	KDIGO 肾小球疾病指南
+renal	kdigo-diabetes-2022	2022	KDIGO 糖尿病 CKD 管理
+renal	cn-ckd-early-2023	2023	中国 CKD 早期评价与管理指南
+renal	cn-ckd-htn-2023	2023	CKD 高血压管理指南 2023
+resp	esc-pe-2019	2019	ESC 急性肺栓塞指南
+resp	cn-bronchiectasis-2021	2021	支气管扩张症专家共识
+resp	cn-copd-2021	2021	中国慢阻肺诊治指南
+resp	cn-cough-2021	2021	中国咳嗽诊治指南 2021
+resp	ats-ipf-2022	2022	ATS/ERS 肺纤维化指南
+rheum	eular-sle-2019	2019	EULAR SLE 建议
+rheum	acr-gout-2020	2020	ACR 痛风指南
+rheum	cn-ss-2020	2020	干燥综合征诊疗规范
+rheum	acr-ra-2021	2021	ACR RA 治疗指南
+rheum	asas-eular-axspa-2022	2022	axSpA 管理建议 2022
+rheum	cn-dm-dermatomyositis-2022	2022	成人皮肌炎共识 2022
+rheum	eular-ra-2022	2022	EULAR RA 管理建议
+rheum	cn-gout-2023	2023	痛风诊疗规范 2023
+rheum	cn-takayasu-2023	2023	大动脉炎指南 2023
+stomatology	cn-ecc-2020	2020	婴幼儿龋防治指南
+stomatology	cn-oral-cancer-pathology	2020	口腔癌病理诊断规范
+urology	cn-prostate-screen-2022	2022	前列腺癌筛查指南
+vascular	cn-dvt-2017	2017	深静脉血栓诊治指南
+
+## B. latest=false（历史版本，仅备查）
+anes	cn-difficult-airway	2013	困难气道管理共识
+anes	cn-geriatric-anesthesia	2014	老年麻醉管理指导意见
+anes	cn-ponv-consensus	2019	术后恶心呕吐共识
+anes	cn-malignant-hyperthermia	2021	恶性高热与过敏共识
+anes	cn-neurosurgical-anes	2021	神经外科麻醉共识
+anes	cn-perioperative-blood	2021	围术期血液管理指南
+anes	cn-depth-monitoring	2022	麻醉深度监测共识
+anes	cn-regional-anesthesia	2022	超声引导神经阻滞共识
+cardio	cn-pci-2016	2016	中国 PCI 指南
+cardio	cn-syncope-2018	2018	晕厥诊疗共识
+cardio	cn-chd-adult	2020	成人先心病共识
+cardio	esc-vhd-2021	2021	ESC/EACTS 心脏瓣膜病指南
+cardio	cn-htn-cpcp-2022	2022	中国高血压临床实践指南
+cardio	cn-myocarditis	2022	心肌炎诊疗共识
+cardio	cn-cardio-onco	2023	肿瘤心脏病学共识
+cardio	esc-hf-2021	2023	ESC 心力衰竭指南
+cts	cn-lung-nodule-2018	2018	肺结节诊治共识
+cts	cn-thoracic-erase	2019	胸外科气道管理共识
+cts	cn-chest-trauma	2021	胸部创伤共识
+cts	cn-hyperhidrosis	2021	手汗症外科共识
+cts	cn-mediastinal-tumor	2021	纵隔肿瘤诊疗共识
+cts	cn-pectus	2021	胸壁畸形共识
+cts	cn-hiatal-hernia	2022	食管裂孔疝共识
+cts	cn-lung-cancer-surgery	2022	肺癌外科治疗共识
+cts	cn-pneumothorax-consensus	2023	自发性气胸共识
+cts	cn-lung-cancer-2024	2024	中华医学会肺癌指南 2024
+derm	cn-acne-2019	2019	痤疮治疗指南
+derm	cn-androgenetic-alopecia	2021	雄激素性秃发指南
+derm	cn-superficial-fungal	2021	手足癣与甲真菌病指南
+derm	cn-drug-eruption	2022	重症药疹共识
+derm	cn-bullous	2023	大疱性皮肤病共识
+derm	cn-skin-tumor	2023	皮肤癌诊疗共识
+emergency	cn-shock-consensus	2017	创伤失血性休克共识
+emergency	cn-acs-emergency	2019	ACS 急诊快速诊治指南
+emergency	cn-chest-pain-consensus	2019	急性胸痛共识
+emergency	aha-cpr-2020	2020	AHA 心肺复苏指南
+emergency	cn-sepsis-prevention-2020	2020	脓毒症早期阻断共识
+emergency	cn-heat-stroke	2021	热射病诊疗共识
+emergency	cn-snake-bite	2021	毒蛇咬伤共识
+emergency	cn-anaphylaxis	2022	过敏性休克共识
+emergency	cn-endo-emergency	2022	糖尿病急症共识
+emergency	cn-hf-emergency	2022	急性心衰急诊指南
+emergency	cn-trauma-rescue	2022	严重创伤救治共识
+endo	cn-hypothyroidism	2017	甲减诊治指南
+endo	cn-gout-2019	2019	高尿酸与痛风指南
+endo	cn-acromegaly	2020	肢端肥大症指南
+endo	cn-pheo	2020	嗜铬细胞瘤共识
+endo	cn-prediabetes-consensus	2020	糖尿病前期干预共识
+endo	cn-dm-remission	2021	2 型糖尿病缓解共识
+endo	cn-male-hypogonadism	2021	男性性腺功能减退共识
+endo	cn-dm-nutrition	2022	糖尿病营养治疗指南
+endo	cn-cushing	2024	库欣综合征共识
+ent	cn-otitis-media	2012	中耳炎分类分型指南
+ent	cn-sudden-deafness-2015	2015	突发性聋诊疗指南
+ent	cn-menieres-2017	2017	梅尼埃病诊疗指南
+ent	cn-crs-2018	2018	慢性鼻窦炎指南
+ent	cn-osa-2018	2018	成人 OSA 诊疗指南
+ent	cn-epistaxis	2021	鼻出血共识
+ent	cn-facial-palsy	2022	面神经麻痹共识
+ent	cn-tonsillectomy	2022	扁桃体腺样体切除共识
+ent	cn-voice	2022	嗓音与咽喉反流共识
+gensurg	cn-hernia-2018	2018	腹股沟疝诊治指南
+gensurg	cn-bariatric	2019	减重代谢外科指南
+gensurg	cn-intraabdominal	2019	腹腔感染诊治指南
+gensurg	cn-portal-hypertension-surgery	2019	门静脉高压症外科共识
+gensurg	cn-anal-fistula	2020	肛瘘诊治共识
+gensurg	cn-erac	2021	加速康复外科指南
+gensurg	cn-nlm	2021	非哺乳期乳腺炎共识
+gensurg	cn-stoma	2021	肠造口实践指南
+gensurg	cn-surgical-nutrition	2021	外科营养支持共识
+gensurg	cn-parathyroid	2022	甲旁亢外科共识
+geriatrics	cn-delirium	2016	老年谵妄防治共识
+geriatrics	cn-cga-consensus	2017	老年综合评估共识
+geriatrics	cn-falls-prevention	2020	老年跌倒预防指南
+geriatrics	cn-geriatric-nutrition	2020	老年营养应用指南
+geriatrics	cn-elderly-incontinence	2021	老年失禁便秘共识
+geriatrics	cn-geriatric-dm	2021	老年糖尿病诊疗指南
+geriatrics	cn-elderly-disability	2022	老年失能照护共识
+geriatrics	cn-elderly-vaccine	2022	老年人疫苗共识
+geriatrics	cn-multimorbidity	2023	老年共病管理共识
+gi	cn-antiplatelet-gi	2012	抗血小板药消化道损伤共识
+gi	cn-fd-consensus	2015	功能性消化不良共识
+gi	cn-gastric-screen-2017	2017	早期胃癌筛查共识
+gi	cn-cp-2018	2018	慢性胰腺炎诊治指南
+gi	cn-gerd-2020	2020	胃食管反流病共识
+gi	cn-ibs-2020	2020	肠易激综合征共识
+gi	cn-microbiota-consensus	2020	微生态调节剂共识
+gi	cn-infectious-diarrhea	2021	感染性腹泻共识
+gi	cn-ischemic-bowel	2021	缺血性肠病共识
+gi	cn-eosinophilic-gi	2022	嗜酸粒细胞胃肠炎共识
+gi	cn-esd-consensus	2022	内镜黏膜下剥离术共识
+heme	cn-dic-2017	2017	DIC 诊断共识
+heme	cn-cml-2020	2020	中国 CML 指南
+heme	cn-fn-2020	2020	粒缺伴发热抗菌指南
+heme	cn-ida-2020	2020	缺铁性贫血共识
+heme	cn-itp-2020	2020	ITP 诊疗指南
+heme	cn-dlbcl-2021	2021	DLBCL 诊疗指南
+heme	cn-ttp	2022	TTP 诊疗共识
+heme	cn-all-adult	2023	成人 ALL 诊疗指南
+heme	cn-hsct	2023	造血干细胞移植指南
+heme	cn-mds-2023	2023	MDS 诊治指南
+heme	cn-mpn-2023	2023	MPN 诊疗指南
+heme	cn-cll-2024	2024	CLL 诊疗指南
+hepatology	easl-hbv-2017	2017	EASL 乙肝指南
+hepatology	easl-pbc-2017	2017	EASL PBC 指南
+hepatology	cn-ald-2018	2018	酒精性肝病防治指南
+hepatology	cn-lf-2018	2018	肝衰竭诊治指南
+hepatology	easl-ald-2018	2018	EASL 酒精性肝病指南
+hepatology	easl-decompensated-2018	2018	EASL 失代偿期肝硬化指南
+hepatology	aasld-aih-2019	2019	AASLD AIH 指导
+hepatology	cn-hbv-cure	2019	乙肝临床治愈专家共识
+hepatology	easl-dili-2019	2019	EASL DILI 指南
+hepatology	easl-hcv-2020	2020	EASL 丙肝治疗推荐
+hepatology	cn-aih-2021	2021	自身免疫性肝炎共识
+hepatology	cn-pbc-2021	2021	原发性胆汁性胆管炎诊疗规范
+hepatology	cn-psc-2021	2021	原发性硬化性胆管炎共识
+hepatology	cn-wilson-2021	2021	肝豆状核变性诊疗指南
+hepatology	cn-varices-2022	2022	食管胃静脉曲张出血防治指南
+hepatology	easl-psc-2022	2022	EASL 硬化性胆管炎指南
+hepatology	aasld-ald-2023	2023	AASLD 酒精相关肝病指导
+hepatology	cn-acute-viral-hepatitis	2023	甲戊型肝炎防治指南
+hepatology	cn-liver-transplant	2023	肝移植指南
+hepatology	kasl-hcv-2025	2025	KASL 丙肝指南
+icu	kdigo-aki-2012	2012	KDIGO AKI 指南
+icu	cn-icu-delirium	2019	ICU 谵妄防治共识
+icu	cn-critical-ultrasound	2021	重症超声共识
+icu	cn-ecmo	2021	ECMO 临床应用共识
+icu	cn-post-arrest	2021	心脏骤停后管理共识
+icu	cn-hemodynamics	2022	血流动力学监测共识
+icu	cn-icu-aw	2022	ICU 获得性衰弱共识
+icu	cn-weaning	2022	撤机共识
+infectious	cn-ab-consensus	2012	鲍曼不动杆菌共识
+infectious	cn-antibiotic-2015	2015	抗菌药物指导原则
+infectious	cn-rabies-2016	2016	狂犬病防控指南
+infectious	cn-fever-consensus	2017	发热待查共识
+infectious	cn-sepsis-2018	2018	中国脓毒症急诊指南
+infectious	cn-hfrs	2020	肾综合征出血热诊疗
+infectious	cn-invasive-fungal	2020	侵袭性真菌病诊疗原则
+infectious	cn-crbsi	2021	导管相关感染防控指南
+infectious	cn-cre-2021	2021	CRE 感染诊治共识
+infectious	cn-brucellosis	2022	布鲁菌病诊疗共识
+infectious	cn-cns-infection	2023	中枢神经系统感染共识
+infectious	cn-covid-2023	2023	新冠诊疗方案
+neuro	cn-migraine	2016	偏头痛防治指南
+neuro	cn-vertigo-consensus	2017	眩晕诊治共识
+neuro	aha-ais-2019	2019	AHA/ASA 缺血性卒中指南
+neuro	cn-gbs-2022	2022	GBS 诊治指南
+neuro	cn-tremor	2022	震颤与肌张力障碍共识
+neuro	cn-cerebral-small-vessel	2023	脑小血管病指南
+neuro	cn-cidp-2023	2023	CIDP 诊疗指南
+neuro	cn-vci-2023	2023	血管性认知障碍指南
+neurosurg	cn-pituitary-adenoma	2015	垂体腺瘤外科共识
+neurosurg	cn-trigeminal-neuralgia	2015	三叉神经痛共识
+neurosurg	btf-tbi-2016	2016	重型颅脑创伤指南
+neurosurg	cn-asah-2016	2016	动脉瘤性 SAH 诊疗规范
+neurosurg	cn-brain-metastasis	2017	脑转移瘤诊治共识
+neurosurg	cn-acoustic-neuroma	2021	听神经瘤共识
+neurosurg	cn-hemifacial-spasm	2021	面肌痉挛共识
+neurosurg	cn-hydrocephalus	2022	脑积水诊疗共识
+neurosurg	cn-moyamoya	2022	烟雾病共识
+neurosurg	cn-spinal-tumor	2022	脊髓肿瘤共识
+obgyn	cn-preterm	2014	早产诊治指南
+obgyn	cn-uterine-fibroid	2017	子宫肌瘤诊治共识
+obgyn	cn-antenatal	2018	孕前孕期保健指南
+obgyn	cn-pcos	2018	PCOS 中国诊疗指南
+obgyn	cn-gestational-thyroid	2019	妊娠期甲状腺指南
+obgyn	cn-pprom	2021	胎膜早破指南
+obgyn	cn-aub	2022	异常子宫出血指南
+obgyn	cn-infertility	2022	女性不孕症共识
+obgyn	cn-menopause	2023	绝经管理指南
+oncology	cn-antiemetic	2019	化疗止吐指南
+oncology	cn-onc-emergency	2023	肿瘤急症共识
+ophtho	cn-endophthalmitis-2017	2017	白内障术后眼内炎共识
+ophtho	cn-rop	2020	早产儿视网膜病变筛查指南
+ophtho	cn-eye-trauma	2021	眼外伤诊疗共识
+ophtho	cn-strabismus	2021	斜视诊治指南
+ophtho	cn-rrd	2022	视网膜脱离共识
+ophtho	cn-tao	2022	甲状腺相关眼病共识
+ophtho	cn-uveitis	2022	葡萄膜炎共识
+ortho	cn-tha-tka-erac	2016	关节置换加速康复共识
+ortho	cn-vte-ortho-2016	2016	骨科大手术 VTE 预防指南
+ortho	cn-cervical-spondylosis	2018	颈椎病专家共识
+ortho	cn-ldh-2020	2020	腰椎间盘突出症指南
+ortho	cn-hip-fracture-consensus	2021	老年髋部骨折共识
+ortho	cn-oa-2021	2021	骨关节炎诊疗指南
+ortho	cn-bone-infection	2022	骨关节感染共识
+ortho	cn-pelvic-fracture	2022	骨盆髋臼骨折共识
+ortho	cn-rotator-cuff	2022	肩袖损伤共识
+ortho	cn-scoliosis	2022	脊柱侧凸指南
+ortho	cn-acl	2023	前交叉韧带损伤指南
+pain	cn-fibromyalgia	2011	纤维肌痛诊疗指南
+pain	cn-neuropathic-pain-consensus	2013	神经病理性疼痛共识
+pain	cn-hospice	2017	安宁疗护实践指南
+pain	cn-crps	2021	CRPS 诊疗共识
+pain	cn-myofascial	2022	肌筋膜疼痛共识
+pain	cn-postop-pain	2022	术后慢性疼痛共识
+pain	cn-spinal-cord-stim	2022	脊髓电刺激共识
+peds	cn-child-growth	2008	矮身材诊治指南
+peds	cn-neonatal-jaundice	2014	新生儿黄疸专家共识
+peds	cn-child-diarrhea	2016	儿童急性腹泻指南
+peds	cn-nephrotic-syndrome	2016	儿童肾病综合征指南
+peds	cn-hfmd-2018	2018	手足口病诊疗指南
+peds	cn-child-anemia	2020	儿童缺铁性贫血防治建议
+peds	cn-child-epilepsy	2021	儿童癫痫共识
+peds	cn-child-tumor	2021	儿童 ALL 诊疗共识
+peds	cn-immunization	2021	儿童免疫规划程序
+peds	cn-asd	2022	孤独症康复指南
+peds	cn-child-dm	2022	儿童糖尿病共识
+peds	cn-child-htn	2022	儿童高血压共识
+peds	cn-child-obesity	2022	儿童肥胖共识
+peds	cn-precocious-puberty	2022	性早熟诊疗共识
+psychiatry	cn-adhd	2015	ADHD 防治指南
+psychiatry	cn-anxiety	2015	焦虑障碍防治指南
+psychiatry	cn-bipolar	2015	双相障碍防治指南
+psychiatry	cn-eating-disorder	2015	进食障碍防治指南
+psychiatry	cn-ptsd	2015	PTSD 防治指南
+psychiatry	cn-substance	2015	物质使用障碍指南
+psychiatry	cn-ocd	2016	强迫症防治指南
+psychiatry	cn-insomnia-2017	2017	失眠症诊疗指南
+psychiatry	cn-antipsychotic-metabolic	2022	抗精神病药代谢监测共识
+psychiatry	cn-psych-emergency	2022	精神科急症共识
+rehab	cn-fall-prevention-tech	2011	老年人跌倒干预指南
+rehab	cn-cardiac-rehab	2015	心脏康复指南
+rehab	cn-dysphagia-consensus	2017	吞咽障碍康复共识
+rehab	cn-pulmonary-rehab	2018	肺康复专家共识
+rehab	cn-aphasia	2021	失语症康复共识
+rehab	cn-prosthetics	2021	假肢矫形器共识
+rehab	cn-critical-rehab	2022	重症早期康复共识
+rehab	cn-ortho-rehab	2022	骨科康复共识
+rehab	cn-pelvic-rehab	2022	盆底康复共识
+rehab	cn-sci-rehab	2022	脊髓损伤康复共识
+renal	cn-renal-anemia	2018	肾性贫血共识
+renal	cn-adpkd	2021	多囊肾病共识
+renal	cn-aki-2023	2023	急性肾损伤指南
+renal	cn-kidney-transplant	2023	肾移植指南
+resp	cn-pulmonary-function	2014	肺功能检查指南
+resp	cn-smoking-2015	2015	临床戒烟指南
+resp	cn-cap-2016	2016	中国 CAP 诊治指南
+resp	cn-ipf-2016	2016	IPF 中国专家共识
+resp	cn-aecopd-2017	2017	AECOPD 诊治共识
+resp	cn-niv-consensus	2017	无创正压通气共识
+resp	cn-pe-2018	2018	肺栓塞诊治与预防指南
+resp	cn-hfnc-consensus	2019	经鼻高流量氧疗共识
+resp	cn-tb-2020	2020	结核病防控技术规范
+resp	cn-massive-hemoptysis	2021	大咯血诊疗共识
+resp	cn-lung-fungal	2022	肺真菌病诊疗共识
+resp	cn-mpe-consensus	2022	恶性胸腔积液共识
+resp	cn-bronchoscopy-standard	2023	支气管镜技术规范
+resp	cn-tb-diagnosis-treatment	2024	肺结核诊疗指南
+rheum	cn-aps	2021	抗磷脂综合征共识
+rheum	cn-igg4-rd	2021	IgG4 相关病共识
+rheum	cn-still	2021	成人斯蒂尔病共识
+rheum	cn-behcet	2022	白塞病诊疗共识
+rheum	cn-pmr-gca	2022	PMR 与 GCA 共识
+rheum	cn-psa	2022	银屑病关节炎共识
+rheum	cn-ssc-2022	2022	系统性硬化病诊疗规范
+stomatology	cn-caries-guideline	2019	龋病防治指南
+stomatology	cn-implant-consensus	2020	口腔种植专家共识
+stomatology	cn-periodontitis-guideline	2020	牙周病防治指南
+stomatology	cn-endodontics	2021	牙体牙髓病共识
+stomatology	cn-oral-mucosa	2021	口腔黏膜病共识
+stomatology	cn-oral-surgery	2021	颌面创伤与牙槽外科共识
+stomatology	cn-orthodontics	2021	口腔正畸共识
+stomatology	cn-tmj	2021	颞下颌关节紊乱共识
+stomatology	cn-oral-infection	2022	颌面部间隙感染共识
+urology	cn-uti-2015	2015	尿路感染诊治共识
+urology	cn-urolithiasis	2020	泌尿系结石共识
+urology	cn-bph-consensus	2021	前列腺增生共识
+urology	cn-neurogenic-bladder	2021	神经源性膀胱指南
+urology	cn-prostatitis	2021	前列腺炎诊疗指南
+urology	cn-adrenal-surgery	2022	肾上腺外科共识
+urology	cn-andrology	2022	男科疾病诊疗指南
+urology	cn-ed-guideline	2022	勃起功能障碍指南
+urology	cn-oab	2022	膀胱过度活动症指南
+urology	cn-rcc	2022	肾癌诊疗指南
+urology	cn-sui	2022	压力性尿失禁指南
+vascular	cn-pad-2015	2015	下肢动脉硬化闭塞症指南
+vascular	cn-vte-prevention	2016	围手术期血栓预防指南
+vascular	cn-carotid-stenosis	2017	颈动脉狭窄指南
+vascular	cn-varicose-vein-consensus	2019	慢性下肢静脉疾病共识
+vascular	cn-aaa-guideline	2020	腹主动脉瘤共识
+vascular	cn-buerger	2021	脉管炎诊疗共识
+vascular	cn-vascular-trauma	2021	血管损伤共识
+vascular	cn-lymphedema	2022	淋巴水肿共识
+vascular	cn-mesenteric-ischemia	2022	肠系膜缺血共识
+
+## C. 各科室条目数与年份分布
+anes	共 11	2013:1 2014:1 2019:1 2020:1 2021:3 2022:2 2023:1 2024:1
+cardio	共 36	2015:1 2016:1 2018:1 2019:2 2020:2 2021:3 2022:5 2023:8 2024:5 2025:5 2026:3
+cts	共 12	2018:1 2019:1 2021:4 2022:3 2023:1 2024:1 2026:1
+derm	共 13	2019:1 2020:1 2021:2 2022:2 2023:3 2024:1 2025:3
+emergency	共 13	2017:1 2019:2 2020:2 2021:2 2022:4 2025:2
+endo	共 18	2017:1 2019:1 2020:3 2021:3 2022:3 2024:4 2025:2 2026:1
+ent	共 13	2012:1 2015:1 2017:1 2018:2 2021:1 2022:4 2024:1 2026:2
+gensurg	共 18	2018:1 2019:3 2020:2 2021:5 2022:1 2023:2 2024:2 2025:1 2026:1
+geriatrics	共 13	2016:1 2017:1 2020:2 2021:2 2022:3 2023:3 2024:1
+gi	共 24	2012:1 2015:1 2017:1 2018:2 2019:2 2020:3 2021:5 2022:5 2023:2 2026:2
+heme	共 20	2017:1 2020:4 2021:1 2022:3 2023:5 2024:1 2025:2 2026:3
+hepatology	共 49	2017:2 2018:4 2019:3 2020:1 2021:5 2022:2 2023:6 2024:5 2025:16 2026:5
+icu	共 14	2012:1 2018:2 2019:1 2021:3 2022:3 2023:1 2024:2 2026:1
+infectious	共 15	2012:1 2015:1 2016:1 2017:1 2018:1 2020:2 2021:2 2022:1 2023:2 2024:1 2025:1 2026:1
+neuro	共 22	2016:1 2017:1 2019:2 2020:3 2021:2 2022:3 2023:6 2024:2 2025:1 2026:1
+neurosurg	共 14	2015:2 2016:2 2017:1 2020:1 2021:2 2022:3 2024:3
+obgyn	共 18	2014:1 2017:1 2018:2 2019:1 2021:2 2022:3 2023:3 2024:1 2025:3 2026:1
+oncology	共 20	2019:1 2020:1 2021:1 2022:1 2023:1 2024:1 2026:14
+ophtho	共 15	2017:1 2020:4 2021:3 2022:4 2023:1 2024:1 2026:1
+ortho	共 16	2016:2 2018:1 2020:1 2021:2 2022:4 2023:3 2025:1 2026:2
+pain	共 10	2011:1 2013:1 2017:1 2018:1 2020:1 2021:1 2022:3 2025:1
+peds	共 20	2008:1 2014:1 2016:2 2017:1 2018:1 2020:1 2021:3 2022:6 2024:1 2025:2 2026:1
+psychiatry	共 12	2015:6 2016:1 2017:1 2022:2 2025:2
+rehab	共 13	2011:1 2015:1 2017:1 2018:1 2021:2 2022:5 2025:1 2026:1
+renal	共 19	2018:1 2019:1 2021:5 2022:1 2023:4 2024:4 2025:1 2026:2
+resp	共 29	2014:1 2015:1 2016:2 2017:2 2018:1 2019:2 2020:1 2021:4 2022:3 2023:1 2024:4 2025:2 2026:5
+rheum	共 20	2019:1 2020:2 2021:4 2022:7 2023:2 2024:1 2025:2 2026:1
+stomatology	共 12	2019:1 2020:4 2021:5 2022:1 2025:1
+urology	共 17	2015:1 2020:1 2021:3 2022:7 2024:2 2026:3
+vascular	共 11	2015:1 2016:1 2017:2 2019:1 2020:1 2021:2 2022:2 2025:1
+
+## D. 全部条目（按科室/年份）
+
+===== anes (anes.ts) =====
+cn-difficult-airway	2013	-		困难气道管理共识
+cn-geriatric-anesthesia	2014	-		老年麻醉管理指导意见
+cn-ponv-consensus	2019	-		术后恶心呕吐共识
+cn-obstetric-anesthesia	2020	L		产科麻醉专家共识
+cn-malignant-hyperthermia	2021	-		恶性高热与过敏共识
+cn-neurosurgical-anes	2021	-		神经外科麻醉共识
+cn-perioperative-blood	2021	-		围术期血液管理指南
+cn-depth-monitoring	2022	-		麻醉深度监测共识
+cn-regional-anesthesia	2022	-		超声引导神经阻滞共识
+cn-postop-pain-2023	2023	L		术后疼痛管理共识 2023
+cn-pediatric-analgesia-2024	2024	L		小儿术后镇痛共识 2024
+
+===== cardio (cardio.ts) =====
+esc-pericardial-2015	2015	L		ESC 心包疾病指南
+cn-pci-2016	2016	-		中国 PCI 指南
+cn-syncope-2018	2018	-		晕厥诊疗共识
+cn-stemi-2019	2019	L		中国 STEMI 诊治指南
+esc-svt-2019	2019	L		ESC 室上性心动过速指南
+cn-chd-adult	2020	-		成人先心病共识
+cn-primary-prevention-2020	2020	L		中国心血管病一级预防指南
+cn-ph-2021	2021	L		中国肺动脉高压指南
+esc-pacing-2021	2021	L		ESC 起搏与 CRT 指南
+esc-vhd-2021	2021	-		ESC/EACTS 心脏瓣膜病指南
+aha-hf-2022	2022	L		AHA/ACC 心力衰竭指南
+cn-htn-cpcp-2022	2022	-		中国高血压临床实践指南
+cn-myocarditis	2022	-		心肌炎诊疗共识
+esc-ers-ph-2022	2022	L		ESC/ERS 肺动脉高压指南
+esc-va-scd-2022	2022	L		ESC 室性心律失常与猝死指南
+acc-af-2023	2023	L		ACC/AHA 心房颤动指南
+cn-af-2023	2023	L	RG	中国房颤诊治指南
+cn-cardio-onco	2023	-		肿瘤心脏病学共识
+cn-lipid-2023	2023	L		中国血脂管理指南
+esc-acs-2023	2023	L		ESC 急性冠脉综合征指南
+esc-cmp-2023	2023	L		ESC 心肌病管理指南
+esc-hf-2021	2023	-		ESC 心力衰竭指南
+esc-ie-2023	2023	L		ESC 感染性心内膜炎指南
+cn-cteph-2024	2024	L		CTEPH 诊治指南 2024
+cn-hf-2024	2024	L	RG	中国心力衰竭指南 2024
+esc-af-2024	2024	L		ESC 心房颤动指南 2024
+esc-ccs-2024	2024	L		ESC 慢性冠脉综合征指南
+esc-htn-2024	2024	L		ESC 高血压指南
+acc-aha-acs-2025	2025	L		ACC/AHA 急性冠脉综合征指南 2025
+aha-acc-htn-2025	2025	L	RG	AHA/ACC 高血压指南 2025
+cn-htn-2025	2025	L	RG	中国高血压防治指南
+esc-eas-lipid-2025	2025	L		ESC/EAS 血脂更新 2025
+esc-vhd-2025	2025	L	RG	ESC/EACTS 瓣膜病指南 2025
+acc-aha-lipid-2026	2026	L	RG	ACC/AHA 血脂异常指南 2026
+esc-hf-2026	2026	L	RG	ESC 心力衰竭指南 2026
+esc-mi-ud-2026	2026	L		心肌梗死全球统一定义 2026
+
+===== cts (cts.ts) =====
+cn-lung-nodule-2018	2018	-		肺结节诊治共识
+cn-thoracic-erase	2019	-		胸外科气道管理共识
+cn-chest-trauma	2021	-		胸部创伤共识
+cn-hyperhidrosis	2021	-		手汗症外科共识
+cn-mediastinal-tumor	2021	-		纵隔肿瘤诊疗共识
+cn-pectus	2021	-		胸壁畸形共识
+cn-esophageal-cancer-2022	2022	L		食管癌诊疗指南
+cn-hiatal-hernia	2022	-		食管裂孔疝共识
+cn-lung-cancer-surgery	2022	-		肺癌外科治疗共识
+cn-pneumothorax-consensus	2023	-		自发性气胸共识
+cn-lung-cancer-2024	2024	-		中华医学会肺癌指南 2024
+cn-lung-cancer-2026	2026	L		中华医学会肺癌指南 2026
+
+===== derm (derm.ts) =====
+cn-acne-2019	2019	-		痤疮治疗指南
+cn-sti	2020	L		性传播感染诊疗指南
+cn-androgenetic-alopecia	2021	-		雄激素性秃发指南
+cn-superficial-fungal	2021	-		手足癣与甲真菌病指南
+cn-drug-eruption	2022	-		重症药疹共识
+cn-urticaria-2022	2022	L		荨麻疹诊疗指南
+cn-bullous	2023	-		大疱性皮肤病共识
+cn-psoriasis-2023	2023	L		银屑病诊疗指南
+cn-skin-tumor	2023	-		皮肤癌诊疗共识
+cn-vitiligo-2024	2024	L		白癜风诊疗共识 2024
+cn-alopecia-2025	2025	L		斑秃诊疗共识 2025
+cn-atopic-derm-2025	2025	L		特应性皮炎诊疗指南 2025
+cn-herpes-zoster-2025	2025	L		带状疱疹共识 2025
+
+===== emergency (emergency.ts) =====
+cn-shock-consensus	2017	-		创伤失血性休克共识
+cn-acs-emergency	2019	-		ACS 急诊快速诊治指南
+cn-chest-pain-consensus	2019	-		急性胸痛共识
+aha-cpr-2020	2020	-		AHA 心肺复苏指南
+cn-sepsis-prevention-2020	2020	-		脓毒症早期阻断共识
+cn-heat-stroke	2021	-		热射病诊疗共识
+cn-snake-bite	2021	-		毒蛇咬伤共识
+cn-anaphylaxis	2022	-		过敏性休克共识
+cn-endo-emergency	2022	-		糖尿病急症共识
+cn-hf-emergency	2022	-		急性心衰急诊指南
+cn-trauma-rescue	2022	-		严重创伤救治共识
+cn-cpr-2025	2025	L		中国心肺复苏指南 2025
+cn-poisoning-2025	2025	L		急性中毒诊治共识 2025
+
+===== endo (endo.ts) =====
+cn-hypothyroidism	2017	-		甲减诊治指南
+cn-gout-2019	2019	-		高尿酸与痛风指南
+cn-acromegaly	2020	-		肢端肥大症指南
+cn-pheo	2020	-		嗜铬细胞瘤共识
+cn-prediabetes-consensus	2020	-		糖尿病前期干预共识
+cn-dm-remission	2021	-		2 型糖尿病缓解共识
+cn-male-hypogonadism	2021	-		男性性腺功能减退共识
+cn-t1dm-2021	2021	L		1 型糖尿病诊治指南
+cn-dm-nutrition	2022	-		糖尿病营养治疗指南
+cn-osteoporosis-2022	2022	L		骨质疏松症诊疗指南
+cn-thyroid-2022	2022	L		甲亢诊治指南
+cn-cushing	2024	-		库欣综合征共识
+cn-dm-2024	2024	L		中国糖尿病防治指南 2024
+cn-obesity-2024	2024	L		肥胖症诊疗指南 2024
+cn-pa-2024	2024	L		原醛症诊治共识 2024
+cn-diabetic-foot	2025	L		糖尿病足防治指南
+cn-male-osteoporosis-2025	2025	L		男性骨质疏松诊疗指南 2025
+ada-2026	2026	L		ADA 糖尿病诊疗标准
+
+===== ent (ent.ts) =====
+cn-otitis-media	2012	-		中耳炎分类分型指南
+cn-sudden-deafness-2015	2015	-		突发性聋诊疗指南
+cn-menieres-2017	2017	-		梅尼埃病诊疗指南
+cn-crs-2018	2018	-		慢性鼻窦炎指南
+cn-osa-2018	2018	-		成人 OSA 诊疗指南
+cn-epistaxis	2021	-		鼻出血共识
+cn-ar-2022	2022	L		变应性鼻炎指南
+cn-facial-palsy	2022	-		面神经麻痹共识
+cn-tonsillectomy	2022	-		扁桃体腺样体切除共识
+cn-voice	2022	-		嗓音与咽喉反流共识
+cn-crs-2024	2024	L		慢性鼻窦炎指南 2024
+cn-osa-2025	2026	L	RG	成人 OSA 诊治指南 2025
+csco-head-neck-2026	2026	L		CSCO 头颈部肿瘤 2026
+
+===== gensurg (gensurg.ts) =====
+cn-hernia-2018	2018	-		腹股沟疝诊治指南
+cn-bariatric	2019	-		减重代谢外科指南
+cn-intraabdominal	2019	-		腹腔感染诊治指南
+cn-portal-hypertension-surgery	2019	-		门静脉高压症外科共识
+cn-anal-fistula	2020	-		肛瘘诊治共识
+wses-appendicitis-2020	2020	L		急性阑尾炎诊治指南
+cn-erac	2021	-		加速康复外科指南
+cn-gallstone-2021	2021	L		胆囊良性疾病外科共识
+cn-nlm	2021	-		非哺乳期乳腺炎共识
+cn-stoma	2021	-		肠造口实践指南
+cn-surgical-nutrition	2021	-		外科营养支持共识
+cn-parathyroid	2022	-		甲旁亢外科共识
+cn-sbo-2023	2023	L		小肠梗阻诊治共识 2023
+cn-thyroid-nodule-2023	2023	L		甲状腺结节与甲状腺癌指南
+caca-thyroid-2024	2024	L		CACA 甲状腺癌指南
+cn-hernia-2024	2024	L	RG	腹股沟疝诊疗指南 2024
+cn-hemorrhoids-2025	2025	L		中国痔病诊疗指南 2025
+cn-elderly-cholelithiasis-2026	2026	L	RG	老年胆囊结石共识 2026
+
+===== geriatrics (geriatrics.ts) =====
+cn-delirium	2016	-		老年谵妄防治共识
+cn-cga-consensus	2017	-		老年综合评估共识
+cn-falls-prevention	2020	-		老年跌倒预防指南
+cn-geriatric-nutrition	2020	-		老年营养应用指南
+cn-elderly-incontinence	2021	-		老年失禁便秘共识
+cn-geriatric-dm	2021	-		老年糖尿病诊疗指南
+cn-elderly-disability	2022	-		老年失能照护共识
+cn-elderly-vaccine	2022	-		老年人疫苗共识
+cn-frailty-2022	2022	L		老年衰弱预防共识
+cn-geriatric-hypertension	2023	L		老年高血压管理指南 2023
+cn-multimorbidity	2023	-		老年共病管理共识
+cn-sarcopenia-2023	2023	L		老年肌少症共识 2023
+cn-polypharmacy	2024	L		老年多重用药共识 2024
+
+===== gi (gi.ts) =====
+cn-antiplatelet-gi	2012	-		抗血小板药消化道损伤共识
+cn-fd-consensus	2015	-		功能性消化不良共识
+cn-gastric-screen-2017	2017	-		早期胃癌筛查共识
+cn-cp-2018	2018	-		慢性胰腺炎诊治指南
+cn-ercp-2018	2018	L		中国 ERCP 指南
+cn-bowel-prep-2019	2019	L		肠道准备指南 2019
+cn-constipation-2019	2019	L		慢性便秘专家共识
+cn-gerd-2020	2020	-		胃食管反流病共识
+cn-ibs-2020	2020	-		肠易激综合征共识
+cn-microbiota-consensus	2020	-		微生态调节剂共识
+cn-ap-2021	2021	L		急性胰腺炎诊治指南
+cn-biliary-2021	2021	L		急性胆道感染诊治指南
+cn-infectious-diarrhea	2021	-		感染性腹泻共识
+cn-ischemic-bowel	2021	-		缺血性肠病共识
+cn-nvuegib-2021	2021	L		上消化道出血诊治指南
+cn-eosinophilic-gi	2022	-		嗜酸粒细胞胃肠炎共识
+cn-esd-consensus	2022	-		内镜黏膜下剥离术共识
+cn-gastritis-2022	2022	L		慢性胃炎诊治指南 2022
+cn-hp-2022	2022	L		幽门螺杆菌处理共识
+cn-peptic-ulcer-2022	2022	L		消化性溃疡诊治共识
+cn-cd-2023	2023	L		克罗恩病诊治指南 2023
+cn-uc-2023	2023	L		溃疡性结肠炎诊治指南 2023
+acg-diverticulitis-2026	2026	L		ACG 结肠憩室炎指南 2026
+rome-v-2026	2026	L		罗马 V 标准 2026
+
+===== heme (heme.ts) =====
+cn-dic-2017	2017	-		DIC 诊断共识
+cn-cml-2020	2020	-		中国 CML 指南
+cn-fn-2020	2020	-		粒缺伴发热抗菌指南
+cn-ida-2020	2020	-		缺铁性贫血共识
+cn-itp-2020	2020	-		ITP 诊疗指南
+cn-dlbcl-2021	2021	-		DLBCL 诊疗指南
+cn-aa-2022	2022	L		再障诊治指南 2022
+cn-mm-2022	2022	L		骨髓瘤诊治指南 2022
+cn-ttp	2022	-		TTP 诊疗共识
+cn-all-adult	2023	-		成人 ALL 诊疗指南
+cn-aml-2023	2023	L		成人 AML 中国指南 2023
+cn-hsct	2023	-		造血干细胞移植指南
+cn-mds-2023	2023	-		MDS 诊治指南
+cn-mpn-2023	2023	-		MPN 诊疗指南
+cn-cll-2024	2024	-		CLL 诊疗指南
+cn-hemophilia-2025	2025	L		血友病治疗中国指南 2025
+cn-itp-2025	2025	L		ITP 中国指南 2025
+cn-lymphoma-2026	2026	L		中国淋巴瘤诊疗指南 2026
+csco-lymphoma-2026	2026	L		CSCO 淋巴瘤 2026
+csco-plasma-2026	2026	L		CSCO 浆细胞肿瘤 2026
+
+===== hepatology (hepatology-intl.ts) =====
+easl-hbv-2017	2017	-		EASL 乙肝指南
+easl-pbc-2017	2017	-		EASL PBC 指南
+cn-ald-2018	2018	-		酒精性肝病防治指南
+cn-lf-2018	2018	-		肝衰竭诊治指南
+easl-ald-2018	2018	-		EASL 酒精性肝病指南
+easl-decompensated-2018	2018	-		EASL 失代偿期肝硬化指南
+aasld-aih-2019	2019	-		AASLD AIH 指导
+cn-hbv-cure	2019	-		乙肝临床治愈专家共识
+easl-dili-2019	2019	-		EASL DILI 指南
+easl-hcv-2020	2020	-		EASL 丙肝治疗推荐
+aasld-ascites-2021	2021	L		AASLD 腹水/SBP/HRS 指导
+cn-aih-2021	2021	-		自身免疫性肝炎共识
+cn-pbc-2021	2021	-		原发性胆汁性胆管炎诊疗规范
+cn-psc-2021	2021	-		原发性硬化性胆管炎共识
+cn-wilson-2021	2021	-		肝豆状核变性诊疗指南
+cn-varices-2022	2022	-		食管胃静脉曲张出血防治指南
+easl-psc-2022	2022	-		EASL 硬化性胆管炎指南
+aasld-ald-2023	2023	-		AASLD 酒精相关肝病指导
+cn-acute-viral-hepatitis	2023	-		甲戊型肝炎防治指南
+cn-ascites-2023	2023	L		肝硬化腹水诊疗指南
+cn-dili-2023	2023	L		药物性肝损伤诊治指南
+cn-liver-transplant	2023	-		肝移植指南
+easl-aclf-2023	2023	L		EASL ACLF 指南
+aasld-critically-ill-2024	2024	L		AASLD 肝硬化危重症指南
+aasld-idsa-hcv	2024	L		AASLD/IDSA 丙肝指南
+cn-masld	2024	L		MASLD 防治指南
+easl-hcc-2024	2024	L		EASL 肝癌指南
+easl-masld-2024	2024	L		EASL MASLD 指南
+aasld-hcc-2025	2025	L		AASLD 肝癌实践指导
+aasld-masld-2023	2025	L		AASLD MASLD 实践指导
+cn-aclf-2025	2025	L		慢加急性肝衰竭诊治指南
+cn-cirrhosis-2025	2025	L		肝硬化临床诊治管理指南
+cn-dili-primary-2025	2025	L		DILI 基层诊疗指南
+cn-hbv-2025	2025	L		慢性乙型肝炎防治指南
+cn-hcv-2025	2025	L		丙型肝炎防治指南
+cn-masld-primary-2025	2025	L		MASLD 基层诊疗指南
+easl-aih-2025	2025	L		EASL 自身免疫性肝炎指南 2025
+easl-cholangiocarcinoma-2025	2025	L		EASL 肝外胆管癌指南 2025
+easl-hbv-2025	2025	L		EASL 乙肝指南 2025
+easl-surgery-cirrhosis-2025	2025	L		EASL 肝硬化手术指南 2025
+easl-tips-2025	2025	L		EASL TIPS 指南 2025
+easl-vascular-liver-2025	2025	L		EASL 肝脏血管病指南 2025
+easl-wilson-2025	2025	L		EASL-ERN 威尔逊病指南 2025
+kasl-hcv-2025	2025	-		KASL 丙肝指南
+baveno-8-2026	2026	L		Baveno Ⅷ 共识
+cn-hbv-react-2026	2026	L		HBV 再激活防治指南
+cn-hcc-2026	2026	L		原发性肝癌诊疗指南
+cn-he-2026	2026	L		肝硬化肝性脑病诊疗指南
+who-hbv-hcv-2026	2026	L		WHO 乙肝丙肝综合指南
+
+===== icu (icu.ts) =====
+kdigo-aki-2012	2012	-		KDIGO AKI 指南
+cn-hap-vap-2018	2018	L		HAP/VAP 诊治指南
+cn-icu-sedation-2018	2018	L		ICU 镇痛镇静指南
+cn-icu-delirium	2019	-		ICU 谵妄防治共识
+cn-critical-ultrasound	2021	-		重症超声共识
+cn-ecmo	2021	-		ECMO 临床应用共识
+cn-post-arrest	2021	-		心脏骤停后管理共识
+cn-hemodynamics	2022	-		血流动力学监测共识
+cn-icu-aw	2022	-		ICU 获得性衰弱共识
+cn-weaning	2022	-		撤机共识
+ards-global-2023	2023	L		ARDS 全球新定义
+cn-mechanical-ventilation-2024	2024	L		机械通气临床应用指南 2024
+cn-pn-2024	2024	L		重症肠外营养共识 2024
+cn-crrt-fluid-2026	2026	L		CRRT 处方液体指南 2026
+
+===== infectious (infectious.ts) =====
+cn-ab-consensus	2012	-		鲍曼不动杆菌共识
+cn-antibiotic-2015	2015	-		抗菌药物指导原则
+cn-rabies-2016	2016	-		狂犬病防控指南
+cn-fever-consensus	2017	-		发热待查共识
+cn-sepsis-2018	2018	-		中国脓毒症急诊指南
+cn-hfrs	2020	-		肾综合征出血热诊疗
+cn-invasive-fungal	2020	-		侵袭性真菌病诊疗原则
+cn-crbsi	2021	-		导管相关感染防控指南
+cn-cre-2021	2021	-		CRE 感染诊治共识
+cn-brucellosis	2022	-		布鲁菌病诊疗共识
+cn-cns-infection	2023	-		中枢神经系统感染共识
+cn-covid-2023	2023	-		新冠诊疗方案
+cn-hiv-2024	2024	L		中国艾滋病诊疗指南 2024
+cn-influenza-2025	2025	L		流感诊疗方案 2025
+ssc-2026	2026	L		SSC 脓毒症指南 2026
+
+===== neuro (neuro.ts) =====
+cn-migraine	2016	-		偏头痛防治指南
+cn-vertigo-consensus	2017	-		眩晕诊治共识
+aha-ais-2019	2019	-		AHA/ASA 缺血性卒中指南
+cn-ich-2019	2019	L		脑出血诊治指南
+cn-ad-2020	2020	L		阿尔茨海默病诊疗指南
+cn-mg-2020	2020	L		重症肌无力诊疗指南
+cn-pd-2020	2020	L		帕金森病治疗指南
+aha-stroke-secondary-2021	2021	L		AHA/ASA 卒中二级预防指南
+cn-nmosd-2021	2021	L		NMOSD 诊疗指南
+cn-gbs-2022	2022	-		GBS 诊治指南
+cn-stroke-secondary-2022	2022	L		缺血性卒中二级预防指南
+cn-tremor	2022	-		震颤与肌张力障碍共识
+cn-ais-2023	2023	L	RG	中国急性缺血性卒中诊治指南
+cn-cerebral-small-vessel	2023	-		脑小血管病指南
+cn-cidp-2023	2023	-		CIDP 诊疗指南
+cn-epilepsy-2023	2023	L		癫痫病诊疗指南 2023
+cn-ms-2023	2023	L		多发性硬化诊疗指南 2023
+cn-vci-2023	2023	-		血管性认知障碍指南
+cn-cvd-prevention-2024	2024	L		脑血管病防治指南 2024
+cn-severe-stroke-2024	2024	L		重症卒中管理指南 2024
+cn-ais-reperfusion-2025	2025	L		AIS 再灌注治疗指南 2025
+aha-ais-2026	2026	L	G	AHA/ASA 卒中指南 2026
+
+===== neurosurg (neurosurg.ts) =====
+cn-pituitary-adenoma	2015	-		垂体腺瘤外科共识
+cn-trigeminal-neuralgia	2015	-		三叉神经痛共识
+btf-tbi-2016	2016	-		重型颅脑创伤指南
+cn-asah-2016	2016	-		动脉瘤性 SAH 诊疗规范
+cn-brain-metastasis	2017	-		脑转移瘤诊治共识
+cn-hich-2020	2020	L		高血压性脑出血诊治指南
+cn-acoustic-neuroma	2021	-		听神经瘤共识
+cn-hemifacial-spasm	2021	-		面肌痉挛共识
+cn-hydrocephalus	2022	-		脑积水诊疗共识
+cn-moyamoya	2022	-		烟雾病共识
+cn-spinal-tumor	2022	-		脊髓肿瘤共识
+caca-glioma-2024	2024	L		CACA 脑胶质瘤指南 2024
+cn-ruptured-ia-2024	2024	L		破裂颅内动脉瘤指南 2024
+cn-unruptured-ia-2024	2024	L		未破裂颅内动脉瘤指南 2024
+
+===== obgyn (obgyn.ts) =====
+cn-preterm	2014	-		早产诊治指南
+cn-uterine-fibroid	2017	-		子宫肌瘤诊治共识
+cn-antenatal	2018	-		孕前孕期保健指南
+cn-pcos	2018	-		PCOS 中国诊疗指南
+cn-gestational-thyroid	2019	-		妊娠期甲状腺指南
+cn-endometriosis-2021	2021	L		子宫内膜异位症指南
+cn-pprom	2021	-		胎膜早破指南
+cn-aub	2022	-		异常子宫出血指南
+cn-gdm-2022	2022	L		妊娠期高血糖指南
+cn-infertility	2022	-		女性不孕症共识
+cn-cervical-screen-2023	2023	L		子宫颈癌筛查指南
+cn-menopause	2023	-		绝经管理指南
+cn-pph-2023	2023	L		产后出血防治指南
+cn-gh-2024	2024	L		妊娠期高血压疾病指南 2024
+csco-cervical-2025	2025	L		CSCO 宫颈癌 2025
+csco-endometrial-2025	2025	L		CSCO 子宫内膜癌 2025
+csco-ovarian-2025	2025	L		CSCO 卵巢癌 2025
+cn-rsa-2026	2026	L		复发性流产共识 2026
+
+===== oncology (oncology.ts) =====
+cn-antiemetic	2019	-		化疗止吐指南
+cn-crc-screen-2020	2020	L		结直肠癌筛查指南
+cn-lung-screen-2021	2021	L		中国肺癌筛查指南
+esmo-ici-toxicity-2022	2022	L		ESMO 免疫治疗毒性指南
+cn-onc-emergency	2023	-		肿瘤急症共识
+caca-breast	2024	L		CACA 乳腺癌指南
+cma-lung-2026	2026	L		中华医学会肺癌指南 2026
+cn-cin-2026	2026	L		化疗中性粒细胞减少共识 2026
+csco-anemia-2026	2026	L		CSCO 肿瘤相关性贫血 2026
+csco-breast-2026	2026	L		CSCO 乳腺癌 2026
+csco-crc-2026	2026	L		CSCO 结直肠癌 2026
+csco-esophagus-2026	2026	L		CSCO 食管癌 2026
+csco-gastric-2026	2026	L		CSCO 胃癌 2026
+csco-ici-2026	2026	L		CSCO 免疫检查点抑制剂 2026
+csco-melanoma-2026	2026	L		CSCO 黑色素瘤 2026
+csco-nsclc	2026	L		CSCO 非小细胞肺癌 2026
+csco-nutrition-2026	2026	L		CSCO 肿瘤营养治疗 2026
+csco-pancreas-2026	2026	L		CSCO 胰腺癌 2026
+csco-sclc-2026	2026	L		CSCO 小细胞肺癌 2026
+csco-thrombocytopenia-2026	2026	L		CSCO 肿瘤治疗血小板减少 2026
+
+===== ophtho (ophtho.ts) =====
+cn-endophthalmitis-2017	2017	-		白内障术后眼内炎共识
+cn-cataract-diabetes-2020	2020	L		糖尿病白内障围术期共识
+cn-dry-eye-2020	2020	L		干眼专家共识
+cn-glaucoma-2020	2020	L		青光眼指南
+cn-rop	2020	-		早产儿视网膜病变筛查指南
+cn-diabetic-eye-2021	2021	L		糖尿病相关眼病共识
+cn-eye-trauma	2021	-		眼外伤诊疗共识
+cn-strabismus	2021	-		斜视诊治指南
+cn-dr-guideline	2022	L		糖尿病视网膜病变指南
+cn-rrd	2022	-		视网膜脱离共识
+cn-tao	2022	-		甲状腺相关眼病共识
+cn-uveitis	2022	-		葡萄膜炎共识
+cn-amd-2023	2023	L		年龄相关性黄斑变性指南 2023
+cn-myopia-2024	2024	L		近视防治指南 2024
+cn-traumatic-cataract-2026	2026	L		外伤性白内障共识 2026
+
+===== ortho (ortho.ts) =====
+cn-tha-tka-erac	2016	-		关节置换加速康复共识
+cn-vte-ortho-2016	2016	-		骨科大手术 VTE 预防指南
+cn-cervical-spondylosis	2018	-		颈椎病专家共识
+cn-ldh-2020	2020	-		腰椎间盘突出症指南
+cn-hip-fracture-consensus	2021	-		老年髋部骨折共识
+cn-oa-2021	2021	-		骨关节炎诊疗指南
+cn-bone-infection	2022	-		骨关节感染共识
+cn-pelvic-fracture	2022	-		骨盆髋臼骨折共识
+cn-rotator-cuff	2022	-		肩袖损伤共识
+cn-scoliosis	2022	-		脊柱侧凸指南
+cn-acl	2023	-		前交叉韧带损伤指南
+cn-distal-radius-2023	2023	L		桡骨远端骨折指南 2023
+cn-lss-2023	2023	L		腰椎管狭窄症指南 2023
+cn-ankle-fracture-2025	2025	L		踝关节骨折指南 2025
+cn-oa-2026	2026	L		骨关节炎诊疗指南 2026
+csco-bone-soft-tissue-2026	2026	L		CSCO 骨与软组织肿瘤 2026
+
+===== pain (pain.ts) =====
+cn-fibromyalgia	2011	-		纤维肌痛诊疗指南
+cn-neuropathic-pain-consensus	2013	-		神经病理性疼痛共识
+cn-hospice	2017	-		安宁疗护实践指南
+cn-cancer-pain-2018	2018	L		癌痛诊疗规范
+cn-lbp-pain-2020	2020	L		腰突症疼痛诊疗共识
+cn-crps	2021	-		CRPS 诊疗共识
+cn-myofascial	2022	-		肌筋膜疼痛共识
+cn-postop-pain	2022	-		术后慢性疼痛共识
+cn-spinal-cord-stim	2022	-		脊髓电刺激共识
+cn-zap-2025	2025	L		带状疱疹相关性疼痛指南 2025
+
+===== peds (peds.ts) =====
+cn-child-growth	2008	-		矮身材诊治指南
+cn-neonatal-jaundice	2014	-		新生儿黄疸专家共识
+cn-child-diarrhea	2016	-		儿童急性腹泻指南
+cn-nephrotic-syndrome	2016	-		儿童肾病综合征指南
+cn-febrile-seizure-2017	2017	L		热性惊厥专家共识
+cn-hfmd-2018	2018	-		手足口病诊疗指南
+cn-child-anemia	2020	-		儿童缺铁性贫血防治建议
+cn-child-epilepsy	2021	-		儿童癫痫共识
+cn-child-tumor	2021	-		儿童 ALL 诊疗共识
+cn-immunization	2021	-		儿童免疫规划程序
+cn-asd	2022	-		孤独症康复指南
+cn-child-dm	2022	-		儿童糖尿病共识
+cn-child-htn	2022	-		儿童高血压共识
+cn-child-obesity	2022	-		儿童肥胖共识
+cn-kawasaki-2022	2022	L		川崎病专家共识
+cn-precocious-puberty	2022	-		性早熟诊疗共识
+cn-child-cap-2024	2024	L		儿童 CAP 管理指南 2024
+cn-child-asthma-2025	2025	L		儿童哮喘诊治指南 2025
+cn-neonatal-resuscitation-2025	2025	L		新生儿复苏指南 2025
+cn-child-fever-2026	2026	L		儿童发热全程管理共识 2026
+
+===== psychiatry (psychiatry.ts) =====
+cn-adhd	2015	-		ADHD 防治指南
+cn-anxiety	2015	-		焦虑障碍防治指南
+cn-bipolar	2015	-		双相障碍防治指南
+cn-eating-disorder	2015	-		进食障碍防治指南
+cn-ptsd	2015	-		PTSD 防治指南
+cn-substance	2015	-		物质使用障碍指南
+cn-ocd	2016	-		强迫症防治指南
+cn-insomnia-2017	2017	-		失眠症诊疗指南
+cn-antipsychotic-metabolic	2022	-		抗精神病药代谢监测共识
+cn-psych-emergency	2022	-		精神科急症共识
+cn-depression-2025	2025	L		中国抑郁障碍指南 2025
+cn-schizophrenia-2025	2025	L		中国精神分裂症指南 2025
+
+===== rehab (rehab.ts) =====
+cn-fall-prevention-tech	2011	-		老年人跌倒干预指南
+cn-cardiac-rehab	2015	-		心脏康复指南
+cn-dysphagia-consensus	2017	-		吞咽障碍康复共识
+cn-pulmonary-rehab	2018	-		肺康复专家共识
+cn-aphasia	2021	-		失语症康复共识
+cn-prosthetics	2021	-		假肢矫形器共识
+cn-cp-rehab-2022	2022	L		脑性瘫痪康复指南
+cn-critical-rehab	2022	-		重症早期康复共识
+cn-ortho-rehab	2022	-		骨科康复共识
+cn-pelvic-rehab	2022	-		盆底康复共识
+cn-sci-rehab	2022	-		脊髓损伤康复共识
+cn-stroke-rehab-2025	2025	L		脑卒中早期康复指南 2025
+esc-cardiac-rehab-2026	2026	L	G	ESC 心脏康复指南 2026
+
+===== renal (renal.ts) =====
+cn-renal-anemia	2018	-		肾性贫血共识
+cn-ckd-mbd-2019	2019	L		CKD-MBD 诊治指南
+cn-adpkd	2021	-		多囊肾病共识
+cn-dkd-2021	2021	L		糖尿病肾病中国指南
+cn-hd-sop-2021	2021	L		血液净化 SOP 2021
+kdigo-bp-2021	2021	L		KDIGO 血压管理指南
+kdigo-gn-2021	2021	L		KDIGO 肾小球疾病指南
+kdigo-diabetes-2022	2022	L		KDIGO 糖尿病 CKD 管理
+cn-aki-2023	2023	-		急性肾损伤指南
+cn-ckd-early-2023	2023	L		中国 CKD 早期评价与管理指南
+cn-ckd-htn-2023	2023	L		CKD 高血压管理指南 2023
+cn-kidney-transplant	2023	-		肾移植指南
+cn-dialysis-access-2024	2024	L		透析通路中国指南 2024
+cn-igan-2024	2024	L		IgA 肾病中国共识 2024
+kdigo-ckd-2024	2024	L		KDIGO CKD 指南 2024
+kdigo-ln-2024	2024	L		KDIGO 狼疮肾炎 2024
+kdigo-igan-2025	2025	L	RG	KDIGO IgA 肾病指南 2025
+esc-cvd-ckd-2026	2026	L	RG	ESC 心血管病与 CKD 指南 2026
+kdigo-anemia-2026	2026	L	RG	KDIGO CKD 贫血指南 2026
+
+===== resp (resp.ts) =====
+cn-pulmonary-function	2014	-		肺功能检查指南
+cn-smoking-2015	2015	-		临床戒烟指南
+cn-cap-2016	2016	-		中国 CAP 诊治指南
+cn-ipf-2016	2016	-		IPF 中国专家共识
+cn-aecopd-2017	2017	-		AECOPD 诊治共识
+cn-niv-consensus	2017	-		无创正压通气共识
+cn-pe-2018	2018	-		肺栓塞诊治与预防指南
+cn-hfnc-consensus	2019	-		经鼻高流量氧疗共识
+esc-pe-2019	2019	L		ESC 急性肺栓塞指南
+cn-tb-2020	2020	-		结核病防控技术规范
+cn-bronchiectasis-2021	2021	L		支气管扩张症专家共识
+cn-copd-2021	2021	L		中国慢阻肺诊治指南
+cn-cough-2021	2021	L		中国咳嗽诊治指南 2021
+cn-massive-hemoptysis	2021	-		大咯血诊疗共识
+ats-ipf-2022	2022	L		ATS/ERS 肺纤维化指南
+cn-lung-fungal	2022	-		肺真菌病诊疗共识
+cn-mpe-consensus	2022	-		恶性胸腔积液共识
+cn-bronchoscopy-standard	2023	-		支气管镜技术规范
+cn-asthma-2024	2024	L		中国哮喘防治指南 2024
+cn-cap-er-2024	2024	L		急诊 CAP 临床实践指南 2024
+cn-copd-primary-2024	2024	L		慢阻肺基层诊疗指南 2024
+cn-tb-diagnosis-treatment	2024	-		肺结核诊疗指南
+cn-ipfd-2025	2025	L	G	侵袭性肺真菌病指南 2025
+cn-pcd-2025	2025	L	RG	成人 PCD 诊治共识
+aha-acc-pe-2026	2026	L		AHA/ACC 急性肺栓塞指南 2026
+cn-abpa-ts-2026	2026	L		ABPA 中西医结合共识 2026
+cn-small-airway-2026	2026	L		小气道病变共识 2026
+gina-2026	2026	L		GINA 2026 策略
+gold-2026	2026	L		GOLD 2026 报告
+
+===== rheum (rheum.ts) =====
+eular-sle-2019	2019	L		EULAR SLE 建议
+acr-gout-2020	2020	L		ACR 痛风指南
+cn-ss-2020	2020	L		干燥综合征诊疗规范
+acr-ra-2021	2021	L		ACR RA 治疗指南
+cn-aps	2021	-		抗磷脂综合征共识
+cn-igg4-rd	2021	-		IgG4 相关病共识
+cn-still	2021	-		成人斯蒂尔病共识
+asas-eular-axspa-2022	2022	L		axSpA 管理建议 2022
+cn-behcet	2022	-		白塞病诊疗共识
+cn-dm-dermatomyositis-2022	2022	L		成人皮肌炎共识 2022
+cn-pmr-gca	2022	-		PMR 与 GCA 共识
+cn-psa	2022	-		银屑病关节炎共识
+cn-ssc-2022	2022	-		系统性硬化病诊疗规范
+eular-ra-2022	2022	L		EULAR RA 管理建议
+cn-gout-2023	2023	L		痛风诊疗规范 2023
+cn-takayasu-2023	2023	L		大动脉炎指南 2023
+cn-ra-2024	2024	L		中国 RA 诊疗指南 2024
+cn-aav-2025	2025	L		ANCA 血管炎指南 2025
+cn-sle-2025	2025	L		中国 SLE 诊疗指南 2025
+cn-ssc-2026	2026	L		中国系统性硬化症指南 2026
+
+===== stomatology (stomatology.ts) =====
+cn-caries-guideline	2019	-		龋病防治指南
+cn-ecc-2020	2020	L		婴幼儿龋防治指南
+cn-implant-consensus	2020	-		口腔种植专家共识
+cn-oral-cancer-pathology	2020	L		口腔癌病理诊断规范
+cn-periodontitis-guideline	2020	-		牙周病防治指南
+cn-endodontics	2021	-		牙体牙髓病共识
+cn-oral-mucosa	2021	-		口腔黏膜病共识
+cn-oral-surgery	2021	-		颌面创伤与牙槽外科共识
+cn-orthodontics	2021	-		口腔正畸共识
+cn-tmj	2021	-		颞下颌关节紊乱共识
+cn-oral-infection	2022	-		颌面部间隙感染共识
+cn-child-osa-ortho	2025	L		儿童 OSA 口腔矫治共识
+
+===== urology (urology.ts) =====
+cn-uti-2015	2015	-		尿路感染诊治共识
+cn-urolithiasis	2020	-		泌尿系结石共识
+cn-bph-consensus	2021	-		前列腺增生共识
+cn-neurogenic-bladder	2021	-		神经源性膀胱指南
+cn-prostatitis	2021	-		前列腺炎诊疗指南
+cn-adrenal-surgery	2022	-		肾上腺外科共识
+cn-andrology	2022	-		男科疾病诊疗指南
+cn-ed-guideline	2022	-		勃起功能障碍指南
+cn-oab	2022	-		膀胱过度活动症指南
+cn-prostate-screen-2022	2022	L		前列腺癌筛查指南
+cn-rcc	2022	-		肾癌诊疗指南
+cn-sui	2022	-		压力性尿失禁指南
+cn-eswl-2024	2024	L		体外冲击波碎石共识 2024
+cn-infection-stone-2024	2024	L		感染性结石共识 2024
+cn-prostate-caca-2026	2026	L		中国前列腺癌诊治指南 2026
+csco-prostate-2026	2026	L		CSCO 前列腺癌 2026
+csco-urothelial-2026	2026	L		CSCO 尿路上皮癌 2026
+
+===== vascular (vascular.ts) =====
+cn-pad-2015	2015	-		下肢动脉硬化闭塞症指南
+cn-vte-prevention	2016	-		围手术期血栓预防指南
+cn-carotid-stenosis	2017	-		颈动脉狭窄指南
+cn-dvt-2017	2017	L		深静脉血栓诊治指南
+cn-varicose-vein-consensus	2019	-		慢性下肢静脉疾病共识
+cn-aaa-guideline	2020	-		腹主动脉瘤共识
+cn-buerger	2021	-		脉管炎诊疗共识
+cn-vascular-trauma	2021	-		血管损伤共识
+cn-lymphedema	2022	-		淋巴水肿共识
+cn-mesenteric-ischemia	2022	-		肠系膜缺血共识
+cn-aortic-dissection-2025	2025	L		主动脉夹层指南 2025

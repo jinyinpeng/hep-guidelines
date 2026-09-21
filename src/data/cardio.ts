@@ -1271,4 +1271,78 @@ export const CARDIO: Guideline[] = [
       },
     ],
   },
+  {
+    id: 'acc-aha-lipid-2026',
+    title: '2026 ACC/AHA 等多学会血脂异常管理指南',
+    short: 'ACC/AHA 血脂异常指南 2026',
+    org: '美国心脏病学会（ACC）、美国心脏协会（AHA）等 11 家学会',
+    region: 'intl',
+    dept: 'cardio',
+    year: 2026,
+    latest: true,
+    tags: ['PREVENT', 'LDL-C 目标', 'non-HDL-C', 'Lp(a)', 'CAC 评分'],
+    summary: '取代 2018 年血胆固醇管理指南，以 PREVENT 方程替代汇总队列方程，并在「降幅优先」基础上重新引入具体 LDL-C 与 non-HDL-C 目标值。',
+    ref: '2026 ACC/AHA/AACVPR/ABC/ACPM/ADA/AGS/APhA/ASPC/NLA/PCNA Guideline on the Management of Dyslipidemia（Circulation，2026 年 3 月 13 日在线发表）；下列要点数值依据指南发布后的专家解读整理，具体请以原文为准',
+    grading: '推荐类别（COR）1/2a/2b/3 + 证据级别（LOE）A/B-R/B-NR/C-LD/C-EO（ACC/AHA 体系）',
+    sections: [
+      {
+        title: '风险评估工具的更换',
+        points: [
+          { t: '以 PREVENT-ASCVD 方程替代原汇总队列方程（PCE），适用于 30–79 岁无临床 ASCVD 或亚临床动脉粥样硬化、LDL-C 70–189 mg/dL（1.8–4.9 mmol/L）者。', tag: '关键更新', key: true },
+          { t: '风险分层：低危 <3%、临界 3%～<5%、中危 5%～<10%、高危 ≥10%；可同时给出 10 年与 30 年心血管结局预测。', tag: '分层', key: true },
+          { t: 'PREVENT 输入变量除传统因素外纳入 eGFR、他汀使用与降压药使用，并可选择性纳入糖化血红蛋白、尿白蛋白/肌酐比值及社会决定因素。', tag: '工具' },
+          { t: '新增冠脉钙化（CAC）评分推荐：40 岁以上男性、45 岁以上女性行 CAC 有助于改善风险评估并指导目标值设定。', tag: 'CAC 评分', key: true },
+        ],
+      },
+      {
+        title: '一级预防目标值',
+        points: [
+          { t: '临界风险（3%～<5%）：中等强度他汀使 LDL-C 下降 30%～49%，目标 LDL-C <100 mg/dL、non-HDL-C <130 mg/dL。', tag: '临界', rec: '2a', key: true },
+          { t: '中危（5%～<10%）：至少中等强度他汀（降 30%～49%），风险较高者用高强度他汀（降 ≥50%），目标 LDL-C <100 mg/dL、non-HDL-C <130 mg/dL。', tag: '中危', rec: '1', key: true },
+          { t: '高危（≥10%）：高强度他汀使 LDL-C 下降 ≥50%，目标 LDL-C <70 mg/dL、non-HDL-C <100 mg/dL。', tag: '高危', key: true },
+          { t: '降 LDL-C 的百分比降幅仍为首要推荐，同时在 LDL-C 之外将 non-HDL-C 一并作为治疗靶目标。', tag: '理念', key: true },
+        ],
+      },
+      {
+        title: '二级预防目标值',
+        points: [
+          { t: '非极高风险 ASCVD：高强度他汀使 LDL-C 下降 ≥50%，且 LDL-C <70 mg/dL（1.8 mmol/L）、non-HDL-C <100 mg/dL（2.6 mmol/L）。', tag: '二级预防', rec: '1', key: true },
+          { t: '极高风险 ASCVD：高强度他汀使 LDL-C 下降 ≥50%，且 LDL-C <55 mg/dL（1.4 mmol/L）、non-HDL-C <85 mg/dL（2.2 mmol/L）。', tag: '极高风险', rec: '1', key: true },
+          { t: '极高风险定义较 2018 版收紧：已去除杂合子型家族性高胆固醇血症与 CKD eGFR 15–59 mL/min/1.73 m² 这两项。', tag: '关键更新', key: true },
+          { t: '最大耐受剂量他汀仍未达标者，联合依折麦布、PCSK9 抑制剂或贝派地酸等非他汀药物。', tag: '联合', key: true },
+        ],
+      },
+      {
+        title: '特定高风险人群',
+        points: [
+          { t: '40–75 岁糖尿病、CKD 3/4 期或 HIV 成人，无论 LDL-C 水平均推荐启动降 LDL 治疗。', tag: '人群', rec: '1', key: true },
+          { t: '糖尿病：中等强度他汀（降 30%～49%）目标 LDL-C <100、non-HDL-C <130；合并多种危险因素者高强度他汀（降 ≥50%）目标 LDL-C <70、non-HDL-C <100。', tag: '糖尿病', rec: '1', key: true },
+          { t: 'CKD（新增）：3 期及以上 CKD 且合并临床 ASCVD 者，用高强度他汀（±依折麦布）和/或 PCSK9 单抗使 LDL-C 降 ≥50% 且 <55 mg/dL、non-HDL-C <85 mg/dL。', tag: 'CKD', rec: '1', key: true },
+          { t: 'HIV（新增）：40–75 岁接受稳定 cART 者，用他汀降低首发 ASCVD 事件风险并减缓冠脉粥样硬化进展。', tag: 'HIV', rec: '1', key: true },
+          { t: '>75 岁：可考虑生活方式干预联合降 LDL 药物；预期寿命 ≥2.5 年者中等强度他汀可能合理。', tag: '老年', rec: '2b' },
+          { t: '不应仅依据实际年龄停用他汀。', tag: '要点', key: true },
+        ],
+      },
+      {
+        title: 'Lp(a) 与甘油三酯',
+        points: [
+          { t: '一生至少检测一次 Lp(a)。', tag: 'Lp(a)', rec: '1', key: true },
+          { t: 'Lp(a) ≥125 nmol/L（约 50 mg/dL）时 ASCVD 风险约为 1.4 倍；≥250 nmol/L（100 mg/dL）时风险增加 ≥2 倍。', tag: '阈值', key: true },
+          { t: 'Lp(a) 升高者应尽早控制可改变的心血管危险因素。', tag: 'Lp(a)', rec: '1', key: true },
+          { t: '临床 ASCVD 且 Lp(a) 升高、经最大耐受他汀已同时达到 LDL-C 与 non-HDL-C 目标者，建议联合 PCSK9 单抗。', tag: 'Lp(a)', rec: '1', key: true },
+          { t: '持续甘油三酯升高：40–75 岁无 ASCVD 或糖尿病、TG 150–499 mg/dL（1.7–5.6 mmol/L）者，用 PREVENT 方程评估 10 年风险以指导治疗决策。', tag: 'TG', rec: '1' },
+          { t: '临床 ASCVD 且 LDL-C ≥55 mg/dL、non-HDL-C ≥85 mg/dL、最大耐受他汀下 TG 150–999 mg/dL（1.7–11.3 mmol/L）者，强化降 LDL-C 治疗。', tag: 'TG', rec: '1' },
+          { t: '家族性乳糜微粒血症综合征且空腹 TG ≥1000 mg/dL（11.3 mmol/L）者，建议在饮食干预基础上使用 olezarsen（apo CIII 抑制剂）以降低 TG 并减少胰腺炎风险。', tag: 'TG', rec: '1', key: true },
+        ],
+      },
+      {
+        title: '更早干预以降低终生风险',
+        points: [
+          { t: '从青少年时期开始健康行为咨询。', tag: '预防' },
+          { t: '家族性高胆固醇血症青少年应及早考虑药物治疗。', tag: '预防', key: true },
+          { t: 'LDL-C ≥160 mg/dL 或有早发 ASCVD 强烈家族史的年轻成人，也应考虑药物治疗。', tag: '预防', key: true },
+        ],
+      },
+    ],
+  },
 ]
