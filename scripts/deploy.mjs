@@ -206,7 +206,17 @@ if (NO_WAIT) {
 
 step(6, '等待 GitHub Actions 构建并核验线上')
 
-// 构建产物与已发布的 docs/ 一致 → 源码改动不影响产物（如只改了脚本/文档），CI 不会产生新提交，无需等待
+/**
+ * 核验基准是「已发布到 docs/ 的产物」，不是本地构建产物。
+ *
+ * 原因：bundle 里通过 vite define 注入了构建时间（供底部版本条离线显示），
+ * 本地构建与 CI 构建的字节内容必然不同 → 入口 chunk 哈希不同。
+ * 两者源码一致、只是时间戳不同，属于预期差异；
+ * 真正要确认的是「线上就是 CI 发布的那份」。
+ */
+let expectedOnline = freshAsset
+
+// 构建产物与已发布的 docs/ 一致 → 源码改动不影响产物，CI 不会产生新提交，无需等待
 const docsBefore = newestDocsAsset()
 const ciNeeded = !docsBefore || docsBefore !== freshAsset
 
@@ -236,8 +246,14 @@ if (!ciNeeded) {
   ok(`CI 已产出 docs 提交 ${ciCommit.slice(0, 7)}`)
 
   const docsAfter = newestDocsAsset()
-  if (docsAfter === freshAsset) ok('CI 产物与本地构建一致')
-  else note(`CI 产物为 ${docsAfter ?? '(缺失)'}，与本地 ${freshAsset} 不同`)
+  if (docsAfter) expectedOnline = docsAfter
+  if (docsAfter === freshAsset) {
+    ok('CI 产物与本地构建一致')
+  } else {
+    note(
+      `CI 产物 ${docsAfter ?? '(缺失)'} 与本地 ${freshAsset} 不同（仅注入的构建时间不同），改以 CI 产物为核验基准`,
+    )
+  }
 }
 
 const url = pagesUrl()
@@ -246,12 +262,15 @@ if (!url) {
   process.exit(0)
 }
 
-if (await waitForOnline(url, freshAsset)) {
+if (await waitForOnline(url, expectedOnline)) {
   console.log(`\n线上已是最新版本：${url}`)
-  console.log(`线上产物 ${freshAsset}`)
+  console.log(`线上产物 ${expectedOnline}`)
+  if (expectedOnline !== freshAsset) {
+    console.log(`本地构建产物 ${freshAsset}（与线上仅注入的构建时间不同）`)
+  }
 } else {
   console.log(`\n线上核验超时：${url}`)
-  console.log(`期望产物 ${freshAsset}，请稍后手动刷新确认，或到仓库 Actions 页查看部署日志。`)
+  console.log(`期望产物 ${expectedOnline}，请稍后手动刷新确认，或到仓库 Actions 页查看部署日志。`)
   process.exit(1)
 }
 
