@@ -222,6 +222,31 @@ src/
 - **顶刊研究**（`src/data/research/`）按科室分组存放：内科系 `internal.ts`、外科系 `surgery.ts`、妇产儿科 `women-child.ts`、急危重症与麻醉 `critical.ts`、专科与其他 `specialty.ts`。研究 `id` 统一以 `r-` 开头（如 `r-cardio-01`），`topic` 必须复用本科室 `topics.ts` 里已有的病种 id。
 - **期刊层级只在 `src/data/research/journals.ts` 登记一次**（`top` / `field` / `major` + 学科领域），条目里只写期刊名；同一期刊在多个科室出现时层级必然一致，新增期刊时补一行即可。
 
+## 数据分片（构建期生成）
+
+指南数据**不打进 JS 包**，而是由 `scripts/gen-data.mjs` 在构建前编译成静态分片：
+
+```bash
+npm run gen      # 只生成分片
+npm run dev      # 自动先跑 gen 再启动开发服务器
+npm run build    # 自动先跑 gen，再 tsc + vite build
+```
+
+产物（都在 `.gitignore` 中，不入库）：
+
+| 产物 | 内容 | 何时取 |
+| --- | --- | --- |
+| `public/data/cards.<hash>.json` | 全部指南的**卡片级字段**（标题/机构/年份/标签/摘要 + 条数与等级数），不含要点正文 | 启动时一次性取回，列表、筛选、卡片立刻可用 |
+| `public/data/dept/<科室>.<hash>.json` | 该科室指南**全文**（含 `sections`） | 详情页按需取；启动后也会在后台补齐，用于全文检索 |
+| `src/data/generated/urls.ts` | 上述分片的 URL 清单 | 由运行时代码引用 |
+
+要点：
+
+- 分片文件名带**内容哈希**，配合 Service Worker 的缓存优先策略，内容一变文件名就变，不会命中旧缓存；
+- 数据在 `src/data/index.ts` 里装配（`initData()` → 卡片索引；`loadDept()` → 科室正文）。**新增/扩写内容只影响对应科室的分片大小，入口 chunk 不再随内容增长**；
+- 因为正文是分两步到手的，读取要点正文的页面要订阅数据版本（`src/lib/data-hooks.ts` 的 `useDataVersion` / `useDeptSections`），否则分片到位后不会重渲染；
+- 生成的 URL 清单交给 Service Worker 预热缓存（`src/lib/pwa.ts`），因此**首次访问后仍然完全离线可用**。
+
 ## 顶刊前沿（第二套内容）
 
 顶部有一个「**指南共识 / 顶刊前沿**」一键切换按钮（`src/components/ModeSwitch.tsx`），切换后首页、科室页、顶刊库与详情页整体换套内容，选择写入 `localStorage`（`hep.mode`）下次打开保持不变。
