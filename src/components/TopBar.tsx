@@ -15,7 +15,7 @@ export default function TopBar({ title, subtitle, onBack }: Props) {
 
   return (
     <header className="safe-top sticky top-0 z-30 border-b border-line bg-surface/85 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-[760px] items-center gap-3 px-4 py-3">
+      <div className="mx-auto flex w-full max-w-[680px] items-center gap-3.5 px-5 py-3.5">
         {onBack ? (
           <button
             type="button"
@@ -28,23 +28,23 @@ export default function TopBar({ title, subtitle, onBack }: Props) {
         ) : (
           <span
             aria-hidden
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand text-[15px] font-semibold text-white"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px] bg-brand text-[16.5px] font-semibold text-white"
           >
             临
           </span>
         )}
 
         <div className="min-w-0 flex-1">
-          <h1 className="truncate text-[15px] font-semibold leading-tight tracking-tight text-ink">
+          <h1 className="truncate text-[16.5px] font-semibold leading-[1.35] tracking-tight text-ink">
             {title ?? '临床指南要点库'}
           </h1>
-          <p className="truncate text-[11.5px] leading-tight text-ink-3">
+          <p className="truncate text-[12.5px] leading-[1.35] text-ink-3">
             {subtitle ?? '国内外指南共识 · 要点速查'}
           </p>
         </div>
 
         {!online && (
-          <span className="flex shrink-0 items-center gap-1 rounded-full bg-warn-soft px-2 py-1 text-[11px] font-medium text-warn">
+          <span className="flex shrink-0 items-center gap-1 rounded-full bg-warn-soft px-2 py-1 text-[12.5px] font-medium text-warn">
             <WifiOff size={13} />
             离线
           </span>
@@ -61,7 +61,7 @@ export default function TopBar({ title, subtitle, onBack }: Props) {
       </div>
 
       {/* 一键切换：指南共识 ⇄ 各科室顶刊最新研究 */}
-      <div className="mx-auto w-full max-w-[760px] px-4 pb-2.5">
+      <div className="mx-auto w-full max-w-[680px] px-5 pb-3">
         <ModeSwitch />
       </div>
     </header>

@@ -73,7 +73,7 @@
   --color-danger: var(--c-danger);
   --color-danger-soft: var(--c-danger-soft);
 
-  --radius-card: 14px;
+  --radius-card: 16px;
 }
 
 @layer base {
@@ -92,10 +92,25 @@
     background-color: var(--c-canvas);
     color: var(--c-ink);
     font-family: var(--font-sans);
+    /* 正文 15px / 1.75 行距：中文长文的可读性明显好于 15px / 1.65 */
     font-size: 15px;
-    line-height: 1.65;
+    line-height: 1.75;
+    letter-spacing: 0.01em;
     -webkit-font-smoothing: antialiased;
     overscroll-behavior-y: none;
+  }
+
+  /* 标题不做孤字换行；正文优先避免行尾孤字 */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    letter-spacing: 0;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
   }
 
   :focus-visible {
@@ -139,26 +154,41 @@
     border-radius: var(--radius-card);
     box-shadow: var(--c-shadow);
   }
+  /* 卡片内的分区小标题：统一字重与上间距，避免每处各写一套 */
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16.5px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--c-ink);
+  }
+  /* 长文段落：段间留白由它统一控制 */
+  .prose-block > * + * {
+    margin-top: 10px;
+  }
   .round-chip {
     display: inline-flex;
     align-items: center;
     white-space: nowrap;
     border-radius: 9999px;
-    padding: 2px 8px;
-    font-size: 11px;
+    padding: 3px 9px;
+    font-size: 12.5px;
     font-weight: 500;
-    line-height: 1.55;
+    line-height: 1.5;
   }
   .chip-btn {
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     white-space: nowrap;
     border-radius: 9999px;
     border: 1px solid var(--c-line);
     background-color: var(--c-surface);
-    padding: 5px 11px;
-    font-size: 12.5px;
+    padding: 7px 13px;
+    font-size: 13.5px;
+    line-height: 1.4;
     color: var(--c-ink-2);
     cursor: pointer;
     transition:

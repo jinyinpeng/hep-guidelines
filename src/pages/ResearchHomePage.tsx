@@ -48,15 +48,15 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
   const journals = useMemo(() => journalStats(), [])
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {!q && (
         <section className="animate-rise pt-1">
-          <h2 className="text-[22px] font-bold leading-tight tracking-tight text-ink">
+          <h2 className="text-[23px] font-bold leading-[1.35] tracking-tight text-ink">
             顶刊前沿
             <br />
             各科室临床研究
           </h2>
-          <p className="mt-2 text-[13.5px] leading-relaxed text-ink-2">
+          <p className="mt-2 text-[15px] leading-[1.7] text-ink-2">
             覆盖 {RESEARCH_STATS.depts} 个临床科室、{RESEARCH_STATS.journals} 种期刊：
             既有 NEJM / Lancet / JAMA / BMJ 等综合顶刊，也有各专科自己的顶刊
             （肝病科的 Hepatology、J Hepatol，血液科的 Blood，消化科的 Gut，心血管的 Circulation 等）。
@@ -68,21 +68,21 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
             <Stat value={RESEARCH_STATS.journals} label="种期刊来源" />
           </div>
 
-          <p className="mt-2.5 flex items-center gap-1.5 text-[11.5px] text-ink-3">
+          <p className="mt-2.5 flex items-center gap-1.5 text-[12.5px] text-ink-3">
             <CalendarClock size={13} className="shrink-0" />
             数据截至 {DATA_CUTOFF.replace('-', ' 年 ')} 月，按发表时间由近及远排列
           </p>
         </section>
       )}
 
-      <section className="space-y-3">
+      <section className="space-y-4">
         <SearchBar
           value={query}
           onChange={onQueryChange}
           placeholder="检索科室、疾病、药物或研究名称"
         />
         {!q && (
-          <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
+          <div className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5">
             {HOT.map((w) => (
               <button key={w} type="button" onClick={() => onQueryChange(w)} className="chip-btn shrink-0">
                 {w}
@@ -93,14 +93,14 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
       </section>
 
       {q ? (
-        <section className="space-y-3">
-          <p className="text-[12.5px] text-ink-3">
+        <section className="space-y-4">
+          <p className="text-[13.5px] text-ink-3">
             找到 <strong className="font-semibold text-ink">{hits.length}</strong> 条相关研究
           </p>
           {hits.length === 0 && (
             <div className="card p-6 text-center">
-              <p className="text-[14px] font-medium text-ink">没有匹配的研究或结果</p>
-              <p className="mt-1 text-[12.5px] text-ink-3">试试更短的词，例如「心衰」「卒中」「减重」</p>
+              <p className="text-[15px] font-medium text-ink">没有匹配的研究或结果</p>
+              <p className="mt-1 text-[13.5px] text-ink-3">试试更短的词，例如「心衰」「卒中」「减重」</p>
             </div>
           )}
           {hits.map((h) => (
@@ -109,7 +109,7 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
               {h.matches.length > 0 && (
                 <ul className="space-y-1 rounded-[12px] border border-line bg-surface-2 p-3">
                   {h.matches.map((m) => (
-                    <li key={m} className="flex gap-2 text-[12.5px] leading-relaxed text-ink-2">
+                    <li key={m} className="flex gap-2 text-[13.5px] leading-[1.7] text-ink-2">
                       <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
                       <span>{m}</span>
                     </li>
@@ -123,11 +123,11 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
         <>
           <section>
             <div className="flex items-center gap-2">
-              <Layers size={15} className="text-accent" />
-              <h2 className="text-[14.5px] font-semibold text-ink">按科室浏览</h2>
+              <Layers size={16} className="text-accent" />
+              <h2 className="text-[16.5px] font-semibold text-ink">按科室浏览</h2>
               <a
                 href={href('/library')}
-                className="ml-auto flex cursor-pointer items-center gap-0.5 text-[12px] text-ink-3 transition-colors duration-200 hover:text-brand"
+                className="ml-auto flex cursor-pointer items-center gap-0.5 text-[13.5px] text-ink-3 transition-colors duration-200 hover:text-brand"
               >
                 顶刊库
                 <ArrowUpRight size={13} />
@@ -136,8 +136,8 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
 
             {DEPT_GROUPS.map((group) => (
               <div key={group.id} className="mt-4">
-                <p className="text-[11.5px] font-medium tracking-wide text-ink-3">{group.name}</p>
-                <div className="mt-2 grid grid-cols-2 gap-2.5">
+                <p className="text-[12.5px] font-medium tracking-wide text-ink-3">{group.name}</p>
+                <div className="mt-3 grid grid-cols-2 gap-3">
                   {deptsByGroup(group.id).map((d) => {
                     const names = researchTopicIds(d.id)
                       .map((id) => topicsOf(d.id).find((t) => t.id === id)?.short)
@@ -149,17 +149,17 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
                         className="card group cursor-pointer p-3.5 transition-colors duration-200 hover:border-brand/60 active:bg-surface-2"
                       >
                         <div className="flex items-baseline justify-between gap-2">
-                          <span className="truncate text-[14.5px] font-semibold text-ink transition-colors duration-200 group-hover:text-brand">
+                          <span className="truncate text-[15px] font-semibold text-ink transition-colors duration-200 group-hover:text-brand">
                             {d.short}
                           </span>
-                          <span className="shrink-0 text-[11px] tabular-nums text-ink-3">
+                          <span className="shrink-0 text-[12.5px] tabular-nums text-ink-3">
                             {countFindingsByDept(d.id)} 条
                           </span>
                         </div>
-                        <p className="mt-1 line-clamp-2 text-[11.5px] leading-relaxed text-ink-3">
+                        <p className="mt-1 line-clamp-2 text-[12.5px] leading-[1.7] text-ink-3">
                           {names.join(' · ') || '录入中'}
                         </p>
-                        <p className="mt-1 text-[10.5px] tabular-nums text-ink-3">
+                        <p className="mt-1 text-[12.5px] tabular-nums text-ink-3">
                           最近 {latestFindingDateOf(d.id).replace('-', '.') || '—'}
                         </p>
                       </a>
@@ -172,10 +172,10 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
 
           <section>
             <div className="flex items-center gap-2">
-              <Sparkles size={15} className="text-accent" />
-              <h2 className="text-[14.5px] font-semibold text-ink">近一年值得关注</h2>
+              <Sparkles size={16} className="text-accent" />
+              <h2 className="text-[16.5px] font-semibold text-ink">近一年值得关注</h2>
             </div>
-            <div className="mt-3 space-y-3">
+            <div className="mt-3 space-y-4">
               {featured.map((f) => (
                 <FindingCard key={f.id} f={f} />
               ))}
@@ -185,13 +185,13 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
           <section>
             <div className="flex items-center gap-2">
               <FlaskConical size={15} className="text-accent" />
-              <h2 className="text-[14.5px] font-semibold text-ink">期刊体系</h2>
-              <span className="ml-auto text-[11.5px] tabular-nums text-ink-3">
+              <h2 className="text-[16.5px] font-semibold text-ink">期刊体系</h2>
+              <span className="ml-auto text-[12.5px] tabular-nums text-ink-3">
                 共 {RESEARCH_STATS.journals} 种
               </span>
             </div>
 
-            <div className="mt-3 space-y-3">
+            <div className="mt-3 space-y-4">
               {TIERS.map((t) => {
                 const list = journals.filter((j) => j.tier === t.id)
                 if (!list.length) return null
@@ -201,7 +201,7 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
                   <div key={t.id} className="rounded-[12px] border border-line bg-surface p-3">
                     <p className="flex items-baseline gap-2">
                       <span className={`round-chip ${TIER_CHIP[t.id]}`}>{t.label}</span>
-                      <span className="text-[11.5px] tabular-nums text-ink-3">
+                      <span className="text-[12.5px] tabular-nums text-ink-3">
                         {list.length} 种 · {total} 条
                       </span>
                     </p>
@@ -230,8 +230,8 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
           <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
             <CalendarDays size={20} className="mt-0.5 shrink-0 text-accent" />
             <div className="min-w-0 flex-1">
-              <h3 className="text-[13.5px] font-semibold text-ink">按期次浏览</h3>
-              <p className="mt-1 text-[12.5px] leading-relaxed text-ink-2">
+              <h3 className="text-[15px] font-semibold text-ink">按期次浏览</h3>
+              <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
                 按
                 <strong className="font-semibold text-ink">期刊 × 期次</strong>
                 逐期查看：选定一本顶刊就看到它各期收录的临床研究；也可以「按时间」把同一期各刊的研究放在一起看。
@@ -239,7 +239,7 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
               </p>
               <a
                 href={href('/issues')}
-                className="mt-2 inline-flex cursor-pointer items-center gap-0.5 text-[12.5px] text-accent transition-opacity duration-200 hover:opacity-80"
+                className="mt-2 inline-flex cursor-pointer items-center gap-0.5 text-[13.5px] text-accent transition-opacity duration-200 hover:opacity-80"
               >
                 进入按期次浏览
                 <ArrowUpRight size={13} />
@@ -250,8 +250,8 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
           <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
             <Microscope size={20} className="mt-0.5 shrink-0 text-accent" />
             <div className="min-w-0 flex-1">
-              <h3 className="text-[13.5px] font-semibold text-ink">研究方法怎么读</h3>
-              <p className="mt-1 text-[12.5px] leading-relaxed text-ink-2">
+              <h3 className="text-[15px] font-semibold text-ink">研究方法怎么读</h3>
+              <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
                 每条研究都写了<strong className="font-semibold text-ink">入组人群</strong>、
                 <strong className="font-semibold text-ink">干预与对照</strong>、
                 <strong className="font-semibold text-ink">主要终点</strong>、
@@ -260,7 +260,7 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
               </p>
               <a
                 href={href('/methods')}
-                className="mt-2 inline-flex cursor-pointer items-center gap-0.5 text-[12.5px] text-accent transition-opacity duration-200 hover:opacity-80"
+                className="mt-2 inline-flex cursor-pointer items-center gap-0.5 text-[13.5px] text-accent transition-opacity duration-200 hover:opacity-80"
               >
                 研究方法速读
                 <ArrowUpRight size={13} />
@@ -271,8 +271,8 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
           <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
             <FlaskConical size={20} className="mt-0.5 shrink-0 text-accent" />
             <div>
-              <h3 className="text-[13.5px] font-semibold text-ink">收录口径</h3>
-              <p className="mt-1 text-[12.5px] leading-relaxed text-ink-2">
+              <h3 className="text-[15px] font-semibold text-ink">收录口径</h3>
+              <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
                 收录公开发表于同行评议期刊的临床研究：综合顶刊、各专科本领域顶刊与领域权威期刊都收，
                 按期刊层级标注（{TIER_LABEL.top} / {TIER_LABEL.field} / {TIER_LABEL.major}）。
                 避免只看阳性结果，中性/阴性研究一并收录；条目为编辑摘编，具体数值与亚组请以原文为准。
@@ -290,8 +290,8 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
 function Stat({ value, label }: { value: number; label: string }) {
   return (
     <div className="card px-3 py-2.5">
-      <div className="text-[19px] font-bold leading-none tabular-nums text-accent">{value}</div>
-      <div className="mt-1 text-[11px] text-ink-3">{label}</div>
+      <div className="text-[20px] font-bold leading-[1.3] tabular-nums text-accent">{value}</div>
+      <div className="mt-1 text-[12.5px] text-ink-3">{label}</div>
     </div>
   )
 }

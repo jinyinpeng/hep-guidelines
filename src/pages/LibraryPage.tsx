@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import GuidelineCard from '../components/GuidelineCard'
 import SearchBar from '../components/SearchBar'
+import { FilterDivider, FilterGroup, FilterPanel } from '../components/FilterBar'
 import {
   DEPT_GROUPS,
   DEPARTMENTS,
@@ -64,100 +65,123 @@ export default function LibraryPage() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <SearchBar value={q} onChange={setQ} placeholder="在当前筛选结果中检索" />
 
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-        {REGIONS.map((r) => (
-          <button
-            key={r.key}
-            type="button"
-            data-on={region === r.key}
-            onClick={() => setRegion(r.key)}
-            className="chip-btn shrink-0"
-          >
-            {r.label}
-          </button>
-        ))}
-        <span className="mx-1 w-px shrink-0 bg-line" />
-        <button
-          type="button"
-          data-on={group === 'all'}
-          onClick={() => {
-            setGroup('all')
-            pickDept('all')
-          }}
-          className="chip-btn shrink-0"
-        >
-          全部科室
-        </button>
-        {DEPT_GROUPS.map((g) => (
-          <button
-            key={g.id}
-            type="button"
-            data-on={group === g.id}
-            onClick={() => {
-              setGroup(g.id)
-              pickDept('all')
-            }}
-            className="chip-btn shrink-0"
-          >
-            {g.name}
-          </button>
-        ))}
-      </div>
+      <FilterPanel
+        summary={[
+          region === 'all' ? '全部地区' : REGIONS.find((r) => r.key === region)?.label,
+          DEPT_GROUPS.find((g) => g.id === group)?.name ?? '全部科室',
+          dept !== 'all' ? DEPARTMENTS.find((d) => d.id === dept)?.short : null,
+          topic !== 'all' ? topics.find((t) => t.id === topic)?.short : null,
+        ]
+          .filter(Boolean)
+          .join(' · ')}
+        onReset={() => {
+          setRegion('all')
+          setGroup('all')
+          pickDept('all')
+        }}
+      >
+          <FilterGroup label="地区">
+            {REGIONS.map((r) => (
+              <button
+                key={r.key}
+                type="button"
+                data-on={region === r.key}
+                onClick={() => setRegion(r.key)}
+                className="chip-btn shrink-0"
+              >
+                {r.label}
+              </button>
+            ))}
+          </FilterGroup>
 
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-        <button
-          type="button"
-          data-on={dept === 'all'}
-          onClick={() => pickDept('all')}
-          className="chip-btn shrink-0"
-        >
-          {group === 'all' ? '全部科室' : '该组全部'}
-        </button>
-        {deptOptions.map((d) => (
-          <button
-            key={d.id}
-            type="button"
-            data-on={dept === d.id}
-            onClick={() => pickDept(d.id)}
-            className="chip-btn shrink-0"
-          >
-            {d.short}
-            <span className="ml-1 tabular-nums opacity-60">{countByDept(d.id)}</span>
-          </button>
-        ))}
-      </div>
+          <FilterDivider />
 
-      {topics.length > 0 && (
-        <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-          <button
-            type="button"
-            data-on={topic === 'all'}
-            onClick={() => setTopic('all')}
-            className="chip-btn shrink-0"
-          >
-            全部病种
-          </button>
-          {topics.map((t) => (
+          <FilterGroup label="科室分组">
             <button
-              key={t.id}
               type="button"
-              data-on={topic === t.id}
-              onClick={() => setTopic(t.id)}
+              data-on={group === 'all'}
+              onClick={() => {
+                setGroup('all')
+                pickDept('all')
+              }}
               className="chip-btn shrink-0"
             >
-              {t.short}
-              <span className="ml-1 tabular-nums opacity-60">
-                {countByTopic(dept as DeptId, t.id)}
-              </span>
+              全部
             </button>
-          ))}
-        </div>
-      )}
+            {DEPT_GROUPS.map((g) => (
+              <button
+                key={g.id}
+                type="button"
+                data-on={group === g.id}
+                onClick={() => {
+                  setGroup(g.id)
+                  pickDept('all')
+                }}
+                className="chip-btn shrink-0"
+              >
+                {g.name}
+              </button>
+            ))}
+          </FilterGroup>
 
-      <p className="text-[12.5px] text-ink-3">
+          <FilterGroup label="科室">
+            <button
+              type="button"
+              data-on={dept === 'all'}
+              onClick={() => pickDept('all')}
+              className="chip-btn shrink-0"
+            >
+              {group === 'all' ? '全部' : '该组全部'}
+            </button>
+            {deptOptions.map((d) => (
+              <button
+                key={d.id}
+                type="button"
+                data-on={dept === d.id}
+                onClick={() => pickDept(d.id)}
+                className="chip-btn shrink-0"
+              >
+                {d.short}
+                <span className="tabular-nums opacity-60">{countByDept(d.id)}</span>
+              </button>
+            ))}
+          </FilterGroup>
+
+          {topics.length > 0 && (
+            <>
+              <FilterDivider />
+              <FilterGroup label="病种">
+                <button
+                  type="button"
+                  data-on={topic === 'all'}
+                  onClick={() => setTopic('all')}
+                  className="chip-btn shrink-0"
+                >
+                  全部
+                </button>
+                {topics.map((t) => (
+                  <button
+                    key={t.id}
+                    type="button"
+                    data-on={topic === t.id}
+                    onClick={() => setTopic(t.id)}
+                    className="chip-btn shrink-0"
+                  >
+                    {t.short}
+                    <span className="tabular-nums opacity-60">
+                      {countByTopic(dept as DeptId, t.id)}
+                    </span>
+                  </button>
+                ))}
+              </FilterGroup>
+            </>
+          )}
+      </FilterPanel>
+
+      <p className="text-[13.5px] leading-[1.6] text-ink-3">
         共 <strong className="font-semibold text-ink">{list.length}</strong> 部
         {region !== 'all' && ` · ${REGIONS.find((r) => r.key === region)?.label}`}
         {activeDept && ` · ${activeDept.short}`}
@@ -166,11 +190,13 @@ export default function LibraryPage() {
 
       {list.length === 0 ? (
         <div className="card p-6 text-center">
-          <p className="text-[14px] font-medium text-ink">当前筛选下没有结果</p>
-          <p className="mt-1 text-[12.5px] text-ink-3">试着放宽筛选条件或调整关键词</p>
+          <p className="text-[15px] font-medium text-ink">当前筛选下没有结果</p>
+          <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-3">
+            试着放宽筛选条件或调整关键词
+          </p>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-4">
           {list.map((g) => (
             <GuidelineCard key={g.id} g={g} />
           ))}

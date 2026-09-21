@@ -21,13 +21,13 @@ import { href } from '../lib/router'
  */
 export default function MethodologyPage() {
   return (
-    <article className="animate-rise space-y-5">
-      <section className="card p-4">
-        <h2 className="flex items-center gap-2 text-[16px] font-bold tracking-tight text-ink">
+    <article className="animate-rise space-y-6">
+      <section className="card p-5">
+        <h2 className="flex items-center gap-2 text-[18px] font-bold tracking-tight text-ink">
           <FlaskConical size={17} className="text-accent" />
           怎么看一项临床研究的方法
         </h2>
-        <p className="mt-2 text-[13px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[15px] leading-[1.7] text-ink-2">
           研究条目里的「研究方法」固定写四件事：
           <strong className="font-semibold text-ink">入组人群</strong>、
           <strong className="font-semibold text-ink">干预与对照</strong>、
@@ -35,16 +35,16 @@ export default function MethodologyPage() {
           <strong className="font-semibold text-ink">统计与分析</strong>。
           这四件事决定了结果能不能外推到你自己床边的患者。
         </p>
-        <p className="mt-2 text-[13px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[15px] leading-[1.7] text-ink-2">
           下面按「先看设计、再看终点、最后看分析」的顺序给出速读要点。
         </p>
       </section>
 
       <Section Icon={Layers} title="一、证据层级：先看设计类型">
-        <p className="text-[13px] leading-relaxed text-ink-2">
+        <p className="text-[15px] leading-[1.7] text-ink-2">
           大体顺序（同领域、同类问题下比较）：
         </p>
-        <ol className="mt-2 space-y-1.5 text-[13px] leading-relaxed text-ink-2">
+        <ol className="mt-2 space-y-1.5 text-[15px] leading-[1.7] text-ink-2">
           {[
             '随机对照试验的系统评价 / 个体数据荟萃分析',
             '大样本、多中心、随机对照试验（RCT）',
@@ -53,7 +53,7 @@ export default function MethodologyPage() {
             '单臂研究、Ⅱ 期、机制研究、病例系列',
           ].map((t, i) => (
             <li key={t} className="flex gap-2">
-              <span className="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-soft text-[11px] font-semibold tabular-nums text-brand-ink">
+              <span className="mt-[1px] flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-soft text-[12.5px] font-semibold tabular-nums text-brand-ink">
                 {i + 1}
               </span>
               <span>{t}</span>
@@ -91,21 +91,21 @@ export default function MethodologyPage() {
       <Section Icon={Scale} title="四、主要终点：硬终点还是替代终点">
         <div className="mt-1 grid gap-2">
           <div className="rounded-xl border border-line bg-surface-2 px-3 py-2.5">
-            <p className="text-[12.5px] font-semibold text-ink">硬终点（更可信）</p>
-            <p className="mt-0.5 text-[12.5px] leading-relaxed text-ink-2">
+            <p className="text-[13.5px] font-semibold text-ink">硬终点（更可信）</p>
+            <p className="mt-0.5 text-[13.5px] leading-[1.7] text-ink-2">
               死亡、心肌梗死、卒中、肾衰竭、住院、骨折等患者真正能感受到的事件。
             </p>
           </div>
           <div className="rounded-xl border border-line bg-surface-2 px-3 py-2.5">
-            <p className="text-[12.5px] font-semibold text-ink">替代终点（需谨慎）</p>
-            <p className="mt-0.5 text-[12.5px] leading-relaxed text-ink-2">
+            <p className="text-[13.5px] font-semibold text-ink">替代终点（需谨慎）</p>
+            <p className="mt-0.5 text-[13.5px] leading-[1.7] text-ink-2">
               化验或影像指标，如 HbA1c、LDL-C、蛋白尿、肿瘤缩小率、eGFR 斜率。
               替代终点改善不等于患者获益——历史上多次出现「指标变好、结局变差」。
             </p>
           </div>
           <div className="rounded-xl border border-line bg-surface-2 px-3 py-2.5">
-            <p className="text-[12.5px] font-semibold text-ink">复合终点</p>
-            <p className="mt-0.5 text-[12.5px] leading-relaxed text-ink-2">
+            <p className="text-[13.5px] font-semibold text-ink">复合终点</p>
+            <p className="mt-0.5 text-[13.5px] leading-[1.7] text-ink-2">
               由多个事件组成。要看清各成分方向是否一致——若主要由「软」成分驱动，
               需回到各组分结果再判断。
             </p>
@@ -159,7 +159,7 @@ export default function MethodologyPage() {
             '结果、临床意义与「与现行指南的关系」是编辑摘编，用于快速判断「这条消息值不值得深读」，不能替代原文。',
           ]}
         />
-        <p className="mt-2.5 rounded-xl bg-surface-2 px-3 py-2 text-[12px] leading-relaxed text-ink-3">
+        <p className="mt-2.5 rounded-xl bg-surface-2 px-3 py-2 text-[13.5px] leading-[1.7] text-ink-3">
           当前数据截至 {DATA_CUTOFF.replace('-', '.')}。要让一条研究真正进入本机构流程，
           至少还应核对：原文全文与补充材料、是否预设终点、是否有多中心重复验证、
           是否有指南或共识据此更新。
@@ -167,11 +167,11 @@ export default function MethodologyPage() {
       </Section>
 
       <section className="rounded-[14px] border border-warn/25 bg-warn-soft p-4">
-        <h2 className="flex items-center gap-2 text-[14px] font-semibold text-warn">
+        <h2 className="flex items-center gap-2 text-[15px] font-semibold text-warn">
           <TriangleAlert size={16} />
           一句话总结
         </h2>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           先看设计能否回答这个问题，再看终点的「硬」与「软」，最后看分析假设是优效还是非劣效、有没有提前终止。
           三步之外，还要问一句：
           <strong className="font-semibold text-ink">我的患者和我的场景，与这项研究差多远？</strong>
@@ -181,7 +181,7 @@ export default function MethodologyPage() {
       <div className="text-center">
         <a
           href={href('/')}
-          className="inline-block cursor-pointer rounded-xl border border-line bg-surface px-4 py-2 text-[13px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink"
+          className="inline-block cursor-pointer rounded-xl border border-line bg-surface px-4 py-2 text-[15px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink"
         >
           返回研究首页
         </a>
@@ -202,8 +202,8 @@ function Section({
   children: ReactNode
 }) {
   return (
-    <section className="card p-4">
-      <h3 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+    <section className="card p-5">
+      <h3 className="flex items-center gap-2.5 text-[16.5px] font-semibold text-ink">
         <Icon size={16} className="text-accent" />
         {title}
       </h3>
@@ -214,7 +214,7 @@ function Section({
 
 function Bullets({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-1.5 text-[12.5px] leading-relaxed text-ink-2">
+    <ul className="space-y-1.5 text-[13.5px] leading-[1.7] text-ink-2">
       {items.map((t) => (
         <li key={t} className="flex gap-2">
           <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
@@ -227,7 +227,7 @@ function Bullets({ items }: { items: string[] }) {
 
 function Tip({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-1 rounded-xl bg-surface-2 px-3 py-2 text-[11.5px] leading-relaxed text-ink-3">
+    <p className="mt-1 rounded-xl bg-surface-2 px-3 py-2 text-[12.5px] leading-[1.7] text-ink-3">
       {children}
     </p>
   )

@@ -165,7 +165,7 @@ export default function PullToRefresh({ children }: { children: ReactNode }) {
         <div
           role="status"
           aria-live="polite"
-          className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-line bg-surface px-3 py-1.5 text-[12px] font-medium text-ink-2 shadow-[0_8px_24px_-12px_rgba(16,32,44,0.45)]"
+          className="flex items-center gap-1.5 whitespace-nowrap rounded-full border border-line bg-surface px-3 py-1.5 text-[13.5px] font-medium text-ink-2 shadow-[0_8px_24px_-12px_rgba(16,32,44,0.45)]"
         >
           {icon}
           <span>{label}</span>

@@ -42,7 +42,7 @@ export default function ModeSwitch() {
             role="tab"
             aria-selected={on}
             onClick={() => pick(id)}
-            className={`relative z-10 flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-1.5 text-[12.5px] font-medium transition-colors duration-200 ${
+            className={`relative z-10 flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-1.5 text-[13.5px] font-medium transition-colors duration-200 ${
               on ? 'text-white' : 'text-ink-2 hover:text-ink'
             }`}
           >

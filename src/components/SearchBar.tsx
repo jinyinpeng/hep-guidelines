@@ -35,7 +35,7 @@ export default function SearchBar({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         aria-label="搜索指南与要点"
-        className="w-full rounded-xl border border-line bg-surface py-2.5 pl-10 pr-10 text-[14.5px] text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none"
+        className="w-full rounded-xl border border-line bg-surface py-2.5 pl-10 pr-10 text-[15px] text-ink placeholder:text-ink-3 focus:border-brand focus:outline-none"
       />
       {value && (
         <button

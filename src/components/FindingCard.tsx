@@ -1,6 +1,7 @@
 import { Star } from 'lucide-react'
-import { DEPT_MAP, LEVEL_LABEL, TIER_LABEL, journalMeta, topicsOf } from '../data'
+import { DEPT_MAP, LEVEL_LABEL, topicsOf } from '../data'
 import type { Finding, JournalTier } from '../data'
+import { journalMeta } from '../data'
 import { href } from '../lib/router'
 import { useStore } from '../lib/store'
 
@@ -22,6 +23,11 @@ const LEVEL_STYLE: Record<Finding['level'], string> = {
   exploratory: 'bg-surface-3 text-ink-3',
 }
 
+/**
+ * 研究卡片。
+ * 密度控制：一行「期刊 + 期次」→ 标题 → 设计与样本量 → 结论 → 分隔线 → 归属信息。
+ * 期刊层级用颜色表达（不再额外占一个芯片），主要终点等细节留给详情页，避免卡片过载。
+ */
 export default function FindingCard({ f }: { f: Finding }) {
   const { rfavorites } = useStore()
   const fav = rfavorites.has(f.id)
@@ -32,12 +38,13 @@ export default function FindingCard({ f }: { f: Finding }) {
   return (
     <a
       href={href(`/finding/${f.id}`)}
-      className="card group block cursor-pointer p-4 transition-colors duration-200 hover:border-brand/60 active:bg-surface-2"
+      className="card group block cursor-pointer p-5 transition-colors duration-200 hover:border-brand/60 active:bg-surface-2"
     >
-      <div className="flex flex-wrap items-center gap-1.5">
-        <span className={`round-chip font-semibold ${TIER_CHIP[meta.tier]}`}>{f.journal}</span>
-        <span className="round-chip bg-surface-3 tabular-nums text-ink-3">{fmtDate(f.date)}</span>
-        <span className={`round-chip ${LEVEL_STYLE[f.level]}`}>{LEVEL_LABEL[f.level]}</span>
+      <div className="flex items-start gap-3">
+        <div className="flex min-w-0 flex-1 flex-wrap items-center gap-1.5">
+          <span className={`round-chip font-semibold ${TIER_CHIP[meta.tier]}`}>{f.journal}</span>
+          <span className="round-chip bg-surface-3 tabular-nums text-ink-3">{fmtDate(f.date)}</span>
+        </div>
         <button
           type="button"
           onClick={(e) => {
@@ -46,41 +53,29 @@ export default function FindingCard({ f }: { f: Finding }) {
             rfavorites.toggle(f.id)
           }}
           aria-label={fav ? '取消收藏' : '收藏'}
-          className="ml-auto -mr-1 flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 hover:bg-surface-3"
+          className="-mr-2 -mt-1.5 flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full transition-colors duration-200 hover:bg-surface-3"
         >
           <Star
-            size={17}
+            size={18}
             className={fav ? 'text-warn' : 'text-ink-3'}
             fill={fav ? 'currentColor' : 'none'}
           />
         </button>
       </div>
 
-      <h3 className="mt-2 text-[15.5px] font-semibold leading-snug text-ink transition-colors duration-200 group-hover:text-brand">
+      <h3 className="mt-3 text-[18px] font-semibold leading-[1.45] text-ink transition-colors duration-200 group-hover:text-brand">
         {f.title}
       </h3>
-      <p className="mt-1 text-[12px] leading-relaxed text-ink-3">
+      <p className="mt-1.5 text-[13.5px] leading-[1.6] text-ink-3">
         {f.design}
         {f.n ? ` · ${f.n}` : ''}
       </p>
-      {f.method?.endpoint && (
-        <p className="mt-1 line-clamp-1 text-[12px] leading-relaxed text-ink-3">
-          主要终点：{f.method.endpoint}
-        </p>
-      )}
-      <p className="mt-2 line-clamp-2 text-[13px] leading-relaxed text-ink-2">{f.impact}</p>
+      <p className="mt-3 line-clamp-2 text-[15px] leading-[1.7] text-ink-2">{f.impact}</p>
 
-      <div className="mt-3 flex flex-wrap items-center gap-1.5">
-        <span className="round-chip bg-surface-3 text-ink-2">{dept?.short}</span>
-        {topic && <span className="round-chip bg-brand-soft text-brand-ink">{topic.short}</span>}
-        {meta.tier !== 'major' && (
-          <span className={`round-chip ${TIER_CHIP[meta.tier]}`}>{TIER_LABEL[meta.tier]}</span>
-        )}
-        {f.tags.slice(0, 2).map((t) => (
-          <span key={t} className="round-chip bg-surface-2 text-ink-3">
-            {t}
-          </span>
-        ))}
+      <div className="mt-4 flex flex-wrap items-center gap-1.5 border-t border-line pt-3.5">
+        <span className="round-chip bg-surface-2 text-ink-3">{dept?.short}</span>
+        {topic && <span className="round-chip bg-surface-2 text-ink-3">{topic.short}</span>}
+        <span className={`round-chip ${LEVEL_STYLE[f.level]}`}>{LEVEL_LABEL[f.level]}</span>
       </div>
     </a>
   )

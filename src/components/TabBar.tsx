@@ -20,7 +20,7 @@ export default function TabBar({ active }: { active: string }) {
 
   return (
     <nav className="safe-bottom no-print fixed bottom-0 left-0 right-0 z-30 border-t border-line bg-surface/92 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-[760px] items-stretch">
+      <div className="mx-auto flex w-full max-w-[680px] items-stretch">
         {TABS.map(({ key, to, label, Icon }) => {
           const on =
             active === key ||
@@ -43,7 +43,7 @@ export default function TabBar({ active }: { active: string }) {
                   </span>
                 )}
               </span>
-              <span className="text-[11px] font-medium leading-none">{text}</span>
+              <span className="text-[12.5px] font-medium leading-[1.3]">{text}</span>
             </a>
           )
         })}

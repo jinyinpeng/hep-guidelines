@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { FilterDivider, FilterGroup, FilterPanel } from '../components/FilterBar'
 import FindingCard from '../components/FindingCard'
 import SearchBar from '../components/SearchBar'
 import {
@@ -87,169 +88,205 @@ export default function ResearchLibraryPage() {
     setLevels((prev) => (prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]))
   }
 
+  const reset = () => {
+    setWin('m12')
+    setGroup('all')
+    pickDept('all')
+    setJournal('all')
+    setTier('all')
+    setLevels([])
+  }
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <SearchBar value={q} onChange={setQ} placeholder="在当前筛选结果中检索" />
 
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-        {WINDOWS.map((w) => {
-          const n =
-            w.months === 0 ? FINDINGS.length : FINDINGS.filter((f) => withinMonths(f, w.months)).length
-          return (
+      <FilterPanel
+        summary={[
+          activeWindow.label,
+          tier === 'all' ? '全部层级' : TIERS.find((t) => t.id === tier)?.label,
+          DEPT_GROUPS.find((x) => x.id === group)?.name ?? '全部科室',
+          dept !== 'all' ? activeDept?.short : null,
+          journal !== 'all' ? journal : null,
+          levels.length > 0 ? `影响程度 ${levels.length} 项` : null,
+        ]
+          .filter(Boolean)
+          .join(' · ')}
+        onReset={reset}
+      >
+        <FilterGroup label="时间范围">
+          {WINDOWS.map((w) => {
+            const n =
+              w.months === 0
+                ? FINDINGS.length
+                : FINDINGS.filter((f) => withinMonths(f, w.months)).length
+            return (
+              <button
+                key={w.id}
+                type="button"
+                data-on={win === w.id}
+                onClick={() => setWin(w.id)}
+                className="chip-btn shrink-0"
+              >
+                {w.label}
+                <span className="tabular-nums opacity-60">{n}</span>
+              </button>
+            )
+          })}
+        </FilterGroup>
+
+        <FilterGroup label="影响程度（可多选）">
+          {IMPACT_LEVELS.map((l) => (
             <button
-              key={w.id}
+              key={l.id}
               type="button"
-              data-on={win === w.id}
-              onClick={() => setWin(w.id)}
+              data-on={levels.includes(l.id)}
+              onClick={() => toggleLevel(l.id)}
               className="chip-btn shrink-0"
             >
-              {w.label}
-              <span className="ml-1 tabular-nums opacity-60">{n}</span>
+              {l.label}
+              <span className="tabular-nums opacity-60">
+                {FINDINGS.filter((f) => f.level === l.id).length}
+              </span>
             </button>
-          )
-        })}
-        <span className="mx-1 w-px shrink-0 bg-line" />
-        <button
-          type="button"
-          data-on={tier === 'all'}
-          onClick={() => setTier('all')}
-          className="chip-btn shrink-0"
-        >
-          全部层级
-        </button>
-        {TIERS.map((t) => (
-          <button
-            key={t.id}
-            type="button"
-            data-on={tier === t.id}
-            onClick={() => setTier(t.id)}
-            className="chip-btn shrink-0"
-          >
-            {t.label}
-            <span className="ml-1 tabular-nums opacity-60">
-              {FINDINGS.filter((f) => tierOf(f) === t.id).length}
-            </span>
-          </button>
-        ))}
-        <span className="mx-1 w-px shrink-0 bg-line" />
-        {IMPACT_LEVELS.map((l) => (
-          <button
-            key={l.id}
-            type="button"
-            data-on={levels.includes(l.id)}
-            onClick={() => toggleLevel(l.id)}
-            className="chip-btn shrink-0"
-          >
-            {l.label}
-            <span className="ml-1 tabular-nums opacity-60">
-              {FINDINGS.filter((f) => f.level === l.id).length}
-            </span>
-          </button>
-        ))}
-      </div>
+          ))}
+        </FilterGroup>
 
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-        <button
-          type="button"
-          data-on={group === 'all'}
-          onClick={() => {
-            setGroup('all')
-            pickDept('all')
-          }}
-          className="chip-btn shrink-0"
-        >
-          全部科室
-        </button>
-        {DEPT_GROUPS.map((g) => (
+        <FilterDivider />
+
+        <FilterGroup label="科室分组">
           <button
-            key={g.id}
             type="button"
-            data-on={group === g.id}
+            data-on={group === 'all'}
             onClick={() => {
-              setGroup(g.id)
+              setGroup('all')
               pickDept('all')
             }}
             className="chip-btn shrink-0"
           >
-            {g.name}
+            全部
           </button>
-        ))}
-      </div>
+          {DEPT_GROUPS.map((g) => (
+            <button
+              key={g.id}
+              type="button"
+              data-on={group === g.id}
+              onClick={() => {
+                setGroup(g.id)
+                pickDept('all')
+              }}
+              className="chip-btn shrink-0"
+            >
+              {g.name}
+            </button>
+          ))}
+        </FilterGroup>
 
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-        <button
-          type="button"
-          data-on={dept === 'all'}
-          onClick={() => pickDept('all')}
-          className="chip-btn shrink-0"
-        >
-          {group === 'all' ? '全部科室' : '该组全部'}
-        </button>
-        {deptOptions.map((d) => (
-          <button
-            key={d.id}
-            type="button"
-            data-on={dept === d.id}
-            onClick={() => pickDept(d.id)}
-            className="chip-btn shrink-0"
-          >
-            {d.short}
-            <span className="ml-1 tabular-nums opacity-60">{countFindingsByDept(d.id)}</span>
-          </button>
-        ))}
-      </div>
-
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
-        <button
-          type="button"
-          data-on={journal === 'all'}
-          onClick={() => setJournal('all')}
-          className="chip-btn shrink-0"
-        >
-          全部期刊
-        </button>
-        {journals.slice(0, 24).map((j) => (
-          <button
-            key={j.journal}
-            type="button"
-            data-on={journal === j.journal}
-            onClick={() => setJournal(j.journal)}
-            className="chip-btn shrink-0"
-          >
-            {j.journal}
-            <span className="ml-1 tabular-nums opacity-60">{j.count}</span>
-          </button>
-        ))}
-      </div>
-
-      {topics.length > 0 && (
-        <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
+        <FilterGroup label="科室">
           <button
             type="button"
-            data-on={topic === 'all'}
-            onClick={() => setTopic('all')}
+            data-on={dept === 'all'}
+            onClick={() => pickDept('all')}
             className="chip-btn shrink-0"
           >
-            全部病种
+            {group === 'all' ? '全部' : '该组全部'}
           </button>
-          {topics.map((t) => (
+          {deptOptions.map((d) => (
+            <button
+              key={d.id}
+              type="button"
+              data-on={dept === d.id}
+              onClick={() => pickDept(d.id)}
+              className="chip-btn shrink-0"
+            >
+              {d.short}
+              <span className="tabular-nums opacity-60">{countFindingsByDept(d.id)}</span>
+            </button>
+          ))}
+        </FilterGroup>
+
+        <FilterDivider />
+
+        <FilterGroup label="期刊层级">
+          <button
+            type="button"
+            data-on={tier === 'all'}
+            onClick={() => setTier('all')}
+            className="chip-btn shrink-0"
+          >
+            全部
+          </button>
+          {TIERS.map((t) => (
             <button
               key={t.id}
               type="button"
-              data-on={topic === t.id}
-              onClick={() => setTopic(t.id)}
+              data-on={tier === t.id}
+              onClick={() => setTier(t.id)}
               className="chip-btn shrink-0"
             >
-              {t.short}
-              <span className="ml-1 tabular-nums opacity-60">
-                {countFindingsByTopic(dept as DeptId, t.id)}
+              {t.label}
+              <span className="tabular-nums opacity-60">
+                {FINDINGS.filter((f) => tierOf(f) === t.id).length}
               </span>
             </button>
           ))}
-        </div>
-      )}
+        </FilterGroup>
 
-      <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[12.5px] text-ink-3">
+        <FilterGroup label="期刊">
+          <button
+            type="button"
+            data-on={journal === 'all'}
+            onClick={() => setJournal('all')}
+            className="chip-btn shrink-0"
+          >
+            全部
+          </button>
+          {journals.map((j) => (
+            <button
+              key={j.journal}
+              type="button"
+              data-on={journal === j.journal}
+              onClick={() => setJournal(j.journal)}
+              className="chip-btn shrink-0"
+            >
+              {j.journal}
+              <span className="tabular-nums opacity-60">{j.count}</span>
+            </button>
+          ))}
+        </FilterGroup>
+
+        {topics.length > 0 && (
+          <>
+            <FilterDivider />
+            <FilterGroup label="病种">
+              <button
+                type="button"
+                data-on={topic === 'all'}
+                onClick={() => setTopic('all')}
+                className="chip-btn shrink-0"
+              >
+                全部
+              </button>
+              {topics.map((t) => (
+                <button
+                  key={t.id}
+                  type="button"
+                  data-on={topic === t.id}
+                  onClick={() => setTopic(t.id)}
+                  className="chip-btn shrink-0"
+                >
+                  {t.short}
+                  <span className="tabular-nums opacity-60">
+                    {countFindingsByTopic(dept as DeptId, t.id)}
+                  </span>
+                </button>
+              ))}
+            </FilterGroup>
+          </>
+        )}
+      </FilterPanel>
+
+      <p className="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-[13.5px] leading-[1.6] text-ink-3">
         <span>
           共 <strong className="font-semibold text-ink">{list.length}</strong> 条
           {activeWindow.months > 0 && ` · ${activeWindow.label}`}
@@ -267,11 +304,11 @@ export default function ResearchLibraryPage() {
 
       {list.length === 0 ? (
         <div className="card p-6 text-center">
-          <p className="text-[14px] font-medium text-ink">当前筛选下没有结果</p>
-          <p className="mt-1 text-[12.5px] text-ink-3">试着放宽时间范围或减少筛选条件</p>
+          <p className="text-[15px] font-medium text-ink">当前筛选下没有结果</p>
+          <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-3">试着放宽时间范围或减少筛选条件</p>
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-4">
           {list.map((f) => (
             <FindingCard key={f.id} f={f} />
           ))}

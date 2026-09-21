@@ -27,7 +27,7 @@ export default function VersionFooter() {
 
   return (
     <footer className="no-print mt-8 border-t border-line pb-28 pt-4 text-center">
-      <p className="text-[11.5px] leading-relaxed tabular-nums text-ink-3">
+      <p className="text-[12.5px] leading-[1.7] tabular-nums text-ink-3">
         版本 <span className="font-semibold text-ink-2">{local}</span>
         {behind && remote && (
           <>
@@ -35,7 +35,7 @@ export default function VersionFooter() {
           </>
         )}
       </p>
-      <p className="mt-1 text-[11px] leading-relaxed tabular-nums text-ink-3">
+      <p className="mt-1 text-[12.5px] leading-[1.7] tabular-nums text-ink-3">
         构建 {built} · {statusText(update)}
       </p>
 
@@ -44,14 +44,14 @@ export default function VersionFooter() {
           type="button"
           onClick={() => void checkForUpdate()}
           disabled={checking}
-          className="flex cursor-pointer items-center gap-1 rounded-full border border-line bg-surface px-3 py-1.5 text-[11.5px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink disabled:cursor-default disabled:opacity-60"
+          className="flex cursor-pointer items-center gap-1 rounded-full border border-line bg-surface px-3 py-1.5 text-[12.5px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink disabled:cursor-default disabled:opacity-60"
         >
           <RefreshCw size={12} className={checking ? 'animate-spin' : undefined} />
           {checking ? '检查中…' : '检查更新'}
         </button>
         <a
           href={href('/about')}
-          className="cursor-pointer rounded-full border border-line bg-surface px-3 py-1.5 text-[11.5px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink"
+          className="cursor-pointer rounded-full border border-line bg-surface px-3 py-1.5 text-[12.5px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink"
         >
           版本与更新说明
         </a>

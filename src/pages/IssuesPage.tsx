@@ -68,16 +68,16 @@ export default function IssuesPage() {
   )
 
   return (
-    <div className="space-y-4">
-      <section className="card p-4">
-        <h2 className="text-[16px] font-bold leading-snug tracking-tight text-ink">
+    <div className="space-y-5">
+      <section className="card p-5">
+        <h2 className="text-[18px] font-bold leading-[1.45] tracking-tight text-ink">
           顶刊每一期的临床研究
         </h2>
-        <p className="mt-1.5 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-1.5 text-[13.5px] leading-[1.7] text-ink-2">
           共收录 {journals.length} 种期刊、{FINDINGS.length} 条临床研究，按公开发表月份归入期次。
           周刊（NEJM / Lancet / JAMA / BMJ 等）每月约 4 期，月刊每月 1 期。
         </p>
-        <p className="mt-2 flex gap-1.5 rounded-xl bg-surface-2 px-3 py-2 text-[11.5px] leading-relaxed text-ink-3">
+        <p className="mt-2 flex gap-1.5 rounded-xl bg-surface-2 px-3 py-2 text-[12.5px] leading-[1.7] text-ink-3">
           <Info size={13} className="mt-[2px] shrink-0" />
           <span>
             收录口径：按期刊与发表月份逐期编排，
@@ -99,7 +99,7 @@ export default function IssuesPage() {
             key={v.id}
             type="button"
             onClick={() => setView(v.id)}
-            className={`flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-1.5 text-[12.5px] font-medium transition-colors duration-200 ${
+            className={`flex flex-1 cursor-pointer items-center justify-center gap-1.5 rounded-full py-1.5 text-[13.5px] font-medium transition-colors duration-200 ${
               view === v.id ? 'bg-brand text-white' : 'text-ink-2 hover:text-ink'
             }`}
           >
@@ -109,7 +109,7 @@ export default function IssuesPage() {
         ))}
       </div>
 
-      <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
+      <div className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5">
         <button
           type="button"
           data-on={dept === 'all'}
@@ -134,7 +134,7 @@ export default function IssuesPage() {
 
       {view === 'journal' ? (
         <>
-          <div className="no-scrollbar -mx-4 flex gap-1.5 overflow-x-auto px-4">
+          <div className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5">
             {journalOptions.map((j) => (
               <button
                 key={j.journal}
@@ -161,25 +161,25 @@ export default function IssuesPage() {
                 {FREQUENCY_LABEL[journalFrequency(activeJournal)]}
               </span>
             </div>
-            <p className="mt-2 text-[12.5px] tabular-nums text-ink-3">
+            <p className="mt-2 text-[13.5px] tabular-nums text-ink-3">
               收录 {stats.total} 条 · 涉及 {stats.issues} 期 · 最近 {stats.latest.replace('-', '.')}
             </p>
           </section>
 
           {journalIssues.length === 0 ? (
             <div className="card p-6 text-center">
-              <p className="text-[13.5px] text-ink-2">当前筛选下该刊没有条目</p>
+              <p className="text-[15px] text-ink-2">当前筛选下该刊没有条目</p>
             </div>
           ) : (
             journalIssues.map((g) => (
               <section key={g.key}>
                 <div className="flex items-baseline gap-2">
-                  <h3 className="text-[14px] font-semibold text-ink">{g.label}</h3>
-                  <span className="text-[11.5px] tabular-nums text-ink-3">
+                  <h3 className="text-[16.5px] font-semibold text-ink">{g.label}</h3>
+                  <span className="text-[12.5px] tabular-nums text-ink-3">
                     {g.findings.length} 条
                   </span>
                 </div>
-                <div className="mt-2 space-y-3">
+                <div className="mt-2 space-y-4">
                   {g.findings.map((f) => (
                     <FindingCard key={f.id} f={f} />
                   ))}
@@ -192,10 +192,10 @@ export default function IssuesPage() {
         timeIssues.map((g) => (
           <section key={g.key}>
             <div className="flex items-baseline gap-2">
-              <h3 className="text-[14px] font-semibold text-ink">{g.label}</h3>
-              <span className="text-[11.5px] tabular-nums text-ink-3">{g.findings.length} 条</span>
+              <h3 className="text-[16.5px] font-semibold text-ink">{g.label}</h3>
+              <span className="text-[12.5px] tabular-nums text-ink-3">{g.findings.length} 条</span>
             </div>
-            <div className="mt-2 space-y-3">
+            <div className="mt-2 space-y-4">
               {g.findings.map((f) => (
                 <FindingCard key={f.id} f={f} />
               ))}
@@ -204,7 +204,7 @@ export default function IssuesPage() {
         ))
       )}
 
-      <p className="pb-2 text-center text-[11px] text-ink-3">
+      <p className="pb-2 text-center text-[12.5px] text-ink-3">
         已收录科室：{deptOptions.map((d) => d.short).join(' · ')}
       </p>
     </div>

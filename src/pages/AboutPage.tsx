@@ -30,7 +30,7 @@ export default function AboutPage() {
   const checking = update.status === 'checking' || update.status === 'updating'
 
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       <section className="card overflow-hidden">
         <div className="flex items-start gap-3 p-4">
           <span
@@ -41,16 +41,16 @@ export default function AboutPage() {
             {online ? <Wifi size={18} /> : <WifiOff size={18} />}
           </span>
           <div className="min-w-0">
-            <h2 className="text-[14.5px] font-semibold text-ink">
+            <h2 className="text-[16.5px] font-semibold text-ink">
               {online ? '已连接网络' : '当前处于离线状态'}
             </h2>
-            <p className="mt-1 text-[12.5px] leading-relaxed text-ink-2">
+            <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
               {online
                 ? '所有内容已在本机缓存，即使断开网络也能继续查阅与检索。'
                 : '正在使用本机缓存的内容，全部指南与检索功能均可正常使用。'}
             </p>
             {!standalone && (
-              <p className="mt-1.5 text-[12px] leading-relaxed text-ink-3">
+              <p className="mt-1.5 text-[13.5px] leading-[1.7] text-ink-3">
                 建议「添加到主屏幕」，即可像 App 一样全屏打开、断网可用。
               </p>
             )}
@@ -61,7 +61,7 @@ export default function AboutPage() {
           <button
             type="button"
             onClick={() => void install()}
-            className="flex w-full cursor-pointer items-center justify-center gap-1.5 border-t border-line bg-brand-soft py-3 text-[13.5px] font-medium text-brand-ink transition-colors duration-200 hover:bg-brand/15"
+            className="flex w-full cursor-pointer items-center justify-center gap-1.5 border-t border-line bg-brand-soft py-3 text-[15px] font-medium text-brand-ink transition-colors duration-200 hover:bg-brand/15"
           >
             <Download size={16} />
             立即添加到主屏幕
@@ -69,12 +69,12 @@ export default function AboutPage() {
         )}
       </section>
 
-      <section className="card p-4">
-        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+      <section className="card p-5">
+        <h2 className="flex items-center gap-2.5 text-[16.5px] font-semibold text-ink">
           <Download size={16} className="text-brand" />
           如何添加到主屏幕
         </h2>
-        <div className="mt-3 space-y-3 text-[12.5px] leading-relaxed text-ink-2">
+        <div className="mt-3 space-y-4 text-[13.5px] leading-[1.7] text-ink-2">
           <div>
             <p className="font-medium text-ink">iPhone / iPad（Safari）</p>
             <ol className="mt-1 space-y-0.5 text-ink-2">
@@ -91,18 +91,18 @@ export default function AboutPage() {
               <li>3. 确认安装</li>
             </ol>
           </div>
-          <p className="text-[11.5px] text-ink-3">
+          <p className="text-[12.5px] text-ink-3">
             添加到主屏后无需应用商店，也不占用额外存储；首次打开会自动缓存全部内容。
           </p>
         </div>
       </section>
 
-      <section className="card p-4">
-        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+      <section className="card p-5">
+        <h2 className="flex items-center gap-2.5 text-[16.5px] font-semibold text-ink">
           <RefreshCw size={16} className="text-brand" />
           版本与更新
         </h2>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           <span className="font-medium text-ink">打开应用时会自动检查更新</span>
           （从后台切回、恢复联网时也会检查一次）；在页面最顶部
           <span className="font-medium text-ink">下拉并松开</span>
@@ -119,36 +119,36 @@ export default function AboutPage() {
             type="button"
             onClick={() => void checkForUpdate()}
             disabled={checking}
-            className="flex cursor-pointer items-center gap-1.5 rounded-full border border-line bg-surface-2 px-3.5 py-2 text-[12.5px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink disabled:cursor-default disabled:opacity-60"
+            className="flex cursor-pointer items-center gap-1.5 rounded-full border border-line bg-surface-2 px-3.5 py-2 text-[13.5px] font-medium text-ink-2 transition-colors duration-200 hover:border-line-strong hover:text-ink disabled:cursor-default disabled:opacity-60"
           >
             <RefreshCw size={14} className={checking ? 'animate-spin' : undefined} />
             {checking ? '正在检查…' : '检查更新'}
           </button>
-          <span className="text-[12px] text-ink-3">{statusText(update)}</span>
+          <span className="text-[13.5px] text-ink-3">{statusText(update)}</span>
         </div>
 
-        <p className="mt-2.5 text-[11.5px] leading-relaxed text-ink-3">
+        <p className="mt-2.5 text-[12.5px] leading-[1.7] text-ink-3">
           {update.builtAt
             ? `线上版本构建于 ${formatBuildTime(update.builtAt)}`
             : '版本号取自构建产物文件名（带内容哈希），文件名变了就是有新版本。'}
           {update.checkedAt ? ` · 上次检查 ${formatCheckedAt(update.checkedAt)}` : ''}
         </p>
-        <p className="mt-2 text-[11.5px] leading-relaxed text-ink-3">
+        <p className="mt-2 text-[12.5px] leading-[1.7] text-ink-3">
           每个页面的最底部都有一条版本条，可以直接看到当前版本号、构建时间与更新状态，也能一键检查更新。
         </p>
       </section>
 
-      <section className="card p-4">
-        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+      <section className="card p-5">
+        <h2 className="flex items-center gap-2.5 text-[16.5px] font-semibold text-ink">
           <FlaskConical size={16} className="text-accent" />
           指南共识 ⇄ 顶刊前沿
         </h2>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           顶部有一个
           <span className="font-medium text-ink">「指南共识 / 顶刊前沿」切换按钮</span>
           ，点一下即可在两套内容间切换（切换后科室、首页、顶刊库都会跟着变，选择会记住）。
         </p>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           顶刊前沿除按科室与期刊浏览外，还提供
           <span className="font-medium text-ink">「按期次浏览」</span>
           ：可以看到某本顶刊每一期收录的临床研究；也可以切到「按时间」，把同一期各刊的研究放在一起看。
@@ -167,7 +167,7 @@ export default function AboutPage() {
           <Metric label="综合顶刊" value={`${RESEARCH_STATS.top} 条`} />
           <Metric label="本领域顶刊" value={`${RESEARCH_STATS.field} 条`} />
         </div>
-        <p className="mt-3 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-3 text-[13.5px] leading-[1.7] text-ink-2">
           <span className="font-medium text-ink">期刊口径不只看新英格兰等综合顶刊</span>
           ：每个科室的本领域顶刊同样收录，并单独标注，例如肝病科的
           <span className="font-medium text-ink">Hepatology、J Hepatol</span>
@@ -185,13 +185,13 @@ export default function AboutPage() {
           <span className="font-medium text-ink">综合顶刊 / 本领域顶刊 / 权威期刊</span>
           ，可按层级筛选。
         </p>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           收录以
           <span className="font-medium text-ink">随机对照试验、前瞻性队列与荟萃分析</span>
           为主，标注期刊、发表年月、研究设计与样本量；只关注阳性结果容易失真，因此中性/阴性研究同样收录，
           影响程度另按「可能改变实践 / 有前景待验证 / 探索性」标注。
         </p>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           每条研究都写清了
           <span className="font-medium text-ink">
             入组人群、干预与对照、主要终点、统计与分析
@@ -204,20 +204,20 @@ export default function AboutPage() {
             研究方法速读 →
           </a>
         </p>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           研究按发表时间由近及远排列，
           <span className="font-medium text-ink">默认只看「近一年」</span>
           ，可切换到「近两年 / 全部」；还可按期刊与「影响程度」（可能改变实践 / 有前景待验证 / 探索性）筛选。
         </p>
-        <p className="mt-3 rounded-xl bg-surface-2 px-3 py-2 text-[11.5px] leading-relaxed text-ink-3">
+        <p className="mt-3 rounded-xl bg-surface-2 px-3 py-2 text-[12.5px] leading-[1.7] text-ink-3">
           研究结论
           <span className="text-ink-2">不等于临床推荐</span>
           ，条目为结果要点摘编，具体数值、亚组与安全性请核对原文全文；是否改变本机构流程需经多学科讨论与指南更新确认。
         </p>
       </section>
 
-      <section className="card p-4">
-        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+      <section className="card p-5">
+        <h2 className="flex items-center gap-2.5 text-[16.5px] font-semibold text-ink">
           <FileText size={16} className="text-brand" />
           收录概览（指南共识）
         </h2>
@@ -233,33 +233,33 @@ export default function AboutPage() {
         </div>
 
         <div className="mt-4">
-          <p className="flex items-center gap-1.5 text-[12.5px] font-medium text-ink">
+          <p className="flex items-center gap-1.5 text-[13.5px] font-medium text-ink">
             <ListFilter size={14} className="text-brand" />
             覆盖科室
           </p>
           <ul className="mt-2 space-y-1">
             {DEPARTMENTS.map((d) => (
-              <li key={d.id} className="flex items-baseline gap-2 text-[12.5px] text-ink-2">
+              <li key={d.id} className="flex items-baseline gap-2 text-[13.5px] text-ink-2">
                 <Check size={13} className="shrink-0 translate-y-[2px] text-brand" />
                 <span className="flex-1">{d.name}</span>
-                <span className="text-[11px] tabular-nums text-ink-3">{countByDept(d.id)} 部</span>
+                <span className="text-[12.5px] tabular-nums text-ink-3">{countByDept(d.id)} 部</span>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="card p-4">
-        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+      <section className="card p-5">
+        <h2 className="flex items-center gap-2.5 text-[16.5px] font-semibold text-ink">
           <ShieldCheck size={16} className="text-brand" />
           证据等级怎么看
         </h2>
-        <p className="mt-2 text-[12.5px] leading-relaxed text-ink-2">
+        <p className="mt-2 text-[13.5px] leading-[1.7] text-ink-2">
           各指南体系不同，本应用一律
           <span className="font-medium text-ink">按原文照录</span>
           ，并在详情页「来源与版本」注明该指南采用的是哪一种。常见四类：
         </p>
-        <ul className="mt-3 space-y-2.5 text-[12.5px] leading-relaxed text-ink-2">
+        <ul className="mt-3 space-y-3 text-[13.5px] leading-[1.7] text-ink-2">
           <li>
             <span className="font-medium text-ink">推荐类别 + 证据级别（I/IIa/IIb/III + A/B/C）</span>
             <br />
@@ -281,19 +281,19 @@ export default function AboutPage() {
             按研究设计分层，1a 为随机对照试验的系统评价。
           </li>
         </ul>
-        <p className="mt-3 rounded-xl bg-surface-2 px-3 py-2 text-[11.5px] leading-relaxed text-ink-3">
+        <p className="mt-3 rounded-xl bg-surface-2 px-3 py-2 text-[12.5px] leading-[1.7] text-ink-3">
           部分指南与专家共识只给出推荐意见而未分级，这类条目不作标注——
           <span className="text-ink-2">「未标注」不等于「无等级」</span>
           。若需引用具体等级，请回查原文。
         </p>
       </section>
 
-      <section className="card p-4">
-        <h2 className="flex items-center gap-2 text-[14.5px] font-semibold text-ink">
+      <section className="card p-5">
+        <h2 className="flex items-center gap-2.5 text-[16.5px] font-semibold text-ink">
           <SquarePen size={16} className="text-brand" />
           使用与核对建议
         </h2>
-        <ul className="mt-3 space-y-2 text-[12.5px] leading-relaxed text-ink-2">
+        <ul className="mt-3 space-y-2 text-[13.5px] leading-[1.7] text-ink-2">
           <li>· 打开应用会自动检查更新；在页面顶部下拉并松开，也能立刻更新到最新版。</li>
           <li>· 顶部「指南共识 / 顶刊前沿」按钮一键切换两套内容；顶刊前沿可按「近一年 / 近两年 / 近三年 / 全部」、期刊层级（综合顶刊 / 本领域顶刊 / 权威期刊）、期刊与影响程度筛选。</li>
           <li>· 顶刊前沿支持「按期次浏览」：按期刊逐期看，或按时间把同一期各刊的研究合并看；期次按公开发表月份归期，不等于期刊卷期号。</li>
@@ -307,7 +307,7 @@ export default function AboutPage() {
 
       <Disclaimer />
 
-      <p className="pb-2 text-center text-[11px] text-ink-3">
+      <p className="pb-2 text-center text-[12.5px] text-ink-3">
         本应用为纯本地前端，无服务端、无账号体系；所有数据打包在页面内，亦可导出后离线分发。
       </p>
     </div>
@@ -317,8 +317,8 @@ export default function AboutPage() {
 function Metric({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-line bg-surface-2 px-3 py-2.5">
-      <div className="text-[15px] font-semibold tabular-nums text-ink">{value}</div>
-      <div className="mt-0.5 text-[11px] text-ink-3">{label}</div>
+      <div className="text-[16.5px] font-semibold tabular-nums text-ink">{value}</div>
+      <div className="mt-0.5 text-[12.5px] text-ink-3">{label}</div>
     </div>
   )
 }

@@ -96,7 +96,7 @@ function Shell() {
         }
       />
 
-      <main className="mx-auto flex w-full max-w-[760px] flex-1 flex-col px-4 pt-4">
+      <main className="mx-auto flex w-full max-w-[680px] flex-1 flex-col px-5 pt-5">
         {route.name === 'home' &&
           (research ? (
             <ResearchHomePage query={query} onQueryChange={setQuery} />
