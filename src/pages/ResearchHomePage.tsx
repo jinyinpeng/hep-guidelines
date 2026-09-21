@@ -1,12 +1,4 @@
-import {
-  ArrowUpRight,
-  CalendarClock,
-  CalendarDays,
-  FlaskConical,
-  Layers,
-  Microscope,
-  Sparkles,
-} from 'lucide-react'
+import { ArrowUpRight, CalendarClock, FlaskConical, Layers, Sparkles } from 'lucide-react'
 import { useMemo } from 'react'
 import Disclaimer from '../components/Disclaimer'
 import FindingCard from '../components/FindingCard'
@@ -16,7 +8,6 @@ import {
   DEPT_GROUPS,
   RESEARCH_STATS,
   TIERS,
-  TIER_LABEL,
   countFindingsByDept,
   deptsByGroup,
   featuredFindings,
@@ -56,11 +47,6 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
             <br />
             各科室临床研究
           </h2>
-          <p className="mt-2 text-[15px] leading-[1.7] text-ink-2">
-            覆盖 {RESEARCH_STATS.depts} 个临床科室、{RESEARCH_STATS.journals} 种期刊：
-            既有 NEJM / Lancet / JAMA / BMJ 等综合顶刊，也有各专科自己的顶刊
-            （肝病科的 Hepatology、J Hepatol，血液科的 Blood，消化科的 Gut，心血管的 Circulation 等）。
-          </p>
 
           <div className="mt-4 grid grid-cols-3 gap-2">
             <Stat value={RESEARCH_STATS.inWindow} label="条近一年研究" />
@@ -224,59 +210,6 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
                   </div>
                 )
               })}
-            </div>
-          </section>
-
-          <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
-            <CalendarDays size={20} className="mt-0.5 shrink-0 text-accent" />
-            <div className="min-w-0 flex-1">
-              <h3 className="text-[15px] font-semibold text-ink">按期次浏览</h3>
-              <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
-                按
-                <strong className="font-semibold text-ink">期刊 × 期次</strong>
-                逐期查看：选定一本顶刊就看到它各期收录的临床研究；也可以「按时间」把同一期各刊的研究放在一起看。
-                周刊每月约 4 期、月刊每月 1 期。
-              </p>
-              <a
-                href={href('/issues')}
-                className="mt-2 inline-flex cursor-pointer items-center gap-0.5 text-[13.5px] text-accent transition-opacity duration-200 hover:opacity-80"
-              >
-                进入按期次浏览
-                <ArrowUpRight size={13} />
-              </a>
-            </div>
-          </section>
-
-          <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
-            <Microscope size={20} className="mt-0.5 shrink-0 text-accent" />
-            <div className="min-w-0 flex-1">
-              <h3 className="text-[15px] font-semibold text-ink">研究方法怎么读</h3>
-              <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
-                每条研究都写了<strong className="font-semibold text-ink">入组人群</strong>、
-                <strong className="font-semibold text-ink">干预与对照</strong>、
-                <strong className="font-semibold text-ink">主要终点</strong>、
-                <strong className="font-semibold text-ink">统计与分析</strong>四项方法学要素——
-                同样的阳性结果，在优效性与非劣效性设计、硬终点与替代终点之间分量完全不同。
-              </p>
-              <a
-                href={href('/methods')}
-                className="mt-2 inline-flex cursor-pointer items-center gap-0.5 text-[13.5px] text-accent transition-opacity duration-200 hover:opacity-80"
-              >
-                研究方法速读
-                <ArrowUpRight size={13} />
-              </a>
-            </div>
-          </section>
-
-          <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
-            <FlaskConical size={20} className="mt-0.5 shrink-0 text-accent" />
-            <div>
-              <h3 className="text-[15px] font-semibold text-ink">收录口径</h3>
-              <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
-                收录公开发表于同行评议期刊的临床研究：综合顶刊、各专科本领域顶刊与领域权威期刊都收，
-                按期刊层级标注（{TIER_LABEL.top} / {TIER_LABEL.field} / {TIER_LABEL.major}）。
-                避免只看阳性结果，中性/阴性研究一并收录；条目为编辑摘编，具体数值与亚组请以原文为准。
-              </p>
             </div>
           </section>
 
