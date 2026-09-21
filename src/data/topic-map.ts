@@ -121,6 +121,10 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-lung-fungal': 'infection',
   'cn-bronchoscopy-standard': 'bronchoscopy',
   'cn-massive-hemoptysis': 'bronchoscopy',
+  'cn-ipfd-2025': 'infection',
+  'cn-small-airway-2026': 'copd',
+  'cn-abpa-ts-2026': 'infection',
+  'cn-pcd-2025': 'other',
 
   /* ---------------- 消化内科 ---------------- */
   'cn-hp-2022': 'hp',
@@ -203,6 +207,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-hypothyroidism': 'thyroid',
   'cn-obesity-2024': 'obesity',
   'cn-osteoporosis-2022': 'osteoporosis',
+  'cn-male-osteoporosis-2025': 'osteoporosis',
   'cn-gout-2019': 'gout',
   'cn-pa-2024': 'adrenal',
   'cn-cushing': 'adrenal',
@@ -236,6 +241,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-ais-2023': 'ischemic',
   'cn-ais-reperfusion-2025': 'ischemic',
   'aha-ais-2019': 'ischemic',
+  'aha-ais-2026': 'ischemic',
   'cn-ich-2019': 'ich',
   'cn-severe-stroke-2024': 'ich',
   'cn-stroke-secondary-2022': 'prevention',
@@ -340,6 +346,7 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 普通外科 ---------------- */
   'cn-gallstone-2021': 'biliary',
+  'cn-elderly-cholelithiasis-2026': 'biliary',
   'cn-hernia-2018': 'hernia',
   'cn-hernia-2024': 'hernia',
   'cn-thyroid-nodule-2023': 'thyroid',
@@ -412,6 +419,7 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 胸外科 ---------------- */
   'cn-lung-cancer-2024': 'lung',
+  'cn-lung-cancer-2026': 'lung',
   'cn-lung-nodule-2018': 'lung',
   'cn-esophageal-cancer-2022': 'esophagus',
   'cn-mediastinal-tumor': 'mediastinum',
@@ -476,6 +484,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-asd': 'growth',
   'cn-child-tumor': 'tumor',
   'cn-immunization': 'immunization',
+  'cn-child-fever-2026': 'other',
 
   /* ---------------- 急诊医学科 ---------------- */
   'cn-cpr-2025': 'cpr',
@@ -545,6 +554,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-menieres-2017': 'vertigo',
   'cn-otitis-media': 'otitis',
   'cn-osa-2018': 'sleep',
+  'cn-osa-2025': 'sleep',
   'csco-head-neck-2026': 'tumor',
   'cn-tonsillectomy': 'tonsil',
   'cn-voice': 'voice',
