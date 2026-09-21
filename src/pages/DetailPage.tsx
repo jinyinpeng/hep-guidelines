@@ -1,11 +1,14 @@
 import { Bookmark, CircleDot, ExternalLink, Star } from 'lucide-react'
 import Disclaimer from '../components/Disclaimer'
-import { DEPT_MAP, getGuideline, gradedPointCount } from '../data'
+import { DEPT_MAP, getGuideline } from '../data'
+import { useDeptSections } from '../lib/data-hooks'
 import { href } from '../lib/router'
 import { pointKey, useStore } from '../lib/store'
 
 export default function DetailPage({ id }: { id: string }) {
   const g = getGuideline(id)
+  // 要点正文按科室分片：本页只等这一个科室的分片，加载完成后自动渲染
+  const ready = useDeptSections(g?.dept)
   const { favorites, marks } = useStore()
 
   if (!g) {
@@ -21,11 +24,13 @@ export default function DetailPage({ id }: { id: string }) {
 
   const fav = favorites.has(g.id)
   const dept = DEPT_MAP[g.dept]
-  const markCount = g.sections.reduce(
-    (n, s, si) => n + s.points.filter((_, pi) => marks.has(pointKey(g.id, si, pi))).length,
-    0,
-  )
-  const graded = gradedPointCount(g)
+  const markCount = ready
+    ? g.sections.reduce(
+        (n, s, si) => n + s.points.filter((_, pi) => marks.has(pointKey(g.id, si, pi))).length,
+        0,
+      )
+    : 0
+  const graded = g.graded
 
   return (
     <article className="animate-rise space-y-6">
@@ -93,70 +98,79 @@ export default function DetailPage({ id }: { id: string }) {
         <p className="mt-1.5 text-[15px] leading-[1.7] text-ink">{g.summary}</p>
       </section>
 
-      {g.sections.map((s, si) => (
-        <section key={s.title} className="card overflow-hidden">
-          <h3 className="border-b border-line bg-surface-2 px-5 py-3.5 text-[16.5px] font-semibold text-ink">
-            {s.title}
-          </h3>
-          <ul className="row-divide">
-            {s.points.map((p, pi) => {
-              const key = pointKey(g.id, si, pi)
-              const marked = marks.has(key)
-              return (
-                <li key={key} className="flex gap-3 px-5 py-4">
-                  <CircleDot
-                    size={15}
-                    className={`mt-[3px] shrink-0 ${p.key ? 'text-brand' : 'text-line-strong'}`}
-                  />
-                  <div className="min-w-0 flex-1">
-                    <p
-                      className={`text-[15px] leading-[1.7] ${
-                        p.key ? 'font-medium text-ink' : 'text-ink-2'
-                      }`}
-                    >
-                      {p.key && (
-                        <span className="mr-1 align-[1px] text-[12.5px] font-semibold text-brand">
-                          核心
-                        </span>
-                      )}
-                      {p.t}
-                    </p>
-                    {(p.tag || p.rec || p.ev) && (
-                      <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
-                        {p.rec && (
-                          <span className="round-chip bg-brand-soft font-medium text-brand-ink">
-                            推荐 {p.rec}
-                          </span>
-                        )}
-                        {p.ev && (
-                          <span className="round-chip bg-accent-soft font-medium text-accent">
-                            证据 {p.ev}
-                          </span>
-                        )}
-                        {p.tag && (
-                          <span className="round-chip bg-surface-3 text-ink-3">{p.tag}</span>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => marks.toggle(key)}
-                    aria-label={marked ? '取消标记该要点' : '标记该要点'}
-                    className="-mr-1 h-7 w-7 shrink-0 cursor-pointer rounded-full transition-colors duration-200 hover:bg-surface-3"
-                  >
-                    <Bookmark
-                      size={15}
-                      className={`mx-auto ${marked ? 'text-brand' : 'text-line-strong'}`}
-                      fill={marked ? 'currentColor' : 'none'}
-                    />
-                  </button>
-                </li>
-              )
-            })}
-          </ul>
+      {!ready ? (
+        <section className="card p-6 text-center">
+          <p className="text-[15px] font-medium text-ink">正在载入要点正文…</p>
+          <p className="mt-1.5 text-[13.5px] leading-[1.7] text-ink-3">
+            按科室分片加载，完成后自动显示，无需刷新
+          </p>
         </section>
-      ))}
+      ) : (
+        g.sections.map((s, si) => (
+          <section key={s.title} className="card overflow-hidden">
+            <h3 className="border-b border-line bg-surface-2 px-5 py-3.5 text-[16.5px] font-semibold text-ink">
+              {s.title}
+            </h3>
+            <ul className="row-divide">
+              {s.points.map((p, pi) => {
+                const key = pointKey(g.id, si, pi)
+                const marked = marks.has(key)
+                return (
+                  <li key={key} className="flex gap-3 px-5 py-4">
+                    <CircleDot
+                      size={15}
+                      className={`mt-[3px] shrink-0 ${p.key ? 'text-brand' : 'text-line-strong'}`}
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p
+                        className={`text-[15px] leading-[1.7] ${
+                          p.key ? 'font-medium text-ink' : 'text-ink-2'
+                        }`}
+                      >
+                        {p.key && (
+                          <span className="mr-1 align-[1px] text-[12.5px] font-semibold text-brand">
+                            核心
+                          </span>
+                        )}
+                        {p.t}
+                      </p>
+                      {(p.tag || p.rec || p.ev) && (
+                        <div className="mt-1.5 flex flex-wrap items-center gap-1.5">
+                          {p.rec && (
+                            <span className="round-chip bg-brand-soft font-medium text-brand-ink">
+                              推荐 {p.rec}
+                            </span>
+                          )}
+                          {p.ev && (
+                            <span className="round-chip bg-accent-soft font-medium text-accent">
+                              证据 {p.ev}
+                            </span>
+                          )}
+                          {p.tag && (
+                            <span className="round-chip bg-surface-3 text-ink-3">{p.tag}</span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => marks.toggle(key)}
+                      aria-label={marked ? '取消标记该要点' : '标记该要点'}
+                      className="-mr-1 h-7 w-7 shrink-0 cursor-pointer rounded-full transition-colors duration-200 hover:bg-surface-3"
+                    >
+                      <Bookmark
+                        size={15}
+                        className={`mx-auto ${marked ? 'text-brand' : 'text-line-strong'}`}
+                        fill={marked ? 'currentColor' : 'none'}
+                      />
+                    </button>
+                  </li>
+                )
+              })}
+            </ul>
+          </section>
+        ))
+      )}
 
       {(g.ref || g.url) && (
         <section className="rounded-[14px] border border-line bg-surface p-4">

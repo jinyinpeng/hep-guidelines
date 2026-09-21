@@ -1,12 +1,17 @@
 import { Bookmark, FlaskConical, Star } from 'lucide-react'
+import { useMemo } from 'react'
 import FindingCard from '../components/FindingCard'
 import GuidelineCard from '../components/GuidelineCard'
 import { getFinding, getGuideline } from '../data'
+import type { DeptId } from '../data'
+import { useDataVersion, useDeptsSections } from '../lib/data-hooks'
 import { href } from '../lib/router'
 import { parsePointKey, useStore } from '../lib/store'
 
 export default function FavoritesPage() {
   const { favorites, rfavorites, marks } = useStore()
+  // 标记的要点正文按科室分片，订阅数据版本以便分片到位后自动补全
+  useDataVersion()
 
   const favList = favorites.items
     .map((id) => getGuideline(id))
@@ -15,6 +20,22 @@ export default function FavoritesPage() {
   const favFindings = rfavorites.items
     .map((id) => getFinding(id))
     .filter((f): f is NonNullable<typeof f> => Boolean(f))
+
+  /** 收藏的指南与标记的要点可能分散在多个科室，按需补齐这些科室的正文 */
+  const depts = useMemo(() => {
+    const set = new Set<DeptId>()
+    for (const g of favList) set.add(g.dept)
+    for (const key of marks.items) {
+      const parsed = parsePointKey(key)
+      const gid = parsed?.[0]
+      if (!gid) continue
+      const dept = getGuideline(gid)?.dept
+      if (dept) set.add(dept)
+    }
+    return [...set]
+  }, [favList, marks.items])
+
+  useDeptsSections(depts)
 
   const markedPoints = marks.items
     .map((key) => {

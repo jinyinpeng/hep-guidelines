@@ -3,14 +3,15 @@ import GuidelineCard from '../components/GuidelineCard'
 import SearchBar from '../components/SearchBar'
 import { FilterDivider, FilterGroup, FilterPanel } from '../components/FilterBar'
 import {
+  CARDS,
   DEPT_GROUPS,
   DEPARTMENTS,
-  GUIDELINES,
   countByDept,
   countByTopic,
   search,
   topicsOf,
 } from '../data'
+import { useAllDeptsLoaded, useDataVersion } from '../lib/data-hooks'
 import type { DeptGroup, DeptId } from '../data/types'
 
 const REGIONS = [
@@ -28,6 +29,10 @@ export default function LibraryPage() {
   const [topic, setTopic] = useState<string>('all')
   const [q, setQ] = useState('')
 
+  // 正文分片后台补齐后重跑全文检索
+  const version = useDataVersion()
+  const allLoaded = useAllDeptsLoaded()
+
   const deptOptions = useMemo(
     () => (group === 'all' ? DEPARTMENTS : DEPARTMENTS.filter((d) => d.group === group)),
     [group],
@@ -44,7 +49,7 @@ export default function LibraryPage() {
 
   const base = useMemo(
     () =>
-      GUIDELINES.filter(
+      CARDS.filter(
         (g) =>
           (region === 'all' || g.region === region) &&
           (dept === 'all' || g.dept === dept) &&
@@ -53,7 +58,10 @@ export default function LibraryPage() {
     [region, dept, topic],
   )
 
-  const list = useMemo(() => (q.trim() ? search(q, base).map((h) => h.guideline) : base), [q, base])
+  const list = useMemo(
+    () => (q.trim() ? search(q, base).map((h) => h.guideline) : base),
+    [q, base, version],
+  )
 
   const activeDept = DEPARTMENTS.find((d) => d.id === dept)
   const activeTopic = topics.find((t) => t.id === topic)
@@ -187,6 +195,12 @@ export default function LibraryPage() {
         {activeDept && ` · ${activeDept.short}`}
         {activeTopic && ` · ${activeTopic.short}`}
       </p>
+
+      {q.trim() && !allLoaded && (
+        <p className="text-[12.5px] leading-[1.7] text-ink-3">
+          全文索引正在载入，结果可能不完整，载入完成后会自动刷新。
+        </p>
+      )}
 
       {list.length === 0 ? (
         <div className="card p-6 text-center">

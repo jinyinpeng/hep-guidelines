@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react'
 import { DEPT_MAP, topicOf } from '../data'
-import type { Guideline } from '../data/types'
+import type { GuidelineCardData } from '../data/types'
 import { href } from '../lib/router'
 import { useStore } from '../lib/store'
 
@@ -8,8 +8,10 @@ import { useStore } from '../lib/store'
  * 指南卡片。
  * 密度控制：一行状态芯片 → 标题 → 机构 → 摘要 → 分隔线 → 归属信息。
  * 摘要限制两行、标签最多两个，避免列表页出现「一屏一条也读不完」的堆叠感。
+ *
+ * 只依赖卡片级字段，不含要点正文，因此列表页无需等待科室正文分片。
  */
-export default function GuidelineCard({ g }: { g: Guideline }) {
+export default function GuidelineCard({ g }: { g: GuidelineCardData }) {
   const { favorites } = useStore()
   const fav = favorites.has(g.id)
   const dept = DEPT_MAP[g.dept]

@@ -5,8 +5,9 @@
   "type": "module",
   "description": "肝病科指南共识要点库 · 手机离线可用",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "gen": "node scripts/gen-data.mjs",
+    "dev": "node scripts/gen-data.mjs && vite",
+    "build": "node scripts/gen-data.mjs && tsc --noEmit && vite build",
     "preview": "vite preview --host --port 4173",
     "verify": "node scripts/verify-data.mjs",
     "deploy": "node scripts/deploy.mjs"

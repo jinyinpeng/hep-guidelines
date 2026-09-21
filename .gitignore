@@ -8,3 +8,7 @@ dist/
 # 本地 IDE / 工作区数据，不进入公开仓库
 .codebuddy/
 
+# 构建期生成的数据分片与 URL 清单（由 npm run gen 生成）
+public/data/
+src/data/generated/
+

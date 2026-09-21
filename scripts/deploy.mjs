@@ -140,6 +140,16 @@ if (verify.code !== 0) {
 
 step(4, '构建')
 
+// 先把 TS 数据编译成静态分片（卡片索引 + 各科室正文），再类型检查与打包
+const gen = run(process.execPath, [join('scripts', 'gen-data.mjs')], {
+  capture: false,
+  allowFail: true,
+})
+if (gen.code !== 0) {
+  console.error('\n数据分片生成失败，已终止发布。')
+  process.exit(1)
+}
+
 const tscBin = join(ROOT, 'node_modules', 'typescript', 'bin', 'tsc')
 const viteBin = join(ROOT, 'node_modules', 'vite', 'bin', 'vite.js')
 if (!existsSync(viteBin)) {

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { dataAssetUrls } from '../data'
 
 /**
  * 注册 Service Worker（仅生产构建）。
@@ -30,8 +31,10 @@ export function registerServiceWorker() {
         .map((e) => e.name)
         .filter((u) => u.startsWith(location.origin) && !skip.test(u))
 
+      // 指南数据分片由 fetch 取回，performance 里未必及时出现，
+      // 这里显式加入，保证「首次访问结束」后连数据一起离线可用
       const urls = Array.from(
-        new Set([...resources, location.origin + location.pathname]),
+        new Set([...resources, ...dataAssetUrls(), location.origin + location.pathname]),
       )
 
       ready.active?.postMessage({ type: 'CACHE_URLS', urls })

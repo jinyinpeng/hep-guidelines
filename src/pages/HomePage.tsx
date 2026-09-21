@@ -5,7 +5,6 @@ import GuidelineCard from '../components/GuidelineCard'
 import SearchBar from '../components/SearchBar'
 import {
   DEPT_GROUPS,
-  DEPARTMENTS,
   STATS,
   countByDept,
   deptsByGroup,
@@ -13,6 +12,7 @@ import {
   search,
   topicNamesOf,
 } from '../data'
+import { useAllDeptsLoaded, useDataVersion } from '../lib/data-hooks'
 import { href } from '../lib/router'
 
 const HOT = ['乙肝', '房颤', '糖尿病', '慢阻肺', '脓毒症', '卒中', '癌痛', '骨关节炎']
@@ -24,7 +24,10 @@ interface Props {
 
 export default function HomePage({ query, onQueryChange }: Props) {
   const q = query.trim()
-  const hits = useMemo(() => (q ? search(q) : []), [q])
+  // 正文分片后台补齐后重跑一次检索，保证「全文命中」不漏
+  const version = useDataVersion()
+  const allLoaded = useAllDeptsLoaded()
+  const hits = useMemo(() => (q ? search(q) : []), [q, version])
 
   return (
     <div className="space-y-6">
@@ -62,6 +65,11 @@ export default function HomePage({ query, onQueryChange }: Props) {
           <p className="text-[13.5px] text-ink-3">
             找到 <strong className="font-semibold text-ink">{hits.length}</strong> 部相关指南
           </p>
+          {!allLoaded && (
+            <p className="text-[12.5px] leading-[1.7] text-ink-3">
+              全文索引正在载入，结果可能不完整，载入完成后会自动刷新。
+            </p>
+          )}
           {hits.length === 0 && (
             <div className="card p-6 text-center">
               <p className="text-[15px] font-medium text-ink">没有匹配的指南或要点</p>

@@ -105,3 +105,27 @@ export interface Department {
   group: DeptGroup
   desc: string
 }
+
+/* --------------------------- 运行时数据形态 --------------------------- */
+
+/**
+ * 卡片级字段：列表页与详情页头部所需的全部字段，唯独不含正文章节 `sections`。
+ * 构建期由 scripts/gen-data.mjs 抽出为 `cards.<hash>.json`，首屏一次性取回。
+ */
+export type GuidelineCardData = Omit<Guideline, 'sections'>
+
+/** 卡片 + 计数：条数与含等级的条数在构建期算好，运行时不必再遍历正文 */
+export interface GuidelineSummary extends GuidelineCardData {
+  /** 要点条数 */
+  points: number
+  /** 已标注推荐等级或证据级别的要点条数 */
+  graded: number
+}
+
+/**
+ * 运行时的指南视图：`sections` 为空数组表示该科室正文尚未加载完成。
+ * 正文按科室分片、按需或后台加载，加载后原地填充同一个对象引用。
+ */
+export interface GuidelineView extends GuidelineSummary {
+  sections: Section[]
+}
