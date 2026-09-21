@@ -1,4 +1,4 @@
-import { ArrowUpRight, Layers, ShieldCheck, TrendingUp } from 'lucide-react'
+import { ArrowUpRight, Layers } from 'lucide-react'
 import { useMemo } from 'react'
 import Disclaimer from '../components/Disclaimer'
 import GuidelineCard from '../components/GuidelineCard'
@@ -6,7 +6,6 @@ import SearchBar from '../components/SearchBar'
 import {
   DEPT_GROUPS,
   DEPARTMENTS,
-  GUIDELINES,
   STATS,
   countByDept,
   deptsByGroup,
@@ -26,7 +25,6 @@ interface Props {
 export default function HomePage({ query, onQueryChange }: Props) {
   const q = query.trim()
   const hits = useMemo(() => (q ? search(q) : []), [q])
-  const latest = useMemo(() => GUIDELINES.filter((g) => g.latest).slice(0, 6), [])
 
   return (
     <div className="space-y-6">
@@ -37,9 +35,6 @@ export default function HomePage({ query, onQueryChange }: Props) {
             <br />
             要点速查
           </h2>
-          <p className="mt-2 text-[15px] leading-[1.7] text-ink-2">
-            覆盖 {STATS.depts} 个临床科室的国内外最新指南与共识要点，手机随时查、断网也能看。
-          </p>
 
           <div className="mt-4 grid grid-cols-3 gap-2">
             <Stat value={STATS.depts} label="个临床科室" />
@@ -137,29 +132,6 @@ export default function HomePage({ query, onQueryChange }: Props) {
                 </div>
               </div>
             ))}
-          </section>
-
-          <section>
-            <div className="flex items-center gap-2">
-              <TrendingUp size={15} className="text-brand" />
-              <h2 className="text-[16.5px] font-semibold text-ink">当前最新版本</h2>
-            </div>
-            <div className="mt-3 space-y-4">
-              {latest.map((g) => (
-                <GuidelineCard key={g.id} g={g} />
-              ))}
-            </div>
-          </section>
-
-          <section className="flex items-start gap-3 rounded-[14px] border border-line bg-surface p-4">
-            <ShieldCheck size={20} className="mt-0.5 shrink-0 text-brand" />
-            <div>
-              <h3 className="text-[15px] font-semibold text-ink">完全离线可用</h3>
-              <p className="mt-1 text-[13.5px] leading-[1.7] text-ink-2">
-                首次打开后所有内容会被缓存到本机，之后断网、飞行模式、地铁里都能正常查阅与检索。可「添加到主屏幕」当
-                App 使用。
-              </p>
-            </div>
           </section>
 
           <Disclaimer compact />
