@@ -1,4 +1,4 @@
-import { ArrowUpRight, CalendarClock, FlaskConical, Layers, Sparkles } from 'lucide-react'
+import { ArrowUpRight, CalendarClock, Layers } from 'lucide-react'
 import { useMemo } from 'react'
 import Disclaimer from '../components/Disclaimer'
 import FindingCard from '../components/FindingCard'
@@ -7,11 +7,8 @@ import {
   DATA_CUTOFF,
   DEPT_GROUPS,
   RESEARCH_STATS,
-  TIERS,
   countFindingsByDept,
   deptsByGroup,
-  featuredFindings,
-  journalStats,
   latestFindingDateOf,
   researchTopicIds,
   searchFindings,
@@ -21,12 +18,6 @@ import { href } from '../lib/router'
 
 const HOT = ['GLP-1', '取栓', '免疫治疗', '生物制剂', '脓毒症', '微创', 'ADC', '降压']
 
-const TIER_CHIP = {
-  top: 'bg-accent-soft text-accent',
-  field: 'bg-brand-soft text-brand-ink',
-  major: 'bg-surface-3 text-ink-2',
-} as const
-
 interface Props {
   query: string
   onQueryChange: (v: string) => void
@@ -35,8 +26,6 @@ interface Props {
 export default function ResearchHomePage({ query, onQueryChange }: Props) {
   const q = query.trim()
   const hits = useMemo(() => (q ? searchFindings(q) : []), [q])
-  const featured = useMemo(() => featuredFindings(6), [])
-  const journals = useMemo(() => journalStats(), [])
 
   return (
     <div className="space-y-6">
@@ -154,63 +143,6 @@ export default function ResearchHomePage({ query, onQueryChange }: Props) {
                 </div>
               </div>
             ))}
-          </section>
-
-          <section>
-            <div className="flex items-center gap-2">
-              <Sparkles size={16} className="text-accent" />
-              <h2 className="text-[16.5px] font-semibold text-ink">近一年值得关注</h2>
-            </div>
-            <div className="mt-3 space-y-4">
-              {featured.map((f) => (
-                <FindingCard key={f.id} f={f} />
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <div className="flex items-center gap-2">
-              <FlaskConical size={15} className="text-accent" />
-              <h2 className="text-[16.5px] font-semibold text-ink">期刊体系</h2>
-              <span className="ml-auto text-[12.5px] tabular-nums text-ink-3">
-                共 {RESEARCH_STATS.journals} 种
-              </span>
-            </div>
-
-            <div className="mt-3 space-y-4">
-              {TIERS.map((t) => {
-                const list = journals.filter((j) => j.tier === t.id)
-                if (!list.length) return null
-                const total = list.reduce((n, j) => n + j.count, 0)
-                const shown = list.slice(0, 12)
-                return (
-                  <div key={t.id} className="rounded-[12px] border border-line bg-surface p-3">
-                    <p className="flex items-baseline gap-2">
-                      <span className={`round-chip ${TIER_CHIP[t.id]}`}>{t.label}</span>
-                      <span className="text-[12.5px] tabular-nums text-ink-3">
-                        {list.length} 种 · {total} 条
-                      </span>
-                    </p>
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {shown.map((j) => (
-                        <span key={j.journal} className="round-chip bg-surface-2 text-ink-2">
-                          {j.journal}
-                          <span className="ml-1 tabular-nums opacity-60">{j.count}</span>
-                        </span>
-                      ))}
-                      {list.length > shown.length && (
-                        <a
-                          href={href('/library')}
-                          className="round-chip cursor-pointer bg-brand-soft text-brand-ink transition-opacity duration-200 hover:opacity-80"
-                        >
-                          还有 {list.length - shown.length} 种，去顶刊库按层级筛选
-                        </a>
-                      )}
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
           </section>
 
           <Disclaimer compact />
