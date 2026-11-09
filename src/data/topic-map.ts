@@ -101,6 +101,7 @@ export const TOPIC_OF: Record<string, string> = {
   /* ---------------- 呼吸科 ---------------- */
   'cn-copd-2021': 'copd',
   'cn-copd-primary-2024': 'copd',
+  'cn-copd-2026': 'copd',
   'cn-aecopd-2017': 'copd',
   'gold-2026': 'copd',
   'cn-asthma-2024': 'asthma',
