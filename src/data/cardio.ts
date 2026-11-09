@@ -1162,6 +1162,49 @@ export const CARDIO: Guideline[] = [
       },
     ],
   },
+  {
+    id: 'aha-acc-ckm-2026',
+    title: '2026 AHA/ACC/ADA/ASN 心血管-肾脏-代谢综合征预防、检出、评估与管理指南',
+    short: 'AHA/ACC CKM 综合征指南 2026',
+    org: '美国心脏协会（AHA）、美国心脏病学会（ACC）、美国糖尿病协会（ADA）、美国肾脏病学会（ASN）',
+    region: 'intl',
+    dept: 'cardio',
+    year: 2026,
+    latest: true,
+    tags: ['CKM 综合征', 'PREVENT 方程', '四期分期', 'GLP-1', 'eGFR/UACR'],
+    summary:
+      '首部 CKM 综合征专门指南：以四期分期串起肥胖、2 型糖尿病、慢性肾脏病与心血管病，用 PREVENT 方程评估 10 年与 30 年风险，并把 GLP-1 为基础的治疗与肾脏保护治疗纳入一级预防路径。',
+    ref: '2026 AHA/ACC/ADA/ASN Guideline for the Prevention, Detection, Evaluation, and Management of Cardiovascular-Kidney-Metabolic Syndrome；Circulation 与 JACC 于 2026 年 6 月 9 日同步在线发表（JACC doi:10.1016/j.jacc.2026.03.056）；要点据 ACC 官方 Journal Scan 摘录，未取得逐条 COR/LOE，故 rec/ev 留空',
+    sections: [
+      {
+        title: '定位与分期',
+        points: [
+          { t: '首部专门针对 CKM 综合征的指南，由 AHA 与 ACC 牵头，与 ADA、ADA 肥胖协会、ASN 联合制订，Circulation 与 JACC 同步发表。', tag: '定位', key: true },
+          { t: 'CKM 综合征定义为由代谢危险因素（包括肥胖和 2 型糖尿病）、慢性肾脏病与心血管疾病之间的相互关联所构成的一组疾病状态。', tag: '定义', key: true },
+          { t: '本文件废止、替代并扩展 2013 年《成人超重与肥胖管理指南》。', tag: '版本关系', key: true },
+          { t: '提出四期分期框架，覆盖从脂肪组织功能障碍到临床心血管病的连续进程。', tag: '分期', key: true },
+          { t: '危险因素涵盖超重、高血压、血脂异常、血糖升高与肾功能下降。', tag: '危险因素' },
+        ],
+      },
+      {
+        title: '风险评估与照护模式',
+        points: [
+          { t: '采用 PREVENT 方程估算 10 年与 30 年心血管病风险；相较既往工具，新方程纳入肾脏与代谢健康因素，风险估计更全面、更精确。', tag: '风险评估', key: true },
+          { t: '推荐筛查食物不安全、住房不稳定、经济压力等社会健康决定因素。', tag: '社会因素', key: true },
+          { t: '设立 CKM 协调联络人（coordination point person），以促进以患者为中心的照护和指南依从性。', tag: '多学科', key: true },
+        ],
+      },
+      {
+        title: '预防与治疗',
+        points: [
+          { t: '生活方式行为干预覆盖体力活动、营养、体重、血压、血糖与胆固醇，强调早期行动可对整体健康产生实质性影响。', tag: '生活方式', key: true },
+          { t: '在生活方式管理基础上，加用药物和/或代谢（减重）手术管理血压、胆固醇、血糖与体重，并保护心肾。', tag: '综合干预', key: true },
+          { t: '首次推荐以 GLP-1 为基础的治疗用于合并肥胖和/或 2 型糖尿病、并存在其他心血管危险因素的特定人群。', tag: 'GLP-1', key: true },
+          { t: '推荐同时使用 eGFR 与尿白蛋白/肌酐比值（UACR）刻画 CKD 并指导肾脏保护药物的使用，以获得心血管与肾脏双重获益。', tag: '肾脏保护', key: true },
+        ],
+      },
+    ],
+  },
 
   /* ================= 2026 ESC 年会新指南 ================= */
   {

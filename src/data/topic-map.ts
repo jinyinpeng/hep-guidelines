@@ -97,6 +97,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-chd-adult': 'chd',
   'cn-cardio-onco': 'cardioOnco',
   'cn-myocarditis': 'cmp',
+  'aha-acc-ckm-2026': 'other',
 
   /* ---------------- 呼吸科 ---------------- */
   'cn-copd-2021': 'copd',
@@ -169,6 +170,7 @@ export const TOPIC_OF: Record<string, string> = {
   'kdigo-gn-2021': 'gn',
   'cn-igan-2024': 'gn',
   'kdigo-ln-2024': 'gn',
+  'cn-mn-2026': 'gn',
   'cn-ckd-mbd-2019': 'mbd',
   'cn-dialysis-access-2024': 'dialysis',
   'cn-hd-sop-2021': 'dialysis',
