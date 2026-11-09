@@ -541,4 +541,47 @@ export const ORTHO: Guideline[] = [
       },
     ],
   },
+  {
+    id: 'aaos-knee-oa-2023',
+    title: 'AAOS 膝关节骨关节炎外科治疗临床实践指南（2023）',
+    short: 'AAOS 膝 OA 手术指南 2023',
+    org: '美国骨科医师学会（AAOS）等',
+    region: 'intl',
+    dept: 'ortho',
+    year: 2023,
+    latest: true,
+    tags: ['膝骨关节炎', '全膝关节置换', '单髁置换', '氨甲环酸', '围手术期'],
+    summary: '基于系统评价的膝关节 OA 外科治疗指南，含 16 条推荐与 7 项可选方案，覆盖置换方式、血液与疼痛管理。',
+    ref: '2023 年 1 月发布；16 条推荐中 10 条为强推荐、6 条为中等推荐',
+    url: 'https://www.aaos.org/aaos-home/newsroom/press-releases/aaos-updates-clinical-practice-guideline-for-surgical-management-of-osteoarthritis-of-the-knee',
+    grading: '推荐强度 强/中等/有限（基于系统评价；证据不足的议题列为「选项」）',
+    sections: [
+      {
+        title: '围手术期管理',
+        points: [
+          { t: '全膝关节置换不推荐常规放置引流管，引流与否在并发症与功能结局上无显著差异。', tag: '不推荐', key: true },
+          { t: '推荐使用氨甲环酸以减少围手术期失血与输血需求。', tag: '血液管理', key: true },
+          { t: '推荐外周神经阻滞与关节周围局部浸润注射，可减少术后疼痛与阿片类药物需求。', tag: '镇痛', key: true },
+          { t: '围手术期应优化血糖控制，以降低假体周围感染风险。', tag: '感染', key: true },
+          { t: '术前应开展患者教育、康复规划与共享决策。', tag: '术前' },
+        ],
+      },
+      {
+        title: '置换方式与假体固定',
+        points: [
+          { t: '骨水泥型与非骨水泥型股骨/胫骨假体的功能结果、并发症与翻修率相近。', tag: '固定方式', key: true },
+          { t: '以内侧间室为主的骨关节炎可考虑单髁置换以短期改善功能，但长期翻修率可能高于全膝置换。', tag: '单髁', key: true },
+          { t: '严重多间室病变或畸形者仍以全膝关节置换为主要选择。', tag: '选择', key: true },
+        ],
+      },
+      {
+        title: '预后因素与随访',
+        points: [
+          { t: '体重指数较高与假体周围感染风险升高相关，但不应仅以 BMI 拒绝手术，需结合整体风险评估。', tag: 'BMI', key: true },
+          { t: '术后应制定个体化康复计划并定期随访假体功能与并发症。', tag: '随访' },
+          { t: '对证据不足的辅助措施，指南以「选项」形式给出，不构成常规推荐。', tag: '说明' },
+        ],
+      },
+    ],
+  },
 ]

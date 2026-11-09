@@ -191,6 +191,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-ida-2020': 'anemia',
   'cn-itp-2020': 'plt',
   'cn-itp-2025': 'plt',
+  'ash-itp-2026': 'plt',
   'cn-hemophilia-2025': 'coagulation',
   'cn-dic-2017': 'coagulation',
   'cn-fn-2020': 'other',
@@ -384,6 +385,7 @@ export const TOPIC_OF: Record<string, string> = {
   'cn-cervical-spondylosis': 'spine',
   'cn-oa-2021': 'oa',
   'cn-oa-2026': 'oa',
+  'aaos-knee-oa-2023': 'oa',
   'cn-tha-tka-erac': 'oa',
   'csco-bone-soft-tissue-2026': 'tumor',
   'cn-vte-ortho-2016': 'vte',
@@ -501,6 +503,7 @@ export const TOPIC_OF: Record<string, string> = {
   /* ---------------- 急诊医学科 ---------------- */
   'cn-cpr-2025': 'cpr',
   'aha-cpr-2020': 'cpr',
+  'aha-ecc-2025': 'cpr',
   'cn-chest-pain-consensus': 'chestPain',
   'cn-acs-emergency': 'chestPain',
   'cn-poisoning-2025': 'poisoning',
@@ -545,6 +548,7 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 眼科 ---------------- */
   'cn-dr-guideline': 'retina',
+  'aao-dr-ppp-2025': 'retina',
   'cn-amd-2023': 'retina',
   'cn-diabetic-eye-2021': 'retina',
   'cn-glaucoma-2020': 'glaucoma',
@@ -610,6 +614,8 @@ export const TOPIC_OF: Record<string, string> = {
 
   /* ---------------- 疼痛科 ---------------- */
   'cn-cancer-pain-2018': 'cancer',
+  'cn-cancer-pain-2025': 'cancer',
+  'nccn-cancer-pain-2026': 'cancer',
   'cn-zap-2025': 'neuropathic',
   'cn-neuropathic-pain-consensus': 'neuropathic',
   'cn-lbp-pain-2020': 'spine',
